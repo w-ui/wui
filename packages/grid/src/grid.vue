@@ -1,0 +1,32 @@
+<template>
+    <div>
+        <div class="wui-grid-title" v-if="title">{{title}}</div>
+        <div :class="classes">
+            <slot></slot>
+        </div>
+    </div>
+</template>
+
+<script type="text/babel">
+    export default{
+        name: 'w-grid',
+        props: {
+            rows: {
+                validator(value) {
+                    return ['2', '3', '4', '5'].indexOf(value + '') > -1;
+                },
+                default: '4'
+            },
+            title: String
+        },
+        computed: {
+            classes() {
+                return 'wui-grid-' + this.rows;
+            }
+        }
+    }
+</script>
+
+<style lang="less">
+    @import './grid.less';
+</style>

@@ -1,0 +1,97 @@
+// 一像素边框
+.top-line(@color: '#D9D9D9', @zindex: 0) {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  border-top: 1px solid @color;
+  -webkit-transform: scaleY(.5);
+  transform: scaleY(.5);
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+}
+
+.bottom-line(@color: '#D9D9D9', @zindex: 0) {
+  content: '';
+  position: absolute;
+  z-index: @zindex;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border-bottom: 1px solid @color;
+  -webkit-transform: scaleY(.5);
+  transform: scaleY(.5);
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+}
+
+.wui-timeline {
+  background-color: #fff;
+  font-size: 13px;
+  color: #6e6e6e;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+  &:after {
+    .top-line();
+  }
+
+  &-content {
+    margin-left: 16px;
+    border-left: 1px solid #E4E5E9;
+    > li {
+      padding: 16px 12px 16px 0;
+      margin-left: 16px;
+      position: relative;
+      > em {
+        content: '';
+        width: 8px;
+        height: 8px;
+        border-radius: 99px;
+        position: absolute;
+        z-index: 1;
+        left: -20px;
+        display: block;
+        top: 19px;
+        background-color: #E4E5E9;
+      }
+      &:not(:last-child):after {
+        .bottom-line();
+      }
+      &:first-child {
+        margin-top: 16px;
+        padding-top: 0;
+        color: #000;
+        > em {
+          top: 3px;
+          background-color: #F23030;
+          width: 10px;
+          height: 10px;
+          left: -21px;
+        }
+        &:before {
+          content: '';
+          width: 16px;
+          height: 16px;
+          position: absolute;
+          z-index: 0;
+          top: 0;
+          left: -24px;
+          background-color: #FBBFBF;
+          border-radius: 99px;
+        }
+      }
+      &:last-child:before {
+        content: '';
+        width: 1px;
+        height: 100%;
+        background-color: #FFF;
+        position: absolute;
+        left: -17px;
+        top: 19px;
+      }
+    }
+  }
+}

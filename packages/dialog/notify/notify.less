@@ -1,0 +1,53 @@
+
+
+@keyframes notify-downin {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -50px, 0);
+  }
+  50% {
+    opacity: .5;
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes notify-upout {
+  0% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(0, -50px, 0);
+  }
+}
+
+
+// Notify =================
+.wui-notify {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(40, 40, 40, .8);
+  line-height: .28rem;
+  font-size: .26rem;
+  color: #FFF;
+  padding: .3rem .24rem;
+  opacity: 0;
+  animation: notify-downin .2s linear forwards;
+  word-break: break-all;
+  text-align: center;
+  z-index:  2000;
+  &-out {
+    opacity: 1;
+    animation: notify-upout .15s linear forwards;
+  }
+}
+

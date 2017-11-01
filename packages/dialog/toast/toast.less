@@ -1,0 +1,48 @@
+// Toast =================
+.wui-toast {
+  min-width: 130px;
+  max-width: 80%;
+  padding-top: 20px;
+  background: rgba(40, 40, 40, .8);
+  text-align: center;
+  border-radius: 3px;
+  color: #FFF;
+  animation: zoomIn .06s ease forwards;
+
+  &-none-icon {
+    padding-top: 10px;
+    border-radius: 3px;
+    .wui-toast-content {
+      padding: 0 36px 10px 36px;
+    }
+  }
+
+  &-content {
+    font-size: 15px;
+    padding: 0 15px 15px 15px;
+    line-height: 22px;
+    word-break: break-all;
+  }
+
+  &-success-icon,
+  &-error-icon {
+    display: block;
+    margin-bottom: 10px;
+    &:after {
+      display: inline-block;
+      content: '';
+    }
+  }
+
+  &-success-icon:after {
+    width: 43px;
+    height: 35px;
+    background-size: 43px 35px;
+  }
+
+  &-error-icon:after {
+    width: 35px;
+    height: 35px;
+    background-size: 35px 35px;
+  }
+}

@@ -1,0 +1,45 @@
+.scroll-wrap {
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    line-height: 0;
+    position: relative
+}
+.scroll-horizontal {
+    &-inner {
+        min-width: 100%;
+        height: 100%;
+        line-height: 0;
+        display: table-cell;
+        white-space: nowrap;
+        transition-timing-function: cubic-bezier(0.1, 0.57, 0.1, 1);
+        // transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        transition-duration: 0ms;
+        transform: translate(0px, 0px) translateZ(0px);
+        backface-visibility: hidden;
+        position: relative;
+        z-index: 2;
+    }
+    &-item {
+        display: inline-block;;
+    }
+}
+.scroll-vertical {
+    &-inner {
+        width: 100%;
+        min-height: 100%;
+        // overflow-y: scroll;
+        transition-timing-function: cubic-bezier(0.1, 0.57, 0.1, 1);
+        transition-duration: 0ms;
+        transform: translate(0px, 0px) translateZ(0px);
+        backface-visibility: hidden;
+        position: relative;
+    }
+}
+.scroll-shadow {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    z-index: 1;
+}

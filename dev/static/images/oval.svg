@@ -1,0 +1,11 @@
+<svg id='Oval-level_1' viewbox='0 0 1550 1080' width='1550' height='1080' version="1.1" xmlns='http://www.w3.org/2000/svg' xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <path d='M505.5 137c80.7 0 195.6 30.7 284.4 97.5 159 119.5 320 311.7 320 311.7S942.2 734.2 779 854c-85.7 63-196.4 93-274 93-224.5 0-407-181.3-407-405s182.4-405 407.5-405z' id='i'></path>
+    <filter filterunits='objectBoundingBox' height='200%' id='h' width='200%' x='-50%' y='-50%'>
+      <feoffset dy='2' in='SourceAlpha' result='shadowOffsetOuter1'></feoffset>
+      <fegaussianblur in='shadowOffsetOuter1' result='shadowBlurOuter1' stddeviation='30'></fegaussianblur>
+    </filter>
+  </defs>
+  <use fill='#061439' filter='url(#h)' opacity='.2' xlink:href='#i'></use>
+  <use fill='#2154CF' xlink:href='#i'></use>
+</svg>

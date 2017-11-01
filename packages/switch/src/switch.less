@@ -1,0 +1,45 @@
+
+.wui-switch {
+  position: relative;
+  z-index: 10;
+  display: block;
+  width: 52px;
+  height: 28px;
+  left: 0;
+  border: 1px solid #DFDFDF;
+  border-radius: 16px;
+  background-color: #DFDFDF;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  &:before, &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 26px;
+    border-radius: 15px;
+    transition: transform .3s;
+  }
+  &:before {
+    width: 50px;
+    background-color: #FDFDFD;
+  }
+  &:after {
+    width: 26px;
+    background-color: #FFF;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .4);
+  }
+  &:checked {
+    border-color: #20a0ff;
+    background-color: #20a0ff;
+    &:before {
+      transform: scale(0);
+    }
+    &:after {
+      transform: translateX(24px);
+    }
+  }
+  &[disabled] {
+    opacity: 0.5;
+  }
+}

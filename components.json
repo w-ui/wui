@@ -1,0 +1,12 @@
+{
+  "carousel": ["./package/carousel"],
+  "scroll": ["./package/scroll"],
+  "sticky": ["./package/sticky"],
+  "lazyImage": ["./package/lazyImage"],
+  "drag": ["./package/drag"],
+  "loading": ["./package/loading"],
+  "search": ["./package/search"],
+  "drawer": ["./package/drawer"],
+  "toast": ["./package/toast"],
+  "messageBox": ["./package/messageBox"]
+}
