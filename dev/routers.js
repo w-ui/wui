@@ -29,6 +29,12 @@ export default new VueRouter({
       name: 'demo',
       component: () => import('./page/Demo'),
       props: true
+    },
+    {
+      path: '/about',
+      name: 'about',
+      component: () => import('./page/About'),
+      props: true
     }
   ]
 })

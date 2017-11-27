@@ -7,7 +7,7 @@
         <li><router-link to="/guide">指南</router-link></li>
         <li><router-link to="/doc">组件</router-link></li>
         <li><router-link to="/visual">可视化</router-link></li>
-        <li><router-link to="/feedback">反馈</router-link></li>
+        <li><router-link to="/about">关于</router-link></li>
       </ul>
     </div>
 
