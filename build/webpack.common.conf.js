@@ -57,14 +57,16 @@ var webpackConfig = {
   devtool: false,
   plugins: [
     new webpack.DefinePlugin({
-      'process.env': 'production'
+      'process.env': {
+        NODE_ENV: '"production"'
+      }
     }),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         warnings: false,
         drop_console: true // 发布时注释掉console.log
       },
-      sourceMap: true
+      sourceMap: false
     }),
     new ExtractTextPlugin({
       filename: '[name].[contenthash:5].css'

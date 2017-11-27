@@ -27,13 +27,6 @@ module.exports = merge(baseWebpackConfig, {
         NODE_ENV: '"production"'
       }
     }),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false,
-        drop_console: true // 发布时注释掉console.log
-      },
-      sourceMap: true
-    }),
     // https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
       filename: 'index.html',

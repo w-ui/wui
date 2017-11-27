@@ -7,7 +7,7 @@
   "module": "lib/wui.es.js",
   "scripts": {
     "dev": "node build/dev-server.js",
-    "doc": "rimraf ./dist/* && webpack --config ./build/webpack.doc.conf.js",
+    "doc": "rimraf ./dist/* && webpack --config ./build/webpack.doc.conf.js --optimize-minimize",
     "build:common": "node build/build-common.js",
     "pkg": "npm run kit && cross-env NODE_ENV=\"pkg\" node build/build.js",
     "kit": "cross-env NODE_ENV=\"kit\" node build/build.js",
