@@ -1,19 +1,19 @@
 <template>
-    <router-link :to="link" class="tabbar-item" :class="classes" :style="styles">
-        <span class="tabbar-icon">
+    <router-link :to="link" class="wui-menubar-item" :class="classes" :style="styles">
+        <span class="wui-menubar-icon">
             <slot name="icon"></slot>
-            <span class="tabbar-badge">
+            <span class="wui-menubar-badge">
                 <slot name="badge"></slot>
             </span>
-            <span class="tabbar-dot" v-if="dot"></span>
+            <span class="wui-menubar-dot" v-if="dot"></span>
         </span>
-        <span class="tabbar-txt">{{title}}</span>
+        <span class="wui-menubar-txt">{{title}}</span>
     </router-link>
 </template>
 
 <script type="text/babel">
     export default {
-        name: 'yd-tabbar-item',
+        name: 'w-menubar-item',
         props: {
             link: String,
             title: String,
@@ -22,7 +22,7 @@
         },
         computed: {
             classes() {
-                return this.active ? 'tabbar-active' : '';
+                return this.active ? 'menubar-active' : '';
             },
             styles() {
                 return {color: this.active ? this.activeColor : '#979797'};

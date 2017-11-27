@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "description": "A Vue.js 2.0 UI Toolkit for mobile",
   "author": "wmfe",
-  "main": "lib/wui.js",
+  "main": "lib/wui.common.js",
   "module": "lib/wui.es.js",
   "scripts": {
     "dev": "node build/dev-server.js",
     "doc": "rimraf ./dist/* && webpack --config ./build/webpack.doc.conf.js",
-    "build": "node build/build.js",
+    "build:common": "node build/build-common.js",
     "pkg": "npm run kit && cross-env NODE_ENV=\"pkg\" node build/build.js",
     "kit": "cross-env NODE_ENV=\"kit\" node build/build.js",
     "lint": "eslint --ext .js,.vue src",
@@ -75,6 +75,22 @@
     "webpack-dev-middleware": "^1.10.0",
     "webpack-hot-middleware": "^2.18.0",
     "webpack-merge": "^4.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:w-ui/wui.git"
+  },
+  "homepage": "http://w-ui.github.io",
+  "keywords": [
+    "w-ui",
+    "wui",
+    "vue",
+    "components"
+  ],
+  "unpkg": "lib/wui.umd.js",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/w-ui/wui/issues"
   },
   "engines": {
     "node": ">= 6.0.0",

@@ -108,6 +108,12 @@
     "component": "Password"
   },
   {
+    "path": "/doc/Textarea",
+    "title": "Textarea 文本框",
+    "name": "Textarea",
+    "component": "Textarea"
+  },
+  {
     "path": "/doc/Loading",
     "title": "Loading 加载",
     "name": "Loading",
@@ -142,6 +148,12 @@
     "title": "LazyImage 图片懒加载",
     "name": "LazyImage",
     "component": "LazyImage"
+  },
+  {
+    "path": "/doc/Menubar",
+    "title": "Menubar 菜单条",
+    "name": "Menubar",
+    "component": "Menubar"
   },
   {
     "path": "/doc/Waterfall",

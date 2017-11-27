@@ -1,2 +1,1 @@
-import TextArea from './src/textarea.vue';
-export {TextArea};
+export { default } from './src/textarea.vue'
