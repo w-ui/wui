@@ -1,13 +1,13 @@
 <template>
-  <div class="crop-wrap" @mousedown="wrapMouseDown">
+  <div class="crop-wrap" @mousedown="wrapMouseDown" @touchstart="wrapMouseDown">
     <div class="shadow-box" :style="recStyle">
       <img :src="img" class="shadow-img" :style="imgStyle">
     </div>
-    <div class="crop-box" @mousedown="boxMouseDown" :class="showBox ? 'show': ''" :style="recStyle">
-      <span class="drag-point point-lt" @mousedown="pointMouseDown('drag-lt', $event)"></span>
-      <span class="drag-point point-lb" @mousedown="pointMouseDown('drag-lb', $event)"></span>
-      <span class="drag-point point-rt" @mousedown="pointMouseDown('drag-rt', $event)"></span>
-      <span class="drag-point point-rb" @mousedown="pointMouseDown('drag-rb', $event)"></span>
+    <div class="crop-box" @mousedown="boxMouseDown" @touchstart="boxMouseDown" :class="showBox ? 'show': ''" :style="recStyle">
+      <span class="drag-point point-lt" @mousedown="pointMouseDown('drag-lt', $event)" @touchstart="pointMouseDown('drag-lt', $event)"></span>
+      <span class="drag-point point-lb" @mousedown="pointMouseDown('drag-lb', $event)" @touchstart="pointMouseDown('drag-lb', $event)"></span>
+      <span class="drag-point point-rt" @mousedown="pointMouseDown('drag-rt', $event)" @touchstart="pointMouseDown('drag-rt', $event)"></span>
+      <span class="drag-point point-rb" @mousedown="pointMouseDown('drag-rb', $event)" @touchstart="pointMouseDown('drag-rb', $event)"></span>
     </div>
   </div>
 </template>
@@ -46,10 +46,14 @@
     mounted () {
       window.addEventListener('mouseup', this.disableDrag)
       window.addEventListener('mousemove', this.updateRec)
+      window.addEventListener('touchend', this.disableDrag)
+      window.addEventListener('touchmove', this.updateRec)
     },
     beforeDestroy () {
       window.removeEventListener('mouseup', this.disableDrag)
       window.removeEventListener('mousemove', this.updateRec)
+      window.removeEventListener('touchend', this.disableDrag)
+      window.removeEventListener('touchmove', this.updateRec)
     },
     methods: {
       getLeft (el) {
@@ -90,25 +94,34 @@
         }
       },
       pointMouseDown (name, e) {
-        this.initAction(name, e.pageX, e.pageY)
+        let tar = e.targetTouches || [e];
+        tar = tar[0];
+        this.initAction(name, tar.pageX, tar.pageY)
         e.stopPropagation()
+        e.preventDefault()
       },
       boxMouseDown (e) {
-        this.initAction('move', e.pageX, e.pageY)
+        let tar = e.targetTouches || [e];
+        tar = tar[0];
+        this.initAction('move', tar.pageX, tar.pageY)
         e.stopPropagation()
+        e.preventDefault()
       },
       wrapMouseDown (e) {
+        let tar = e.targetTouches || [e];
+        tar = tar[0];
         if (this.rec.w && this.rec.h) {
           return
         }
-        this.initAction('cross', e.pageX, e.pageY)
+        this.initAction('cross', tar.pageX, tar.pageY)
         this.rec = {
           w: 0,
           h: 0,
-          l: e.pageX - this.pl,
-          t: e.pageY - this.pt
+          l: tar.pageX - this.pl,
+          t: tar.pageY - this.pt
         }
         e.stopPropagation()
+        e.preventDefault()
       },
       disableDrag () {
         if (this.action) {
@@ -121,16 +134,18 @@
         this.rec = {w: 0, h: 0, l: 0, t: 0}
       },
       updateRec (e) {
+        let tar = e.targetTouches || [e];
+        tar = tar[0];
         if (!this.action) {
           return
         }
 
         const elWidth = this.$el.offsetWidth
         const elHeight = this.$el.offsetHeight
-        const dx = e.pageX - this.actionPoint.x
-        const dy = e.pageY - this.actionPoint.y
-        const x = e.pageX
-        const y = e.pageY
+        const dx = tar.pageX - this.actionPoint.x
+        const dy = tar.pageY - this.actionPoint.y
+        const x = tar.pageX
+        const y = tar.pageY
         let w = 0
         let h = 0
         let t = 0
@@ -256,6 +271,9 @@
           this.rec.w = w
           this.rec.h = h
         }
+        e.preventDefault();
+        e.stopPropagation();
+
         this.$emit('selectChange')
       }
     }

@@ -11,12 +11,12 @@
       <h3>slot</h3>
       <w-grid :rows="2">
         <w-grid-item>
-            <img slot="icon" src="https://cn.vuejs.org/images/logo.png">
-            <span slot="text">image</span>
+            <w-icon slot="icon" name="home" color="lightgreen"></w-icon>
+            <span slot="text">主页</span>
         </w-grid-item>
         <w-grid-item>
-            <img slot="icon" src="https://cn.vuejs.org/images/logo.png">
-            <span slot="text">iconfont</span>
+            <w-icon slot="icon" name="user" color="lightgreen"></w-icon>
+            <span slot="text">我的</span>
         </w-grid-item>
       </w-grid>
     </div>
@@ -27,11 +27,13 @@
 <script>
 import Grid from 'packages/grid'
 import GridItem from 'packages/grid-item'
+import Icon from 'packages/icon'
 
 export default {
   components: {
     'w-grid': Grid,
-    'w-grid-item': GridItem
+    'w-grid-item': GridItem,
+    'w-icon': Icon
   }
 }
 </script>

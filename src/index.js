@@ -11,7 +11,6 @@ import Carousel from '../packages/carousel/index.js'
 import Cell from '../packages/cell/index.js'
 import Checkbox from '../packages/checkbox/index.js'
 import CheckboxGroup from '../packages/checkbox-group/index.js'
-import Checklist from '../packages/checklist/index.js'
 import CitySelect from '../packages/city-select/index.js'
 import Countup from '../packages/countup/index.js'
 import Datetime from '../packages/datetime/index.js'
@@ -68,7 +67,6 @@ const components = [
   Cell,
   Checkbox,
   CheckboxGroup,
-  Checklist,
   CitySelect,
   CheckboxGroup,
   Countup,
@@ -150,7 +148,6 @@ module.exports = {
   Cell,
   Checkbox,
   CheckboxGroup,
-  Checklist,
   CitySelect,
   Countup,
   Datetime,

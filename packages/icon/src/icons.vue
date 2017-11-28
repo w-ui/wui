@@ -22,9 +22,9 @@
         computed: {
             classes() {
                 if (this.custom) {
-                    return 'icon-custom-' + this.name;
+                    return 'custom-' + this.name;
                 }
-                return 'wui-icon-' + this.name;
+                return 'icon-' + this.name;
             },
             styles() {
                 const style = {};
@@ -44,5 +44,5 @@
 </script>
 
 <style lang="less">
-    @import './icons.less';
+    @import './icons.css';
 </style>

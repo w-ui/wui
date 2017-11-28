@@ -24,6 +24,12 @@
     "component": "Switch"
   },
   {
+    "path": "/doc/Icon",
+    "title": "Icon 图标",
+    "name": "Icon",
+    "component": "Icon"
+  },
+  {
     "path": "/doc/Radio",
     "title": "Radio 单选",
     "name": "Radio",
@@ -52,6 +58,12 @@
     "title": "Actionsheet 上拉菜单",
     "name": "Actionsheet",
     "component": "Actionsheet"
+  },
+  {
+    "path": "/doc/Badge",
+    "title": "Badge 角标",
+    "name": "Badge",
+    "component": "Badge"
   },
   {
     "path": "/doc/Cell",
@@ -150,10 +162,22 @@
     "component": "LazyImage"
   },
   {
+    "path": "/doc/ImageClip",
+    "title": "ImageClip 图片裁剪",
+    "name": "ImageClip",
+    "component": "ImageClip"
+  },
+  {
     "path": "/doc/Menubar",
     "title": "Menubar 菜单条",
     "name": "Menubar",
     "component": "Menubar"
+  },
+  {
+    "path": "/doc/Backtop",
+    "title": "Backtop 返回顶部",
+    "name": "Backtop",
+    "component": "Backtop"
   },
   {
     "path": "/doc/Waterfall",

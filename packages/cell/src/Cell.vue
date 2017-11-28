@@ -1,6 +1,6 @@
 <template>
-  <a class="wui-cell" :href="href">
-    <span class="w-cell-mask" v-if="isLink"></span>
+  <a class="wui-cell" :href="link">
+    <span class="w-cell-mask" v-if="link"></span>
     <div class="w-cell-left">
       <slot name="left"></slot>
     </div>
@@ -14,7 +14,7 @@
           <span v-if="label" class="w-cell-label" v-text="label"></span>
         </slot>
       </div>
-      <div class="w-cell-value" :class="{ 'is-link' : isLink }">
+      <div class="w-cell-value" :class="{ 'is-link' : link }">
         <slot>
           <span v-text="value"></span>
         </slot>
@@ -23,7 +23,7 @@
     <div class="w-cell-right">
       <slot name="right"></slot>
     </div>
-    <i v-if="isLink" class="w-cell-allow-right"></i>
+    <i v-if="link" class="w-cell-allow-right"></i>
   </a>
 </template>
 
@@ -56,17 +56,16 @@ export default {
   name: 'w-cell',
 
   props: {
-    to: [String, Object],
+    link: [String, Object],
     icon: String,
     title: String,
     label: String,
-    isLink: Boolean,
     value: {}
   },
 
   computed: {
     href() {
-      if (this.to && !this.added && this.$router) {
+      if (this.link && !this.added && this.$router) {
         const resolved = this.$router.match(this.to);
         if (!resolved.matched.length) return this.to;
 
@@ -76,7 +75,7 @@ export default {
         });
         return resolved.path;
       }
-      return this.to;
+      return this.link;
     }
   },
 
@@ -89,7 +88,7 @@ export default {
 };
 </script>
 
-<style lang="less-loader">
+<style lang="less-loader" scoped>
 
   .wui-cell {
     background-color: #fff;
