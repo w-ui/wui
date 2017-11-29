@@ -196,5 +196,11 @@
     "title": "Audio 音频播放器",
     "name": "Audio",
     "component": "Audio"
+  },
+  {
+    "path": "/doc/Video",
+    "title": "Video 视频播放器",
+    "name": "Video",
+    "component": "Video"
   }
 ]

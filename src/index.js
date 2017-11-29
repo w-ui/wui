@@ -98,7 +98,6 @@ const components = [
   Spinner,
   Step,
   StepItem,
-  Spinner,
   Sticky,
   Switch,
   Tab,

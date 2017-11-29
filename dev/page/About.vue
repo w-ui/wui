@@ -14,6 +14,15 @@
       <div class="title">更新日志</div>
       <w-timeline>
         <w-timeline-item>
+          <p class="time">2017-11-28 18:33:50</p>
+          <p class="item">新增Backtop组件及文档</p>
+          <p class="item">新增Badge组件及文档</p>
+          <p class="item">新增Icon组件及文档</p>
+          <p class="item">新增ImageClip组件及文档</p>
+          <p class="item">部分文档bug修复和修复</p>
+        </w-timeline-item>
+
+        <w-timeline-item>
           <p class="time">2017-11-27 18:46:08</p>
           <p class="item">新增Textarea组件及文档</p>
           <p class="item">新增Menubar组件及文档</p>

@@ -1,0 +1,165 @@
+.wui{
+  &-cell {
+    background-color: #fff;
+    box-sizing: border-box;
+    color: inherit;
+    min-height: 1rem;
+    display: block;
+    overflow: hidden;
+    position: relative;
+    text-decoration: none;
+
+    &:first-child {
+      .w-cell-wrapper {
+        background-origin: border-box;
+      }
+    }
+
+    &:last-child {
+      // background-image: linear-gradient(0deg, #d9d9d9, #d9d9d9 50%, transparent 50%);
+      background-size: 100% 1px;
+      background-repeat: no-repeat;
+      background-position: bottom;
+    }
+
+    .cell-wrapper {
+      background-image:linear-gradient(180deg, #d9d9d9, #d9d9d9 50%, transparent 50%);
+      background-size: 120% 1px;
+      background-repeat: no-repeat;
+      background-position: top left;
+      background-origin: content-box;
+      align-items: center;
+      box-sizing: border-box;
+      display: flex;
+      font-size: 0.32rem;
+      line-height: 1;
+      min-height: inherit;
+      overflow: hidden;
+      padding: 0 0.2rem;
+      width: 100%;
+      text-align: left;
+      justify-content: space-between;
+    }
+
+    .cell-mask {
+      &::after {
+        background-color: #000;
+        content: " ";
+        opacity: 0;
+        position: absolute 0;
+      }
+
+      &:active::after {
+        opacity: .1;
+      }
+    }
+
+    .cell-left {
+      position: absolute;
+      height: 100%;
+      left: 0;
+      transform: translate3d(-100%, 0, 0);
+    }
+
+    .cell-text {
+      vertical-align: middle;
+    }
+
+    .cell-label {
+      color: #888;
+      display: block;
+      font-size: 0.24rem;
+      margin-top: 0.12rem;
+    }
+
+    .cell-img {
+      vertical-align: middle;
+    }
+
+    .cell-title {
+      white-space: nowrap;
+      img {
+        vertical-align: middle;
+        display: inline;
+      }
+    }
+
+    .cell-value {
+      color: #888;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;;
+      flex: 1 1 80%;
+    }
+
+    .cell-value.is-link{
+      margin-right: 0.1rem;
+    }
+
+    .cell-right {
+      position: absolute;
+      height: 100%;
+      right: 0;
+      top: 0;
+      // transform: translate3d(100%, 0, 0);
+    }
+
+    .wui {
+      &-input {
+        flex: 1 1 100%;
+        height: 100%;
+        align-items: center;
+        display: flex;
+    
+        input {
+          flex: 1 1 100%;
+          height: 100%;
+          border: none;
+          font-size: inherit;
+        }
+    
+        &-clear,
+        &-error,
+        &-warn,
+        &-password,
+        &-success {
+          flex: 0 0 18px;
+          text-align: right;
+        }
+    
+      }
+    }
+
+    .cell-allow-right{
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 20px;
+      height: 1rem;
+    }
+
+    .cell-allow-right::before {  
+      content: " ";
+      position: absolute;
+      right: 5px;
+      top: 11px;
+      width: 1px;
+      height: 10px;
+      background: #ddd;
+      transform: rotate(140deg);  
+      transform-origin: center center;
+    }
+
+    .cell-allow-right::after {
+      content: " ";
+      position: absolute;
+      right: 5px;
+      bottom: 11px;
+      width: 1px;
+      height: 10px;
+      background: #ddd;
+      transform: rotate(-140deg);
+      transform-origin: center center;
+    }
+  }
+}

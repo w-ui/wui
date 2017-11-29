@@ -1,172 +1,3 @@
-<style>
-.__cov-video-container {
-    position: relative;
-    width: 100%;
-    background-color: #000;
-}
-
-.__cov-video {
-    width: 100%;
-    height: 100%;
-    vertical-align: bottom;
-}
-
-.__cov-contrl-content {
-    position: absolute;
-    display: flex;
-    left: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.41);
-    height: 2rem;
-    width: 100%;
-    z-index: 2147483647;
-}
-.__cov-contrl-play-btn {
-    position: relative;
-    height: 100%;
-    background: none;
-    border: none;
-    height: 2rem;
-    width: 4rem;
-    outline: none;
-    vertical-align: top;
-}
-.__cov-contrl-play-btn:hover {
-    background-color: rgba(255, 255, 255, 0.27);
-}
-.__cov-contrl-play-btn-icon {
-    position: absolute;
-    height: 1rem;
-    width: 1rem;
-    top: 50%;
-    left: 50%;
-    margin-top: -.5rem;
-    margin-left: -.5rem;
-}
-.__cov-contrl-vol-btn-icon {
-    position: absolute;
-    height: 1.1rem;
-    width: 1.1rem;
-    top: 50%;
-    left: 50%;
-    margin-top: -.55rem;
-    margin-left: -.55rem;
-}
-.__cov-contrl-vol-slider {
-    position: relative;
-    display: inline-block;
-    height: 100%;
-    width: 6rem;
-    height: 2rem;
-    overflow: hidden;
-    transition: all .2s ease-in;
-}
-.__cov-contrl-vol-rail {
-    position: absolute;
-    top: 50%;
-    width: 6rem;
-    height: .1rem;
-    margin-top: -.05rem;
-    background: #fff;
-}
-.__cov-contrl-vol-inner {
-    position: absolute;
-    display: inline-block;
-    left: 0;
-    top: 50%;
-    background: #fff;
-    width: .5rem;
-    height: .5rem;
-    border-radius: 50%;
-    margin-top: -.25rem;
-    z-index: 2;
-    cursor: pointer;
-}
-.__cov-contrl-vol-box {
-    display: flex;
-}
-.__cov-contrl-video-slider {
-    position: relative;
-    display: inline-block;
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
-    margin: 0 .5rem;
-    transition: all .2s ease-in;
-}
-.__cov-contrl-video-rail {
-    position: absolute;
-    top: 50%;
-    width: 100%;
-    height: .1rem;
-    margin-top: -.05rem;
-    background: rgba(255, 255, 255, 0.5);
-    overflow: hidden;
-}
-.__cov-contrl-video-rail-inner {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: .1rem;
-    background: rgb(255, 255, 255);
-    transition: transform .2s;
-}
-.__cov-contrl-video-inner {
-    position: absolute;
-    display: inline-block;
-    left: 0;
-    top: 50%;
-    background: #fff;
-    width: .5rem;
-    height: .5rem;
-    border-radius: 50%;
-    margin-top: -.25rem;
-    z-index: 2;
-    cursor: pointer;
-    transition: all 16ms;
-}
-.__cov-contrl-video-time {
-    padding: 0 1rem;
-}
-.__cov-contrl-video-time-text {
-    color: #fff;
-    line-height: 2rem;
-    font-size: .8rem;
-}
-::-webkit-media-controls {
-  display:none !important;
-}
-video::-webkit-media-controls {
-  display:none !important;
-}
-video::-webkit-media-controls-enclosure {
-  display:none !important;
-}
-.fade-transition {
-    transition: opacity .3s ease;
-}
-.fade-enter{
-    opacity: 1;
-}
-.fade-leave {
-    opacity: 0;
-}
-.hide-cursor {
-    cursor: none;
-}
-@media all and (max-width: 768px) {
-    .__cov-contrl-vol-slider {
-        width: 3rem;
-    }
-    .__cov-contrl-video-time {
-        padding: 0 .2rem;
-    }
-    .__cov-contrl-vol-box .__cov-contrl-play-btn {
-        width: 2rem;
-    }
-}
-</style>
 <template>
     <div id="app">
         <div class="container">
@@ -176,7 +7,7 @@ video::-webkit-media-controls-enclosure {
                     </source>
                 </video>
                 <div class="__cov-contrl-content" transition="fade" v-show="state.contrlShow">
-                    <button class="__cov-contrl-play-btn" @click="play">
+                    <button class="__cov-contrl-play-btn2" @click="play">
                         <svg class="__cov-contrl-play-btn-icon" v-show="!state.playing" viewBox="0 0 47 57" version="1.1" xmlns="http://www.w3.org/2000/svg">
                             <!-- Generator: Sketch 3.8.3 (29802) - http://www.bohemiancoding.com/sketch -->
                             <title>Triangle 1</title>
@@ -257,6 +88,7 @@ video::-webkit-media-controls-enclosure {
         </div>
     </div>
 </template>
+
 <script>
 const getMousePosition = function (e, type = 'x') {
     if (type === 'x') {
@@ -277,7 +109,9 @@ const timeParse = (sec) => {
     sec = sec - min * 60
     return pad(min) + ':' + pad(sec)
 }
+
 export default {
+    name: 'w-video',
     props: {
         sources: Array,
         options: {
@@ -399,7 +233,7 @@ export default {
             this.tmp.contrlHideTimer = setTimeout(() => {
                 this.state.contrlShow = false
                 this.tmp.contrlHideTimer = null
-            }, 2000)
+            }, 1000)
         },
         toggleContrlShow () {
             this.state.contrlShow = !this.state.contrlShow
@@ -518,3 +352,187 @@ export default {
     }
 }
 </script>
+
+<style>
+.__cov-video-container {
+    position: relative;
+    width: 100%;
+    background-color: #000;
+}
+
+.__cov-video {
+    width: 100%;
+    height: 100%;
+    vertical-align: bottom;
+}
+
+.__cov-contrl-content {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.41);
+    height: 0.6rem;
+    width: 100%;
+    z-index: 2147483647;
+}
+.__cov-contrl-play-btn {
+    position: relative;
+    height: 100%;
+    background: none;
+    border: none;
+    height: 0.4rem;
+    width: 0.8rem;
+    outline: none;
+    vertical-align: top;
+}
+.__cov-contrl-play-btn:hover {
+    background-color: rgba(255, 255, 255, 0.27);
+}
+.__cov-contrl-play-btn-icon {
+    position: absolute;
+    height: 0.4rem;
+    width: 0.4rem;
+    top: 50%;
+    left: 50%;
+    margin-top: -.2rem;
+    margin-left: -.2rem;
+}
+.__cov-contrl-play-btn2 {
+    position: absolute;
+    left: 50%;
+    top: -280%;
+    transform: translate(-50%, 0);
+    border: none;
+    height: 1rem;
+    width: 1rem;
+    outline: none;
+}
+.__cov-contrl-play-btn2:hover {
+    background-color: rgba(255, 255, 255, 0.27);
+}
+.__cov-contrl-play-btn2-icon {
+    position: absolute;
+    height: 0.4rem;
+    width: 0.4rem;
+    top: 50%;
+    left: 50%;
+    margin-top: -.2rem;
+    margin-left: -.2rem;
+}
+.__cov-contrl-vol-btn-icon {
+    position: absolute;
+    height: 0.4rem;
+    width: 0.4rem;
+    top: 50%;
+    left: 50%;
+    margin-top: -.2rem;
+    margin-left: -.2rem;
+}
+.__cov-contrl-vol-slider {
+    display: inline-block;
+    position: relative;
+    height: 100%;
+    width: 1rem;
+    height: 0.3rem;
+    overflow: hidden;
+    transition: all .2s ease-in;
+    display: none;
+}
+.__cov-contrl-vol-rail {
+    position: absolute;
+    top: 50%;
+    width: 1rem;
+    height: .1rem;
+    margin-top: -.05rem;
+    background: #fff;
+}
+.__cov-contrl-vol-inner {
+    position: absolute;
+    display: inline-block;
+    left: 0;
+    top: 50%;
+    background: #fff;
+    width: .5rem;
+    height: .5rem;
+    border-radius: 50%;
+    margin-top: -.25rem;
+    z-index: 2;
+    cursor: pointer;
+}
+.__cov-contrl-vol-box {
+    display: flex;
+    display: none;
+}
+.__cov-contrl-video-slider {
+    position: relative;
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    margin: 0 .1rem;
+    transition: all .2s ease-in;
+}
+.__cov-contrl-video-rail {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    height: .1rem;
+    margin-top: -.05rem;
+    background: rgba(255, 255, 255, 0.5);
+    overflow: hidden;
+}
+.__cov-contrl-video-rail-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: .1rem;
+    background: rgb(255, 255, 255);
+    transition: transform .2s;
+}
+.__cov-contrl-video-inner {
+    position: absolute;
+    display: inline-block;
+    left: 0;
+    top: 50%;
+    background: #fff;
+    width: .3rem;
+    height: .3rem;
+    border-radius: 50%;
+    margin-top: -.15rem;
+    z-index: 2;
+    cursor: pointer;
+    transition: all 16ms;
+}
+.__cov-contrl-video-time {
+    padding: 0 0.1rem;
+}
+.__cov-contrl-video-time-text {
+    color: #fff;
+    font-size: .3rem;
+}
+::-webkit-media-controls {
+  display:none !important;
+}
+video::-webkit-media-controls {
+  display:none !important;
+}
+video::-webkit-media-controls-enclosure {
+  display:none !important;
+}
+.fade-transition {
+    transition: opacity .3s ease;
+}
+.fade-enter{
+    opacity: 1;
+}
+.fade-leave {
+    opacity: 0;
+}
+.hide-cursor {
+    cursor: none;
+}
+</style>

@@ -201,5 +201,5 @@
 </script>
 
 <style lang="less">
-    @import "../../../styles/components/input.less";
+    @import "./input.less";
 </style>
