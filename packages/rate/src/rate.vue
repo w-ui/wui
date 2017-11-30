@@ -10,8 +10,6 @@
 </template>
 
 <script type="text/babel">
-    import {isColor} from '../../../utils/assist';
-
     export default {
         name: 'yd-rate',
         data() {
@@ -39,17 +37,9 @@
                 default: '.5rem'
             },
             color: {
-                validator(value) {
-                    if (!value) return true;
-                    return isColor(value);
-                },
                 default: '#CCC'
             },
             activeColor: {
-                validator(value) {
-                    if (!value) return true;
-                    return isColor(value);
-                },
                 default: '#FF5D50'
             },
             value: {
@@ -89,5 +79,5 @@
 </script>
 
 <style lang="less">
-    @import "../../../styles/components/rate.less";
+    @import "./rate.less";
 </style>

@@ -114,6 +114,12 @@
     "component": "DateTime"
   },
   {
+    "path": "/doc/Select",
+    "title": "Select 下拉列表",
+    "name": "Select",
+    "component": "Select"
+  },
+  {
     "path": "/doc/Password",
     "title": "Password 密码输入框",
     "name": "Password",
