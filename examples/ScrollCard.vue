@@ -1,0 +1,185 @@
+<template>
+  <div>
+    <w-scroll-card>
+      <a class="card-item" v-for="item in category" :key="item.id" @click="cardClick(item, $event)">
+        <template v-if="item.icon">
+          <w-icon size="0.4rem" color="coral" :name="item.icon"></w-icon>
+        </template>
+        {{item.name}}
+      </a>
+    </w-scroll-card>
+
+    <div style="height:40px"></div>
+
+    <w-scroll-card>
+      <a class="card-item2" v-for="item in category" :key="item.id" @click="cardClick(item, $event)">
+        <div>
+          <w-icon size="0.4rem" color="coral" :name="item.icon"></w-icon>
+        </div>
+        <div>
+           {{item.name}}
+        </div>
+      </a>
+    </w-scroll-card>
+  </div>
+</template>
+
+
+<script>
+import ScrollCard from 'packages/scroll-card'
+import Icon from 'packages/icon'
+
+export default {
+  components: {
+    'w-scroll-card': ScrollCard,
+    'w-icon': Icon
+  },
+  data(){
+    return {
+      category: [
+        {
+          name: '特价专区',
+          id: 1003001,
+          icon: 'chart',
+        },
+        {
+          name: '满69减30',
+          id: 1003001,
+          icon: 'price-tag'
+        },
+        {
+          name: '优惠',
+          id: 1003001,
+          icon: 'ticket'
+        },
+        {
+          name: '热销',
+          id: 1003001,
+          icon: 'cart'
+        },
+        {
+          name: '新鲜水果',
+          id: 1003001,
+          icon: 'appleinc'
+        },
+        {
+          name: '冰淇淋',
+          id: 1003001,
+          icon: 'cutlery'
+        },
+        {
+          name: '特价专区',
+          id: 1003001,
+          icon: 'bell2'
+        },
+        {
+          name: '饮料/水',
+          id: 1003001,
+          icon: 'coffee'
+        },
+        {
+          name: '酒类饮品',
+          id: 1003001,
+          icon: 'beer'
+        },
+        {
+          name: '牛奶乳类',
+          id: 1003001,
+          icon: 'spotify'
+        },
+        {
+          name: '休闲零食',
+          id: 1003001,
+          icon: 'bullseye'
+        },
+        {
+          name: '卤味鲜食',
+          id: 1003001,
+          icon: 'envira'
+        },
+        {
+          name: '糖巧饼干',
+          id: 1003001,
+          icon: 'modx'
+        },
+        {
+          name: '方便速食',
+          id: 1003001,
+          icon: 'wpbeginner'
+        },
+        {
+          name: '营养冲调',
+          id: 1003001,
+          icon: 'heart'
+        },
+        {
+          name: '计生用品',
+          id: 1003001,
+          icon: 'man-woman'
+        },
+        {
+          name: '个人护理',
+          id: 1003001,
+          icon: 'bandcamp'
+        },
+        {
+          name: '日用百货',
+          id: 1003001,
+          icon: ''
+        },
+        {
+          name: '进口食品',
+          id: 1003001,
+          icon: ''
+        },
+        {
+          name: '百草味',
+          id: 1003001,
+          icon: ''
+        },
+        {
+          name: '网红新品',
+          id: 1003001,
+          icon: ''
+        },
+        {
+          name: '休闲食品',
+          id: 1003001,
+          icon: ''
+        }
+      ]
+    }
+  },
+  methods: {
+    cardClick(item, e){
+
+    }
+  }
+}
+</script>
+
+<style lang="less">
+  .card-item{
+    padding: 0.1rem 0.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    -webkit-tap-highlight-color: #f0f0f0;
+    border-bottom: 2px #fff solid;
+  }
+  .card-item.active{
+    border-bottom: 2px coral solid;
+  }
+
+  .card-item2{
+    text-align: center;
+    border: 1px #f0f0f0 solid;
+    padding: 10px;
+    border-radius: 4px;
+    margin-right: 10px;
+  }
+  .card-item2.active{
+    border: 1px coral solid;
+  }
+</style>

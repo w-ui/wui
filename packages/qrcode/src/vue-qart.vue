@@ -29,7 +29,7 @@ export default {
     }, 
     size: {
       type: Number,
-      default: 128
+      default: 64
     }
   },
   mounted(){

@@ -14,6 +14,21 @@
       <div class="title">更新日志</div>
       <w-timeline>
         <w-timeline-item>
+          <p class="time">2017-11-30 16:52:04</p>
+          <p class="item">新增rate组件 </p>
+          <p class="item">修复Qrcode二维码组件bug</p>
+          <p class="item">新增Popup组件及文档</p>
+          <p class="item">官网文档二级路由按需加载，提升页面加载速度</p>
+        </w-timeline-item>
+
+        <w-timeline-item>
+          <p class="time">2017-11-29 15:22:21</p>
+          <p class="item">cell表单组件添加input，password，number，email等类型的支持 </p>
+          <p class="item">新增video组件及文档</p>
+          <p class="item">新增多级联动select组件及文档</p>
+        </w-timeline-item>
+
+        <w-timeline-item>
           <p class="time">2017-11-28 18:33:50</p>
           <p class="item">新增Backtop组件及文档</p>
           <p class="item">新增Badge组件及文档</p>

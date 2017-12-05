@@ -13,7 +13,7 @@ module.exports = merge(baseWebpackConfig, {
   output: {
     path: path.join(__dirname, '../dist'),
     filename: '[name].[chunkhash:5].js',
-    chunkFilename: '[id].[chunkhash:5].js',
+    chunkFilename: '[name].[chunkhash:5].js',
     publicPath: ''
   },
   module: {

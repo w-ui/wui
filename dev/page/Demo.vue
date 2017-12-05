@@ -17,9 +17,8 @@ export default {
   },
   data () {
     let upName = this.name.replace(/^\w/, (s0) => s0.toUpperCase())
-    console.log(upName);
     return {
-      compo: require(`../../examples/${upName}.vue`)
+      compo: () => import(`../../examples/${upName}.vue`)
     }
   },
   mounted(){

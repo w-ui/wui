@@ -41,6 +41,7 @@ export default Vue.component('App', {
   .icon-resource{
     background-image: url(./static/images/resource.png);
   }
+
   .top-header{
     background-color: #fff;
     position: relative;

@@ -3,7 +3,7 @@
 
 ### demo
 
-```javascript
+```html
 
 <template>
   <div>

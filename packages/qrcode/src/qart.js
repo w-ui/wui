@@ -23,7 +23,7 @@ export default class QArt {
 
   static get DEFAULTS () {
     return {
-      size: 195,
+      size: 64,
       value: '',
       filter: 'threshold',
       version: 10,
@@ -62,7 +62,8 @@ export default class QArt {
     QRCode.stringToBytes = QRCode.stringToBytesFuncs['UTF-8']
     var qrImage = qr.createImgObject(3)
 
-    var imageSize = 75 + (version * 12)
+    // var imageSize = 75 + (version * 12)
+    var imageSize = this.size
     var padding = 12
     var scaledPadding = (padding * this.size) / imageSize
 

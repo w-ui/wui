@@ -1,4 +1,4 @@
-# Accordion 手风琴组件 
+# Accordion 折叠面板
 
 ### 基本用法
 

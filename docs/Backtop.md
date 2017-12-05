@@ -2,7 +2,7 @@
 
 ### 基本用法
 
-```javascript
+```html
 //slot
 <template>
   <div>

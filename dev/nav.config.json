@@ -42,6 +42,12 @@
     "component": "Checkbox"
   },
   {
+    "path": "/doc/Rate",
+    "title": "Rate 评分",
+    "name": "Rate",
+    "component": "Rate"
+  },
+  {
     "path": "/doc/Grid",
     "title": "Grid 布局栅格",
     "name": "Grid",
@@ -49,7 +55,7 @@
   },
   {
     "path": "/doc/Accordion",
-    "title": "Accordion 手风琴",
+    "title": "Accordion 折叠面板",
     "name": "Accordion",
     "component": "Accordion"
   },
@@ -76,12 +82,6 @@
     "title": "Carousel 轮播",
     "name": "Carousel",
     "component": "Carousel"
-  },
-  {
-    "path": "/doc/CitySelect",
-    "title": "CitySelect 选择城市",
-    "name": "CitySelect",
-    "component": "CitySelect"
   },
   {
     "path": "/doc/Tab",
@@ -144,6 +144,12 @@
     "component": "Countup"
   },
   {
+    "path": "/doc/ScrollCard",
+    "title": "ScrollCard 滑动卡片",
+    "name": "ScrollCard",
+    "component": "ScrollCard"
+  },
+  {
     "path": "/doc/Sortable",
     "title": "Sortable 拖拽排序",
     "name": "Sortable",
@@ -186,6 +192,18 @@
     "component": "Backtop"
   },
   {
+    "path": "/doc/Popup",
+    "title": "Popup 弹出层",
+    "name": "Popup",
+    "component": "Popup"
+  },
+  {
+    "path": "/doc/Keyboard",
+    "title": "Keyboard 安全键盘",
+    "name": "Keyboard",
+    "component": "Keyboard"
+  },
+  {
     "path": "/doc/Waterfall",
     "title": "Waterfall 瀑布流",
     "name": "Waterfall",
@@ -196,6 +214,12 @@
     "title": "Qrcode 二维码",
     "name": "Qrcode",
     "component": "Qrcode"
+  },
+  {
+    "path": "/doc/CitySelect",
+    "title": "CitySelect 选择城市",
+    "name": "CitySelect",
+    "component": "CitySelect"
   },
   {
     "path": "/doc/Audio",

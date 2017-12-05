@@ -2,7 +2,7 @@
 
 ### 基本用法
 
-```javascript
+```html
 <template>
   <div>
     <w-badge type="primary">22</w-badge>

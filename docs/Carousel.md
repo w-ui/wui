@@ -1,11 +1,5 @@
   # Carousel 轮播组件 
 
-  ### 项目源码地址
-
-  npm地址 https://www.npmjs.com/package/vue-m-carousel
-
-  git地址 https://github.com/shiye515/vue-m-carousel
-
   ### 基本用法
 
   把想要渲染的dom直接放入carousel标签内即可

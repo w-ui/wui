@@ -31,6 +31,7 @@
         <div class="demo-phone">
           <iframe :src="demoSrc" frameborder="0" width="100%" height="100%"></iframe>
         </div>
+
       </div>
     </div>
 
@@ -56,7 +57,7 @@ export default {
   computed: {
     compo(){
       let upName = this.name.replace(/^\w/, (s0) => s0.toUpperCase())
-      return require(`../../docs/${upName}.md`)
+      return () => import(`../../docs/${upName}.md`)
     },
     demoSrc(){
       let upName = this.name.replace(/^\w/, (s0) => s0.toUpperCase())
@@ -71,7 +72,7 @@ export default {
 
 #sidebar {
     width: 240px;
-    min-height: 100vh;
+    height: 100vh;
     float: left;
     text-align: left;
   }
@@ -162,7 +163,7 @@ export default {
   }
 
   .demo-area{
-    position: absolute;
+    position: fixed;
     top: 80px;
     right: 10px;
     width: 330px;
@@ -184,6 +185,11 @@ export default {
       width: 100%;
       height: 100%;
       background-color: #f5f5f5;
+    }
+
+    .page-qrcode{
+      text-align: center;
+      padding-top: 10px;
     }
   }
 

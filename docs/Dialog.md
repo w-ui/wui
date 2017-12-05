@@ -5,13 +5,16 @@
 
 提供confim、alert、notify, toast三个组件
 
-```
+```javascript
+
 import { Alert } from 'packages/dialog';
 Alert('您确认要删除吗？')
+
 ```
 
 
-```
+```javascript
+
 import { Confirm } from 'packages/dialog';
 Confirm('您确认要删除吗？', {
   title: '确认',
@@ -21,12 +24,14 @@ Confirm('您确认要删除吗？', {
 })
 ```
 
-```
+```javascript
+
 import { Notify } from 'packages/dialog';
 Notify('您确认要删除吗？')
 ```
 
-```
+```javascript
+
 import { Toast } from 'packages/dialog';
 Toast('您确认要删除吗？')
 ```

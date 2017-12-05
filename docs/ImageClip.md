@@ -2,7 +2,7 @@
 
 
 ### demo
-```javascript
+```html
 <template>
   <div>
     <w-image-clip ref="imgclip"></w-image-clip>
