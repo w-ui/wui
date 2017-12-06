@@ -1,8 +1,13 @@
 {
   "name": "w-ui",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A Vue.js 2.0 UI Toolkit for mobile",
-  "author": "wmfe",
+  "files": [
+    "lib",
+    "src",
+    "packages"
+  ],
+  "author": "w-ui",
   "main": "lib/wui.common.js",
   "module": "lib/wui.es.js",
   "scripts": {
@@ -12,14 +17,15 @@
     "pkg": "npm run kit && cross-env NODE_ENV=\"pkg\" node build/build.js",
     "kit": "cross-env NODE_ENV=\"kit\" node build/build.js",
     "lint": "eslint --ext .js,.vue src",
-    "test": ""
+    "test": "",
+    "publish": "npm publish --registry http://registry.npmjs.org"
   },
   "dependencies": {
-    "standard": "^10.0.3",
-    "vue": "^2.2.6",
-    "vue-router": "^2.3.1"
+    "vue": "^2.2.6"
   },
   "devDependencies": {
+    "vue-router": "^2.3.1",
+    "standard": "^10.0.3",
     "autoprefixer": "^6.7.2",
     "babel-core": "^6.22.1",
     "babel-eslint": "^7.1.1",
@@ -81,6 +87,9 @@
     "url": "git@github.com:w-ui/wui.git"
   },
   "homepage": "http://w-ui.github.io",
+  "bugs": {
+    "url": "https://github.com/w-ui/wui/issues"
+  },
   "keywords": [
     "w-ui",
     "wui",
@@ -88,12 +97,5 @@
     "components"
   ],
   "unpkg": "lib/wui.umd.js",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/w-ui/wui/issues"
-  },
-  "engines": {
-    "node": ">= 6.0.0",
-    "npm": ">= 3.0.0"
-  }
+  "license": "MIT"
 }

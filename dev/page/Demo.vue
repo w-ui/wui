@@ -32,5 +32,6 @@ export default {
 
  .demo-area{
    padding: 0.3rem;
+   min-height: 100vh;
  }
 </style>

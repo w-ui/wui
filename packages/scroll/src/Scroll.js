@@ -1,7 +1,7 @@
 require('./scroll.less')
 
 export default {
-  name: 'wm-scroll',
+  name: 'w-scroll',
   data () {
     return {
       scrollerStyle: {
@@ -21,7 +21,8 @@ export default {
       y: 0,
       directionX: 0,
       directionY: 0,
-      endTime: 0
+      endTime: 0,
+      dragFlag: false
     }
   },
   props: {
@@ -318,6 +319,7 @@ export default {
       return true
     },
     onTouchstart (e) {
+      this.dragFlag = true
       const point = e.touches ? e.touches[0] : e
       // 初始化数据
       this.moved = false // 是否移动的标志
@@ -340,6 +342,7 @@ export default {
     },
     onTouchmove (e) {
       // const pos = this.calcPos(e);
+      if (!this.dragFlag) return
       this.moved = true
       // point 触点
       const point = e.changedTouches ? e.changedTouches[0] : e
@@ -427,6 +430,7 @@ export default {
       }
     },
     onTouchend (e) {
+      this.dragFlag = false
       this.path = this.calcPath(0)
       this.endTime = this.getCurrentTime()
       let easing = ''
@@ -542,6 +546,9 @@ export default {
           on-touchstart={this.onTouchstart}
           on-touchmove={this.onTouchmove}
           on-touchend={this.onTouchend}
+          on-mousedown={this.onTouchstart}
+          on-mousemove={this.onTouchmove}
+          on-mouseup={this.onTouchend}
         >
           {this.$slots.default.map(vnode => {
             const vnodeEle = vnode.tag ? vnode : null

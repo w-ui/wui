@@ -116,6 +116,10 @@ export default {
     word-wrap: break-word;
     border-left: 1px solid #eee;
 
+    ul{
+      li{list-style: inside}
+    }
+
     h1{
       padding: 10px 0px;
       margin: 30px 0;

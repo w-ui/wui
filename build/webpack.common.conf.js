@@ -20,7 +20,9 @@ var webpackConfig = {
   resolve: {
     extensions: ['.js'],
     alias: {
-      'vue': 'vue/dist/vue.esm.js'
+      'vue': 'vue/dist/vue.esm.js',
+      'src': resolve('../src'),
+      'packages': resolve('../packages')
     }
   },
   module: {

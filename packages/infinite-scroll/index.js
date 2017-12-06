@@ -1,1 +1,1 @@
-export { default } from './src/infinitescroll.vue'
+export { default } from './src/infinitescroll.js'

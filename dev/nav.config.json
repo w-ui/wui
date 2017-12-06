@@ -150,6 +150,12 @@
     "component": "ScrollCard"
   },
   {
+    "path": "/doc/InfiniteScroll",
+    "title": "InfiniteScroll 无限滚动",
+    "name": "InfiniteScroll",
+    "component": "InfiniteScroll"
+  },
+  {
     "path": "/doc/Sortable",
     "title": "Sortable 拖拽排序",
     "name": "Sortable",
@@ -163,7 +169,7 @@
   },
   {
     "path": "/doc/Scroll",
-    "title": "scroll 滚动",
+    "title": "Scroll 滚动",
     "name": "Scroll",
     "component": "Scroll"
   },

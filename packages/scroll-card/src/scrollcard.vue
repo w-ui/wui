@@ -37,11 +37,9 @@
             this.startX = tar.pageX
             this.startTime = Date.now()
             this.offsetW = 0
-            console.log('this.startx:', this.startX)
 
             this.width = this.$refs.box.offsetWidth;
             this.ww = this.$el.offsetWidth;
-            console.log(this.ww, window.innerWidth);
             this.maxsw = 0; //max scroll width
             this.minsw = this.ww - this.width;   //max scroll width
 
@@ -58,7 +56,6 @@
                   clearInterval(this.timer);
                   this.move(e);
                 } else {
-                  console.log('discard...');
                   clearInterval(this.timer);
                   this.timer = setTimeout(this.move.bind(this, e), remaining);
                 }
@@ -72,7 +69,6 @@
           },
           touchend(e){
             if(this.drag){
-              console.log('end')
               this.drag = false
               this.currentX += this.offsetW;
               if(this.currentX > this.maxsw){
@@ -86,7 +82,6 @@
           },
           move(e){
             if(this.drag){
-              console.log('move')
               let tar = e.targetTouches || [e];
               tar = tar[0];
 
@@ -96,11 +91,11 @@
 
               this.$refs.box.style.transition = "none";
               this.$refs.box.style.transform = `translate3d(${lastx}px, 0, 0)`
-              console.log('move:', lastx)
             }
           },
-          bounceBack(pos) {
-            this.$refs.box.style.transition = "0.5s all cubic-bezier(1, 0.01, 0.24, 1.01)";
+          bounceBack(pos, t) {
+            let ti = t || 500
+            this.$refs.box.style.transition = `${ti}ms all cubic-bezier(0.1, 0.57, 0.1, 1)`;
             this.$refs.box.style.transform = `translate3d(${pos}px, 0, 0)`
             this.currentX = pos;
           },
@@ -110,34 +105,47 @@
               this.slotClick(e);
               return;
             } else {
-              
-              let v = 2 * this.offsetW / difft;
-              const a = Math.abs(this.offsetW)/this.offsetW * 0.009;
-              let t = v/a;
-              let s = 0.5 * a * t * t;
-              let last = this.currentX + Math.floor(s); 
 
-              if(last > 0 && last > this.ww){
-                last = Math.floor(this.ww/2)
+              // let p = this.momentum(e.pageX, this.startX, difft, this.minsw, this.ww)
+              // let last = p.destination
+              // let ti = p.duration
+              // console.log(p);
+              
+              let v = Math.abs(this.offsetW) / difft
+              const a = 0.0004
+              let s = v * v / (2 * a) * (this.offsetW < 0 ? -1 : 1)
+              let last = Math.round(this.currentX + s); 
+              let t = Math.round(s / v)
+
+              if (last < this.minsw) {
+                last = Math.round(this.minsw - this.ww / 2 * (v / 8))
+                t = Math.round(Math.abs(last - this.currentX) / v)
+              } else if (last > 0) {
+                // 向右
+                last = Math.round(this.ww / 2 * (v / 8))
+                t = Math.round(Math.abs(last - this.currentX) / v)
               }
-              if(last < 0 && last < this.minsw - this.ww){
-                last = this.minsw - this.ww/2;
-              }
-            
-              this.$refs.box.style.transition = "0.3s all cubic-bezier(1, 0.01, 0.24, 1.01)";
+
+              // if(last > 0 && last > this.ww){
+              //   last = Math.floor(this.ww/2)
+              // }
+              // if(last < 0 && last < this.minsw - this.ww){
+              //   last = this.minsw - this.ww/2;
+              // }
+
+              this.$refs.box.style.transition = `${t}ms all cubic-bezier(0.1, 0.57, 0.1, 1)`;
               this.$refs.box.style.transform = `translate3d(${last}px, 0, 0)`
 
               this.isAnimate = true
               setTimeout(() => {
                 this.isAnimate = false
-                console.log('timeout done');
                 this.currentX = last;
                 if(this.currentX > this.maxsw){
                   this.bounceBack(this.maxsw)
                 } else if(this.currentX < this.minsw){
                   this.bounceBack(this.minsw)
                 }
-              }, 300)
+              }, t)
 
             }
           },
@@ -150,7 +158,7 @@
             } else if(cur.parentNode == this.$refs.box) {
               pnode = cur;
             } else {
-              while(pnode.parentNode != this.$refs.box){
+              while(pnode && pnode.parentNode != this.$refs.box){
                 pnode = pnode.parentNode;
               }
             }
@@ -169,18 +177,17 @@
               offset = this.currentX - (rect.left - this.ww/2 + rect.width/2)
               offset < this.minsw && (offset = this.minsw);
               offset > this.maxsw && (offset = this.maxsw);
-              console.log('offset',rect.left, offset, this.minsw);
             } else {
               offset = this.currentX + (this.ww/2 - rect.left -rect.width/2)
               offset > this.maxsw && (offset = this.maxsw);
               offset < this.minsw && (offset = this.minsw);
-              console.log('offset2', rect.left, offset, this.minsw, this.maxsw);
             }
-            this.$refs.box.style.transition = "0.3s all cubic-bezier(1, 0.01, 0.24, 1.01)";
+            this.$refs.box.style.transition = "0.3s all cubic-bezier(0.1, 0.57, 0.1, 1)";
             this.$refs.box.style.transform = `translate3d(${offset}px, 0, 0)`
             this.currentX = offset
           }
         },
+        
         mounted() {
           window.addEventListener('touchmove', this.touchmove, false);
           window.addEventListener('touchend', this.touchend, false);
