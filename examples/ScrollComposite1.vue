@@ -1,9 +1,15 @@
 <template>
-  <div>
-    <div class="tab-area">
-      <w-infinite-scroll scrollMode="fullscreen" :containsIframe="true" :pageChange="pageChange" :pageCount="6">
-        <div class="scroll-item" v-for="(item, index) of website" :key="index">
-          <div class="item-name">{{item.title}}</div>
+  <div class="scroll-tab">
+    <div class="tab-head">
+      <w-scroll-card>
+        <div class="head-item" v-for="(item, index) of header" :key=" 'head-' + index">
+          {{item.title}}
+        </div>
+      </w-scroll-card>
+    </div>
+    <div class="tab-body">
+      <w-infinite-scroll scrollMode="fullscreen" :containsIframe="true" :pageChange="pageChange" :pageCount="19">
+        <div class="body-item" v-for="(item, index) of website" :key=" 'body-' + index">
           <iframe :src="item.url" frameborder="none" height="450px"></iframe>
         </div>
       </w-infinite-scroll>
@@ -13,6 +19,7 @@
 </template>
 
 <script>
+import ScrollCard from 'packages/scroll-card'
 import InfiniteScroll from 'packages/infinite-scroll'
 
 let data = [
@@ -96,14 +103,17 @@ let data = [
 
 export default {
   components: {
-    'w-infinite-scroll': InfiniteScroll
+    'w-infinite-scroll': InfiniteScroll,
+    'w-scroll-card': ScrollCard
   },
   data () {
     return {
-      website: []
+      website: [],
+      header: []
     }
   },
   created () {
+    this.header = data.slice(0)
     this.website.push(data.shift())
   },
   updated () {
@@ -113,7 +123,7 @@ export default {
     pageChange (currentPage, lastPage) {
       if(currentPage > lastPage){
         if (data.length > 0) {
-          this.website.push(data[Math.floor(Math.random()* data.length)]);
+          this.website.push(data.shift());
         }
       }
     }
@@ -122,14 +132,25 @@ export default {
 </script>
 
 <style lang="less">
-  .tab-area{
+  .scroll-tab{
     width: 100%;
     height: 100%;
 
-    .scroll-item{
-      border: 1px dodgerblue solid;
+    .tab-head{
+      width: 100%;
+      padding-bottom: 10px;
 
-      .item-name{
+      .head-item{
+        padding: 10px 20px;
+      }
+      .head-item.active{
+        border-bottom: 2px dodgerblue solid;
+      }
+    }
+
+    .body-item{
+
+      .body-name{
         background-color: #666;
         padding: 10px;
         text-align: center;

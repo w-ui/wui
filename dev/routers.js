@@ -8,7 +8,20 @@ export default new VueRouter({
   base: __dirname,
   routes: [
     {path: '/', component: () => import('./page/Index')},
-    {path: '/guide', component: () => import('./page/Guide')},
+    {
+      path: '/guide', 
+      name: 'guideIndex', 
+      component: () => import('./page/Guide'),
+      props: {
+        name: "Index"
+      }
+    },
+    {
+      path: '/guide/:name', 
+      name: 'guide', 
+      component: () => import('./page/Guide'),
+      props: true
+    },
     {path: '/component', component: () => import('./page/Component')},
     {
       path: '/doc',

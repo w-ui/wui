@@ -75,12 +75,17 @@ export default {
             imgs = Array.prototype.slice.call(imgs, 0)
             Promise.all(imgs.map(img => {
               return new Promise((resolve, reject) => {
+                let timer = setTimeout(() => {
+                  resolve(20)
+                }, 1000)
                 img.onload = () => {
+                  clearTimeout(timer)
                   resolve(img.height)
                   removeClass(vnode.elm, this.enterClass + '-before')
                   addClass(vnode.elm, this.enterClass + '-after')
                 }
                 img.onerror = () => {
+                  clearTimeout(timer)
                   resolve(20)
                 }
               })

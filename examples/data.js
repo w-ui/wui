@@ -21,11 +21,6 @@ export default {
       'title': 'Draw this Again'
     },
     {
-      'url': 'https://orig00.deviantart.net/0621/f/2015/304/d/5/last_one_xx_by_iveyysaur-d9ezxml.jpg',
-      'title': 'last one xx'
-    },
-
-    {
       'url': 'https://orig00.deviantart.net/c9c3/f/2015/170/9/5/this_should_be_appropriate_enough_by_iveyysaur-d8xyj1c.png',
       'title': 'this should be appropriate enough'
     },
@@ -151,15 +146,7 @@ export default {
       'title': '[+Video] Commission - Sparkly smile'
     },
     {
-      'url': 'https://orig00.deviantart.net/2456/f/2014/202/3/0/chinese_girl_by_pandaispanda-d7rlxs3.jpg',
-      'title': 'Chinese Girl'
-    },
-    {
       'url': 'https://orig00.deviantart.net/32ff/f/2014/198/4/c/chinese_girl_by_pandaispanda-d7r1rhq.jpg',
-      'title': 'Chinese Girl'
-    },
-    {
-      'url': 'https://orig00.deviantart.net/cabe/f/2014/196/1/6/chinese_girl_by_pandaispanda-d7qrri8.jpg',
       'title': 'Chinese Girl'
     },
     {

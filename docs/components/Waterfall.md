@@ -55,7 +55,7 @@ Waterfall
 
 | 参数           | 说明            | 类型       | 可选值      |   默认值   |
 |---------------|-----------------|-----------|------------|-----------|
-| items         | 数据             | Array     |     v/h       |  v    |
+| items         | 数据             | Array     |            |           |
 | columns       | 列数             | Number    |            |          |
 | enter-class   | 自定义展示动画     | String    |            |          |
 | slot          |                  | String    |            |          |

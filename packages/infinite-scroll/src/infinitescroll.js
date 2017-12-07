@@ -11,10 +11,10 @@ export default {
       offsetW: 0,
       lastTime: 0,
       timer: null,
-      startIndex: 0,
-      currentIndex: 0,
-      endIndex: this.pageSize * 2 - 1,
-      totalPage: 0
+      currentPage: 0,
+      pageInfo: [],
+      totalPage: 0,
+      lastCount: 0
     }
   },
   props: {
@@ -24,16 +24,19 @@ export default {
     },
     scrollMode: {
       type: String,
-      default: 'fullscreen'
-    },
-    pageSize: {
-      type: Number,
-      default: 1,
-      required: true
+      default: 'free'
     },
     containsIframe: {
       type: Boolean,
       default: false
+    },
+    pageChange: {
+      type: Function
+    },
+    pageCount: {
+      type: Number,
+      default: Infinity,
+      required: true
     }
   },
   methods: {
@@ -146,6 +149,7 @@ export default {
         }
 
         setTimeout(() => {
+          curx = this.getCurrentX()
           if (curx > this.maxsw) {
             this.bounceBack(this.maxsw)
           } else if (curx < this.minsw) {
@@ -155,53 +159,59 @@ export default {
       }
     },
     stepOneItem (curx, t) {
+      let lastP = this.currentPage
       if (Math.abs(this.offsetW) >= this.ww / 4) {
         let last
         if (this.offsetW < 0) {
-          this.updatePageIndex('forward')
-          last = Math.floor(curx / this.ww) * this.ww
+          if (this.updatePageIndex('forward')) {
+            last = -this.currentPage * this.ww
+          } else {
+            let back = -lastP * this.ww
+            this.translateTo(back, t)
+          }
         } else {
-          this.updatePageIndex('backward')
-          last = Math.ceil(curx / this.ww) * this.ww
+          if (this.updatePageIndex('backward')) {
+            last = -this.currentPage * this.ww
+          } else {
+            let back = -lastP * this.ww
+            this.translateTo(back, t)
+          }
         }
         this.translateTo(last, t)
+        this.pageChange(this.currentPage, lastP)
       } else {
-        let last = Math.floor(curx / this.ww) * this.ww
-        if (this.offsetW < 0) {
-          last = Math.ceil(curx / this.ww) * this.ww
-        }
-        this.translateTo(last, t)
+        let back = -lastP * this.ww
+        this.translateTo(back, t)
       }
     },
     updatePageIndex (dir) {
       if (dir === 'forward') {
-        let prev = this.currentIndex
-        let next = this.currentIndex + 2 * this.pageSize
-        prev < 0 && (prev = 0)
-        next > this.totalPage - 1 && (next = this.totalPage - 1)
-        this.startIndex = prev
-        this.endIndex = next
-        this.currentIndex += 1
+        let next = this.currentPage + 1
+        if (next >= this.pageCount) {
+          return false
+        } else {
+          this.currentPage = next
+        }
       } else if (dir === 'backward') {
-        let prev = this.currentIndex - 2 * this.pageSize
-        let next = this.currentIndex
-        prev < 0 && (prev = 0)
-        next > this.totalPage - 1 && (next = this.totalPage - 1)
-        this.startIndex = prev
-        this.endIndex = next
-        this.currentIndex -= 1
+        let prev = this.currentPage - 1
+        if (prev < 0) {
+          return false
+        } else {
+          this.currentPage = prev
+        }
       }
-      console.log('>>>update pageIndex>>>>', this.startIndex, this.currentIndex, this.endIndex)
+      console.log('>>>update pageIndex>>>>', this.startIndex, this.currentPage, this.endIndex)
+      return true
     },
     setCurrent (index) {
       if (index > 0 && index < this.totalPage) {
-        if (this.currentIndex < index) {
-          this.currentIndex = index
+        if (this.currentPage < index) {
+          this.currentPage = index
           this.updatePageIndex('forward')
           let last = index * this.ww
           this.translateTo(last, 300)
-        } else if (this.currentIndex > index) {
-          this.currentIndex = index
+        } else if (this.currentPage > index) {
+          this.currentPage = index
           this.updatePageIndex('backward')
           let last = index * this.ww
           this.translateTo(last, 300)
@@ -219,24 +229,31 @@ export default {
     }
   },
   render (h) {
-    console.log('>>render this.ww:', this.ww)
-    if (!this.ww) {
-      return (
-        <div class='wui-infinite-scroll'>
-          <div class='wui-infinite-list' ref='list'>
-            <div class='wui-infinite-container' ref='box'>
-            </div>
-          </div>
-        </div>
-      )
-    } else {
+    let count = this.$slots.default.length
+    console.log('render:', count, this.currentPage, this.pageInfo)
+    if (count > this.lastCount) {
+      this.pageInfo.push({
+        startIndex: this.lastCount,
+        endIndex: count
+      })
+      this.lastCount = count
+    }
+    if (this.currentPage >= this.pageInfo.length){
+      this.currentPage--
+    }
+    if (this.currentPage < 0) {
+      this.currentPage++
+    }
+
+    if (this.scrollMode === 'fullscreen' && this.ww) {
       return (
         <div class='wui-infinite-scroll'>
           <div class='wui-infinite-list' ref='list'>
             <div class='wui-infinite-container' ref='box'>
               {
                 this.$slots.default.map((vnode, i) => {
-                  if (i >= this.startIndex && i <= this.endIndex) {
+                  let pi = this.pageInfo[this.currentPage]
+                  if (i >= pi.startIndex && i <= pi.endIndex) {
                     const vnodeEle = vnode.tag ? vnode : null
                     return (
                       <div class='wui-infinite-item' style={{width: this.ww + 'px'}}>
@@ -254,25 +271,54 @@ export default {
         </div>
       )
     }
+
+    if (this.scrollMode === 'free') {
+      return (
+        <div class='wui-infinite-scroll'>
+          <div class='wui-infinite-list' ref='list'>
+            <div class='wui-infinite-container' ref='box'>
+              {
+                this.$slots.default.map((vnode, i) => {
+                  let pi = this.pageInfo[this.currentPage]
+                  if (i >= pi.startIndex && i < pi.endIndex) {
+                    const vnodeEle = vnode.tag ? vnode : null
+                    return (
+                      <div class='wui-infinite-item'>
+                        { vnodeEle }
+                        {this.containsIframe ? <div class='wui-infinite-item-mask' /> : ''}
+                      </div>
+                    )
+                  } else {
+                    return <div class='wui-infinite-item'>{i}</div>
+                  }
+                })
+              }
+            </div>
+          </div>
+        </div>
+      )
+    }
+
+    return (
+      <div class='wui-infinite-scroll'>
+        <div class='wui-infinite-list' ref='list'>
+          <div class='wui-infinite-container' ref='box'>
+          </div>
+        </div>
+      </div>
+    )
   },
   mounted () {
     this.ww = this.$el.offsetWidth
     console.log('ww:', this.ww)
+
     this.$refs.box.addEventListener('touchstart', this.touchstart, true)
     this.$refs.box.addEventListener('mousedown', this.touchstart, true)
     window.addEventListener('touchmove', this.touchmove, true)
     window.addEventListener('touchend', this.touchend, true)
     window.addEventListener('mousemove', this.touchmove, true)
     window.addEventListener('mouseup', this.touchend, true)
-    if (this.scrollMode == 'fullscreen') {
-      this.totalPage = this.$slots.default.length
-    } else {
-      this.totalPage = Math.ceil(this.$slots.default.length / this.pageSize)
-    }
     this.$forceUpdate()
-  },
-  updated () {
-    console.log('updated')
   },
   destroyed () {
     window.removeEventListener('touchmove', this.touchmove, true)

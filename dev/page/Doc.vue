@@ -11,14 +11,18 @@
     </div>
     
     <div id="sidebar">
-      <div class="bar-list">
-        组件列表
-      </div>
-      <router-link :to="v.path" v-for="v in routerData" :key="v.name" active-class="bar-item-active">
-        <div class="bar-item">
-          {{v.title}}
+      <div class="group"  v-for="g in routerData" :key="g.groupName">
+        <div class="group-title">
+          {{g.groupName}}
         </div>
-      </router-link>
+        <div class="group-items">
+          <router-link :to="v.path" v-for="v in g.group" :key="v.name" active-class="bar-item-active">
+            <div class="bar-item">
+              {{v.title}}
+            </div>
+          </router-link>
+        </div>
+      </div>
     </div>
 
     <div class="body-area">
@@ -51,13 +55,13 @@ export default {
   },
   data(){
     return {
-      routerData: navData.slice(1) || []
+      routerData: navData
     }
   },
   computed: {
     compo(){
       let upName = this.name.replace(/^\w/, (s0) => s0.toUpperCase())
-      return () => import(`../../docs/${upName}.md`)
+      return () => import(`../../docs/components/${upName}.md`)
     },
     demoSrc(){
       let upName = this.name.replace(/^\w/, (s0) => s0.toUpperCase())
@@ -71,11 +75,18 @@ export default {
 <style lang="less">
 
 #sidebar {
-    width: 240px;
-    height: 100vh;
-    float: left;
-    text-align: left;
+  width: 240px;
+  height: 100vh;
+  float: left;
+  text-align: left;
+
+  .group-title{
+    height: 50px;
+    line-height: 50px;
+    padding: 0 12px;
+    font-size: 20px;
   }
+}
   .bar-item, .bar-list {
       display: block;
       height: 40px;

@@ -13,7 +13,7 @@ InfiniteScroll 支持的功能比较多，列表内容可自由定义，侵入�
 
 滚动列表项的高宽可自行设计，整屏滚动模式下，列表项的宽度为包裹容器的宽度，本例中列表项的宽度为tab-area的内容区域的宽度
 
-本例中内容使用了iframe，必须设置containsIframe="true"，屏蔽iframe对事件的🈂消费，才能正常滚动
+本例中内容使用了iframe，必须设置containsIframe="true"，屏蔽iframe对事件的消费，才能正常滚动
 
 ```javascript
 <template>
@@ -146,5 +146,5 @@ export default {
 |------------------|--------------|-----------|--------------|-----------------|
 | direction        | 类型          | String    |  horizontal, vertical  |       |
 | scrollMode       | 背景颜色       | String    |  fullscreen, free      |       |
-| pageSize         | 每页显示item的条数  | Number    |              |                 | 
+| pageCount        | 总页数         | Number    |              |                 | 
 | containsIframe   | 内容是否包含iframe  | Boolean   |  true        |                 | 

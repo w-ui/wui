@@ -18,7 +18,6 @@
               startTime: 0,
               currentX: 0,
               offsetW: 0,
-              isAnimate: false,
               lastTime: 0,
               timer: null
             }
@@ -28,15 +27,13 @@
         },
         methods: {
           touchstart(e){
-            if(this.isAnimate) {
-              return;
-            }
             this.drag = true
             let tar = e.targetTouches || [e];
             tar = tar[0]
             this.startX = tar.pageX
             this.startTime = Date.now()
             this.offsetW = 0
+            this.currentX = this.getCurrentX()
 
             this.width = this.$refs.box.offsetWidth;
             this.ww = this.$el.offsetWidth;
@@ -70,10 +67,10 @@
           touchend(e){
             if(this.drag){
               this.drag = false
-              this.currentX += this.offsetW;
-              if(this.currentX > this.maxsw){
+              let curx = this.getCurrentX()
+              if(curx > this.maxsw){
                 this.bounceBack(this.maxsw)
-              } else if(this.currentX < this.minsw){
+              } else if(curx < this.minsw){
                 this.bounceBack(this.minsw)
               } else {
                 this.momentumMove(e)
@@ -89,65 +86,57 @@
               this.offsetW = offsetX;
               let lastx = this.currentX + offsetX;
 
-              this.$refs.box.style.transition = "none";
-              this.$refs.box.style.transform = `translate3d(${lastx}px, 0, 0)`
+              this.translateTo(lastx, 0, true)
             }
           },
           bounceBack(pos, t) {
             let ti = t || 500
-            this.$refs.box.style.transition = `${ti}ms all cubic-bezier(0.1, 0.57, 0.1, 1)`;
-            this.$refs.box.style.transform = `translate3d(${pos}px, 0, 0)`
-            this.currentX = pos;
+            this.translateTo(pos, t)
           },
           momentumMove(e) {
             let difft = Date.now() - this.startTime;
+            let curx = this.getCurrentX()
+
             if(difft > 500 || Math.abs(this.offsetW) < 10){
               this.slotClick(e);
               return;
             } else {
-
-              // let p = this.momentum(e.pageX, this.startX, difft, this.minsw, this.ww)
-              // let last = p.destination
-              // let ti = p.duration
-              // console.log(p);
-              
               let v = Math.abs(this.offsetW) / difft
-              const a = 0.0004
+              const a = 0.0002
               let s = v * v / (2 * a) * (this.offsetW < 0 ? -1 : 1)
-              let last = Math.round(this.currentX + s); 
+              let last = Math.round(curx + s); 
               let t = Math.round(s / v)
 
               if (last < this.minsw) {
                 last = Math.round(this.minsw - this.ww / 2 * (v / 8))
-                t = Math.round(Math.abs(last - this.currentX) / v)
               } else if (last > 0) {
                 // 向右
                 last = Math.round(this.ww / 2 * (v / 8))
-                t = Math.round(Math.abs(last - this.currentX) / v)
               }
 
-              // if(last > 0 && last > this.ww){
-              //   last = Math.floor(this.ww/2)
-              // }
-              // if(last < 0 && last < this.minsw - this.ww){
-              //   last = this.minsw - this.ww/2;
-              // }
+              this.translateTo(last, t)
 
-              this.$refs.box.style.transition = `${t}ms all cubic-bezier(0.1, 0.57, 0.1, 1)`;
-              this.$refs.box.style.transform = `translate3d(${last}px, 0, 0)`
-
-              this.isAnimate = true
               setTimeout(() => {
-                this.isAnimate = false
-                this.currentX = last;
-                if(this.currentX > this.maxsw){
+                curx = this.getCurrentX()
+                if(curx > this.maxsw){
                   this.bounceBack(this.maxsw)
-                } else if(this.currentX < this.minsw){
+                } else if(curx < this.minsw){
                   this.bounceBack(this.minsw)
                 }
               }, t)
 
             }
+          },
+          getCurrentX () {
+            let cx = '0'
+            let trans = this.$refs.box.style.transform
+            if (trans) {
+              let mats = trans.replace(/\s/g, '').match(/translate3d\(([^,]+),(?:.*?)\)/)
+              if (mats && mats.length > 1) {
+                cx = mats[1].replace('px', '')
+              }
+            }
+            return Number.isNaN(cx) ? 0 : parseInt(cx)
           },
           slotClick(e){
             let cur = e.target;
@@ -182,9 +171,19 @@
               offset > this.maxsw && (offset = this.maxsw);
               offset < this.minsw && (offset = this.minsw);
             }
-            this.$refs.box.style.transition = "0.3s all cubic-bezier(0.1, 0.57, 0.1, 1)";
-            this.$refs.box.style.transform = `translate3d(${offset}px, 0, 0)`
-            this.currentX = offset
+            this.translateTo(offset, 300)
+          },
+          translateTo (pos, t, immediately) {
+            let time = t || 300
+            t < 300 && (t = 300);
+            t > 1200 && (t = 1200);
+            
+            if (immediately) {
+              this.$refs.box.style.transition = 'none'
+            } else {
+              this.$refs.box.style.transition = `${time}ms all cubic-bezier(0.1, 0.57, 0.1, 1)`
+            }
+            this.$refs.box.style.transform = `translate3d(${pos}px, 0, 0)`
           }
         },
         

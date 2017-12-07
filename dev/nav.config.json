@@ -1,242 +1,268 @@
 [
   {
-    "path": "/",
-    "title": "RIFLE",
-    "name": "Index",
-    "component": "Index"
+    "groupName": "表单",
+    "group": [
+      {
+        "path": "/doc/Button",
+        "title": "Button 按钮",
+        "name": "Button",
+        "component": "Button"
+      },
+      {
+        "path": "/doc/Radio",
+        "title": "Radio 单选",
+        "name": "Radio",
+        "component": "Radio"
+      },
+      {
+        "path": "/doc/Checkbox",
+        "title": "Checkbox 多选",
+        "name": "Checkbox",
+        "component": "Checkbox"
+      },
+      {
+        "path": "/doc/Cell",
+        "title": "Cell 表单",
+        "name": "Cell",
+        "component": "Cell"
+      },
+      {
+        "path": "/doc/DateTime",
+        "title": "DateTime 时间控件",
+        "name": "DateTime",
+        "component": "DateTime"
+      },
+      {
+        "path": "/doc/Select",
+        "title": "Select 下拉列表",
+        "name": "Select",
+        "component": "Select"
+      },
+      {
+        "path": "/doc/Password",
+        "title": "Password 密码输入框",
+        "name": "Password",
+        "component": "Password"
+      },
+      {
+        "path": "/doc/Textarea",
+        "title": "Textarea 文本框",
+        "name": "Textarea",
+        "component": "Textarea"
+      },
+      {
+        "path": "/doc/Switch",
+        "title": "Switch 开关",
+        "name": "Switch",
+        "component": "Switch"
+      },
+      {
+        "path": "/doc/Keyboard",
+        "title": "Keyboard 安全键盘",
+        "name": "Keyboard",
+        "component": "Keyboard"
+      }
+    ]
   },
   {
-    "path": "/doc/Button",
-    "title": "Button 按钮",
-    "name": "Button",
-    "component": "Button"
+    "groupName": "布局",
+    "group": [
+      {
+        "path": "/doc/Grid",
+        "title": "Grid 布局栅格",
+        "name": "Grid",
+        "component": "Grid"
+      },
+      {
+        "path": "/doc/Menubar",
+        "title": "Menubar 菜单条",
+        "name": "Menubar",
+        "component": "Menubar"
+      }
+    ]
   },
   {
-    "path": "/doc/Dialog",
-    "title": "Dialog 提示框",
-    "name": "Dialog",
-    "component": "Dialog"
+    "groupName": "滚动",
+    "group": [
+      {
+        "path": "/doc/Carousel",
+        "title": "Carousel 轮播",
+        "name": "Carousel",
+        "component": "Carousel"
+      },
+      {
+        "path": "/doc/ScrollCard",
+        "title": "ScrollCard 滑动卡片",
+        "name": "ScrollCard",
+        "component": "ScrollCard"
+      },
+      {
+        "path": "/doc/InfiniteScroll",
+        "title": "InfiniteScroll 无限滚动",
+        "name": "InfiniteScroll",
+        "component": "InfiniteScroll"
+      },
+      {
+        "path": "/doc/Sticky",
+        "title": "Sticky 吸顶",
+        "name": "Sticky",
+        "component": "Sticky"
+      },
+      {
+        "path": "/doc/Scroll",
+        "title": "Scroll 滚动",
+        "name": "Scroll",
+        "component": "Scroll"
+      },
+      {
+        "path": "/doc/ScrollComposite1",
+        "title": "组件组合效果-scrolltab",
+        "name": "ScrollComposite1",
+        "component": "ScrollComposite1"
+      },
+      {
+        "path": "/doc/ScrollComposite2",
+        "title": "组件组合效果-scrolltab",
+        "name": "ScrollComposite2",
+        "component": "ScrollComposite2"
+      }
+    ]
   },
   {
-    "path": "/doc/Switch",
-    "title": "Switch 开关",
-    "name": "Switch",
-    "component": "Switch"
-  },
-  {
-    "path": "/doc/Icon",
-    "title": "Icon 图标",
-    "name": "Icon",
-    "component": "Icon"
-  },
-  {
-    "path": "/doc/Radio",
-    "title": "Radio 单选",
-    "name": "Radio",
-    "component": "Radio"
-  },
-  {
-    "path": "/doc/Checkbox",
-    "title": "Checkbox 多选",
-    "name": "Checkbox",
-    "component": "Checkbox"
-  },
-  {
-    "path": "/doc/Rate",
-    "title": "Rate 评分",
-    "name": "Rate",
-    "component": "Rate"
-  },
-  {
-    "path": "/doc/Grid",
-    "title": "Grid 布局栅格",
-    "name": "Grid",
-    "component": "Grid"
-  },
-  {
-    "path": "/doc/Accordion",
-    "title": "Accordion 折叠面板",
-    "name": "Accordion",
-    "component": "Accordion"
-  },
-  {
-    "path": "/doc/Actionsheet",
-    "title": "Actionsheet 上拉菜单",
-    "name": "Actionsheet",
-    "component": "Actionsheet"
-  },
-  {
-    "path": "/doc/Badge",
-    "title": "Badge 角标",
-    "name": "Badge",
-    "component": "Badge"
-  },
-  {
-    "path": "/doc/Cell",
-    "title": "Cell 表单",
-    "name": "Cell",
-    "component": "Cell"
-  },
-  {
-    "path": "/doc/Carousel",
-    "title": "Carousel 轮播",
-    "name": "Carousel",
-    "component": "Carousel"
-  },
-  {
-    "path": "/doc/Tab",
-    "title": "Tab 选项卡",
-    "name": "Tab",
-    "component": "Tab"
-  },
-  {
-    "path": "/doc/Timeline",
-    "title": "Timeline 时间轴",
-    "name": "Timeline",
-    "component": "Timeline"
-  },
-  {
-    "path": "/doc/Step",
-    "title": "Step 步骤条",
-    "name": "Step",
-    "component": "Step"
-  },
-  {
-    "path": "/doc/Progressbar",
-    "title": "Progressbar 进度条",
-    "name": "Progressbar",
-    "component": "Progressbar"
-  },
-  {
-    "path": "/doc/DateTime",
-    "title": "DateTime 时间控件",
-    "name": "DateTime",
-    "component": "DateTime"
-  },
-  {
-    "path": "/doc/Select",
-    "title": "Select 下拉列表",
-    "name": "Select",
-    "component": "Select"
-  },
-  {
-    "path": "/doc/Password",
-    "title": "Password 密码输入框",
-    "name": "Password",
-    "component": "Password"
-  },
-  {
-    "path": "/doc/Textarea",
-    "title": "Textarea 文本框",
-    "name": "Textarea",
-    "component": "Textarea"
-  },
-  {
-    "path": "/doc/Loading",
-    "title": "Loading 加载",
-    "name": "Loading",
-    "component": "Loading"
-  },
-  {
-    "path": "/doc/Countup",
-    "title": "Countup 数字动画",
-    "name": "Countup",
-    "component": "Countup"
-  },
-  {
-    "path": "/doc/ScrollCard",
-    "title": "ScrollCard 滑动卡片",
-    "name": "ScrollCard",
-    "component": "ScrollCard"
-  },
-  {
-    "path": "/doc/InfiniteScroll",
-    "title": "InfiniteScroll 无限滚动",
-    "name": "InfiniteScroll",
-    "component": "InfiniteScroll"
-  },
-  {
-    "path": "/doc/Sortable",
-    "title": "Sortable 拖拽排序",
-    "name": "Sortable",
-    "component": "Sortable"
-  },
-  {
-    "path": "/doc/Sticky",
-    "title": "Sticky 吸顶",
-    "name": "Sticky",
-    "component": "Sticky"
-  },
-  {
-    "path": "/doc/Scroll",
-    "title": "Scroll 滚动",
-    "name": "Scroll",
-    "component": "Scroll"
-  },
-  {
-    "path": "/doc/LazyImage",
-    "title": "LazyImage 图片懒加载",
-    "name": "LazyImage",
-    "component": "LazyImage"
-  },
-  {
-    "path": "/doc/ImageClip",
-    "title": "ImageClip 图片裁剪",
-    "name": "ImageClip",
-    "component": "ImageClip"
-  },
-  {
-    "path": "/doc/Menubar",
-    "title": "Menubar 菜单条",
-    "name": "Menubar",
-    "component": "Menubar"
-  },
-  {
-    "path": "/doc/Backtop",
-    "title": "Backtop 返回顶部",
-    "name": "Backtop",
-    "component": "Backtop"
-  },
-  {
-    "path": "/doc/Popup",
-    "title": "Popup 弹出层",
-    "name": "Popup",
-    "component": "Popup"
-  },
-  {
-    "path": "/doc/Keyboard",
-    "title": "Keyboard 安全键盘",
-    "name": "Keyboard",
-    "component": "Keyboard"
-  },
-  {
-    "path": "/doc/Waterfall",
-    "title": "Waterfall 瀑布流",
-    "name": "Waterfall",
-    "component": "Waterfall"
-  },
-  {
-    "path": "/doc/Qrcode",
-    "title": "Qrcode 二维码",
-    "name": "Qrcode",
-    "component": "Qrcode"
-  },
-  {
-    "path": "/doc/CitySelect",
-    "title": "CitySelect 选择城市",
-    "name": "CitySelect",
-    "component": "CitySelect"
-  },
-  {
-    "path": "/doc/Audio",
-    "title": "Audio 音频播放器",
-    "name": "Audio",
-    "component": "Audio"
-  },
-  {
-    "path": "/doc/Video",
-    "title": "Video 视频播放器",
-    "name": "Video",
-    "component": "Video"
+    "groupName": "通用",
+    "group": [
+      {
+        "path": "/doc/Dialog",
+        "title": "Dialog 提示框",
+        "name": "Dialog",
+        "component": "Dialog"
+      },
+      {
+        "path": "/doc/Popup",
+        "title": "Popup 弹出层",
+        "name": "Popup",
+        "component": "Popup"
+      },
+      {
+        "path": "/doc/Accordion",
+        "title": "Accordion 折叠面板",
+        "name": "Accordion",
+        "component": "Accordion"
+      },
+      {
+        "path": "/doc/Actionsheet",
+        "title": "Actionsheet 上拉菜单",
+        "name": "Actionsheet",
+        "component": "Actionsheet"
+      },
+      {
+        "path": "/doc/Tab",
+        "title": "Tab 选项卡",
+        "name": "Tab",
+        "component": "Tab"
+      },
+      {
+        "path": "/doc/Badge",
+        "title": "Badge 角标",
+        "name": "Badge",
+        "component": "Badge"
+      },
+      {
+        "path": "/doc/Icon",
+        "title": "Icon 图标",
+        "name": "Icon",
+        "component": "Icon"
+      },
+      {
+        "path": "/doc/Rate",
+        "title": "Rate 评分",
+        "name": "Rate",
+        "component": "Rate"
+      },
+      {
+        "path": "/doc/Timeline",
+        "title": "Timeline 时间轴",
+        "name": "Timeline",
+        "component": "Timeline"
+      },
+      {
+        "path": "/doc/Step",
+        "title": "Step 步骤条",
+        "name": "Step",
+        "component": "Step"
+      },
+      {
+        "path": "/doc/Progressbar",
+        "title": "Progressbar 进度条",
+        "name": "Progressbar",
+        "component": "Progressbar"
+      },
+      {
+        "path": "/doc/Loading",
+        "title": "Loading 加载",
+        "name": "Loading",
+        "component": "Loading"
+      },
+      {
+        "path": "/doc/Countup",
+        "title": "Countup 数字动画",
+        "name": "Countup",
+        "component": "Countup"
+      },
+      {
+        "path": "/doc/Sortable",
+        "title": "Sortable 拖拽排序",
+        "name": "Sortable",
+        "component": "Sortable"
+      },
+      {
+        "path": "/doc/LazyImage",
+        "title": "LazyImage 图片懒加载",
+        "name": "LazyImage",
+        "component": "LazyImage"
+      },
+      {
+        "path": "/doc/ImageClip",
+        "title": "ImageClip 图片裁剪",
+        "name": "ImageClip",
+        "component": "ImageClip"
+      },
+      {
+        "path": "/doc/Backtop",
+        "title": "Backtop 返回顶部",
+        "name": "Backtop",
+        "component": "Backtop"
+      },
+      {
+        "path": "/doc/Waterfall",
+        "title": "Waterfall 瀑布流",
+        "name": "Waterfall",
+        "component": "Waterfall"
+      },
+      {
+        "path": "/doc/Qrcode",
+        "title": "Qrcode 二维码",
+        "name": "Qrcode",
+        "component": "Qrcode"
+      },
+      {
+        "path": "/doc/CitySelect",
+        "title": "CitySelect 选择城市",
+        "name": "CitySelect",
+        "component": "CitySelect"
+      },
+      {
+        "path": "/doc/Audio",
+        "title": "Audio 音频播放器",
+        "name": "Audio",
+        "component": "Audio"
+      },
+      {
+        "path": "/doc/Video",
+        "title": "Video 视频播放器",
+        "name": "Video",
+        "component": "Video"
+      }
+    ]
   }
 ]
