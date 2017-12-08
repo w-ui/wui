@@ -1,132 +1,191 @@
 <template>
   <div class="scroll-tab">
-    <div class="tab-head">
-      <w-scroll-card>
+    <w-sticky top="0px">
+      <w-scroll-card ref="srollcard" @change="itemChange">
         <div class="head-item" v-for="(item, index) of header" :key=" 'head-' + index">
-          {{item.title}}
+          {{item.name}}
         </div>
       </w-scroll-card>
-    </div>
+    </w-sticky>
+
     <div class="tab-body">
-      <w-infinite-scroll scrollMode="fullscreen" :containsIframe="true" :pageChange="pageChange" :pageCount="19">
-        <div class="body-item" v-for="(item, index) of website" :key=" 'body-' + index">
-          <iframe :src="item.url" frameborder="none" height="450px"></iframe>
+      <w-infinite-scroll ref="infinitescroll" scrollMode="fullscreen" @change="pageChange" :scroll="scroll" :pageCount="pageCount">
+        <div class="body-item" v-for="(item, index) of category" :key=" 'head-' + index">
+          <template v-if = 'item'>
+            <p class="name">{{item.name}}</p>
+            <div class="product-item" v-for="pro of item.products" :key=" 'body-item-' + pro">
+              <div class="img"></div>
+              <div class="info">
+                <div class="title">{{pro}}</div>
+                <div class="tag"></div>
+                <div class="price"></div>
+              </div>
+            </div>
+          </template>
         </div>
       </w-infinite-scroll>
     </div>
-
   </div>
 </template>
 
 <script>
 import ScrollCard from 'packages/scroll-card'
 import InfiniteScroll from 'packages/infinite-scroll'
+import Sticky from 'packages/sticky'
 
 let data = [
   {
-    url: 'http://www.51hitech.com/',
-    title: '51VR'
+    name: '特价专区',
+    id: 1003001,
+    icon: 'chart',
   },
   {
-    url: 'https://www.rizhiyi.com/',
-    title: '日志易'
+    name: '满69减30',
+    id: 1003001,
+    icon: 'price-tag'
   },
   {
-    url: 'https://www.koalareading.com/',
-    title: '考拉阅读'
+    name: '优惠',
+    id: 1003001,
+    icon: 'ticket'
   },
   {
-    url: 'http://dding.net/',
-    title: '云丁科技'
+    name: '热销',
+    id: 1003001,
+    icon: 'cart'
   },
   {
-    url: 'https://www.yi23.net/',
-    title: '衣二三'
+    name: '新鲜水果',
+    id: 1003001,
+    icon: 'appleinc'
   },
   {
-    url: 'http://www.bijixia.net/',
-    title: '笔记侠'
+    name: '冰淇淋',
+    id: 1003001,
+    icon: 'cutlery'
   },
   {
-    url: 'http://laibeikafei.com.cn/',
-    title: '莱杯咖啡'
+    name: '特价专区',
+    id: 1003001,
+    icon: 'bell2'
   },
   {
-    url: 'https://www.synyi.com/',
-    title: '森亿智能'
+    name: '饮料/水',
+    id: 1003001,
+    icon: 'coffee'
   },
   {
-    url: 'https://www.imhuasheng.com/',
-    title: '花生理财'
+    name: '酒类饮品',
+    id: 1003001,
+    icon: 'beer'
   },
   {
-    url: 'http://stardust.ai/',
-    title: '星辰数据'
+    name: '牛奶乳类',
+    id: 1003001,
+    icon: 'spotify'
   },
   {
-    url: 'http://www.xiaoyangedu.com/site/default.aspx?PageID=1',
-    title: '晓羊教育'
+    name: '休闲零食',
+    id: 1003001,
+    icon: 'bullseye'
   },
   {
-    url: 'http://www.taotailang.cn/',
-    title: '淘汰郎'
+    name: '卤味鲜食',
+    id: 1003001,
+    icon: 'envira'
   },
   {
-    url: 'http://www.songsonggift.com/',
-    title: '人人有福'
+    name: '糖巧饼干',
+    id: 1003001,
+    icon: 'modx'
   },
   {
-    url: 'http://www.daydaycook.com/daydaycook/hk/website/index.do',
-    title: '日日煮'
+    name: '方便速食',
+    id: 1003001,
+    icon: 'wpbeginner'
   },
   {
-    url: 'http://www.liwushuo.com/',
-    title: '礼物说'
+    name: '营养冲调',
+    id: 1003001,
+    icon: 'heart'
   },
   {
-    url: 'http://www.binguohezi.com/',
-    title: '缤果盒子'
+    name: '计生用品',
+    id: 1003001,
+    icon: 'man-woman'
   },
   {
-    url: 'http://www.myfantang.com/Home/index/index.html',
-    title: 'kao铺'
+    name: '个人护理',
+    id: 1003001,
+    icon: 'bandcamp'
   },
   {
-    url: 'http://www.52panghu.com/',
-    title: '胖虎'
+    name: '日用百货',
+    id: 1003001,
+    icon: ''
   },
   {
-    url: 'http://www.wochu.cn/',
-    title: '我厨'
+    name: '进口食品',
+    id: 1003001,
+    icon: ''
+  },
+  {
+    name: '百草味',
+    id: 1003001,
+    icon: ''
+  },
+  {
+    name: '网红新品',
+    id: 1003001,
+    icon: ''
+  },
+  {
+    name: '休闲食品',
+    id: 1003001,
+    icon: ''
   }
 ];
 
 export default {
   components: {
     'w-infinite-scroll': InfiniteScroll,
-    'w-scroll-card': ScrollCard
+    'w-scroll-card': ScrollCard,
+    'w-sticky': Sticky
   },
   data () {
     return {
-      website: [],
-      header: []
+      category: [{
+        name: data[0].name,
+        products: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
+      }],
+      header: data,
+      pageCount: data.length
     }
-  },
-  created () {
-    this.header = data.slice(0)
-    this.website.push(data.shift())
-  },
-  updated () {
-    console.log('updated..')
   },
   methods: {
     pageChange (currentPage, lastPage) {
-      if(currentPage > lastPage){
-        if (data.length > 0) {
-          this.website.push(data.shift());
-        }
-      }
+      let d = data[currentPage]
+      this.category[currentPage] = {
+        name: d.name,
+        products: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
+      };
+      this.$refs.srollcard.setCurrent(currentPage)
+    },
+    itemChange (currentIndex) {
+      let d = data[currentIndex]
+      let content = {
+        name: d.name,
+        products: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
+      };
+      this.$set(this.category, currentIndex, content)
+      this.$refs.infinitescroll.setCurrent(currentIndex)
+    },
+    scroll () {
+
     }
+  },
+  mounted () {
+    this.$refs.srollcard.setCurrent(0)
   }
 }
 </script>
@@ -136,26 +195,54 @@ export default {
     width: 100%;
     height: 100%;
 
-    .tab-head{
-      width: 100%;
-      padding-bottom: 10px;
-
-      .head-item{
-        padding: 10px 20px;
-      }
-      .head-item.active{
-        border-bottom: 2px dodgerblue solid;
-      }
+    .head-item{
+      padding: 10px 20px;
+      background-color: #fff;
+    }
+    .head-item.active{
+      border-bottom: 2px dodgerblue solid;
     }
 
     .body-item{
 
-      .body-name{
-        background-color: #666;
+      .name{
         padding: 10px;
-        text-align: center;
-        color: #fff;
+        color: #444;
         font-weight: bold;
+      }
+
+      .product-item{
+          width: 100%;
+          display: flex;
+          margin-bottom: 20px;
+          .img{
+            flex: 0 0 130px;
+            height: 90px;
+            background-color: #eee;
+          }
+          .info{
+            flex: 1 1 100%;
+            padding: 0 10px;
+            .title{
+              width: 100%;
+              height: 30px;
+              line-height: 30px;
+              padding: 0 10px;
+              background-color: #eee;
+              margin-bottom: 5px;
+            }
+            .tag{
+              width: 40%;
+              height: 20px;
+              background-color: #eee;
+              margin-bottom: 5px;
+            }
+            .price{
+              width: 60%;
+              height: 30px;
+              background-color: #eee;
+            }
+          }
       }
     }
   }

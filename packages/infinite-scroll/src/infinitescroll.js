@@ -13,7 +13,6 @@ export default {
       timer: null,
       currentPage: 0,
       pageInfo: [],
-      totalPage: 0,
       lastCount: 0
     }
   },
@@ -24,7 +23,7 @@ export default {
     },
     scrollMode: {
       type: String,
-      default: 'free'
+      default: 'fullscreen'
     },
     containsIframe: {
       type: Boolean,
@@ -144,7 +143,6 @@ export default {
           }
           this.translateTo(last, t)
         } else if (this.scrollMode === 'fullscreen') {
-          console.log('scrollmode: full')
           this.stepOneItem(curx, 300)
         }
 
@@ -178,7 +176,7 @@ export default {
           }
         }
         this.translateTo(last, t)
-        this.pageChange(this.currentPage, lastP)
+        this.$emit('change', this.currentPage, lastP)
       } else {
         let back = -lastP * this.ww
         this.translateTo(back, t)
@@ -200,23 +198,16 @@ export default {
           this.currentPage = prev
         }
       }
-      console.log('>>>update pageIndex>>>>', this.startIndex, this.currentPage, this.endIndex)
       return true
     },
     setCurrent (index) {
-      if (index > 0 && index < this.totalPage) {
-        if (this.currentPage < index) {
+      this.$nextTick(() => {
+        if (index >= 0 && index < this.pageCount) {
           this.currentPage = index
-          this.updatePageIndex('forward')
-          let last = index * this.ww
-          this.translateTo(last, 300)
-        } else if (this.currentPage > index) {
-          this.currentPage = index
-          this.updatePageIndex('backward')
-          let last = index * this.ww
-          this.translateTo(last, 300)
+          let last = -index * this.ww
+          this.translateTo(last, 600)
         }
-      }
+      })
     },
     translateTo (pos, t, immediately) {
       let time = t || 300
@@ -229,22 +220,12 @@ export default {
     }
   },
   render (h) {
-    let count = this.$slots.default.length
-    console.log('render:', count, this.currentPage, this.pageInfo)
-    if (count > this.lastCount) {
-      this.pageInfo.push({
-        startIndex: this.lastCount,
-        endIndex: count
+    if (!this.pageInfo[this.currentPage]) {
+      this.pageInfo[this.currentPage] = ({
+        startIndex: this.currentPage - 1 < 0 ? 0 : this.currentPage - 1,
+        endIndex: this.currentPage + 1 >= this.pageCount ? this.pageCount - 1 : this.currentPage + 1
       })
-      this.lastCount = count
     }
-    if (this.currentPage >= this.pageInfo.length){
-      this.currentPage--
-    }
-    if (this.currentPage < 0) {
-      this.currentPage++
-    }
-
     if (this.scrollMode === 'fullscreen' && this.ww) {
       return (
         <div class='wui-infinite-scroll'>
@@ -253,17 +234,17 @@ export default {
               {
                 this.$slots.default.map((vnode, i) => {
                   let pi = this.pageInfo[this.currentPage]
-                  if (i >= pi.startIndex && i <= pi.endIndex) {
-                    const vnodeEle = vnode.tag ? vnode : null
-                    return (
-                      <div class='wui-infinite-item' style={{width: this.ww + 'px'}}>
-                        { vnodeEle }
-                        {this.containsIframe ? <div class='wui-infinite-item-mask' /> : ''}
-                      </div>
-                    )
-                  } else {
-                    return <div class='wui-infinite-item' style={{width: this.ww + 'px'}}>{i}</div>
+                  if (pi && vnode.tag) {
+                    if (i >= pi.startIndex && i <= pi.endIndex) {
+                      return (
+                        <div class='wui-infinite-item' style={{width: this.ww + 'px'}}>
+                          { vnode }
+                          {this.containsIframe ? <div class='wui-infinite-item-mask' /> : ''}
+                        </div>
+                      )
+                    }
                   }
+                  return <div class='wui-infinite-item' style={{width: this.ww + 'px'}}></div>
                 })
               }
             </div>
@@ -289,7 +270,7 @@ export default {
                       </div>
                     )
                   } else {
-                    return <div class='wui-infinite-item'>{i}</div>
+                    return <div class='wui-infinite-item'></div>
                   }
                 })
               }
@@ -310,7 +291,6 @@ export default {
   },
   mounted () {
     this.ww = this.$el.offsetWidth
-    console.log('ww:', this.ww)
 
     this.$refs.box.addEventListener('touchstart', this.touchstart, true)
     this.$refs.box.addEventListener('mousedown', this.touchstart, true)

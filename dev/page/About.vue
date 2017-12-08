@@ -14,6 +14,26 @@
       <div class="title">更新日志</div>
       <w-timeline>
         <w-timeline-item>
+          <p class="time">2017-12-07 18:32:40</p>
+          <p class="item">新增InfiniteScroll组件及文档 </p>
+          <p class="item">scrollcard组件优化 </p>
+          <p class="item">官方文档组件页分类优化 </p>
+          <p class="item">完善5分钟上手文档 </p>
+        </w-timeline-item>
+
+        <w-timeline-item>
+          <p class="time">2017-12-05 17:53:42</p>
+          <p class="item">scrollcard动画效果优化 </p>
+          <p class="item" style="color: dodgerblue">发布1.0.1</p>
+        </w-timeline-item>
+
+        <w-timeline-item>
+          <p class="time">2017-12-01 16:30:24</p>
+          <p class="item">新增keyboard安全键盘组件及文档 </p>
+          <p class="item">新增scrollcard组件及文档</p>
+        </w-timeline-item>
+
+        <w-timeline-item>
           <p class="time">2017-11-30 16:52:04</p>
           <p class="item">新增rate组件 </p>
           <p class="item">修复Qrcode二维码组件bug</p>

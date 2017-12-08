@@ -126,6 +126,7 @@ export default {
     word-break: break-all;
     word-wrap: break-word;
     border-left: 1px solid #eee;
+    line-height: 2;
 
     ul{
       li{list-style: inside}
@@ -152,6 +153,7 @@ export default {
       word-break: break-all;
       word-wrap: break-word;
       margin: 10px 0;
+      line-height: 1.5;
     }
     table{
       empty-cells: show;

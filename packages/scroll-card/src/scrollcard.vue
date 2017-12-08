@@ -17,9 +17,12 @@
               startX: 0,
               startTime: 0,
               currentX: 0,
+              currentIndex: 0,
               offsetW: 0,
               lastTime: 0,
-              timer: null
+              timer: null,
+              total: 0,
+              ww: 0
             }
         },
         props: {
@@ -152,26 +155,32 @@
               }
             }
             if(pnode){
-              this.$slots.default.map(node => {
-                node.elm.classList.remove('active')
-              })
-              pnode.classList.add('active');
               this.centerItem(pnode);
             }
           },
           centerItem(node){
+            this.$slots.default.map((child, index) => {
+              if (child.elm === node) {
+                node.classList.add('active');
+                this.currentIndex = index;
+              } else {
+                child.elm.classList.remove('active')
+              }
+            })
             let rect = node.getBoundingClientRect();
+            let curx = this.getCurrentX()
             let offset = 0
             if(rect.left > this.ww/2){
-              offset = this.currentX - (rect.left - this.ww/2 + rect.width/2)
+              offset = curx - (rect.left - this.ww/2 + rect.width/2)
               offset < this.minsw && (offset = this.minsw);
               offset > this.maxsw && (offset = this.maxsw);
             } else {
-              offset = this.currentX + (this.ww/2 - rect.left -rect.width/2)
+              offset = curx + (this.ww/2 - rect.left -rect.width/2)
               offset > this.maxsw && (offset = this.maxsw);
               offset < this.minsw && (offset = this.minsw);
             }
-            this.translateTo(offset, 300)
+            this.translateTo(offset, 600)
+            this.$emit('change', this.currentIndex)
           },
           translateTo (pos, t, immediately) {
             let time = t || 300
@@ -184,10 +193,22 @@
               this.$refs.box.style.transition = `${time}ms all cubic-bezier(0.1, 0.57, 0.1, 1)`
             }
             this.$refs.box.style.transform = `translate3d(${pos}px, 0, 0)`
+          },
+          setCurrent (index) {
+            if (index >= 0 && index < this.total) {
+              this.currentX = index
+              this.centerItem(this.$slots.default[index].elm);
+            }
           }
         },
         
         mounted() {
+          this.total = this.$slots.default.length;
+          this.width = this.$refs.box.offsetWidth;
+          this.ww = this.$el.offsetWidth;
+          this.maxsw = 0; //max scroll width
+          this.minsw = this.ww - this.width;   //max scroll width
+
           window.addEventListener('touchmove', this.touchmove, false);
           window.addEventListener('touchend', this.touchend, false);
           window.addEventListener('mousemove', this.touchmove, false);

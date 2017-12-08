@@ -7,7 +7,9 @@ InfiniteScroll 支持的功能比较多，列表内容可自由定义，侵入�
 + 垂直方向整屏无限循环滚动
 + 垂直方向整屏自由循环滚动
 
-更多实例，参见 滚动组件那些事
+更多实例，参见 
+[组件组合效果1](/#/doc/ScrollComposite1)
+[组件组合效果2](/#/doc/ScrollComposite2)
 
 ### 水平方向整屏无限循环滚动
 
@@ -80,71 +82,19 @@ export default {
 ```
 
 
-### 水平方向自由无限循环滚动
-
-```javascript
-<template>
-  <template>
-  <div class="tab-area">
-    <w-infinite-scroll :containsIframe="true" :pageSize="2">
-      <div class="scroll-item" v-for="(item, index) in website" :key="index">
-        <iframe :src="item.url" frameborder="none" height="400px"></iframe>
-      </div>
-    </w-infinite-scroll>
-  </div>
-</template>
-
-<script>
-export default {
-  components: {
-    'w-infinite-scroll': InfiniteScroll
-  },
-  data () {
-    return {
-      website: [
-        {
-          url: 'https://www.synyi.com/',
-          title: '森亿智能'
-        },
-        {
-          url: 'https://www.imhuasheng.com/',
-          title: '花生理财'
-        },
-        {
-          url: 'http://stardust.ai/',
-          title: '星辰数据'
-        },
-        {
-          url: 'http://www.xiaoyangedu.com/site/default.aspx?PageID=1',
-          title: '晓羊教育'
-        },
-        {
-          url: 'http://www.taotailang.cn/',
-          title: '淘汰郎'
-        },
-        {
-          url: 'http://www.songsonggift.com/',
-          title: '人人有福'
-        },
-        {
-          url: 'http://www.daydaycook.com/daydaycook/hk/website/index.do',
-          title: '日日煮'
-        }
-      ]
-    }
-  }
-}
-</script>
-
-```
-
-
 
 ###  InfiniteScroll 属性介绍 attribute
 
 | 参数              | 说明         | 类型       | 可选值        | 默认值           |
 |------------------|--------------|-----------|--------------|-----------------|
-| direction        | 类型          | String    |  horizontal, vertical  |       |
-| scrollMode       | 背景颜色       | String    |  fullscreen, free      |       |
+| direction(暂只支持horizontal)        | 类型          | String    |  horizontal, vertical  |       |
+| scrollMode(暂只支持fullscreen)        | 背景颜色       | String    |  fullscreen, free      |       |
 | pageCount        | 总页数         | Number    |              |                 | 
 | containsIframe   | 内容是否包含iframe  | Boolean   |  true        |                 | 
+
+
+###  ScrollCard 事件介绍 event
+
+| 事件名称       | 参数            |    说明          | 类型         | 
+|---------------|----------------|-----------------|--------------|
+| change    |  currentIndex  |  当前激活项索引   | Number       |
