@@ -2,8 +2,8 @@
 
 本案例组合了 [ScrollCard](/#/doc/ScrollCard) 和 [InfiniteScroll](/#/doc/InfiniteScroll), 实现了一个滑动切换的tab
 
-+ ScrollCard itemChange事件，设置 InfiniteScroll 向前选中项
-+ InfiniteScroll itemChange事件，设置 InfiniteScroll 向前选中项
++ ScrollCard change事件，设置 InfiniteScroll 当前选中项
++ InfiniteScroll change事件，设置 InfiniteScroll 当前选中项
 + InfiniteScroll 最多保持3屏内容，根据相当的索引项实时渲染
 + 使用了sticky组件，保持列表头始终在页面顶部
 
@@ -13,7 +13,7 @@
   <div class="scroll-tab">
     <w-sticky top="0px">
       <w-scroll-card ref="srollcard" @change="itemChange">
-        <div class="head-item" v-for="(item, index) of header" :key=" 'head-' + index" v-bind="item.name">
+        <div class="head-item" v-for="(item, index) of header" :key=" 'head-' + index" v-text="item.name">
         </div>
       </w-scroll-card>
     </w-sticky>
@@ -22,11 +22,11 @@
       <w-infinite-scroll ref="infinitescroll" scrollMode="fullscreen" @pageChange="pageChange" :scroll="scroll" :pageCount="pageCount">
         <div class="body-item" v-for="(item, index) of category" :key=" 'head-' + index">
           <template v-if = 'item'>
-            <p class="name" v-bind="item.name"></p>
+            <p class="name" v-text="item.name"></p>
             <div class="product-item" v-for="pro of item.products" :key=" 'body-item-' + pro">
               <div class="img"></div>
               <div class="info">
-                <div class="title" v-bind="pro"></div>
+                <div class="title" v-text="pro"></div>
                 <div class="tag"></div>
                 <div class="price"></div>
               </div>

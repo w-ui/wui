@@ -1,10 +1,10 @@
 
-.wui-scroll-card{
+.wui-scroll-card-h{
   width: 100%;
   overflow: hidden;
 
   .wui-scroll-nav{
-    min-width: 1000%;
+    min-width: 5000%;
     overflow: hidden;
 
     .wui-scroll-container{
@@ -12,6 +12,26 @@
       align-content: center;
       justify-content: flex-start;
       flex-wrap: nowrap;
+      backface-visibility: hidden;
+    }
+  }
+}
+
+.wui-scroll-card-v{
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+  .wui-scroll-nav{
+    min-height: 5000%;
+    overflow: hidden;
+
+    .wui-scroll-container{
+      display: flex;
+      flex-direction: column;
+      align-content: center;
+      justify-content: flex-start;
+      flex-wrap: wrap;
       backface-visibility: hidden;
     }
   }

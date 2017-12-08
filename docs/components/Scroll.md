@@ -10,7 +10,7 @@
                 <template v-if="item.icon">
                 <w-icon :name="item.icon"></w-icon>
                 </template>
-                <span v-bind="item.name"></span>
+                <span v-text="item.name"></span>
             </a>
         </w-scroll>
     </div>

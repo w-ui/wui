@@ -14,6 +14,13 @@
       <div class="title">更新日志</div>
       <w-timeline>
         <w-timeline-item>
+          <p class="time">2017-12-08 18:20:36</p>
+          <p class="item">增加滚动组件组合实例和文档 </p>
+          <p class="item">scrollcard组件支持垂直滚动 </p>
+          <p class="item">scrollcard组件bug修复，getBoundingClientRect使用错误 </p>
+        </w-timeline-item>
+
+        <w-timeline-item>
           <p class="time">2017-12-07 18:32:40</p>
           <p class="item">新增InfiniteScroll组件及文档 </p>
           <p class="item">scrollcard组件优化 </p>

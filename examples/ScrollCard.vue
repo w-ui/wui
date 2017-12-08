@@ -21,6 +21,21 @@
         </div>
       </a>
     </w-scroll-card>
+
+    <div style="height:40px"></div>
+
+    <div class="v-container">
+      <w-scroll-card direction="v">
+        <a class="card-item3" v-for="item in category" :key="item.id" @click="cardClick(item, $event)">
+          <div>
+            <w-icon size="0.4rem" color="coral" :name="item.icon"></w-icon>
+          </div>
+          <div>
+            {{item.name}}
+          </div>
+        </a>
+      </w-scroll-card>
+    </div>
   </div>
 </template>
 
@@ -182,4 +197,20 @@ export default {
   .card-item2.active{
     border: 1px coral solid;
   }
+
+  .v-container{
+    width: 50%;
+    height: 300px;
+
+    .card-item3{
+      display: flex;
+      border: 1px #f0f0f0 solid;
+      align-items: center;
+      padding: 10px;
+    }
+    .card-item3.active{
+      border-left: 2px coral solid;
+    }
+  }
+  
 </style>
