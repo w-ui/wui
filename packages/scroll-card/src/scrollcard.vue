@@ -71,21 +71,22 @@
           },
           touchmove(e){
             if(this.drag){
-              let now = Date.now();
-              if(this.lastTime){
-                let remaining = 50 - now + this.lastTime;
-                if(remaining <= 0){
-                  this.lastTime = now;
-                  clearInterval(this.timer);
-                  this.move(e);
-                } else {
-                  clearInterval(this.timer);
-                  this.timer = setTimeout(this.move.bind(this, e), remaining);
-                }
-              } else {
-                this.lastTime = now;
-                this.move(e);
-              }
+              // let now = Date.now();
+              // if(this.lastTime){
+              //   let remaining = 50 - now + this.lastTime;
+              //   if(remaining <= 0){
+              //     this.lastTime = now;
+              //     clearInterval(this.timer);
+              //     this.move(e);
+              //   } else {
+              //     clearInterval(this.timer);
+              //     this.timer = setTimeout(this.move.bind(this, e), remaining);
+              //   }
+              // } else {
+              //   this.lastTime = now;
+              //   this.move(e);
+              // }
+              this.move(e);
               e.preventDefault();
               e.stopPropagation();
             }
@@ -133,7 +134,7 @@
           },
           bounceBack(x, y, t) {
             let ti = t || 500
-            this.translateTo(x, y, t)
+            this.translateTo(x, y, ti)
           },
           momentumMove(e) {
             let difft = Date.now() - this.startTime;
@@ -144,7 +145,7 @@
                 return;
               } else {
                 let v = Math.abs(this.offsetW) / difft
-                const a = 0.0002
+                const a = 0.0004
                 let s = v * v / (2 * a) * (this.offsetW < 0 ? -1 : 1)
                 let last = Math.round(curx + s); 
                 let t = Math.round(s / v)
@@ -155,6 +156,8 @@
                   // 向右
                   last = Math.round(this.ww / 2 * (v / 8))
                 }
+                t < 300 && (t = 300);
+                t > 1200 && (t = 1200);
 
                 this.translateTo(last, 0, t)
 
@@ -185,6 +188,8 @@
                   // 向右
                   last = Math.round(this.hh / 2 * (v / 8))
                 }
+                t < 300 && (t = 300);
+                t > 1200 && (t = 1200);
                 this.translateTo(0, last, t)
 
                 setTimeout(() => {

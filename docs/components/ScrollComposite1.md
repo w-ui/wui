@@ -19,7 +19,7 @@
     </w-sticky>
 
     <div class="tab-body">
-      <w-infinite-scroll ref="infinitescroll" scrollMode="fullscreen" @pageChange="pageChange" :scroll="scroll" :pageCount="pageCount">
+      <w-infinite-scroll ref="infinitescroll" @change="pageChange" :pageCount="pageCount">
         <div class="body-item" v-for="(item, index) of category" :key=" 'head-' + index">
           <template v-if = 'item'>
             <p class="name" v-text="item.name"></p>
@@ -258,5 +258,6 @@ export default {
   }
   
 </style>
+
 
 ```

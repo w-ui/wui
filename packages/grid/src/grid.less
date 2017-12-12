@@ -110,6 +110,16 @@
     }
   }
 
+  &-grid-6 {
+    .m-grids();
+    .wui-grid-item {
+      width: 16.666666%;
+      &:not(:nth-child(5n)):before {
+        .right-line(@grids-line-color);
+      }
+    }
+  }
+
   &-grid-item {
     width: 25%;
     float: left;

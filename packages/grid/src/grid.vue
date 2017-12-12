@@ -11,17 +11,17 @@
     export default{
         name: 'w-grid',
         props: {
-            rows: {
+            col: {
                 validator(value) {
-                    return ['2', '3', '4', '5'].indexOf(value + '') > -1;
+                    return ['2', '3', '4', '5', '6'].indexOf(value + '') > -1;
                 },
-                default: '4'
+                default: '2'
             },
             title: String
         },
         computed: {
             classes() {
-                return 'wui-grid-' + this.rows;
+                return 'wui-grid-' + this.col;
             }
         }
     }
