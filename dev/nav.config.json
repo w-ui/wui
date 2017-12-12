@@ -68,16 +68,28 @@
     "groupName": "布局",
     "group": [
       {
-        "path": "/doc/Grid",
-        "title": "Grid 布局栅格",
-        "name": "Grid",
-        "component": "Grid"
+        "path": "/doc/Layout",
+        "title": "Layout 页面布局",
+        "name": "Layout",
+        "component": "Layout"
+      },
+      {
+        "path": "/doc/Titlebar",
+        "title": "Titlebar 标题栏",
+        "name": "Titlebar",
+        "component": "Titlebar"
       },
       {
         "path": "/doc/Menubar",
         "title": "Menubar 菜单条",
         "name": "Menubar",
         "component": "Menubar"
+      },
+      {
+        "path": "/doc/Grid",
+        "title": "Grid 栅格",
+        "name": "Grid",
+        "component": "Grid"
       }
     ]
   },

@@ -3,23 +3,17 @@
 
 ### 概述
 
++ 类似于bootstrap的删格系统，最大列数为6
++ 复合组件，需要同grid-item一起使用
 
-```html
-<template>
-    <w-grid :rows="3" title="等分3列">
-        <w-grid-item v-for="n in 6">
-            grids-3
-        </w-grid-item>
-    </w-grid>
-</template>
-```
+
 
 ### Demo
 
 ```html
 <template>
   <div>
-    <w-grid :rows="3">
+    <w-grid :col="3">
       <w-grid-item v-for="n in 6">
           grids-3
       </w-grid-item>
@@ -27,7 +21,7 @@
 
     <div class="paragraph">
       <h3>slot</h3>
-      <w-grid :rows="2">
+      <w-grid :col="2">
         <w-grid-item link="/doc/Button">
             <img slot="icon" src="https://cn.vuejs.org/images/logo.png">
             <span slot="text">image</span>
@@ -56,19 +50,25 @@ export default {
 
 ```
 
-###  grid 属性介绍 Attributes
+###  grid 属性介绍 props
 
 | 参数     | 说明             | 类型       | 可选值        |  默认值    |
 |---------|------------------|-----------|--------------|-----------|
-| title   | 每组表格标题       | String    |              |           |
-| col    | 每行显示列数	     | Number    |  2, 3, 4, 5, 6  |   2      |
+| col     | 每行显示列数	     | Number    |  2, 3, 4, 5, 6  |   2      |
 
 
 
-###  grid-item 属性介绍 Attributes
+###  grid-item 属性介绍 props
 
 | 参数           | 说明            | 类型       | 可选值      |   默认值   |
 |---------------|-----------------|-----------|------------|-----------|
-| name    | 描述         | String   |                |      |
-| slot    | slot内容     | String   |   icon / text  |      |
-| link    | 跳转URL      | String   |   icon / text  |      |
+| link          | 单元格链接        |  String   |            |           |
+
+
+###  grid-item 插槽介绍 slot
+
+| 名称      |  描述   | 说明        | 
+|----------|---------|-------------|
+| icon     | 单元格 icon  |           | 
+| text     | 单元格 文本  |            | 
+| default  | 单元格内容   |            | 

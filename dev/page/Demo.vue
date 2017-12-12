@@ -1,11 +1,20 @@
 <template>
-  <div class="demo-area">
-    <component :is="compo"></component>
-  </div>
-  
+  <w-layout>
+    <w-titlebar v-if="name != 'Index'" home="/#/demo/Index">
+      {{name}}
+    </w-titlebar>
+    
+    <div class="demo-area">
+      <component :is="compo"></component>
+    </div>
+
+  </w-layout>
 </template>
 
 <script>
+
+import Layout from 'packages/layout'
+import Titlebar from 'packages/titlebar'
 
 export default {
   name: 'demo',
@@ -15,10 +24,20 @@ export default {
       required: true
     }
   },
+  components: {
+    'w-layout': Layout,
+    'w-titlebar': Titlebar
+  },
   data () {
     let upName = this.name.replace(/^\w/, (s0) => s0.toUpperCase())
     return {
       compo: () => import(`../../examples/${upName}.vue`)
+    }
+  },
+  watch: {
+    name(val, oldVval){
+      let upName = val.replace(/^\w/, (s0) => s0.toUpperCase())
+      this.compo = () => import(`../../examples/${upName}.vue`)
     }
   },
   mounted(){
@@ -31,7 +50,7 @@ export default {
  @import url("../../src/styles/common.less");
 
  .demo-area{
-   padding: 0.3rem;
-   min-height: 100vh;
+   position: relative;
+   padding: 10px;
  }
 </style>

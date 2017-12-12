@@ -5,7 +5,7 @@
 
 
 <template>
-  <w-qrcode url="https://w-ui.github.io/#/demo/index" size="256"></w-qrcode>
+  <w-qrcode url="https://w-ui.github.io/#/demo/index" :size="256"></w-qrcode>
 </template>
 
 <script>

@@ -1,39 +1,43 @@
 <template>
-    <section class="yd-flexview">
-        <slot name="navbar" v-if="showNavbar">
-            <yd-navbar :title="title" v-if="!!title">
-                <router-link :to="link || '/'" slot="left">
-                    <yd-navbar-back-icon></yd-navbar-back-icon>
-                </router-link>
-            </yd-navbar>
-        </slot>
-
-        <slot name="top"></slot>
-
-        <section class="yd-scrollview" ref="scrollView" id="scrollView">
+    <div class="wui-layout">
+        <div class="wui-layout-top-area" ref="top">
+            <slot name="top"></slot>
+        </div>
+        <section class="wui-layout-body-area" ref="body">
             <slot></slot>
         </section>
-
-        <slot name="bottom"></slot>
-
-        <slot name="tabbar"></slot>
-    </section>
+        <div class="wui-layout-bottom-area" ref="bottom">
+            <slot name="bottom"></slot>
+        </div>
+    </div>
 </template>
 
 <script type="text/babel">
     export default {
-        name: 'yd-layout',
+        name: 'wui-layout',
         props: {
-            link: String,
-            title: String,
-            showNavbar: {
+            transparentTop: {
                 type: Boolean,
-                default: true
+                default: false
             }
+        },
+        mounted () {
+            this.$nextTick(() => {
+                this.$el.style.width = window.innerWidth + 'px'
+                this.$el.style.height = window.innerHeight + 'px'
+                if (this.transparentTop) {
+                    this.$refs.body.style.height = window.innerHeight - this.$refs.bottom.offsetHeight + 'px'
+                } else {
+                    let th = this.$refs.top.offsetHeight
+                    this.$refs.body.style.marginTop = th + 'px'
+                    this.$refs.body.style.opacity = 1
+                    this.$refs.body.style.height = window.innerHeight - th - this.$refs.bottom.offsetHeight + 'px'
+                }
+            })
         }
     }
 </script>
 
 <style lang="less">
-    @import "../../../styles/components/layout.less";
+    @import "./layout.less";
 </style>

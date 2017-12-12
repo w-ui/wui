@@ -1,6 +1,6 @@
 <template>
   <div>
-    <w-grid :rows="3" title="等分3列">
+    <w-grid :col="3" title="等分3列">
       <w-grid-item v-for="n in 6" :key="n">
           grids-3
       </w-grid-item>
@@ -9,7 +9,7 @@
 
     <div class="paragraph">
       <h3>slot</h3>
-      <w-grid :rows="2">
+      <w-grid :col="2">
         <w-grid-item>
             <w-icon slot="icon" name="home" color="lightgreen"></w-icon>
             <span slot="text">主页</span>
