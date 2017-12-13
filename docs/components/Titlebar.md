@@ -34,11 +34,11 @@
 
     <w-title-bar home="/#/demo/Index" bgColor="transparent">
       <p slot="back">
-        <w-icon slot="icon2" size="22px" color="#ccc" name="circle-left" @click.native="doBack"></w-icon>
+        <w-icon size="22px" color="#666" name="arrow-circle-left" @click.native="doBack"></w-icon>
       </p>
       <p style="color: #444">WUI</p>
-      <w-icon slot="icon2" size="16px" color="#ccc" name="heart" @click.native="doLike"></w-icon>
-      <w-icon slot="icon1" size="16px" color="#ccc" name="share" @click.native="doShare"></w-icon>
+      <w-icon slot="icon2" size="16px" color="#666" name="heart" @click.native="doLike"></w-icon>
+      <w-icon slot="icon1" size="16px" color="#666" name="share" @click.native="doShare"></w-icon>
     </w-title-bar>
 
   </div>

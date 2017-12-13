@@ -4,10 +4,10 @@
       <w-icon slot="icon" name="home"></w-icon>
     </w-menubar-item>
     <w-menubar-item title="发现" link="/found">
-      <w-icon slot="icon" name="feed"></w-icon>
+      <w-icon slot="icon" name="light-bulb"></w-icon>
     </w-menubar-item>
     <w-menubar-item title="订单" :dot="true" link="/order">
-      <w-icon slot="icon" name="reorder"></w-icon>
+      <w-icon slot="icon" name="receipt"></w-icon>
     </w-menubar-item>
     <w-menubar-item title="我的" link="/mine">
       <w-icon slot="icon" name="user"></w-icon>

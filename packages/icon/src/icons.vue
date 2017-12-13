@@ -24,7 +24,7 @@
                 if (this.custom) {
                     return 'custom-' + this.name;
                 }
-                return 'icon-' + this.name;
+                return 'ti-' + this.name;
             },
             styles() {
                 const style = {};

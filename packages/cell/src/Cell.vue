@@ -53,7 +53,7 @@
               </template>
               <input v-if="type == 'input'" type="text" v-model="currentValue" :name="name" @focus="showClear = true" @blur="blurHandler" :maxlength="max" :placeholder="placeholder" :autocomplete="autocomplete" :readonly="readonly" :disabled="disabled">
               <input v-if="type == 'number'" type="number" v-model="currentValue" :name="name" @focus="showClear = true" @blur="blurHandler" :maxlength="max" :placeholder="placeholder" :autocomplete="autocomplete" :readonly="readonly" :disabled="disabled">
-              <span class="wui-input-clear" tabindex="-1" @click="clearInput" v-show="showClearIcon && showClear && !isempty">
+              <span class="wui-input-clear" tabindex="-1" @click="clearInput" v-show="showClearIcon && showClear && !isempty && !readonly">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="16px" height="16px">
                   <circle cx="25" cy="25" r="25" fill="#ccc"/>
                   <polyline style="fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;" points="16,34 25,25 34,16"/>

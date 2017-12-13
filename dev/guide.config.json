@@ -6,6 +6,56 @@
         "path": "/guide/5min-start",
         "title": "5分钟上手",
         "name": "5min-start"
+      },
+      {
+        "path": "/guide/wui-you-should-know",
+        "title": "关于wui，你应该知道的",
+        "name": "wui-you-should-know"
+      },
+      {
+        "path": "/guide/wui-project",
+        "title": "wui工程",
+        "name": "wui-project"
+      },
+      {
+        "path": "/guide/online-edit",
+        "title": "在线编辑使用教程",
+        "name": "online-edit"
+      }
+    ]
+  },
+  {
+    "groupName": "适配",
+    "group": [
+      {
+        "path": "/guide/screen-fit",
+        "title": "移动端适配",
+        "name": "screen-fit"
+      }
+    ]
+  },
+  {
+    "groupName": "样式",
+    "group": [
+      {
+        "path": "/guide/self-style",
+        "title": "自定义样式 ",
+        "name": "self-style"
+      }
+    ]
+  },
+  {
+    "groupName": "性能",
+    "group": [
+      {
+        "path": "/guide/import-wui",
+        "title": "组件正确引用方式",
+        "name": "import-wui"
+      },
+      {
+        "path": "/guide/wui-performance",
+        "title": "性能优化",
+        "name": "wui-performance"
       }
     ]
   }

@@ -24,8 +24,26 @@
       <w-grid-item link="/demo/InfiniteScroll">InfiniteScroll <br>无限滑动</w-grid-item>
       <w-grid-item link="/demo/Sticky">Sticky <br>吸顶</w-grid-item>
       <w-grid-item link="/demo/Scroll">Scroll <br>滚动</w-grid-item>
-      <w-grid-item link="/demo/ScrollComposite1">组件组合效果 <br>scrolltab</w-grid-item>
-      <w-grid-item link="/demo/ScrollComposite2">组件组合效果2 <br>scrolltab</w-grid-item>
+      <w-grid-item link="/demo/ScrollComposite2">组件组合效果 <br>scrolltab</w-grid-item>
+      <w-grid-item link="/demo/Dialog">Dialog <br>提示框</w-grid-item>
+      <w-grid-item link="/demo/Popup">Popup  <br>弹出层</w-grid-item>
+      <w-grid-item link="/demo/Accordion">Accordion <br>折叠面板</w-grid-item>
+      <w-grid-item link="/demo/Actionsheet">Actionsheet <br>上拉菜单</w-grid-item>
+      <w-grid-item link="/demo/Tab">Tab  <br>选项卡</w-grid-item>
+      <w-grid-item link="/demo/Badge">Badge  <br>角标</w-grid-item>
+      <w-grid-item link="/demo/Icon">Icon  <br>图标</w-grid-item>
+      <w-grid-item link="/demo/Rate">Rate  <br>评分</w-grid-item>
+      <w-grid-item link="/demo/Timeline">Timeline  <br>时间轴</w-grid-item>
+      <w-grid-item link="/demo/Step">Step  <br>步骤条</w-grid-item>
+      <w-grid-item link="/demo/Progressbar">Progressbar  <br>进度条</w-grid-item>
+      <w-grid-item link="/demo/Loading">Loading  <br>加载</w-grid-item>
+      <w-grid-item link="/demo/Countup">Countup  <br>数字动画</w-grid-item>
+      <w-grid-item link="/demo/Sortable">Sortable  <br>拖拽排序</w-grid-item>
+      <w-grid-item link="/demo/LazyImage">LazyImage  <br>图片懒加载</w-grid-item>
+      <w-grid-item link="/demo/ImageClip">ImageClip   <br>图片裁剪</w-grid-item>
+      <w-grid-item link="/demo/Backtop">Backtop   <br>返回顶部</w-grid-item>
+      <w-grid-item link="/demo/Waterfall">Waterfall   <br>瀑布流</w-grid-item>
+      <w-grid-item link="/demo/Qrcode">Qrcode   <br>二维码</w-grid-item>
     </w-grid>
   </div>
 </template>

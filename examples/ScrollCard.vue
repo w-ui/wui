@@ -55,57 +55,57 @@ export default {
         {
           name: '特价专区',
           id: 1003001,
-          icon: 'chart',
+          icon: 'medall',
         },
         {
           name: '满69减30',
           id: 1003001,
-          icon: 'price-tag'
+          icon: 'camera'
         },
         {
           name: '优惠',
           id: 1003001,
-          icon: 'ticket'
+          icon: 'announcement'
         },
         {
           name: '热销',
           id: 1003001,
-          icon: 'cart'
+          icon: 'magnet'
         },
         {
           name: '新鲜水果',
           id: 1003001,
-          icon: 'appleinc'
+          icon: 'apple'
         },
         {
           name: '冰淇淋',
           id: 1003001,
-          icon: 'cutlery'
+          icon: 'id-badge'
         },
         {
           name: '特价专区',
           id: 1003001,
-          icon: 'bell2'
+          icon: 'shield'
         },
         {
           name: '饮料/水',
           id: 1003001,
-          icon: 'coffee'
+          icon: 'package'
         },
         {
           name: '酒类饮品',
           id: 1003001,
-          icon: 'beer'
+          icon: 'world'
         },
         {
           name: '牛奶乳类',
           id: 1003001,
-          icon: 'spotify'
+          icon: 'brush-alt'
         },
         {
           name: '休闲零食',
           id: 1003001,
-          icon: 'bullseye'
+          icon: 'palette'
         },
         {
           name: '卤味鲜食',
@@ -120,47 +120,47 @@ export default {
         {
           name: '方便速食',
           id: 1003001,
-          icon: 'wpbeginner'
+          icon: 'mouse'
         },
         {
           name: '营养冲调',
           id: 1003001,
-          icon: 'heart'
+          icon: 'shine'
         },
         {
           name: '计生用品',
           id: 1003001,
-          icon: 'man-woman'
+          icon: 'ticket'
         },
         {
           name: '个人护理',
           id: 1003001,
-          icon: 'bandcamp'
+          icon: 'brush'
         },
         {
           name: '日用百货',
           id: 1003001,
-          icon: ''
+          icon: 'notepad'
         },
         {
           name: '进口食品',
           id: 1003001,
-          icon: ''
+          icon: 'hummer'
         },
         {
           name: '百草味',
           id: 1003001,
-          icon: ''
+          icon: 'video-clapper'
         },
         {
           name: '网红新品',
           id: 1003001,
-          icon: ''
+          icon: 'pin2'
         },
         {
           name: '休闲食品',
           id: 1003001,
-          icon: ''
+          icon: 'gallery'
         }
       ]
     }

@@ -1,14 +1,5 @@
 #  Password 密码输入框
 
-### 概述
-
-密码输入框组件
-
-```html
-<w-password v-model="password" @finish="onFinish"></w-password>
-
-```
-
 
 ### Demo
 
@@ -44,7 +35,7 @@
 
 ```
 
-###  Password 属性介绍 Attributes
+###  Password 属性介绍 props
 
 | 参数           | 说明            | 类型       | 可选值      |   默认值   |
 |---------------|-----------------|-----------|------------|-----------|

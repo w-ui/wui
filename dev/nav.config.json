@@ -45,8 +45,14 @@
         "component": "Password"
       },
       {
+        "path": "/doc/Input",
+        "title": "Input 输入框",
+        "name": "Input",
+        "component": "Input"
+      },
+      {
         "path": "/doc/Textarea",
-        "title": "Textarea 文本框",
+        "title": "Textarea 多行文本框",
         "name": "Textarea",
         "component": "Textarea"
       },
