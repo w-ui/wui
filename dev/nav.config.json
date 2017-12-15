@@ -115,8 +115,20 @@
         "component": "ScrollCard"
       },
       {
+        "path": "/doc/ScrollTree",
+        "title": "ScrollTree 滑动树",
+        "name": "ScrollTree",
+        "component": "ScrollTree"
+      },
+      {
+        "path": "/doc/InfiniteList",
+        "title": "InfiniteList 无限滚动列表",
+        "name": "InfiniteList",
+        "component": "InfiniteList"
+      },
+      {
         "path": "/doc/InfiniteScroll",
-        "title": "InfiniteScroll 无限滚动",
+        "title": "InfiniteScroll 无限滚动卡片",
         "name": "InfiniteScroll",
         "component": "InfiniteScroll"
       },
@@ -143,6 +155,12 @@
         "title": "组件组合效果-scrolltab",
         "name": "ScrollComposite2",
         "component": "ScrollComposite2"
+      },
+      {
+        "path": "/doc/ScrollComposite3",
+        "title": "组件组合效果-scrolltab",
+        "name": "ScrollComposite3",
+        "component": "ScrollComposite3"
       }
     ]
   },

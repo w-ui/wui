@@ -12,6 +12,23 @@
     <div style="height:40px"></div>
 
     <w-scroll-card>
+      <div class="card-item">
+        <div>
+          <w-icon size="0.4rem" color="coral" name="ticket"></w-icon>
+          满69减30
+        </div>
+      </div>
+      <div class="card-item">
+        <div>
+          <w-icon size="0.4rem" color="coral" name="apple"></w-icon>
+          新鲜水果
+        </div>
+      </div>
+    </w-scroll-card>
+
+    <div style="height:40px"></div>
+
+    <w-scroll-card>
       <a class="card-item2" v-for="item in category" :key="item.id" @click="cardClick(item, $event)">
         <div>
           <w-icon size="0.4rem" color="coral" :name="item.icon"></w-icon>
@@ -25,7 +42,7 @@
     <div style="height:40px"></div>
 
     <div class="v-container">
-      <w-scroll-card direction="v">
+      <w-scroll-card direction="v" :centerActivedItem="false">
         <a class="card-item3" v-for="item in category" :key="item.id" @click="cardClick(item, $event)">
           <div>
             <w-icon size="0.4rem" color="coral" :name="item.icon"></w-icon>

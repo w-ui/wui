@@ -19,12 +19,7 @@
     <div style="height:40px"></div>
 
     <w-scroll-card>
-      <a class="card-item2" v-for="item in category" :key="item.id" @click="cardClick(item, $event)">
-        <div>
-          <w-icon size="0.4rem" color="coral" :name="item.icon"></w-icon>
-        </div>
-        <div v-text="item.name">
-        </div>
+      <a class="card-item" v-for="item in category" :key="item.id" @click="cardClick(item, $event)">
       </a>
     </w-scroll-card>
 
@@ -228,6 +223,7 @@ export default {
 | 参数           | 说明        | 类型       | 可选值        | 默认值     |
 |---------------|-------------|-----------|--------------|-----------|
 | direction     | 滚动方向     |  String   |  h 水平，v 垂直 | h        |
+| centerActivedItem     | 选中项是否居中对齐     |  Boolean   |   | true   |
 
 
 ###  ScrollCard 事件介绍 event

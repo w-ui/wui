@@ -41,6 +41,10 @@
             default: 'h'
           },
           change: Function,
+          centerActivedItem: {
+            type: Boolean,
+            default: true
+          }
         },
         methods: {
           touchstart(e){
@@ -59,12 +63,18 @@
               this.ww = this.$el.offsetWidth;
               this.maxsw = 0; //max scroll width
               this.minsw = this.ww - width;   //max scroll width
+              if (this.minsw > 0) {
+                this.minsw = 0
+              }
             } else if(this.direction == 'v') {
               this.currentY = this.getCurrentY()
               let height = this.$refs.box.offsetHeight;
               this.hh = this.$el.offsetHeight;
               this.maxsh = 0; //max scroll width
               this.minsh = this.hh - height;   //max scroll width
+              if (this.minsh > 0) {
+                this.minsh = 0
+              }
             }
             e.preventDefault();
             e.stopPropagation();
@@ -96,6 +106,7 @@
               this.drag = false
               if (this.direction == 'h') {
                 let curx = this.getCurrentX()
+                console.log(curx, this.maxsw, this.minsw)
                 if(curx > this.maxsw){
                   this.bounceBack(this.maxsw, 0)
                 } else if(curx < this.minsw){
@@ -251,6 +262,9 @@
                 child.elm.classList.remove('active')
               }
             })
+            if (!this.centerActivedItem) {
+              return;
+            }
             let rectParent = this.$el.getBoundingClientRect()
             let rect = node.getBoundingClientRect()
             if (this.direction == 'h') {
@@ -312,21 +326,27 @@
             this.ww = this.$el.offsetWidth;
             this.maxsw = 0; //max scroll width
             this.minsw = this.ww - width;   //max scroll width
+            if (this.minsw > 0) {
+              this.minsw = 0
+            }
           } else {
-            let height = this.$refs.box.offsetWidth;
-            this.hh = this.$el.offsetWidth;
+            let height = this.$refs.box.offsetHeight;
+            this.hh = this.$el.offsetHeight;
             this.maxsh = 0; //max scroll width
             this.minsh = this.hh - height;   //max scroll width
+            if (this.minsh > 0) {
+              this.minsh = 0
+            }
           }
 
-          window.addEventListener('touchmove', this.touchmove, false);
-          window.addEventListener('touchend', this.touchend, false);
+          this.$refs.box.addEventListener('touchmove', this.touchmove, false);
+          this.$refs.box.addEventListener('touchend', this.touchend, false);
           window.addEventListener('mousemove', this.touchmove, false);
           window.addEventListener('mouseup', this.touchend, false);
         },
         destroyed() {
-          window.removeEventListener('touchmove', this.touchmove, false)
-          window.removeEventListener('touchend', this.touchend, false)
+          this.$refs.box.removeEventListener('touchmove', this.touchmove, false)
+          this.$refs.box.removeEventListener('touchend', this.touchend, false)
           window.removeEventListener('mousemove', this.touchmove, false);
           window.removeEventListener('mouseup', this.touchend, false);
         }
