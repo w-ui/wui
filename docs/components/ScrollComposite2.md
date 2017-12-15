@@ -3,9 +3,8 @@
 本案例组合了 [ScrollCard](/#/doc/ScrollCard) 和 [InfiniteScroll](/#/doc/InfiniteScroll), 实现了一个纵向滑动切换的tab
 
 + ScrollCard change事件，设置 InfiniteScroll 当前选中项
-+ InfiniteScroll change事件，设置 InfiniteScroll 当前选中项
++ InfiniteScroll change事件，设置 ScrollCard 当前选中项
 + InfiniteScroll 最多保持3屏内容，根据相当的索引项实时渲染
-+ 使用了sticky组件，保持列表头始终在页面顶部
 
 
 ```html

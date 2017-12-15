@@ -59,10 +59,7 @@ export default {
       if (this.drag) {
         let tar = e.changedTouches || [e]
         tar = tar[0]
-
-        if (!this.checkScroll(tar)) {
-          return
-        }
+        
         if (this.direction === 'h') {
           let offsetX = tar.pageX - this.startX
           this.offsetW = offsetX
@@ -72,25 +69,27 @@ export default {
           let offsetY = tar.pageY - this.startY
           this.offsetH = offsetY
           let lasty = this.currentY + offsetY
+          if (!this.checkScroll()) {
+            return
+          }
           this.translateTo(0, lasty, true)
         }
-        e.preventDefault()
       }
     },
     touchend (e) {
       if (this.drag) {
         this.drag = false
+        if (!this.checkScroll()) {
+          return
+        }
         if (this.direction === 'h') {
           let curx = this.getCurrentX()
-          console.log('cury & this.minsh', curx, this.minsw)
           if (curx > this.maxsw) {
             console.log('cury > this.maxsh')
             this.bounceBack(this.maxsw, 0)
           } else if (curx < this.minsw) {
-            console.log('cury < this.minsh', curx, this.minsw)
             this.bounceBack(this.minsw, 0)
           } else {
-            console.log('>>momentumMove')
             this.momentumMove(e)
           }
         } else {
@@ -102,7 +101,6 @@ export default {
             console.log('cury < this.minsh', cury, this.minsh)
             this.bounceBack(0, this.minsh)
           } else {
-            console.log('>>momentumMove')
             this.momentumMove(e)
           }
         }
@@ -274,21 +272,17 @@ export default {
       this.$refs.box.style.transform = `translate3d(${x}px, ${y}px, 0)`
     },
     checkScroll (e) {
-      let ctar = e.currentTarget
-      let tar = e.target
-      while (tar.parentNode && tar.parentNode !== ctar) {
-        tar = tar.parentNode
-      }
+      let tar = this.$slots.default[this.currentPage]
       if (tar) {
-        let sh = tar.scrollHeight
-        let oh = tar.offsetHeight
+        let oh = tar.elm.offsetHeight
+        let st = tar.elm.parentNode.scrollTop
         if (this.direction === 'v') {
-          if (e.pageY < this.startY) {
-            if (sh > oh && tar.scrollTop < sh - oh) {
+          if (this.offsetH < 0) {
+            if (oh > this.hh && st < oh - this.hh) {
               return false
             }
           } else {
-            if (tar.scrollTop > 0) {
+            if (st > 0) {
               return false
             }
           }
@@ -355,12 +349,12 @@ export default {
     this.ww = this.$el.offsetWidth
     this.hh = this.$el.offsetHeight
 
-    this.$refs.box.addEventListener('touchstart', this.touchstart, true)
-    this.$refs.box.addEventListener('mousedown', this.touchstart, true)
-    this.$refs.box.addEventListener('touchmove', this.touchmove, true)
-    this.$refs.box.addEventListener('mousemove', this.touchmove, true)
-    this.$refs.box.addEventListener('touchend', this.touchend, true)
-    this.$refs.box.addEventListener('mouseup', this.touchend, true)
+    this.$refs.box.addEventListener('touchstart', this.touchstart, false)
+    this.$refs.box.addEventListener('mousedown', this.touchstart, false)
+    this.$refs.box.addEventListener('touchmove', this.touchmove, false)
+    this.$refs.box.addEventListener('mousemove', this.touchmove, false)
+    window.addEventListener('touchend', this.touchend, false)
+    window.addEventListener('mouseup', this.touchend, false)
 
     // window.addEventListener('touchmove', this.touchmove, true)
     // window.addEventListener('touchend', this.touchend, true)
@@ -371,7 +365,7 @@ export default {
   destroyed () {
     // window.removeEventListener('touchmove', this.touchmove, true)
     // window.removeEventListener('touchend', this.touchend, true)
-    // window.removeEventListener('mousemove', this.touchmove, true)
-    // window.removeEventListener('mouseup', this.touchend, true)
+    window.removeEventListener('mousemove', this.touchmove, false)
+    window.removeEventListener('mouseup', this.touchend, false)
   }
 }
