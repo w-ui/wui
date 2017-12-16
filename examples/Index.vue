@@ -24,7 +24,9 @@
       <w-grid-item link="/demo/InfiniteScroll">InfiniteScroll <br>无限滑动</w-grid-item>
       <w-grid-item link="/demo/Sticky">Sticky <br>吸顶</w-grid-item>
       <w-grid-item link="/demo/Scroll">Scroll <br>滚动</w-grid-item>
+      <w-grid-item link="/demo/ScrollComposite1">组件组合效果 <br>scrolltab</w-grid-item>
       <w-grid-item link="/demo/ScrollComposite2">组件组合效果 <br>scrolltab</w-grid-item>
+      <w-grid-item link="/demo/ScrollComposite3">组件组合效果 <br>scrolltab</w-grid-item>
       <w-grid-item link="/demo/Dialog">Dialog <br>提示框</w-grid-item>
       <w-grid-item link="/demo/Popup">Popup  <br>弹出层</w-grid-item>
       <w-grid-item link="/demo/Accordion">Accordion <br>折叠面板</w-grid-item>

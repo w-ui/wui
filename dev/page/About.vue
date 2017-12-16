@@ -14,6 +14,41 @@
       <div class="title">更新日志</div>
       <w-timeline>
         <w-timeline-item>
+          <p class="time">2017-12-15 18:47:40</p>
+          <p class="item">修复ScrollCard子元素少时，滑动问题 </p>
+          <p class="item">InfiniteScroll 内部滚动bug修复 </p>
+          <p class="item">babel-plugin-import-fix插件修改，支持w-ui  </p>
+          <p class="item">新增组件组合示例3  </p>
+        </w-timeline-item>
+
+        <w-timeline-item>
+          <p class="time">2017-12-14 19:54:13</p>
+          <p class="item">新增ScrollTree组件及文档 </p>
+          <p class="item">无限列表 </p>
+          <p class="item">上拉刷新，下拉加载</p>
+        </w-timeline-item>
+
+        <w-timeline-item>
+          <p class="time">2017-12-13 22:25:33</p>
+          <p class="item">增加input组件及文档 </p>
+          <p class="item">指南页面文档更新 </p>
+        </w-timeline-item>
+
+        <w-timeline-item>
+          <p class="time">2017-12-12 16:19:56</p>
+          <p class="item">增加tittlebar及文档 </p>
+          <p class="item">增加layout及文档 </p>
+          <p class="item">demo首页优化 </p>
+          <p class="item">icon组件优化 </p>
+        </w-timeline-item>
+
+        <w-timeline-item>
+          <p class="time">2017-12-11 14:38:09</p>
+          <p class="item">InfiniteScroll组件支持垂直滚动 </p>
+          <p class="item">文档修改 </p>
+        </w-timeline-item>
+
+        <w-timeline-item>
           <p class="time">2017-12-08 18:20:36</p>
           <p class="item">增加滚动组件组合实例和文档 </p>
           <p class="item">scrollcard组件支持垂直滚动 </p>
