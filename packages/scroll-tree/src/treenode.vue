@@ -1,9 +1,9 @@
 <template>
   <div>
-    <div class="w-tree-item" v-for="(item, index) in data" :key="'root_' + index" :data-id="item.id">
+    <div class="w-tree-item" v-for="(item, index) in data" :key="type + '_' + index" :data-type="type" :data-index="index">
       <div class="node-title">{{item.name}}</div>
       <div class="node-body">
-        <w-tree-node :data="item.children"></w-tree-node>
+        <w-tree-node :data="item.children" type="sub"></w-tree-node>
       </div>
     </div>
   </div>
@@ -16,6 +16,10 @@
           change: Function,
           data: {
             type: Array
+          },
+          type: {
+            type: String,
+            default: 'root'
           }
         },
         methods: {

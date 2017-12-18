@@ -1,15 +1,15 @@
 <template>
-    <div class="scrolltab-content-item">
-        <strong class="scrolltab-content-title">{{label}}</strong>
+    <div class="scroll-tab-content-item">
+        <strong class="scroll-tab-content-title">{{name}}</strong>
         <slot></slot>
     </div>
 </template>
 
 <script type="text/babel">
     export default {
-        name: 'yd-scrolltab-panel',
+        name: 'w-scroll-tab-panel',
         props: {
-            label: String,
+            name: String,
             icon: String,
             active: Boolean
         }

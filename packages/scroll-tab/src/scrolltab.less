@@ -1,0 +1,94 @@
+@import '../../../src/styles/variables.less';
+@import '../../../src/styles/mixins.less';
+
+.wui {
+  &-scroll-tab {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    .scroll-tab-nav {
+      height: 100%;
+      background-color: #F5F5F5;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      position: relative;
+      z-index: 1;
+      &:after {
+        .right-line(#DFDFDF);
+      }
+    }
+
+
+    .scroll-tab-item {
+      padding: 0 .3rem;
+      height: 1rem;
+      display: flex;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+
+      &:after {
+        .bottom-line(#DFDFDF);
+      }
+      &:before {
+        .right-line(#DFDFDF);
+      }
+      &:active {
+        background: none; /* for firefox */
+      }
+    }
+
+    .scroll-tab-active {
+      background-color: #FFF;
+      &:before {
+        .right-line(#FFF);
+      }
+      &:active {
+        background-color: #FFF;
+      }
+    }
+
+    .scroll-tab-icon {
+      margin-right: .2rem;
+      font-size: .32rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      > img {
+        height: .4rem;
+        display: inline-block;
+      }
+    }
+
+    .scroll-tab-title {
+      font-size: .3rem;
+      color: #666;
+      overflow-x: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      max-width: 1.6rem;
+    }
+
+    .scroll-tab-content {
+      height: 100%;
+      background-color: #FFF;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      flex: 1;
+      padding: 0 .24rem .24rem .24rem;
+      position: relative;
+    }
+
+    .scroll-tab-content-title {
+      font-size: .3rem;
+      font-weight: bolder;
+      color: #555;
+      display: block;
+      padding-bottom: .1rem;
+      padding-top: .32rem;
+      margin-bottom: .2rem;
+      position: relative;
+      z-index: 1;
+    }
+  }
+}

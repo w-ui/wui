@@ -70,6 +70,8 @@ export default {
           this.offsetH = offsetY
           let lasty = this.currentY + offsetY
           if (!this.checkScroll()) {
+            let back = -this.currentPage * this.hh
+            this.translateTo(0, back)
             return
           }
           this.translateTo(0, lasty, true)
@@ -353,8 +355,8 @@ export default {
 
     this.$refs.box.addEventListener('touchstart', this.touchstart, false)
     this.$refs.box.addEventListener('mousedown', this.touchstart, false)
-    window.addEventListener('touchmove', this.touchmove, false)
-    window.addEventListener('mousemove', this.touchmove, false)
+    this.$refs.box.addEventListener('touchmove', this.touchmove, false)
+    this.$refs.box.addEventListener('mousemove', this.touchmove, false)
     window.addEventListener('touchend', this.touchend, false)
     window.addEventListener('mouseup', this.touchend, false)
 
@@ -365,8 +367,8 @@ export default {
     this.$forceUpdate()
   },
   destroyed () {
-    window.removeEventListener('touchmove', this.touchmove, true)
-    window.removeEventListener('touchend', this.touchend, true)
+    // window.removeEventListener('touchmove', this.touchmove, true)
+    // window.removeEventListener('touchend', this.touchend, true)
     window.removeEventListener('mousemove', this.touchmove, false)
     window.removeEventListener('mouseup', this.touchend, false)
   }

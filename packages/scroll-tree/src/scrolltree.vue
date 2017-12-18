@@ -23,6 +23,7 @@ import { hasClass, removeClass, addClass } from 'src/utils'
             startTime: 0,
             currentY: 0,
             currentIndex: 0,
+            currentSubIndex: 0,
             offsetH: 0,
             lastTime: 0,
             timer: null,
@@ -31,7 +32,6 @@ import { hasClass, removeClass, addClass } from 'src/utils'
           }
       },
       props: {
-        change: Function,
         data: {
           type: Array
         },
@@ -164,22 +164,29 @@ import { hasClass, removeClass, addClass } from 'src/utils'
           }
         },
         centerItem(node){
-          this.$el.querySelectorAll('.w-tree-item').forEach((item, index) => {
+          this.$el.querySelectorAll('.w-tree-item').forEach(item => {
             if (item === node) {
               addClass(node, 'active');
-              this.currentIndex = index;
+              if (item.getAttribute('data-type') === 'root') {
+                this.currentIndex = parseInt(item.getAttribute('data-index'))
+              } else if (item.getAttribute('data-type') === 'sub') {
+                let pn = node
+                while(pn && pn !== this.$el){
+                  pn = pn.parentNode;
+                  if (hasClass(pn, 'w-tree-item')) {
+                    addClass(pn, 'active')
+                    this.currentIndex = parseInt(pn.getAttribute('data-index'))
+                    this.currentSubIndex = parseInt(item.getAttribute('data-index'))
+                  }
+                }
+              }
             } else {
               removeClass(item, 'active')
             }
           })
-          let pn = node
-          while(pn && pn !== this.$el){
-            pn = pn.parentNode;
-            if (hasClass(pn, 'w-tree-item')) {
-              addClass(pn, 'active')
-            }
-          }
+
           if (!this.centerActivedItem) {
+            this.$emit('change', this.currentIndex, this.currentSubIndex)
             return;
           }
           let rectParent = this.$el.getBoundingClientRect()
@@ -197,6 +204,7 @@ import { hasClass, removeClass, addClass } from 'src/utils'
             offset < this.minsh && (offset = this.minsh);
           }
           this.translateTo(0, offset, 600)
+          console.log('chnage>>:', this.currentIndex)
           this.$emit('change', this.currentIndex)
         },
         translateTo (x, y, t, immediately) {
@@ -211,29 +219,26 @@ import { hasClass, removeClass, addClass } from 'src/utils'
           }
           this.$refs.box.style.transform = `translate3d(${x}px, ${y}px, 0)`
         },
-        setCurrent (index) {
-          let itms = this.$el.querySelectorAll('.w-tree-item');
+        setCurrent (index, subIndex) {
+          let itms = this.$el.querySelectorAll('.wui-scroll-tree-container> div> .w-tree-item');
           if (index >= 0 && index < this.total && itms) {
-            this.currentX = index
-            this.centerItem(itms[index]);
+            let pn = itms[index]
+            if (subIndex !== undefined) {
+              let children = pn.querySelectorAll('.w-tree-item')
+              if (subIndex >= 0 && subIndex < this.data[index].children.length) {
+                this.currentX = index
+                this.centerItem(children[subIndex]);
+              }
+            } else {
+              this.currentX = index
+              this.centerItem(pn);
+            }
           }
         }
       },
       
       mounted() {
-        let count = 0
-        let traverse = (source) => {
-          for (let i=0; i< source.length; i++){
-            let item = source[i]
-            if(item && item.length > 0){
-              traverse(item)
-            } else {
-              count++;
-            }
-          }
-        }
-        traverse(this.data)
-        this.total = count;
+        this.total = this.data.length;
 
         let height = this.$refs.box.offsetHeight;
         this.hh = this.$el.offsetHeight;

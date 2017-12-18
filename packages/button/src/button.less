@@ -1,26 +1,5 @@
-@btn-default-color: #FFF;
-@btn-primary-bg: #20a0ff;
-@btn-danger-bg: #EF4F4F;
-@btn-warning-bg: #FFB400;
-@btn-disabled-bg: #CCC;
-@btn-disabled-color: #F0F0F0;
-@btn-hollow-bg: #FFF;
-@btn-hollow-color: #454545;
-@btn-hollow-border-color: #EAEAEA;
-
-.btn-variant() {
-  text-align: center;
-  position: relative;
-  border: none;
-  pointer-events: auto;
-}
-
-.tap-color(@color, @opacity: .9) {
-  background-color: @color;
-  &:active {
-    background-color: @color * @opacity;
-  }
-}
+@import '../../../src/styles/variables.less';
+@import '../../../src/styles/mixins.less';
 
 .w-button {
   padding: 0 .24rem;
@@ -76,9 +55,9 @@
   pointer-events: none;
 }
 
-.w-btn-hollow {
-  .tap-color(@btn-hollow-bg, .97);
-  color: @btn-hollow-color;
-  border: 1px solid @btn-hollow-border-color;
+.w-btn-light {
+  .tap-color(@btn-light-bg, .97);
+  color: @btn-light-color;
+  border: 1px solid @btn-light-border-color;
 }
 

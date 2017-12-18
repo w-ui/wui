@@ -1,0 +1,120 @@
+@import '../../../src/styles/variables.less';
+@import '../../../src/styles/mixins.less';
+
+.w-button-group {
+  a:first-child{
+    border-radius: 3px 0 0 3px;
+  }
+  a:last-child{
+    border-radius: 0px 3px 3px 0px;
+  }
+  text-align: center;
+  position: relative;
+  border: none;
+  pointer-events: auto;
+  font-size: .26rem;
+  display: inline-block;
+  box-sizing: content-box;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+
+  a.disable{
+    background-color: @btn-disabled-bg;
+    color: @btn-disabled-color;
+  }
+}
+
+.w-btn-group-normal {
+  a{
+    padding: 0.1rem .24rem;
+  }
+}
+
+.w-btn-group-large {
+  a{
+    padding: 0.2rem .3rem;
+  }
+}
+
+.w-btn-group-circle {
+  border-radius: 200px;
+  a:first-child{
+    border-radius: 200px 0 0 200px;
+  }
+  a:last-child{
+    border-radius: 0px 200px 200px 0px;
+  }
+}
+
+.w-btn-group-primary {
+  .tap-color(@btn-primary-bg);
+  a.active{
+    .tap-color(@btn-primary-bg * 0.9);
+    color: @btn-default-color;
+  }
+}
+
+.w-btn-group-primary-border {
+  border: 1px @btn-primary-bg solid;
+  a.active{
+    .tap-color(@btn-primary-bg);
+    color: @btn-default-color;
+  }
+}
+
+.w-btn-group-danger {
+  .tap-color(@btn-danger-bg);
+  a.active{
+    .tap-color(@btn-danger-bg * 0.9);
+    color: @btn-default-color;
+  }
+}
+
+.w-btn-group-danger-border {
+  .tap-color(@btn-danger-bg);
+  a.active{
+    .tap-color(@btn-danger-bg);
+    color: @btn-default-color;
+  }
+}
+
+.w-btn-group-warning {
+  .tap-color(@btn-warning-bg);
+  a.active{
+    .tap-color(@btn-warning-bg * 0.9);
+    color: @btn-default-color;
+  }
+}
+
+.w-btn-group-warning-border {
+  border: 1px @btn-warning-bg solid;
+  a.active{
+    .tap-color(@btn-warning-bg * 0.9);
+    color: @btn-default-color;
+  }
+}
+
+.w-btn-group-disabled {
+  .tap-color(@btn-disabled-bg);
+  color: @btn-disabled-color;
+  pointer-events: none;
+}
+
+.w-btn-group-light {
+  .tap-color(@btn-light-bg, .97);
+  a.active{
+    .tap-color(@btn-light-bg * 0.9);
+    color: @btn-default-color;
+  }
+}
+
+.w-btn-group-light-border {
+  border: 1px @btn-light-bg solid;
+  a.active{
+    .tap-color(@btn-light-bg);
+    color: @btn-default-color;
+  }
+}
+
+

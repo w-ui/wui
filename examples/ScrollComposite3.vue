@@ -2,23 +2,39 @@
   <div class="scroll-tab">
     <div class="tab-body">
       <div class="tab-list">
-        <w-scroll-tree ref="srolltree" @change="itemChange" :data="data" :centerActivedItem="false">
+        <w-scroll-tree ref="srolltree" @change="itemChange" :data="header" :centerActivedItem="false">
         </w-scroll-tree>
       </div>
 
       <div class="tab-list-body">
         <w-infinite-scroll ref="infinitescroll" @change="pageChange" :pageCount="pageCount" direction="v" :scroll="scroll">
           <div class="body-item" v-for="(item, index) of category" :key=" 'head-' + index">
-            <template v-if = 'item'>
-              <p class="name">{{item.name}}</p>
-              <div class="product-item" v-for="pro of item.products" :key=" 'body-item-' + pro">
-                <div class="img"></div>
-                <div class="info">
-                  <div class="title">{{pro}}</div>
-                  <div class="tag"></div>
-                  <div class="price"></div>
+            <template v-if='item && item.children && item.children.length > 0'>
+              <w-scroll-tab :showSide="false" @change="subItemChange">
+                <w-scroll-tab-panel v-for="(child, idx) in item.children" :key="'s-t-p-' + idx" :name="child.name">
+                  <div class="product-item" v-for="pro of child.products" :key=" 'body-item-' + pro">
+                    <div class="img"></div>
+                    <div class="info">
+                      <div class="title">{{pro}}</div>
+                      <div class="tag"></div>
+                      <div class="price"></div>
+                    </div>
+                  </div>
+                </w-scroll-tab-panel>
+              </w-scroll-tab>
+            </template>
+            <template v-else>
+              <template v-if="item">
+                <div class="name">{{item.name}}</div>
+                <div class="product-item" v-for="pro of item.products" :key=" 'body-item-' + pro">
+                  <div class="img"></div>
+                  <div class="info">
+                    <div class="title">{{pro}}</div>
+                    <div class="tag"></div>
+                    <div class="price"></div>
+                  </div>
                 </div>
-              </div>
+              </template>
             </template>
           </div>
         </w-infinite-scroll>
@@ -32,6 +48,8 @@
 
 <script>
 import ScrollTree from 'packages/scroll-tree'
+import ScrollTab from 'packages/scroll-tab'
+import ScrollTabPanel from 'packages/scroll-tab-panel'
 import InfiniteScroll from 'packages/infinite-scroll'
 
 let data = [
@@ -44,19 +62,22 @@ let data = [
         name: '满69减30',
         id: 1003001,
         icon: 'camera',
-        children: []
+        children: [],
+        products: [1,2,3,4,5,6,7,8,9,10]
       },
       {
         name: '优惠',
         id: 1003001,
         icon: 'announcement',
-        children: []
+        children: [],
+        products: [1,2,3,4,5]
       },
       {
         name: '热销',
         id: 1003001,
         icon: 'magnet',
-        children: []
+        children: [],
+        products: [1,2,3]
       }
     ]
   },
@@ -64,13 +85,15 @@ let data = [
     name: '新鲜水果',
     id: 1003001,
     icon: 'apple',
-    children: []
+    children: [],
+    products: [1,2,3,4,5,6,7]
   },
   {
     name: '冰淇淋',
     id: 1003001,
     icon: 'id-badge',
-    children: []
+    children: [],
+    products: [1,2,3,4,5,6,7,8,9,10]
   },
   {
     name: '特价专区',
@@ -81,19 +104,22 @@ let data = [
         name: '饮料/水',
         id: 1003001,
         icon: 'package',
-        children: []
+        children: [],
+        products: [1,2,3,4,5]
       },
       {
         name: '酒类饮品',
         id: 1003001,
         icon: 'world',
-        children: []
+        children: [],
+        products: [1,2,3]
       },
       {
         name: '牛奶乳类',
         id: 1003001,
         icon: 'brush-alt',
-        children: []
+        children: [],
+        products: [1,2,3,4,5,6,7,8]
       }
     ]
   },
@@ -106,19 +132,22 @@ let data = [
         name: '卤味鲜食',
         id: 1003001,
         icon: 'envira',
-        children: []
+        children: [],
+        products: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
       },
       {
         name: '糖巧饼干',
         id: 1003001,
         icon: 'modx',
-        children: []
+        children: [],
+        products: [1,2,3,4,5]
       },
       {
         name: '方便速食',
         id: 1003001,
         icon: 'mouse',
-        children: []
+        children: [],
+        products: [1]
       }
     ]
   },
@@ -126,25 +155,29 @@ let data = [
     name: '营养冲调',
     id: 1003001,
     icon: 'shine',
-    children: []
+    children: [],
+    products: [1,2]
   },
   {
     name: '计生用品',
     id: 1003001,
     icon: 'ticket',
-    children: []
+    children: [],
+    products: [1,2,3,4,5,6,7,8,9]
   },
   {
     name: '个人护理',
     id: 1003001,
     icon: 'brush',
-    children: []
+    children: [],
+    products: [1,2,3,4]
   },
   {
     name: '日用百货',
     id: 1003001,
     icon: 'notepad',
-    children: []
+    children: [],
+    products: [1,2,3,4,5,6,7,8]
   },
   {
     name: '进口食品',
@@ -155,7 +188,8 @@ let data = [
         name: '百草味',
         id: 1003001,
         icon: 'video-clapper',
-        children: []
+        children: [],
+        products: [1,2,3,4,5,6,7,8,9]
       }
     ]
   },
@@ -163,55 +197,57 @@ let data = [
     name: '网红新品',
     id: 1003001,
     icon: 'pin2',
-    children: []
+    children: [],
+    products: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
   },
   {
     name: '休闲食品',
     id: 1003001,
     icon: 'gallery',
-    children: []
+    children: [],
+    products: [1,2,3,4]
   }
 ];
 
 export default {
   components: {
     'w-infinite-scroll': InfiniteScroll,
-    'w-scroll-card': ScrollCard
+    'w-scroll-tree': ScrollTree,
+    'w-scroll-tab': ScrollTab,
+    'w-scroll-tab-panel': ScrollTabPanel
   },
   data () {
     return {
-      category: [{
-        name: data[0].name,
-        products: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
-      }],
+      category: [data[0]],
       header: data,
-      pageCount: data.length
+      pageCount: data.length,
+      treeIndex: 0
     }
   },
   methods: {
     pageChange (currentPage, lastPage) {
-      let d = data[currentPage]
-      this.category[currentPage] = {
-        name: d.name,
-        products: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
-      };
-      this.$refs.srollcard.setCurrent(currentPage)
+      this.treeIndex = currentPage
+      this.category.push(data[currentPage])
+      this.$refs.srolltree.setCurrent(currentPage)
     },
     itemChange (currentIndex) {
-      let d = data[currentIndex]
-      let content = {
-        name: d.name,
-        products: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
-      };
-      this.$set(this.category, currentIndex, content)
+      this.treeIndex = currentIndex
+      this.$set(this.category, currentIndex, data[currentIndex])
       this.$refs.infinitescroll.setCurrent(currentIndex)
+      this.$nextTick(() => {
+        // this.$refs.infinitescroll.setCurrent(currentIndex + 1)
+      })
+    },
+    subItemChange (index) {
+      console.log(index)
+      this.$refs.srolltree.setCurrent(this.treeIndex, index)
     },
     scroll () {
       return true
     }
   },
   mounted () {
-    this.$refs.srollcard.setCurrent(0)
+    this.$refs.srolltree.setCurrent(0)
   }
 }
 </script>
@@ -230,6 +266,9 @@ export default {
     }
 
     .body-item{
+      height: 100%;
+      overflow-y: auto;
+
       .name{
         padding: 10px;
         color: #444;
@@ -273,7 +312,7 @@ export default {
 
     .tab-body{
       display: flex;
-      height: 480px;
+      height: 420px;
       overflow: hidden;
 
       .tab-list{

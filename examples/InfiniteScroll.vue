@@ -1,10 +1,17 @@
 <template>
   <div>
     <div class="tab-area">
-      <w-infinite-scroll scrollMode="fullscreen" :containsIframe="true" :pageChange="pageChange" :pageCount="6">
-        <div class="scroll-item" v-for="(item, index) of website" :key="index">
-          <div class="item-name">{{item.title}}</div>
-          <iframe :src="item.url" frameborder="none" height="450px"></iframe>
+      <w-infinite-scroll scrollMode="fullscreen" @change="pageChange" :pageCount="Infinity">
+        <div class="scroll-item" v-for="(item, index) of category" :key="index">
+          <div class="item-name">{{item.name}}</div>
+          <div class="product-item" v-for="pro of products" :key=" 'body-item-' + pro">
+            <div class="img"></div>
+            <div class="info">
+              <div class="title" v-text="pro"></div>
+              <div class="tag"></div>
+              <div class="price"></div>
+            </div>
+          </div>
         </div>
       </w-infinite-scroll>
     </div>
@@ -17,80 +24,49 @@ import InfiniteScroll from 'packages/infinite-scroll'
 
 let data = [
   {
-    url: 'http://www.51hitech.com/',
-    title: '51VR'
+    name: '新鲜水果',
+    id: 1003001,
+    icon: 'appleinc'
   },
   {
-    url: 'https://www.rizhiyi.com/',
-    title: '日志易'
+    name: '酒类饮品',
+    id: 1003001,
+    icon: 'beer'
   },
   {
-    url: 'https://www.koalareading.com/',
-    title: '考拉阅读'
+    name: '牛奶乳类',
+    id: 1003001,
+    icon: 'spotify'
   },
   {
-    url: 'http://dding.net/',
-    title: '云丁科技'
+    name: '休闲零食',
+    id: 1003001,
+    icon: 'bullseye'
   },
   {
-    url: 'https://www.yi23.net/',
-    title: '衣二三'
+    name: '卤味鲜食',
+    id: 1003001,
+    icon: 'envira'
   },
   {
-    url: 'http://www.bijixia.net/',
-    title: '笔记侠'
+    name: '糖巧饼干',
+    id: 1003001,
+    icon: 'modx'
   },
   {
-    url: 'http://laibeikafei.com.cn/',
-    title: '莱杯咖啡'
+    name: '方便速食',
+    id: 1003001,
+    icon: 'wpbeginner'
   },
   {
-    url: 'https://www.synyi.com/',
-    title: '森亿智能'
+    name: '营养冲调',
+    id: 1003001,
+    icon: 'heart'
   },
   {
-    url: 'https://www.imhuasheng.com/',
-    title: '花生理财'
-  },
-  {
-    url: 'http://stardust.ai/',
-    title: '星辰数据'
-  },
-  {
-    url: 'http://www.xiaoyangedu.com/site/default.aspx?PageID=1',
-    title: '晓羊教育'
-  },
-  {
-    url: 'http://www.taotailang.cn/',
-    title: '淘汰郎'
-  },
-  {
-    url: 'http://www.songsonggift.com/',
-    title: '人人有福'
-  },
-  {
-    url: 'http://www.daydaycook.com/daydaycook/hk/website/index.do',
-    title: '日日煮'
-  },
-  {
-    url: 'http://www.liwushuo.com/',
-    title: '礼物说'
-  },
-  {
-    url: 'http://www.binguohezi.com/',
-    title: '缤果盒子'
-  },
-  {
-    url: 'http://www.myfantang.com/Home/index/index.html',
-    title: 'kao铺'
-  },
-  {
-    url: 'http://www.52panghu.com/',
-    title: '胖虎'
-  },
-  {
-    url: 'http://www.wochu.cn/',
-    title: '我厨'
+    name: '计生用品',
+    id: 1003001,
+    icon: 'man-woman'
   }
 ];
 
@@ -100,21 +76,22 @@ export default {
   },
   data () {
     return {
-      website: []
+      category: [],
+      products: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
     }
   },
   created () {
-    this.website.push(data.shift())
+    this.category.push(data.shift())
   },
   updated () {
     console.log('updated..')
   },
   methods: {
     pageChange (currentPage, lastPage) {
+      console.log(currentPage, lastPage)
       if(currentPage > lastPage){
-        if (data.length > 0) {
-          this.website.push(data[Math.floor(Math.random()* data.length)]);
-        }
+        
+        this.category.push(data[Math.floor(Math.random()* data.length)]);
       }
     }
   }
@@ -127,14 +104,47 @@ export default {
     height: 100%;
 
     .scroll-item{
-      border: 1px dodgerblue solid;
 
       .item-name{
-        background-color: #666;
         padding: 10px;
         text-align: center;
-        color: #fff;
+        color: #666;
         font-weight: bold;
+      }
+
+      .product-item{
+          width: 100%;
+          display: flex;
+          margin-bottom: 20px;
+
+          .img{
+            flex: 0 0 130px;
+            height: 90px;
+            background-color: #eee;
+          }
+          .info{
+            flex: 1 1 100%;
+            padding: 0 10px;
+            .title{
+              width: 100%;
+              height: 30px;
+              line-height: 30px;
+              padding: 0 10px;
+              background-color: #eee;
+              margin-bottom: 5px;
+            }
+            .tag{
+              width: 40%;
+              height: 20px;
+              background-color: #eee;
+              margin-bottom: 5px;
+            }
+            .price{
+              width: 60%;
+              height: 30px;
+              background-color: #eee;
+            }
+          }
       }
     }
   }

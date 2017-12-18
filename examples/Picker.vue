@@ -1,24 +1,17 @@
-# Select 多级联动选择列表 
-
-+ 支持多级联动选择, 例如省市区选择
-
-
-### Demo
-```html
 <template>
   <div>
     <w-cell title="请选择书名：">
-      <w-select :columns="columns" :items="books" v-model="vals"></w-select>
+      <w-picker :columns="columns" :items="books" v-model="vals"></w-picker>
     </w-cell>
     <w-cell title="请选择城市：">
-      <w-select ref="addr" :columns="columnsAddress" :items="address" v-model="pcd" @change="selectChange"></w-select>
+      <w-picker ref="addr" :columns="columnsAddress" :items="address" v-model="pcd" @change="selectChange"></w-picker>
     </w-cell>
   </div>
 </template>
 
 
 <script>
-import Select from 'packages/select'
+import Picker from 'packages/picker'
 import Cell from 'packages/cell'
 
 const citys = {
@@ -69,7 +62,7 @@ const districts = {
 
 export default {
   components: {
-    'w-select': Select,
+    'w-picker': Picker,
     'w-cell': Cell
   },
   data(){
@@ -131,26 +124,3 @@ export default {
   }
 }
 </script>
-
-```
-
-###  Select 属性介绍 props
-
-| 参数           | 说明        | 类型       | 可选值        | 默认值     |
-|---------------|-------------|-----------|--------------|-----------|
-| columns       | 列          | Array     |              |       |
-| items         | 数据        | Object     |             |          |
-| v-model       | 初始值      | String     |              |          | 
-
-###  Select 事件介绍  event
-
-|  名称          | 说明        | 参数       | 
-|---------------|-------------|-----------|
-| change        | 选择项改变    | {column: '', value: ''}     |
-
-
-###  Select 方法介绍  api
-
-|  名称          | 说明        | 参数       | 
-|---------------|-------------|-----------|
-| updateColumn    | 更新列    | String   列名  |

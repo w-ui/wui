@@ -33,10 +33,10 @@
         "component": "DateTime"
       },
       {
-        "path": "/doc/Select",
-        "title": "Select 下拉列表",
-        "name": "Select",
-        "component": "Select"
+        "path": "/doc/Picker",
+        "title": "Picker 选择列表",
+        "name": "Picker",
+        "component": "Picker"
       },
       {
         "path": "/doc/Password",
@@ -121,6 +121,12 @@
         "component": "ScrollTree"
       },
       {
+        "path": "/doc/ScrollTab",
+        "title": "ScrollTab 滑动Tab",
+        "name": "ScrollTab",
+        "component": "ScrollTab"
+      },
+      {
         "path": "/doc/InfiniteList",
         "title": "InfiniteList 无限滚动列表",
         "name": "InfiniteList",
@@ -146,13 +152,13 @@
       },
       {
         "path": "/doc/ScrollComposite1",
-        "title": "组件组合效果-scrolltab",
+        "title": "组件组合-懒加载ScrollTab",
         "name": "ScrollComposite1",
         "component": "ScrollComposite1"
       },
       {
         "path": "/doc/ScrollComposite2",
-        "title": "组件组合效果-scrolltab",
+        "title": "组件组合-scrolltab",
         "name": "ScrollComposite2",
         "component": "ScrollComposite2"
       },

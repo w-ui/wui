@@ -7,14 +7,11 @@
       <div class="modal-content">
         <div class="container-bg">
           <div class="img-container">
-            <img id="clip_src_img" @load="srcImgLoaded" :src="img">
-            <div class="shadow-box"></div>
-            <Select-Box ref="box" :srcSize="imgSize" :ratio="ratio" :img="img" @selectEnd="selectEnd"
-                        @selectChange="selectChange"></Select-Box>
+            <Cropper v-if="img" ref="box" :src="img"></Cropper>
           </div>
 
           <div class="reset-img" v-if="!img">
-            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 58 58">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 58 58" width="40%">
               <g>
                 <path d="M57,6H1C0.448,6,0,6.447,0,7v44c0,0.553,0.448,1,1,1h56c0.552,0,1-0.447,1-1V7C58,6.447,57.552,6,57,6z M56,50H2V8h54V50z" fill="#CCCCCC"/>
                 <path d="M16,28.138c3.071,0,5.569-2.498,5.569-5.568C21.569,19.498,19.071,17,16,17s-5.569,2.498-5.569,5.569
@@ -28,7 +25,7 @@
             </svg>
 
             <i class="icon-reset"></i>
-            <span>选择文件</span>
+            <p>选择文件</p>
             <input type="file" id="file_input" accept="image/png,image/jpg,image/gif" @change="fileChange">
           </div>
         </div>
@@ -38,43 +35,24 @@
 </template>
 
 <script>
-  import SelectBox from './SelectBox.vue'
+  import Cropper from './cropper.js'
 
   export default {
     components: {
-      SelectBox
+      Cropper
     },
     data () {
       return {
         img: null,
-        $srcImg: null,
-        $resImg: null,
-        $input: null,
-        $imgContainer: null,
-        nw: 0,
-        nh: 0,
-        clipData: null,
-        ratio: 16 / 10, // equal to SelectBox's width / height
-        imgSize: {w: 0, h: 0},
-        containerTop: 0
+        $input: null
       }
     },
     mounted () {
       this.$input = this.$el.querySelectorAll('#file_input')[0]
-      this.$srcImg = this.$el.querySelectorAll('#clip_src_img')[0]
-      this.$resImg = this.$el.querySelectorAll('#clip_res_img')[0]
-      this.$imgContainer = this.$el.querySelectorAll('.img-container')[0]
-      this.$containerBox = this.$el.querySelectorAll('.container-bg')[0]
     },
     methods: {
       selectChange () {
         const rec = this.$refs.box.rec
-      },
-      selectEnd () {
-        const rec = this.$refs.box.rec
-        if (rec.w > 0 && rec.h > 0) {
-          this.clip()
-        }
       },
       fileChange () {
         const me = this
@@ -86,78 +64,12 @@
           fd.readAsDataURL(this.$input.files[0])
         }
       },
-      srcImgLoaded () {
-        this.nw = this.$srcImg.naturalWidth
-        this.nh = this.$srcImg.naturalHeight
-        this.clearSelect()
-        this.setImgSize()
-        // this.updatePreview()
-        this.clip()
-      },
-      clearSelect () {
-        const box = this.$refs.box
-        box.clearRec()
-        this.clipData = null
-      },
-      setImgSize () {
-        // image's naturalWidth naturalHeight ratio
-        const nr = this.nw / this.nh
-        const scw = this.$containerBox.offsetWidth
-        const sch = this.$containerBox.offsetHeight
-        let rw = 0  // select box width
-        let rh = 0  // select box height
-        if (nr >= this.ratio) {
-          this.imgSize.w = scw
-          this.imgSize.h = scw / nr
-          this.containerTop = (sch - this.imgSize.h) / 2
-          rh = this.imgSize.h
-          rw = rh * this.ratio
-        } else {
-          this.imgSize.w = scw - 20
-          this.imgSize.h = (scw - 20) / nr
-          this.containerTop = 0
-          rw = this.imgSize.w
-          rh = rw / this.ratio
-        }
-        this.$srcImg.setAttribute('style', `width:${this.imgSize.w}px;height:${this.imgSize.h}px;`)
-        this.$imgContainer.setAttribute('style',
-          `width:${this.imgSize.w}px;height:${this.imgSize.h}px;top:${this.containerTop}px;`)
-        this.$refs.box.rec = {w: rw, h: rh, l: 0, t: 0}
-      },
-      getComputedRec (r) {
-        const cw = this.$imgContainer.offsetWidth
-        const ch = this.$imgContainer.offsetHeight
-        const wr = cw / this.nw
-        const hr = ch / this.nh
-        return {
-          l: r.l / wr, t: r.t / hr,
-          w: r.w / wr, h: r.h / hr
-        }
-      },
-      clip (imgType) {
-        let rec = this.$refs.box.rec
-        if (!rec.w || !rec.h) {
-          return
-        }
-        let type = 'image/jpeg';
-        if(imgType){
-          type = 'image/png'
-        }
-        const bufferCanvas = document.createElement('canvas')
-        const bfx = bufferCanvas.getContext('2d')
-        const computedRec = this.getComputedRec(rec)
-        bufferCanvas.width = computedRec.w
-        bufferCanvas.height = computedRec.h
-        bfx.drawImage(this.$srcImg, -computedRec.l, -computedRec.t, this.nw, this.nh)
-        this.clipData = bufferCanvas.toDataURL(type, 1)
-      },
-      getClipImage (imgType) {
-        if(this.clipData && (!imgType || imgType == 'jpeg')){
-          return this.clipData;
-        } else {
-          this.clip(imgType)
-          return this.clipData
-        }
+      getImageData () {
+        return new Promise((resolve, reject) => {
+          return this.$refs.box.getCroppedCanvas().toBlob(function (blob) {
+            resolve(blob)
+          })
+        })
       }
     }
   }

@@ -1,15 +1,13 @@
 <template>
-    <div class="m-scrolltab">
-        <div class="scrolltab-nav">
-            <a href="javascript:;" class="scrolltab-item"
-               v-for="item in navList"
-               :class="activeIndex == item._uid ? 'scrolltab-active' : ''"
-               @click="moveHandler(item._uid)">
-                <div class="scrolltab-icon"><i :class="item.icon"></i></div>
-                <div class="scrolltab-title">{{item.label}}</div>
-            </a>
+    <div class="wui-scroll-tab">
+        <div class="scroll-tab-nav" v-if="showSide">
+            <div class="scroll-tab-item" v-for="(item, index) in navList" :class="activeIndex == item._uid ? 'scroll-tab-active' : ''"
+               @click="moveHandler(item._uid)" :key="'scrolltab-' + index">
+                <div class="scroll-tab-icon" v-if="item.icon"><i :class="'ti-' + item.icon"></i></div>
+                <div class="scroll-tab-title">{{item.name}}</div>
+            </div>
         </div>
-        <div class="scrolltab-content" ref="scrollView">
+        <div class="scroll-tab-content" ref="scrollView">
             <slot></slot>
         </div>
     </div>
@@ -17,26 +15,30 @@
 
 <script type="text/babel">
     export default {
-        name: 'yd-scrolltab',
+        name: 'w-scroll-tab',
+        props: {
+            showSide: {
+                type: Boolean,
+                default: true
+            }
+        },
         data() {
             return {
                 scrolling: false,
                 navList: [],
                 activeIndex: 0,
+                active: 0,
                 timer: null
             }
         },
         methods: {
             getPanels() {
-                return this.$children.filter(item => item.$options.name === 'yd-scrolltab-panel');
+                return this.$children.filter(item => item.$options.name === 'w-scroll-tab-panel');
             },
             init() {
                 this.scrollView = this.$refs.scrollView;
-
                 this.contentOffsetTop = this.scrollView.getBoundingClientRect().top;
-
                 this.bindEvent();
-
                 this.setDefault();
             },
             bindEvent() {
@@ -45,12 +47,10 @@
             },
             setDefault() {
                 const panels = this.getPanels();
-
                 let num = 0;
-
                 panels.forEach((panel) => {
                     this.navList.push({
-                        label: panel.label,
+                        name: panel.name,
                         _uid: panel._uid,
                         icon: panel.icon
                     });
@@ -67,37 +67,35 @@
             moveHandler(uid) {
                 if (this.scrolling)return;
                 this.scrolling = true;
-
                 const panels = this.getPanels();
                 const itemOffsetTop = panels.filter(item => item._uid == uid)[0].$el.getBoundingClientRect().top;
-
-                this.scrollView.scrollTop = itemOffsetTop + this.scrollView.scrollTop - this.contentOffsetTop + 2;
+                console.log(this.scrollView.scrollTop, itemOffsetTop, this.contentOffsetTop, itemOffsetTop - this.contentOffsetTop)
+                this.scrollView.scrollTop = this.scrollView.scrollTop + itemOffsetTop  - this.contentOffsetTop + 2;
                 this.activeIndex = uid;
-
                 setTimeout(() => {
                     this.scrolling = false;
                 }, 6);
             },
             scrollHandler() {
                 if (this.scrolling)return;
-
                 const panels = this.getPanels();
                 const panelsLength = panels.length;
                 const scrollBox = this.scrollView;
                 const scrollBoxHeight = scrollBox.offsetHeight;
                 const scrollBoxTop = scrollBox.scrollTop;
                 const panelItemHeight = panels[0].$el.offsetHeight;
-
                 if (scrollBoxTop >= panelItemHeight * panelsLength - scrollBoxHeight) {
                     this.activeIndex = panels[panelsLength - 1]._uid;
+                    this.active = panelsLength - 1
                     return;
                 }
-
-                panels.forEach((panel) => {
+                panels.forEach((panel, index) => {
                     if (panel.$el.getBoundingClientRect().top <= this.contentOffsetTop) {
                         this.activeIndex = panel._uid;
+                        this.active = index
                     }
                 });
+                this.$emit('change', this.active)
             }
         },
         mounted() {
@@ -111,5 +109,5 @@
 </script>
 
 <style lang="less">
-    @import "../../../styles/components/scrolltab.less";
+    @import "./scrolltab.less";
 </style>
