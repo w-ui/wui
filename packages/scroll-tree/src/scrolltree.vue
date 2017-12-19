@@ -204,7 +204,6 @@ import { hasClass, removeClass, addClass } from 'src/utils'
             offset < this.minsh && (offset = this.minsh);
           }
           this.translateTo(0, offset, 600)
-          console.log('chnage>>:', this.currentIndex)
           if (!stopEmit) {
             this.$emit('change', this.currentIndex)
           }

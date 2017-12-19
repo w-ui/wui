@@ -47,7 +47,6 @@
         },
         mounted() {
             this.scrollView = getScrollview(this.$el);
-            console.log(this.scrollView);
 
             this.scrollView.addEventListener('scroll', this.throttledCheck, false);
             this.scrollView.addEventListener('resize', this.scrollHandler, false);

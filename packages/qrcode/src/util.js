@@ -1,6 +1,5 @@
 export default class Util {
   static createCanvas (el, size, image, fillType = 'fill', show = false) {
-    console.log('size>>:', size)
     let canvas = document.createElement('canvas')
     canvas.id = 'cursorLayer'
     if (!show) {

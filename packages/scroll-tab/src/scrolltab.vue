@@ -28,6 +28,7 @@
                 navList: [],
                 activeIndex: 0,
                 sizeInfo: [],
+                maxScrollTop: 0,
                 timer: null
             }
         },
@@ -39,14 +40,17 @@
                 const panels = this.getPanels();
                 panels.forEach((panel, index) => {
                     this.sizeInfo.push({
-                        offsetTop: panel.$el.offsetTop
+                        offsetTop: panel.$el.offsetTop,
+                        offsetHeight: panel.$el.offsetHeight
                     })
                 });
+                let lastChild = this.sizeInfo[this.sizeInfo.length -1]
+                this.maxScrollTop = lastChild.offsetTop + lastChild.offsetHeight - this.$refs.scrollView.offsetHeight
                 this.bindEvent();
                 this.setDefault();
             },
             bindEvent() {
-                this.$refs.scrollView.addEventListener('scroll', this.scrollHandler);
+                this.$refs.scrollView.addEventListener('scroll', this.scrollHandler, true);
             },
             setDefault() {
                 const panels = this.getPanels();
@@ -81,7 +85,7 @@
                 }, 6);
                 this.$emit('change', this.activeIndex)
             },
-            scrollHandler() {
+            scrollHandler(e) {
                 if (this.scrolling)return;
                 const panels = this.getPanels();
                 const panelsLength = panels.length;
@@ -95,6 +99,9 @@
                     }
                 })
                 this.$emit('change', this.activeIndex)
+
+                e.preventDefault()
+                e.stopPropagation()
             },
             setCurrent (index) {
                 this.moveHandler(index);
@@ -103,6 +110,13 @@
                 this.$nextTick(() => {
                     this.$refs.scrollView.scrollTop = 9999
                 })
+            },
+            canScroll () {
+                let scrollView = this.$refs.scrollView
+                if (scrollView.scrollTop < this.maxScrollTop){
+                    return true
+                }
+                return false
             }
         },
         mounted() {

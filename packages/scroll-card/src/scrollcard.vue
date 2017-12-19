@@ -106,7 +106,6 @@
               this.drag = false
               if (this.direction == 'h') {
                 let curx = this.getCurrentX()
-                console.log(curx, this.maxsw, this.minsw)
                 if(curx > this.maxsw){
                   this.bounceBack(this.maxsw, 0)
                 } else if(curx < this.minsw){

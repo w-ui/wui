@@ -140,7 +140,6 @@ export default {
       return (!!this.regex || !!this.min || !!this.max || this.required) && this.iserror && this.initError
     },
     isShowSuccess() {
-      console.log('iserror>>>:', this.iserror);
       return (!!this.regex || !!this.min || !!this.max || this.required) && !this.iserror && (this.currentValue != '')
     }
   },

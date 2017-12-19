@@ -90,7 +90,6 @@ export default {
         if (this.direction === 'h') {
           let curx = this.getCurrentX()
           if (curx > this.maxsw) {
-            console.log('cury > this.maxsh')
             this.bounceBack(this.maxsw, 0)
           } else if (curx < this.minsw) {
             this.bounceBack(this.minsw, 0)
@@ -100,10 +99,8 @@ export default {
         } else {
           let cury = this.getCurrentY()
           if (cury > this.maxsh) {
-            console.log('cury > this.maxsh')
             this.bounceBack(0, this.maxsh)
           } else if (cury < this.minsh) {
-            console.log('cury < this.minsh', cury, this.minsh)
             this.bounceBack(0, this.minsh)
           } else {
             this.momentumMove(e)
@@ -298,6 +295,12 @@ export default {
             if (st > 0) {
               return false
             }
+          }
+
+          let item = tar.children[0]
+          let ins = item.componentInstance
+          if (ins && ins.$options.name === 'w-scroll-tab') {
+            return !ins.canScroll()
           }
         }
         return true

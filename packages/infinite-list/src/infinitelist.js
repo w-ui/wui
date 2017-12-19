@@ -67,7 +67,6 @@ export default {
         } else if (cury < this.minsh) {
           this.nextPage()
         } else {
-          console.log('>>momentumMove')
           this.momentumMove(e)
         }
       }
@@ -114,10 +113,8 @@ export default {
         setTimeout(() => {
           cury = this.getCurrentY()
           if (cury > this.maxsh) {
-            console.log('load page >>> before')
             this.bounceBack(0, this.maxsh)
           } else if (cury < this.minsh) {
-            console.log('load page >>> after')
             this.bounceBack(0, this.minsh)
           }
         }, t)
@@ -207,7 +204,6 @@ export default {
           this.lastCount = count
         }
       }
-      console.log('this.pageInfo>>>', this.pageInfo, this.hh)
       if (this.hh) {
         return (
           <div class='wui-infinite-list-v'>
@@ -217,7 +213,6 @@ export default {
                   this.$slots.default.map((vnode, i) => {
                     let pi = this.pageInfo[this.currentPage]
                     let si = this.sizeInfo[this.currentPage]
-                    console.log('render>>:', pi, si)
                     if (pi && vnode.tag) {
                       if (i >= pi.startIndex && i <= pi.endIndex) {
                         return (
@@ -228,7 +223,6 @@ export default {
                         )
                       }
                     }
-                    console.log('[>>>:]', i, si)
                     if (si && si[i]) {
                       return <div class='wui-infinite-list-item' style={{height: si[i].h + 'px'}}></div>
                     }
@@ -271,7 +265,6 @@ export default {
         si.push({h: child.offsetHeight});
       }
     }
-    console.log('[>>][>>]:', this.sizeInfo)
   },
   mounted () {
     this.hh = this.$el.offsetHeight
@@ -295,7 +288,6 @@ export default {
           si.push({h: child.offsetHeight});
         }
       }
-      console.log('[>>][>>]:', this.sizeInfo)
     })
     // window.addEventListener('touchmove', this.touchmove, true)
     // window.addEventListener('touchend', this.touchend, true)
