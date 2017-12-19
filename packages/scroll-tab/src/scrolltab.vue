@@ -46,6 +46,9 @@
                 });
                 let lastChild = this.sizeInfo[this.sizeInfo.length -1]
                 this.maxScrollTop = lastChild.offsetTop + lastChild.offsetHeight - this.$refs.scrollView.offsetHeight
+                if (this.maxScrollTop < 0) {
+                    this.maxScrollTop = 0
+                }
                 this.bindEvent();
                 this.setDefault();
             },
@@ -100,8 +103,10 @@
                 })
                 this.$emit('change', this.activeIndex)
 
-                e.preventDefault()
-                e.stopPropagation()
+                if (this.canScroll()){
+                    e.preventDefault()
+                    e.stopPropagation()
+                }
             },
             setCurrent (index) {
                 this.moveHandler(index);

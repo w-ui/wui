@@ -302,6 +302,7 @@ export default {
       .panel-head-bar{
         background-color: #fff;
         padding: 10px;
+        width: 100%;
       }
 
       .product-item{
