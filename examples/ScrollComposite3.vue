@@ -238,7 +238,6 @@ export default {
   },
   methods: {
     pageChange (currentPage, lastPage) {
-      console.log('infinitescroll page change>:', currentPage)
       this.currentPage = currentPage
       this.treeIndex = currentPage
       let d = data[currentPage]
@@ -246,7 +245,6 @@ export default {
       this.$refs.srolltree.setCurrent(currentPage)
     },
     itemChange (currentIndex, subIndex) {
-      console.log('tree change>:', currentIndex, subIndex)
       if (this.treeIndex !== currentIndex) {
         this.treeIndex = currentIndex
         this.$set(this.category, currentIndex, data[currentIndex])
@@ -262,7 +260,6 @@ export default {
         clearTimeout(this.timer)
       }
       this.timer = setTimeout(() => {
-        console.log('subItemChange>:', this.treeIndex, index)
         this.$refs.srolltree.setCurrent(this.treeIndex, index)
       }, 100)
     },

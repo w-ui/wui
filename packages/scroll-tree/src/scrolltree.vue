@@ -83,6 +83,7 @@ import { hasClass, removeClass, addClass } from 'src/utils'
           if(this.drag){
             this.drag = false
             let cury = this.getCurrentY()
+
             if(cury > this.maxsh){
               this.bounceBack(0, this.maxsh)
             } else if(cury < this.minsh){
@@ -162,11 +163,23 @@ import { hasClass, removeClass, addClass } from 'src/utils'
           if(pnode){
             this.centerItem(pnode);
           }
+
+          let height = this.$refs.box.offsetHeight;
+          this.hh = this.$el.offsetHeight;
+          this.maxsh = 0; //max scroll width
+          this.minsh = this.hh - height;   //max scroll width
+
+          let cury = this.getCurrentY()
+          if(cury > this.maxsh){
+            this.bounceBack(0, this.maxsh)
+          } else if(cury < this.minsh){
+            this.bounceBack(0, this.minsh)
+          }
         },
         centerItem(node, stopEmit){
           this.$el.querySelectorAll('.w-tree-item').forEach(item => {
             if (item === node) {
-              addClass(node, 'active');
+              addClass(item, 'active');
               if (item.getAttribute('data-type') === 'root') {
                 this.currentIndex = parseInt(item.getAttribute('data-index'))
               } else if (item.getAttribute('data-type') === 'sub') {
@@ -185,10 +198,14 @@ import { hasClass, removeClass, addClass } from 'src/utils'
             }
           })
 
-          if (!this.centerActivedItem && !stopEmit) {
-            this.$emit('change', this.currentIndex, this.currentSubIndex)
+          if (!this.centerActivedItem) {
+            if (!stopEmit) {
+              console.log('emit(change')
+              this.$emit('change', this.currentIndex, this.currentSubIndex)
+            }
             return;
           }
+          console.log('centerActivedItem')
           let rectParent = this.$el.getBoundingClientRect()
           let rect = node.getBoundingClientRect()
           let top = rect.top - rectParent.top
@@ -221,6 +238,7 @@ import { hasClass, removeClass, addClass } from 'src/utils'
           this.$refs.box.style.transform = `translate3d(${x}px, ${y}px, 0)`
         },
         setCurrent (index, subIndex) {
+          console.log('setCurrent', index, subIndex)
           let itms = this.$el.querySelectorAll('.wui-scroll-tree-container> div> .w-tree-item');
           if (index >= 0 && index < this.total && itms) {
             let pn = itms[index]

@@ -29,6 +29,7 @@
                 activeIndex: 0,
                 sizeInfo: [],
                 maxScrollTop: 0,
+                lastScrollTop: 0,
                 timer: null
             }
         },
@@ -95,15 +96,22 @@
 
                 let scrollView = this.$refs.scrollView
                 let scrollTop = scrollView.scrollTop
-
                 this.sizeInfo.forEach( (item, index) => {
                     if (item && item.offsetTop <= scrollTop) {
                         this.activeIndex = index
                     }
                 })
                 this.$emit('change', this.activeIndex)
-
-                if (this.canScroll()){
+                
+                let direction = ''
+                if (this.lastScrollTop - scrollTop > 0) {
+                    direction = 'down'
+                } else {
+                    direction = 'up'
+                }
+                this.lastScrollTop = scrollTop
+                
+                if (this.canScroll(direction)){
                     e.preventDefault()
                     e.stopPropagation()
                 }
@@ -116,9 +124,15 @@
                     this.$refs.scrollView.scrollTop = 9999
                 })
             },
-            canScroll () {
+            canScroll (direction) {
                 let scrollView = this.$refs.scrollView
-                if (scrollView.scrollTop < this.maxScrollTop){
+                if (direction == 'down' && scrollView.scrollTop == 0) {
+                    return false
+                }
+                if (direction == 'down' && scrollView.scrollTop >= this.maxScrollTop) {
+                    return true
+                }
+                if (scrollView.scrollTop < this.maxScrollTop) {
                     return true
                 }
                 return false

@@ -287,11 +287,14 @@ export default {
         let oh = tar.elm.offsetHeight
         let st = tar.elm.parentNode.scrollTop
         if (this.direction === 'v') {
+          let dir = ''
           if (this.offsetH < 0) {
+            dir = 'up'
             if (oh > this.hh && st < oh - this.hh) {
               return false
             }
           } else {
+            dir = 'down'
             if (st > 0) {
               return false
             }
@@ -300,7 +303,7 @@ export default {
           let item = tar.children[0]
           let ins = item.componentInstance
           if (ins && ins.$options.name === 'w-scroll-tab') {
-            return !ins.canScroll()
+            return !ins.canScroll(dir)
           }
         }
         return true
