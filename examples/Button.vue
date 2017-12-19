@@ -13,7 +13,7 @@
       <w-button size="large" type="primary">主要</w-button>
       <w-button size="large" type="danger">危险</w-button>
       <w-button size="large" type="warning">警告</w-button>
-      <w-button size="large" type="light" disabled>空</w-button>
+      <w-button size="large" type="light">空</w-button>
       <w-button size="large" type="disabled" disabled>禁用</w-button>
     </div>
     <div class="paragraph">

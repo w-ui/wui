@@ -12,7 +12,7 @@
                 validator(value) {
                     return /^(\.|\d+\.)?\d+(px|rem)$/.test(value);
                 },
-                default: '.6rem'
+                default: '.4rem'
             },
             custom: {
                 type: Boolean,

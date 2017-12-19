@@ -1,0 +1,104 @@
+.range-slider {
+  position: relative;
+  cursor: pointer;
+  flex: 1;
+}
+
+.range-ios {
+  width: 100%;
+  padding: 8px 16px;
+}
+
+.range-ios.range-has-pin {
+  padding-top: 20px;
+}
+
+.range-ios .range-slider {
+  height: 42px;
+}
+
+.range-ios .range-bar {
+  position: absolute;
+    width: 100%;
+    height: 1px;
+    pointer-events: none;
+    background: #bdbdbd;
+    left: 0;
+    top: 21px;
+    border-radius: 1px;
+}
+
+.range-ios.range-pressed .range-bar-active {
+  will-change: left, right;
+}
+
+.range-ios.range-pressed .range-knob-handle {
+  will-change: left;
+}
+
+.range-ios .range-bar-active {
+  bottom: 0;
+  width: auto;
+  background: #488aff;
+}
+
+.range-ios .range-knob-handle {
+  position: absolute;
+  width: 42px;
+  height: 42px;
+  left: 0;
+  top: 21px;
+  margin-left: -21px;
+  margin-top: -21px;
+  text-align: center;
+}
+
+.range-ios .range-knob {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  pointer-events: none;
+  background: #fff;
+  box-shadow: 0 3px 1px rgba(0,0,0,.1), 0 4px 8px rgba(0,0,0,.13), 0 0 0 1px rgba(0,0,0,.02);
+  left: 7px;
+  top: 7px;
+  border-radius: 50%;
+}
+
+.range-ios .range-tick {
+  position: absolute;
+  top: 17.5px;
+  width: 1px;
+  height: 8px;
+  pointer-events: none;
+  background: #bdbdbd;
+  margin-left: -.5px;
+  border-radius: 0;
+}
+
+.range-ios .range-tick-active {
+  background: #488aff;
+}
+
+.range-ios .range-pin {
+  position: relative;
+    top: -20px;
+    display: inline-block;
+    min-width: 28px;
+    font-size: 12px;
+    color: #000;
+    background: transparent;
+    transition: transform .12s ease;
+    text-align: center;
+    border-radius: 50px;
+    transform: translate3d(0,28px,0) scale(.01);
+    padding: 8px;
+}
+
+.range-ios .range-knob-pressed .range-pin {
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+.range-ios.range-disabled {
+  opacity: 0.5;
+}

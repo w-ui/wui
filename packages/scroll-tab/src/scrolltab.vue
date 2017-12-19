@@ -1,8 +1,8 @@
 <template>
     <div class="wui-scroll-tab">
         <div class="scroll-tab-nav" v-if="showSide">
-            <div class="scroll-tab-item" v-for="(item, index) in navList" :class="activeIndex == item._uid ? 'scroll-tab-active' : ''"
-               @click="moveHandler(item._uid)" :key="'scrolltab-' + index">
+            <div class="scroll-tab-item" v-for="(item, index) in navList" :class="activeIndex == index ? 'scroll-tab-active' : ''"
+               @click="moveHandler(index)" :key="'scrolltab-' + index">
                 <div class="scroll-tab-icon" v-if="item.icon"><i :class="'ti-' + item.icon"></i></div>
                 <div class="scroll-tab-title">{{item.name}}</div>
             </div>
@@ -27,7 +27,7 @@
                 scrolling: false,
                 navList: [],
                 activeIndex: 0,
-                active: 0,
+                sizeInfo: [],
                 timer: null
             }
         },
@@ -36,42 +36,46 @@
                 return this.$children.filter(item => item.$options.name === 'w-scroll-tab-panel');
             },
             init() {
-                this.scrollView = this.$refs.scrollView;
-                this.contentOffsetTop = this.scrollView.getBoundingClientRect().top;
+                const panels = this.getPanels();
+                panels.forEach((panel, index) => {
+                    this.sizeInfo.push({
+                        offsetTop: panel.$el.offsetTop
+                    })
+                });
                 this.bindEvent();
                 this.setDefault();
             },
             bindEvent() {
-                this.scrollView.addEventListener('scroll', this.scrollHandler);
-                window.addEventListener('resize', this.scrollHandler);
+                this.$refs.scrollView.addEventListener('scroll', this.scrollHandler);
             },
             setDefault() {
                 const panels = this.getPanels();
                 let num = 0;
-                panels.forEach((panel) => {
+                panels.forEach((panel, index) => {
                     this.navList.push({
                         name: panel.name,
-                        _uid: panel._uid,
+                        _uid: index,
                         icon: panel.icon
                     });
                     if (panel.active) {
-                        this.activeIndex = panel._uid;
-                        this.moveHandler(panel._uid);
+                        this.activeIndex = index;
+                        this.moveHandler(index);
                     } else {
                         ++num;
                         if (num >= panels.length)
-                            this.activeIndex = panels[0]._uid;
+                            this.activeIndex = 0;
                     }
                 });
             },
-            moveHandler(uid) {
+            moveHandler(index) {
                 if (this.scrolling)return;
                 this.scrolling = true;
+                let scrollView = this.$refs.scrollView
                 const panels = this.getPanels();
-                const itemOffsetTop = panels.filter(item => item._uid == uid)[0].$el.getBoundingClientRect().top;
-                console.log(this.scrollView.scrollTop, itemOffsetTop, this.contentOffsetTop, itemOffsetTop - this.contentOffsetTop)
-                this.scrollView.scrollTop = this.scrollView.scrollTop + itemOffsetTop  - this.contentOffsetTop + 2;
-                this.activeIndex = uid;
+                let panel = panels[index]
+                const itemOffsetTop = panel.$el.offsetTop;
+                scrollView.scrollTop = itemOffsetTop + 2;
+                this.activeIndex = index;
                 setTimeout(() => {
                     this.scrolling = false;
                 }, 6);
@@ -80,30 +84,22 @@
                 if (this.scrolling)return;
                 const panels = this.getPanels();
                 const panelsLength = panels.length;
-                const scrollBox = this.scrollView;
-                const scrollBoxHeight = scrollBox.offsetHeight;
-                const scrollBoxTop = scrollBox.scrollTop;
-                const panelItemHeight = panels[0].$el.offsetHeight;
-                if (scrollBoxTop >= panelItemHeight * panelsLength - scrollBoxHeight) {
-                    this.activeIndex = panels[panelsLength - 1]._uid;
-                    this.active = panelsLength - 1
-                    return;
-                }
-                panels.forEach((panel, index) => {
-                    if (panel.$el.getBoundingClientRect().top <= this.contentOffsetTop) {
-                        this.activeIndex = panel._uid;
-                        this.active = index
+
+                let scrollView = this.$refs.scrollView
+                let scrollTop = scrollView.scrollTop
+
+                this.sizeInfo.forEach( (item, index) => {
+                    if (item.offsetTop <= scrollTop) {
+                        this.activeIndex = index
                     }
-                });
-                this.$emit('change', this.active)
+                })
+                this.$emit('change', this.activeIndex)
             }
         },
         mounted() {
-            this.init();
-        },
-        destroyed() {
-            this.scrollView.removeEventListener('scroll', this.scrollHandler);
-            window.removeEventListener('resize', this.scrollHandler);
+            this.$nextTick(() => {
+                this.init();
+            })
         }
     }
 </script>

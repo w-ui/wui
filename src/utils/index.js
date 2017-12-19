@@ -277,3 +277,21 @@ export function scrollTop (el, from = 0, to, duration = 500) {
 
   scroll(from, to, step);
 };
+
+export const isBoolean = val => typeof val === 'boolean'
+
+export const isString = val => typeof val === 'string'
+
+export const isNumber = val => typeof val === 'number'
+
+export const isFunction = val => typeof val === 'function'
+
+export const isDate = val =>
+  Object.prototype.toString
+  .call(val)
+  .match(/^(\[object )(\w+)\]$/i)[2]
+  .toLowerCase() === 'date'
+
+export const isArray = Array.isArray
+
+export const isObject = val => typeof val === 'object'

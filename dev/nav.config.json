@@ -27,24 +27,6 @@
         "component": "Cell"
       },
       {
-        "path": "/doc/DateTime",
-        "title": "DateTime 时间控件",
-        "name": "DateTime",
-        "component": "DateTime"
-      },
-      {
-        "path": "/doc/Picker",
-        "title": "Picker 选择列表",
-        "name": "Picker",
-        "component": "Picker"
-      },
-      {
-        "path": "/doc/Password",
-        "title": "Password 密码输入框",
-        "name": "Password",
-        "component": "Password"
-      },
-      {
         "path": "/doc/Input",
         "title": "Input 输入框",
         "name": "Input",
@@ -57,10 +39,40 @@
         "component": "Textarea"
       },
       {
+        "path": "/doc/DateTime",
+        "title": "DateTime 时间控件",
+        "name": "DateTime",
+        "component": "DateTime"
+      },
+      {
+        "path": "/doc/Calendar",
+        "title": "Calendar 日历",
+        "name": "Calendar",
+        "component": "Calendar"
+      },
+      {
+        "path": "/doc/Picker",
+        "title": "Picker 选择列表",
+        "name": "Picker",
+        "component": "Picker"
+      },
+      {
         "path": "/doc/Switch",
         "title": "Switch 开关",
         "name": "Switch",
         "component": "Switch"
+      },
+      {
+        "path": "/doc/Range",
+        "title": "Range 滑动条",
+        "name": "Range",
+        "component": "Range"
+      },
+      {
+        "path": "/doc/Password",
+        "title": "Password 密码输入框",
+        "name": "Password",
+        "component": "Password"
       },
       {
         "path": "/doc/Keyboard",
