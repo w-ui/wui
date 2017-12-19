@@ -15,6 +15,10 @@ export default Vue.component('App', {
 </script>
 
 <style lang="less-loader">
+  html{
+    touch-action: none;
+  }
+
   *{
     padding: 0;
     margin: 0;
