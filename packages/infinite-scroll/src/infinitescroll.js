@@ -76,6 +76,7 @@ export default {
             return
           }
           this.translateTo(0, lasty, true)
+          e.preventDefault()
         }
       }
     },
@@ -308,6 +309,18 @@ export default {
         }
         return true
       }
+    },
+    canScroll (direction) {
+      if (direction === 'down' && this.currentPage === 0) {
+        return false
+      }
+      if (direction === 'down' && this.currentPage >= this.pageCount) {
+        return true
+      }
+      if (this.currentPage < this.pageCount) {
+        return true
+      }
+      return false
     }
   },
   render (h) {

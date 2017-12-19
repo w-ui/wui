@@ -233,7 +233,9 @@ export default {
       header: data,
       pageCount: data.length,
       treeIndex: 0,
-      timer: null
+      timer: null,
+      drag: false,
+      startY: 0
     }
   },
   methods: {
@@ -265,10 +267,36 @@ export default {
     },
     scroll () {
       return true
+    },
+    touchstart (e) {
+      this.drag = true
+      let tar = e.touches[0]
+      this.startY = tar.pageY
+    },
+    touchmove (e) {
+      if (this.drag) {
+        let tar = e.changedTouches[0]
+        let offsetY = tar.pageY - this.startY
+        if (offsetY < 0) {
+          if (this.$refs.infinitescroll.canScroll('up')) {
+            e.preventDefault();
+          }
+        } else {
+          if (this.$refs.infinitescroll.canScroll('down')) {
+            e.preventDefault();
+          }
+        }
+      }
+    },
+    touchend (e) {
+      this.drag = false
     }
   },
   mounted () {
     this.$refs.srolltree.setCurrent(0)
+    document.addEventListener('touchstart', this.touchstart, false)
+    document.addEventListener('touchmove', this.touchmove, false)
+    window.addEventListener('touchend', this.touchend, false)
   }
 }
 </script>

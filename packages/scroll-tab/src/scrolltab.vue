@@ -54,7 +54,8 @@
                 this.setDefault();
             },
             bindEvent() {
-                this.$refs.scrollView.addEventListener('scroll', this.scrollHandler, true);
+                this.$refs.scrollView.addEventListener('scroll', this.scrollHandler, false);
+                // this.$refs.scrollView.addEventListener('touchmove', this.scrollHandler, true);
             },
             setDefault() {
                 const panels = this.getPanels();
@@ -112,9 +113,9 @@
                 this.lastScrollTop = scrollTop
                 
                 if (this.canScroll(direction)){
-                    e.preventDefault()
                     e.stopPropagation()
                 }
+                e.preventDefault()
             },
             setCurrent (index) {
                 this.moveHandler(index);
