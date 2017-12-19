@@ -163,7 +163,7 @@ import { hasClass, removeClass, addClass } from 'src/utils'
             this.centerItem(pnode);
           }
         },
-        centerItem(node){
+        centerItem(node, stopEmit){
           this.$el.querySelectorAll('.w-tree-item').forEach(item => {
             if (item === node) {
               addClass(node, 'active');
@@ -185,7 +185,7 @@ import { hasClass, removeClass, addClass } from 'src/utils'
             }
           })
 
-          if (!this.centerActivedItem) {
+          if (!this.centerActivedItem && !stopEmit) {
             this.$emit('change', this.currentIndex, this.currentSubIndex)
             return;
           }
@@ -205,7 +205,9 @@ import { hasClass, removeClass, addClass } from 'src/utils'
           }
           this.translateTo(0, offset, 600)
           console.log('chnage>>:', this.currentIndex)
-          this.$emit('change', this.currentIndex)
+          if (!stopEmit) {
+            this.$emit('change', this.currentIndex)
+          }
         },
         translateTo (x, y, t, immediately) {
           let time = t || 300
@@ -227,11 +229,11 @@ import { hasClass, removeClass, addClass } from 'src/utils'
               let children = pn.querySelectorAll('.w-tree-item')
               if (subIndex >= 0 && subIndex < this.data[index].children.length) {
                 this.currentX = index
-                this.centerItem(children[subIndex]);
+                this.centerItem(children[subIndex], true);
               }
             } else {
               this.currentX = index
-              this.centerItem(pn);
+              this.centerItem(pn, true);
             }
           }
         }

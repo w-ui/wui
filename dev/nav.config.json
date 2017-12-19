@@ -176,7 +176,7 @@
       },
       {
         "path": "/doc/ScrollComposite3",
-        "title": "组件组合效果-scrolltab",
+        "title": "组件组合-scrolltab",
         "name": "ScrollComposite3",
         "component": "ScrollComposite3"
       }

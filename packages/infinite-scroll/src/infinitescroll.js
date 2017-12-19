@@ -15,6 +15,7 @@ export default {
       currentPage: 0,
       pageInfo: [],
       lastCount: 0,
+      toBottom: false,
       ww: 0,
       hh: 0
     }
@@ -221,6 +222,7 @@ export default {
           } else {
             if (this.updatePageIndex('backward')) {
               last = -this.currentPage * this.hh
+              this.scrollToBottom()
             } else {
               let back = -lastP * this.hh
               this.translateTo(0, back, t)
@@ -274,6 +276,13 @@ export default {
         this.$refs.box.style.transition = `${time}ms all cubic-bezier(0.1, 0.57, 0.1, 1)`
       }
       this.$refs.box.style.transform = `translate3d(${x}px, ${y}px, 0)`
+    },
+    scrollToBottom () {
+      this.toBottom = true
+      // this.$nextTick(() => {
+      //   let child = this.$slots.default[this.currentPage]
+      //   child.parentNode.scrollTop = 99999
+      // })
     },
     checkScroll (e) {
       let tar = this.$slots.default[this.currentPage]
@@ -347,6 +356,19 @@ export default {
           </div>
         </div>
       )
+    }
+  },
+  updated () {
+    if (this.toBottom) {
+      let child = this.$slots.default[this.currentPage]
+      child.children.forEach(item => {
+        let ins = item.componentInstance
+        if (ins.$options.name === 'w-scroll-tab') {
+          ins.scrollToBottom()
+          return false
+        }
+      })
+      this.toBottom = false
     }
   },
   mounted () {

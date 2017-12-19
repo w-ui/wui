@@ -10,7 +10,7 @@
       </div>
 
       <div class="tab-list-body">
-        <w-infinite-scroll ref="infinitescroll" @change="pageChange" :pageCount="pageCount" direction="v" :scroll="scroll">
+        <w-infinite-scroll ref="infinitescroll" @change="pageChange" :pageCount="pageCount" direction="v">
           <div class="body-item" v-for="(item, index) of category" :key=" 'head-' + index">
             <template v-if = 'item'>
               <p class="name">{{item.name}}</p>

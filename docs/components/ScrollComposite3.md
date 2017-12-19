@@ -10,35 +10,59 @@
 ```html
 <template>
   <div class="scroll-tab">
-    <w-sticky top="0px">
-      <w-scroll-card ref="srollcard" @change="itemChange">
-        <div class="head-item" v-for="(item, index) of header" :key=" 'head-' + index" v-text="item.name">
-        </div>
-      </w-scroll-card>
-    </w-sticky>
-
     <div class="tab-body">
-      <w-infinite-scroll ref="infinitescroll" @change="pageChange" :pageCount="pageCount">
-        <div class="body-item" v-for="(item, index) of category" :key=" 'head-' + index">
-          <template v-if = 'item'>
-            <p class="name" v-text="item.name"></p>
-            <div class="product-item" v-for="pro of item.products" :key=" 'body-item-' + pro">
-              <div class="img"></div>
-              <div class="info">
-                <div class="title" v-text="pro"></div>
-                <div class="tag"></div>
-                <div class="price"></div>
-              </div>
-            </div>
-          </template>
-        </div>
-      </w-infinite-scroll>
+      <div class="tab-list">
+        <w-scroll-tree ref="srolltree" @change="itemChange" :data="header" :centerActivedItem="false">
+        </w-scroll-tree>
+      </div>
+
+      <div class="tab-list-body">
+        <w-infinite-scroll ref="infinitescroll" @change="pageChange" :pageCount="pageCount" direction="v" :scroll="scroll">
+          <div class="body-item" v-for="(item, index) of category" :key=" 'head-' + index">
+            <template v-if='item && item.children && item.children.length > 0'>
+              <w-scroll-tab :showSide="false" @change="subItemChange">
+                <w-scroll-tab-panel v-for="(child, idx) in item.children" :key="'s-t-p-' + idx" :name="child.name">
+                  <w-sticky slot="header">
+                    <div class="panel-head-bar" v-text="child.name"></div>
+                  </w-sticky>
+                  <div class="product-item" v-for="pro of child.products" :key=" 'body-item-' + pro">
+                    <div class="img"></div>
+                    <div class="info">
+                      <div class="title" v-text="pro"></div>
+                      <div class="tag"></div>
+                      <div class="price"></div>
+                    </div>
+                  </div>
+                </w-scroll-tab-panel>
+              </w-scroll-tab>
+            </template>
+            <template v-else>
+              <template v-if="item">
+                <div class="name" v-text="item.name"></div>
+                <div class="product-item" v-for="pro of item.products" :key=" 'body-item-' + pro">
+                  <div class="img"></div>
+                  <div class="info">
+                    <div class="title" v-text="pro"></div>
+                    <div class="tag"></div>
+                    <div class="price"></div>
+                  </div>
+                </div>
+              </template>
+            </template>
+          </div>
+        </w-infinite-scroll>
+      </div>
+
+    </div>
+      
     </div>
   </div>
 </template>
 
 <script>
-import ScrollCard from 'packages/scroll-card'
+import ScrollTree from 'packages/scroll-tree'
+import ScrollTab from 'packages/scroll-tab'
+import ScrollTabPanel from 'packages/scroll-tab-panel'
 import InfiniteScroll from 'packages/infinite-scroll'
 import Sticky from 'packages/sticky'
 
@@ -46,155 +70,199 @@ let data = [
   {
     name: '特价专区',
     id: 1003001,
-    icon: 'chart',
-  },
-  {
-    name: '满69减30',
-    id: 1003001,
-    icon: 'price-tag'
-  },
-  {
-    name: '优惠',
-    id: 1003001,
-    icon: 'ticket'
-  },
-  {
-    name: '热销',
-    id: 1003001,
-    icon: 'cart'
+    icon: 'medall',
+    children: [
+      {
+        name: '满69减30',
+        id: 1003001,
+        icon: 'camera',
+        children: [],
+        products: [1,2,3,4,5,6,7,8,9,10]
+      },
+      {
+        name: '优惠',
+        id: 1003001,
+        icon: 'announcement',
+        children: [],
+        products: [1,2,3,4,5]
+      },
+      {
+        name: '热销',
+        id: 1003001,
+        icon: 'magnet',
+        children: [],
+        products: [1,2,3]
+      }
+    ]
   },
   {
     name: '新鲜水果',
     id: 1003001,
-    icon: 'appleinc'
+    icon: 'apple',
+    children: [],
+    products: [1,2,3,4,5,6,7]
   },
   {
     name: '冰淇淋',
     id: 1003001,
-    icon: 'cutlery'
+    icon: 'id-badge',
+    children: [],
+    products: [1,2,3,4,5,6,7,8,9,10]
   },
   {
     name: '特价专区',
     id: 1003001,
-    icon: 'bell2'
-  },
-  {
-    name: '饮料/水',
-    id: 1003001,
-    icon: 'coffee'
-  },
-  {
-    name: '酒类饮品',
-    id: 1003001,
-    icon: 'beer'
-  },
-  {
-    name: '牛奶乳类',
-    id: 1003001,
-    icon: 'spotify'
+    icon: 'shield',
+    children: [
+      {
+        name: '饮料/水',
+        id: 1003001,
+        icon: 'package',
+        children: [],
+        products: [1,2,3,4,5]
+      },
+      {
+        name: '酒类饮品',
+        id: 1003001,
+        icon: 'world',
+        children: [],
+        products: [1,2,3]
+      },
+      {
+        name: '牛奶乳类',
+        id: 1003001,
+        icon: 'brush-alt',
+        children: [],
+        products: [1,2,3,4,5,6,7,8]
+      }
+    ]
   },
   {
     name: '休闲零食',
     id: 1003001,
-    icon: 'bullseye'
-  },
-  {
-    name: '卤味鲜食',
-    id: 1003001,
-    icon: 'envira'
-  },
-  {
-    name: '糖巧饼干',
-    id: 1003001,
-    icon: 'modx'
-  },
-  {
-    name: '方便速食',
-    id: 1003001,
-    icon: 'wpbeginner'
+    icon: 'palette',
+    children: [
+      {
+        name: '卤味鲜食',
+        id: 1003001,
+        icon: 'envira',
+        children: [],
+        products: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+      },
+      {
+        name: '糖巧饼干',
+        id: 1003001,
+        icon: 'modx',
+        children: [],
+        products: [1,2,3,4,5]
+      },
+      {
+        name: '方便速食',
+        id: 1003001,
+        icon: 'mouse',
+        children: [],
+        products: [1]
+      }
+    ]
   },
   {
     name: '营养冲调',
     id: 1003001,
-    icon: 'heart'
+    icon: 'shine',
+    children: [],
+    products: [1,2]
   },
   {
     name: '计生用品',
     id: 1003001,
-    icon: 'man-woman'
+    icon: 'ticket',
+    children: [],
+    products: [1,2,3,4,5,6,7,8,9]
   },
   {
     name: '个人护理',
     id: 1003001,
-    icon: 'bandcamp'
+    icon: 'brush',
+    children: [],
+    products: [1,2,3,4]
   },
   {
     name: '日用百货',
     id: 1003001,
-    icon: ''
+    icon: 'notepad',
+    children: [],
+    products: [1,2,3,4,5,6,7,8]
   },
   {
     name: '进口食品',
     id: 1003001,
-    icon: ''
-  },
-  {
-    name: '百草味',
-    id: 1003001,
-    icon: ''
+    icon: 'hummer',
+    children: [
+      {
+        name: '百草味',
+        id: 1003001,
+        icon: 'video-clapper',
+        children: [],
+        products: [1,2,3,4,5,6,7,8,9]
+      }
+    ]
   },
   {
     name: '网红新品',
     id: 1003001,
-    icon: ''
+    icon: 'pin2',
+    children: [],
+    products: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
   },
   {
     name: '休闲食品',
     id: 1003001,
-    icon: ''
+    icon: 'gallery',
+    children: [],
+    products: [1,2,3,4]
   }
 ];
 
 export default {
   components: {
     'w-infinite-scroll': InfiniteScroll,
-    'w-scroll-card': ScrollCard,
+    'w-scroll-tree': ScrollTree,
+    'w-scroll-tab': ScrollTab,
+    'w-scroll-tab-panel': ScrollTabPanel,
     'w-sticky': Sticky
   },
   data () {
     return {
-      category: [{
-        name: data[0].name,
-        products: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
-      }],
+      category: [data[0]],
       header: data,
-      pageCount: data.length
+      pageCount: data.length,
+      treeIndex: 0
     }
   },
   methods: {
     pageChange (currentPage, lastPage) {
-      let d = data[currentPage]
-      this.category[currentPage] = {
-        name: d.name,
-        products: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
-      };
-      this.$refs.srollcard.setCurrent(currentPage)
+      this.treeIndex = currentPage
+      this.category.push(data[currentPage])
+      this.$refs.srolltree.setCurrent(currentPage)
     },
     itemChange (currentIndex) {
-      let d = data[currentIndex]
-      let content = {
-        name: d.name,
-        products: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
-      };
-      this.$set(this.category, currentIndex, content)
+      this.treeIndex = currentIndex
+      this.$set(this.category, currentIndex, data[currentIndex])
       this.$refs.infinitescroll.setCurrent(currentIndex)
+      this.$nextTick(() => {
+        // this.$refs.infinitescroll.setCurrent(currentIndex + 1)
+      })
+    },
+    subItemChange (index) {
+      console.log(index)
+      this.$refs.srolltree.setCurrent(this.treeIndex, index)
     },
     scroll () {
-
+      return true
     }
   },
   mounted () {
-    this.$refs.srollcard.setCurrent(0)
+    this.$refs.srolltree.setCurrent(0)
   }
 }
 </script>
@@ -205,14 +273,16 @@ export default {
     height: 100%;
 
     .head-item{
-      padding: 10px 20px;
-      background-color: #fff;
+      padding: 10px 0px 10px 10px;
+      background-color: #f5f5f5;
     }
     .head-item.active{
-      border-bottom: 2px dodgerblue solid;
+      background-color: #fff;
     }
 
     .body-item{
+      height: 100%;
+      overflow-y: auto;
 
       .name{
         padding: 10px;
@@ -221,41 +291,58 @@ export default {
       }
 
       .product-item{
-          width: 100%;
-          display: flex;
-          margin-bottom: 20px;
-          .img{
-            flex: 0 0 130px;
-            height: 90px;
+        width: 100%;
+        display: flex;
+        margin-bottom: 20px;
+        .img{
+          flex: 0 0 80px;
+          height: 90px;
+          background-color: #eee;
+        }
+        .info{
+          flex: 1 1 100%;
+          padding: 0 10px;
+          .title{
+            width: 100%;
+            height: 30px;
+            line-height: 30px;
+            padding: 0 10px;
+            background-color: #eee;
+            margin-bottom: 5px;
+          }
+          .tag{
+            width: 40%;
+            height: 20px;
+            background-color: #eee;
+            margin-bottom: 5px;
+          }
+          .price{
+            width: 60%;
+            height: 30px;
             background-color: #eee;
           }
-          .info{
-            flex: 1 1 100%;
-            padding: 0 10px;
-            .title{
-              width: 100%;
-              height: 30px;
-              line-height: 30px;
-              padding: 0 10px;
-              background-color: #eee;
-              margin-bottom: 5px;
-            }
-            .tag{
-              width: 40%;
-              height: 20px;
-              background-color: #eee;
-              margin-bottom: 5px;
-            }
-            .price{
-              width: 60%;
-              height: 30px;
-              background-color: #eee;
-            }
-          }
+        }
       }
     }
+
+    .tab-body{
+      display: flex;
+      height: 420px;
+      overflow: hidden;
+
+      .tab-list{
+        height: 100%;
+        flex: 0 0 90px;
+      }
+
+      .tab-list-body{
+        flex: 1 1 100%;
+        padding-left: 10px;
+        overflow: hidden;
+      }
+
+    }
   }
-  
 </style>
 
 ```

@@ -79,6 +79,7 @@
                 setTimeout(() => {
                     this.scrolling = false;
                 }, 6);
+                this.$emit('change', this.activeIndex)
             },
             scrollHandler() {
                 if (this.scrolling)return;
@@ -89,11 +90,19 @@
                 let scrollTop = scrollView.scrollTop
 
                 this.sizeInfo.forEach( (item, index) => {
-                    if (item.offsetTop <= scrollTop) {
+                    if (item && item.offsetTop <= scrollTop) {
                         this.activeIndex = index
                     }
                 })
                 this.$emit('change', this.activeIndex)
+            },
+            setCurrent (index) {
+                this.moveHandler(index);
+            },
+            scrollToBottom () {
+                this.$nextTick(() => {
+                    this.$refs.scrollView.scrollTop = 9999
+                })
             }
         },
         mounted() {

@@ -1,6 +1,8 @@
 <template>
     <div class="scroll-tab-content-item">
-        <strong class="scroll-tab-content-title">{{name}}</strong>
+        <slot name="header">
+            <strong class="scroll-tab-content-title">{{name}}</strong>
+        </slot>
         <slot></slot>
     </div>
 </template>

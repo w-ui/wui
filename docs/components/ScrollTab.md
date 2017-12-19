@@ -209,6 +209,7 @@ export default {
 |---------------|-------------|-----------|--------------|-----------|
 | showSide      | 是否显示左边导航栏  |   Boolean  |              |   true   |
 
+
 ###  ScrollTab 事件介绍 event
 
 | 事件名称        | 参数           |    说明         | 类型         | 
@@ -223,3 +224,10 @@ export default {
 | name          | 分类名称     |  String    |             |           |
 | icon          | icon        |  String   |             |            |
 | active        | 是否激活     |  Boolean   |             | false     |
+
+
+###  ScrollTabPanel 插槽介绍 slot
+
+| 名称           | 说明           |
+|---------------|----------------|
+| header        |  Panel头部      |
