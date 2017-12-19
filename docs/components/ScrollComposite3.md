@@ -23,12 +23,12 @@
               <w-scroll-tab ref="scrolltab" :showSide="false" @change="subItemChange">
                 <w-scroll-tab-panel v-for="(child, idx) in item.children" :key="'s-t-p-' + idx" :name="child.name">
                   <w-sticky slot="header">
-                    <div class="panel-head-bar">{{child.name}}</div>
+                    <div class="panel-head-bar" v-text="child.name"></div>
                   </w-sticky>
                   <div class="product-item" v-for="pro of child.products" :key=" 'body-item-' + pro">
                     <div class="img"></div>
                     <div class="info">
-                      <div class="title">{{pro}}</div>
+                      <div class="title" v-text="pro"></div>
                       <div class="tag"></div>
                       <div class="price"></div>
                     </div>
@@ -41,12 +41,12 @@
                 <w-scroll-tab :showSide="false">
                   <w-scroll-tab-panel :name="item.name">
                     <w-sticky slot="header">
-                      <div class="panel-head-bar">{{item.name}}</div>
+                      <div class="panel-head-bar" v-text="item.name"></div>
                     </w-sticky>
                     <div class="product-item" v-for="pro of item.products" :key=" 'body-item-' + pro">
                       <div class="img"></div>
                       <div class="info">
-                        <div class="title">{{pro}}</div>
+                        <div class="title" v-text="pro"></div>
                         <div class="tag"></div>
                         <div class="price"></div>
                       </div>
