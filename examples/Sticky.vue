@@ -22,9 +22,10 @@
             }
         },
         mounted () {
-            let computedStyle = window.getComputedStyle(this.$el)
-            let position = computedStyle.position
-            this.support = position.indexOf('sticky') > -1
+            let el = document.createElement('a')
+            let mStyle = el.style
+            mStyle.cssText = 'position:sticky; position:-webkit-sticky;'
+            this.support = mStyle.position.indexOf('sticky') !== -1
         }
     }
 </script>

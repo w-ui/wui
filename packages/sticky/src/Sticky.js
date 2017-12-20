@@ -54,12 +54,17 @@ export default {
       } else {
         this.position = 'sticky'
       }
+    },
+    checkSupport () {
+      let el = document.createElement('a')
+      let mStyle = el.style
+      mStyle.cssText = 'position:sticky; position:-webkit-sticky;'
+      return mStyle.position.indexOf('sticky') !== -1
     }
   },
   render (h) {
     return (
-      <div
-        class='sticky'
+      <div class='sticky'
         style={{
           top: this.top,
           bottom: this.bottom,
@@ -74,16 +79,14 @@ export default {
   mounted () {
     // 保证 this.$el 已经插入文档
     this.$nextTick(() => {
-      let computedStyle = window.getComputedStyle(this.$el)
-      let position = computedStyle.position
-      let stickySupport = position.indexOf('sticky') > -1
       let child = this.$el.firstElementChild
-      if (!stickySupport && child) {
+      if (!this.checkSupport() && child) {
+        let height = this.$el.offsetHeight
         this.child = child
         child.style.zIndex = this.zIndex
-        this.stickyHeight = parseFloat(computedStyle.height, 10)
+        this.stickyHeight = parseFloat(height, 10)
         this.$el.style.position = 'static'
-        this.$el.style.height = computedStyle.height
+        this.$el.style.height = height + 'px'
         window.addEventListener('scroll', this.scrollHandler, false)
         this.scrollHandler()
       }
