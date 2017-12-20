@@ -95,6 +95,7 @@ export default {
     bottom: 0;
     overflow-y: auto;
     display: none;
+    background-color: #fff;
     
     p{
       padding: 10px;

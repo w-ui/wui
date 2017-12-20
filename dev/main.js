@@ -4,8 +4,21 @@ import App from './app'
 Vue.component('App', App)
 
 Vue.config.errorHandler = function (err, vm, info) {
+  showError(err, JSON.stringify(vm), info)
+}
+
+window.addEventListener('error', (message, source, lineno, colno, error) => {
+  showError(message, `source: ${source}, lineno: ${lineno}, colno: ${colno}`, error)
+})
+
+function showError () {
   let dom = document.querySelector('#error')
-  dom.innerHTML = `<p>${err}</p><p>${vm}</p><p>${info}</p>`
+  let logs = []
+  for (let i = 0; i < arguments.length; i++) {
+    logs.push(`<p>${arguments[i]}</p>`)
+  }
+  logs.push('---------------------------')
+  dom.innerHTML += logs.join() + 
   dom.style.display = 'block'
 }
 

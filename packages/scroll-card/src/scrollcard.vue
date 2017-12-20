@@ -133,11 +133,13 @@
                 let offsetX = tar.pageX - this.startX;
                 this.offsetW = offsetX;
                 let lastx = this.currentX + offsetX;
+                lastx = this.getDamping(lastx)
                 this.translateTo(lastx, 0, 0, true)
               } else {
                 let offsetY = tar.pageY - this.startY;
                 this.offsetH = offsetY;
                 let lasty = this.currentY + offsetY;
+                lasty = this.getDamping(lasty)
                 this.translateTo(0, lasty, 0, true)
               }
             }
@@ -145,6 +147,20 @@
           bounceBack(x, y, t) {
             let ti = t || 500
             this.translateTo(x, y, ti)
+          },
+          getDamping (s) {
+            let max = 0
+            let min = this.minsw
+            if (this.direction === 'v') {
+              min = this.minsh
+            }
+            if (s > max) {
+              return Math.round(s/4)
+            } else if (s < min) {
+              return Math.round(min - (min - s ) / 4)
+            } else {
+              return s
+            }
           },
           momentumMove(e) {
             let difft = Date.now() - this.startTime;
@@ -344,8 +360,6 @@
           window.addEventListener('mouseup', this.touchend, false);
         },
         destroyed() {
-          this.$refs.box.removeEventListener('touchmove', this.touchmove, false)
-          this.$refs.box.removeEventListener('touchend', this.touchend, false)
           window.removeEventListener('mousemove', this.touchmove, false);
           window.removeEventListener('mouseup', this.touchend, false);
         }

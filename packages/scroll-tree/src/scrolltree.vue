@@ -99,13 +99,28 @@ import { hasClass, removeClass, addClass } from 'src/utils'
             tar = tar[0];
             let offsetY = tar.pageY - this.startY;
             this.offsetH = offsetY;
-            let lasty = this.currentY + offsetY;
+            let lasty = this.currentY + offsetY
+            lasty = this.getDamping(lasty)
             this.translateTo(0, lasty, 0, true)
           }
         },
         bounceBack(x, y, t) {
           let ti = t || 500
           this.translateTo(x, y, ti)
+        },
+        getDamping (s) {
+          let max = 0
+          let min = this.minsw
+          if (this.direction == 'v') {
+            min = this.minsh
+          }
+          if (s > max) {
+            return Math.round(s/4)
+          } else if (s < min) {
+            return Math.round(min - (min - s ) / 4)
+          } else {
+            return s
+          }
         },
         momentumMove(e) {
           let difft = Date.now() - this.startTime;
