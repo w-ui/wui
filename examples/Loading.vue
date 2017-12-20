@@ -1,8 +1,10 @@
 
 <template>
   <div>
-    <w-loading v-show="loading"></w-loading>
-    <w-button size="large" @click.native="toggleLoading">点我查看加载效果</w-button>
+    <div class="paragraph">
+      <w-loading v-show="loading"></w-loading>
+      <w-button size="large" @click.native="toggleLoading">点我查看加载效果</w-button>
+    </div>
   </div>
 </template>
 

@@ -1,15 +1,17 @@
 <template>
-  <div class="scroll-list">
-    <w-infinite-list ref="infinitelist" @change="pageChange" :pageCount="pageCount">
-        <div class="product-item" v-for="pro of products" :key=" 'body-item-' + pro">
-          <div class="img"></div>
-          <div class="info">
-            <div class="title">{{pro}}</div>
-            <div class="tag"></div>
-            <div class="price"></div>
-          </div>
-        </div>
-    </w-infinite-list>
+  <div>
+      <div class="scroll-list">
+        <w-infinite-list ref="infinitelist" @change="pageChange" :pageCount="pageCount">
+            <div class="product-item" v-for="pro of products" :key=" 'body-item-' + pro">
+              <div class="img"></div>
+              <div class="info">
+                <div class="title">{{pro}}</div>
+                <div class="tag"></div>
+                <div class="price"></div>
+              </div>
+            </div>
+        </w-infinite-list>
+      </div>
   </div>
 </template>
 
@@ -53,6 +55,8 @@ export default {
   .scroll-list{
     width: 100%;
     height: 400px;
+    background-color: #fff;
+    padding: 10px;
 
 
     .product-item{

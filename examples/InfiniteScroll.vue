@@ -1,21 +1,20 @@
 <template>
   <div>
-    <div class="tab-area">
-      <w-infinite-scroll scrollMode="fullscreen" @change="pageChange" :pageCount="Infinity">
-        <div class="scroll-item" v-for="(item, index) of category" :key="index">
-          <div class="item-name">{{item.name}}</div>
-          <div class="product-item" v-for="pro of products" :key=" 'body-item-' + pro">
-            <div class="img"></div>
-            <div class="info">
-              <div class="title" v-text="pro"></div>
-              <div class="tag"></div>
-              <div class="price"></div>
+      <div class="tab-area">
+        <w-infinite-scroll scrollMode="fullscreen" @change="pageChange" :pageCount="Infinity">
+          <div class="scroll-item" v-for="(item, index) of category" :key="index">
+            <div class="item-name">{{item.name}}</div>
+            <div class="product-item" v-for="pro of products" :key=" 'body-item-' + pro">
+              <div class="img"></div>
+              <div class="info">
+                <div class="title" v-text="pro"></div>
+                <div class="tag"></div>
+                <div class="price"></div>
+              </div>
             </div>
           </div>
-        </div>
-      </w-infinite-scroll>
-    </div>
-
+        </w-infinite-scroll>
+      </div>
   </div>
 </template>
 
@@ -102,6 +101,8 @@ export default {
   .tab-area{
     width: 100%;
     height: 100%;
+    background-color: #fff;
+    padding: 0 10px;
 
     .scroll-item{
 

@@ -7,7 +7,10 @@
         name: 'w-icon',
         props: {
             name: String,
-            color: String,
+            color: {
+                type: String,
+                default: '#888'
+            },
             size: {
                 validator(value) {
                     return /^(\.|\d+\.)?\d+(px|rem)$/.test(value);

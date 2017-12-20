@@ -164,7 +164,7 @@
       },
       {
         "path": "/doc/ScrollComposite1",
-        "title": "组件组合-懒加载ScrollTab",
+        "title": "组件组合-scrollTab",
         "name": "ScrollComposite1",
         "component": "ScrollComposite1"
       },

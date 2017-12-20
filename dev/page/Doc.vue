@@ -33,7 +33,12 @@
 
       <div class="demo-area">
         <div class="demo-phone">
-          <iframe :src="demoSrc" frameborder="0" width="100%" height="100%"></iframe>
+          <div class="camera"></div>
+          <div class="speaker"></div>
+          <div class="screen">
+            <iframe :src="demoSrc" frameborder="0" width="100%" height="100%"></iframe>
+          </div>
+          <div class="home-btn"></div>
         </div>
 
       </div>
@@ -190,19 +195,61 @@ export default {
     .demo-phone{
       height: 600px;
       width: 310px;
-      padding: 40px 5px;
+      padding: 20px 5px 30px 5px;
       border-radius: 20px;
-      box-shadow: 0 0 10px #000;
+      box-shadow: 0 0 15px #000;
       border: 1px #ccc solid;
-      background-color: #e7e8e9;
+      background-color: #c7c8c9;
+      position: relative;
+
+      .screen{
+        width: 100%;
+        height: 100%;
+        border-radius: 8px; 
+        overflow: hidden;
+      }
+
+      .screen> div{
+        border: 1px #ccc solid; 
+        border-radius: 4px;
+        width: 100%;
+        height: 100%;
+        background-color: #f5f5f5;
+      }
+      .speaker{
+        width: 80px;
+        height: 6px;
+        border-radius: 10px;
+        border: 1px #B0b0b0 solid;
+        background-color: #c0c0c0;
+        position: absolute;
+        left: 50%;
+        top: 6px;
+        transform: translateX(-50%);
+      }
+      .camera{
+        width: 10px;
+        height: 10px;
+        border-radius: 100%;
+        border: 1px #aaa solid;
+        background-color: #c0c0c0;
+        position: absolute;
+        left: 90px;
+        top: 4px;
+      }
+      .home-btn{
+        width: 60px;
+        height: 16px;
+        border-radius: 10px;
+        border: 1px #aaa solid;
+        background-color: #bbb;
+        position: absolute;
+        left: 50%;
+        bottom: 6px;
+        transform: translateX(-50%);
+      }
     }
-    .demo-phone>div{
-      border: 1px #ccc solid; 
-      border-radius: 4px;
-      width: 100%;
-      height: 100%;
-      background-color: #f5f5f5;
-    }
+    
 
     .page-qrcode{
       text-align: center;

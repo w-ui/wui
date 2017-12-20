@@ -1,8 +1,10 @@
 <template>
 <div>
-    <w-button size="large" @click.native="showActionSheet">拍照</w-button>
-    <w-actionsheet :items="myItems1" v-model="show1" cancel="取消">
-    </w-actionsheet>
+    <div class="paragraph">
+        <w-button size="large" @click.native="showActionSheet">拍照</w-button>
+        <w-actionsheet :items="myItems1" v-model="show1" cancel="取消">
+        </w-actionsheet>
+    </div>
 </div>
 </template>
 

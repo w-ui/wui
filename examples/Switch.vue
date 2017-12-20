@@ -1,7 +1,9 @@
 <template>
   <div>
-    <w-switch v-model="switch1"></w-switch>
-    <p>状态： {{switch1}}</p>
+    <div class="paragraph">
+      <w-switch v-model="switch1"></w-switch>
+      <p>状态： {{switch1}}</p>
+    </div>
   </div>
 </template>
 

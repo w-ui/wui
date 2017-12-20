@@ -1,9 +1,11 @@
 <template>
   <div>
-    <w-button size="large" @click.native="doConfirm">确认</w-button>
-    <w-button size="large" @click.native="doAlert">确定</w-button>
-    <w-button size="large" @click.native="doNotify">通知</w-button>
-    <w-button size="large" @click.native="doToast">toast</w-button>
+    <div class="paragraph">
+      <w-button size="large" @click.native="doConfirm">确认</w-button>
+      <w-button size="large" @click.native="doAlert">确定</w-button>
+      <w-button size="large" @click.native="doNotify">通知</w-button>
+      <w-button size="large" @click.native="doToast">toast</w-button>
+    </div>
   </div>
 </template>
 

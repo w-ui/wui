@@ -1,8 +1,10 @@
 <template>
   <div>
+    <div class="paragraph" style="text-align: center">
       <w-password v-model="password" @finish="onFinish"></w-password>
       <br/><br/>
       密码为：{{password}}
+    </div>
   </div>
 </template>
 

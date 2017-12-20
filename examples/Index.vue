@@ -5,28 +5,48 @@
       <div class="title">WUI</div>
     </div>
 
-
+    <div class="grid-title">表单</div>
     <w-grid :rows="2">
       <w-grid-item link="/demo/Button">Button <br>按钮</w-grid-item>
       <w-grid-item link="/demo/Checkbox">Checkbox <br>多选</w-grid-item>
       <w-grid-item link="/demo/Radio">Radio <br>单选</w-grid-item>
       <w-grid-item link="/demo/Cell">Cell <br>表单</w-grid-item>
-      <w-grid-item link="/demo/DateTime">DateTime <br>时间控件</w-grid-item>
-      <w-grid-item link="/demo/Select">Select <br>下拉列表</w-grid-item>
-      <w-grid-item link="/demo/Password">Password <br>密码输入框</w-grid-item>
+      <w-grid-item link="/demo/Input">Input <br>输入框</w-grid-item>
       <w-grid-item link="/demo/Textarea">Textarea <br>文本框</w-grid-item>
+      <w-grid-item link="/demo/DateTime">DateTime <br>时间选择</w-grid-item>
+      <w-grid-item link="/demo/Calendar">Calendar <br>日历</w-grid-item>
+      <w-grid-item link="/demo/Picker">Picker <br>选择列表</w-grid-item>
       <w-grid-item link="/demo/Switch">Switch <br>开关</w-grid-item>
+      <w-grid-item link="/demo/Range">Range <br>滑动条</w-grid-item>
+      <w-grid-item link="/demo/Password">Password <br>密码输入框</w-grid-item>
       <w-grid-item link="/demo/Keyboard">Keyboard <br>安全键盘</w-grid-item>
-      <w-grid-item link="/demo/Grid">Grid <br>布局栅格</w-grid-item>
+    </w-grid>
+
+    <div class="grid-title">布局</div>
+    <w-grid :rows="2">
+      <w-grid-item link="/demo/Layout">Layout <br>布局</w-grid-item>
+      <w-grid-item link="/demo/Titlebar">Titlebar <br>标题栏</w-grid-item>
       <w-grid-item link="/demo/Menubar">Menubar <br>菜单条</w-grid-item>
+      <w-grid-item link="/demo/Grid">Grid <br>布局栅格</w-grid-item>
+    </w-grid>
+
+    <div class="grid-title">滚动</div>
+    <w-grid :rows="2">
       <w-grid-item link="/demo/Carousel">Carousel <br>轮播</w-grid-item>
       <w-grid-item link="/demo/ScrollCard">ScrollCard <br>滑动卡片</w-grid-item>
-      <w-grid-item link="/demo/InfiniteScroll">InfiniteScroll <br>无限滑动</w-grid-item>
+      <w-grid-item link="/demo/ScrollTree">ScrollTree <br>滑动树</w-grid-item>
+      <w-grid-item link="/demo/ScrollTree">ScrollTab <br>滑动Tab</w-grid-item>
+      <w-grid-item link="/demo/InfiniteScroll">InfiniteList <br>无限滑动列表</w-grid-item>
+      <w-grid-item link="/demo/InfiniteScroll">InfiniteScroll <br>无限滑动卡片</w-grid-item>
       <w-grid-item link="/demo/Sticky">Sticky <br>吸顶</w-grid-item>
       <w-grid-item link="/demo/Scroll">Scroll <br>滚动</w-grid-item>
       <w-grid-item link="/demo/ScrollComposite1">组件组合效果 <br>scrolltab</w-grid-item>
       <w-grid-item link="/demo/ScrollComposite2">组件组合效果 <br>scrolltab</w-grid-item>
       <w-grid-item link="/demo/ScrollComposite3">组件组合效果 <br>scrolltab</w-grid-item>
+    </w-grid>
+
+    <div class="grid-title">通用</div>
+    <w-grid :rows="2">
       <w-grid-item link="/demo/Dialog">Dialog <br>提示框</w-grid-item>
       <w-grid-item link="/demo/Popup">Popup  <br>弹出层</w-grid-item>
       <w-grid-item link="/demo/Accordion">Accordion <br>折叠面板</w-grid-item>
@@ -47,6 +67,7 @@
       <w-grid-item link="/demo/Waterfall">Waterfall   <br>瀑布流</w-grid-item>
       <w-grid-item link="/demo/Qrcode">Qrcode   <br>二维码</w-grid-item>
     </w-grid>
+    
   </div>
 </template>
 
@@ -70,7 +91,9 @@ export default {
     height: 100%;
 
     .header{
+      background-color: #fff;
       text-align: center;
+      padding: 20px 10px 10px 10px;
       img{
         width: 64px;
         display: inline;
@@ -81,6 +104,11 @@ export default {
         padding-top: 10px;
         font-size: 18px;
       }
+    }
+
+    .grid-title{
+      text-align: left;
+      padding: 10px;
     }
     
   }

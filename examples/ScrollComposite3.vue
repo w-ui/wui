@@ -305,6 +305,7 @@ export default {
   .scroll-tab{
     width: 100%;
     height: 100%;
+    background-color: #fff;
 
     .head-item{
       padding: 10px 0px 10px 10px;

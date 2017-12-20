@@ -1,6 +1,8 @@
 <template>
-  <div class="tree-wrapper">
-    <w-scroll-tree :data="category" :centerActivedItem="false"></w-scroll-tree>
+  <div>
+      <div class="tree-wrapper">
+        <w-scroll-tree ref="scrolltree" :data="category" :centerActivedItem="false"></w-scroll-tree>
+      </div>
   </div>
 </template>
 
@@ -160,13 +162,16 @@ export default {
     cardClick(item, e){
 
     }
+  },
+  mounted () {
+    this.$refs.scrolltree.setCurrent(0, 0)
   }
 }
 </script>
 
 <style lang="less">
   .tree-wrapper{
-    width: 160px;
+    width: 130px;
     height: 300px;
     overflow: hidden;
   }

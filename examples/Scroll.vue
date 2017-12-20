@@ -1,14 +1,18 @@
 
 <template>
-    <div class="demo-scroll">
-        <w-scroll :scrollToEle="scrollToEle" :moreShadow="moreShadow" :afterRelease="afterRelease" :beforeRelease="beforeRelease">
-            <a v-for="item in category" :key="item.id" @click="cardClick(item, $event)" class="scroll-item">
-                <div>
-                </div>
-                <div>{{item.name}}</div>
-            </a>
-        </w-scroll>
+  <div>
+    <div class="paragraph">
+      <div class="demo-scroll">
+          <w-scroll :scrollToEle="scrollToEle" :moreShadow="moreShadow" :afterRelease="afterRelease" :beforeRelease="beforeRelease">
+              <a v-for="item in category" :key="item.id" @click="cardClick(item, $event)" class="scroll-item">
+                  <div>
+                  </div>
+                  <div>{{item.name}}</div>
+              </a>
+          </w-scroll>
+      </div>
     </div>
+  </div>
 </template>
 
 <script>

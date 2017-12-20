@@ -8,7 +8,7 @@
     export default{
         name: 'w-grid',
         props: {
-            col: {
+            cols: {
                 validator(value) {
                     return ['2', '3', '4', '5', '6'].indexOf(value + '') > -1;
                 },
@@ -17,7 +17,7 @@
         },
         computed: {
             classes() {
-                return 'wui-grid-' + this.col;
+                return 'wui-grid-' + this.cols;
             }
         }
     }

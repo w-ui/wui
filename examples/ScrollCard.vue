@@ -1,45 +1,45 @@
 <template>
   <div>
-    <w-scroll-card>
-      <a class="card-item" v-for="item in category" :key="item.id" @click="cardClick(item, $event)">
-        <template v-if="item.icon">
-          <w-icon size="0.4rem" color="coral" :name="item.icon"></w-icon>
-        </template>
-        {{item.name}}
-      </a>
-    </w-scroll-card>
+    <div class="paragraph">
+      <w-scroll-card>
+        <a class="card-item" v-for="item in category" :key="item.id" @click="cardClick(item, $event)">
+          <template v-if="item.icon">
+            <w-icon size="0.4rem" color="coral" :name="item.icon"></w-icon>
+          </template>
+          {{item.name}}
+        </a>
+      </w-scroll-card>
+    </div>
 
-    <div style="height:40px"></div>
-
-    <w-scroll-card>
-      <div class="card-item">
-        <div>
-          <w-icon size="0.4rem" color="coral" name="ticket"></w-icon>
-          满69减30
+    <div class="paragraph">
+      <w-scroll-card>
+        <div class="card-item">
+          <div>
+            <w-icon size="0.4rem" color="coral" name="ticket"></w-icon>
+            满69减30
+          </div>
         </div>
-      </div>
-      <div class="card-item">
-        <div>
-          <w-icon size="0.4rem" color="coral" name="apple"></w-icon>
-          新鲜水果
+        <div class="card-item">
+          <div>
+            <w-icon size="0.4rem" color="coral" name="apple"></w-icon>
+            新鲜水果
+          </div>
         </div>
-      </div>
-    </w-scroll-card>
+      </w-scroll-card>
+    </div>
 
-    <div style="height:40px"></div>
-
-    <w-scroll-card>
-      <a class="card-item2" v-for="item in category" :key="item.id" @click="cardClick(item, $event)">
-        <div>
-          <w-icon size="0.4rem" color="coral" :name="item.icon"></w-icon>
-        </div>
-        <div>
-           {{item.name}}
-        </div>
-      </a>
-    </w-scroll-card>
-
-    <div style="height:40px"></div>
+    <div class="paragraph">
+      <w-scroll-card>
+        <a class="card-item2" v-for="item in category" :key="item.id" @click="cardClick(item, $event)">
+          <div>
+            <w-icon size="0.4rem" color="coral" :name="item.icon"></w-icon>
+          </div>
+          <div>
+            {{item.name}}
+          </div>
+        </a>
+      </w-scroll-card>
+    </div>
 
     <div class="v-container">
       <w-scroll-card direction="v" :centerActivedItem="false">
@@ -218,6 +218,8 @@ export default {
   .v-container{
     width: 50%;
     height: 300px;
+    background-color: #fff;
+    border-radius: 4px;
 
     .card-item3{
       display: flex;

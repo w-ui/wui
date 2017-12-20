@@ -53,6 +53,7 @@
         <w-button-group type="light" shape="circle" :items="btnGroup3" v-model="btnGroup3Value">
         </w-button-group>
     </div>
+
   </div>
 </template>
 
@@ -118,20 +119,3 @@ export default {
   }
 }
 </script>
-
-
-<style lang="less">
-  .paragraph{
-    padding: 10px;
-    border: 1px #f0f0f0 solid;
-    border-radius: 4px;
-    margin-bottom: 0.2rem;
-
-    h3{
-      border-bottom: 1px #f0f0f0 solid;
-      padding-bottom: 10px;
-      margin-bottom: 10px;
-    }
-  }
-</style>
-

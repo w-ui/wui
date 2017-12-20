@@ -382,7 +382,7 @@ export default {
       let child = this.$slots.default[this.currentPage]
       child.children.forEach(item => {
         let ins = item.componentInstance
-        if (ins.$options.name === 'w-scroll-tab') {
+        if (ins && ins.$options.name === 'w-scroll-tab') {
           ins.scrollToBottom()
           return false
         }

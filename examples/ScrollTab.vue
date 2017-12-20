@@ -1,17 +1,21 @@
 <template>
-  <div class="scroll-tab-wrapper">
-    <w-scroll-tab>
-      <w-scroll-tab-panel v-for="(item,index) in category" :key="'s-t-p-' + index" :name="item.name" :icon="item.icon">
-        <div class="product-item" v-for="pro of products" :key=" 'body-item-' + pro">
-          <div class="img"></div>
-          <div class="info">
-            <div class="title">{{pro}}</div>
-            <div class="tag"></div>
-            <div class="price"></div>
-          </div>
-        </div>
-      </w-scroll-tab-panel>
-    </w-scroll-tab>
+  <div>
+    <div class="paragraph">
+      <div class="scroll-tab-wrapper">
+        <w-scroll-tab>
+          <w-scroll-tab-panel v-for="(item,index) in category" :key="'s-t-p-' + index" :name="item.name" :icon="item.icon">
+            <div class="product-item" v-for="pro of products" :key=" 'body-item-' + pro">
+              <div class="img"></div>
+              <div class="info">
+                <div class="title">{{pro}}</div>
+                <div class="tag"></div>
+                <div class="price"></div>
+              </div>
+            </div>
+          </w-scroll-tab-panel>
+        </w-scroll-tab>
+      </div>
+    </div>
   </div>
 </template>
 

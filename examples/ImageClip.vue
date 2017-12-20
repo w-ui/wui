@@ -1,7 +1,9 @@
 <template>
   <div>
-    <w-image-clip ref="imgclip"></w-image-clip>
-    <w-button type="primary" size="large" @click.native="getImage">上传</w-button>
+    <div class="paragraph">
+      <w-image-clip ref="imgclip"></w-image-clip>
+      <w-button type="primary" size="large" @click.native="getImage">上传</w-button>
+    </div>
   </div>
 </template>
 

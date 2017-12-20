@@ -1,8 +1,8 @@
 <template>
     <span class="wui-rate">
-        <a href="javascript:;" v-for="item in ~~count"
+        <a href="javascript:;" v-for="item in ~~count" :key="'r_' + item"
            :class="index >= item ? 'rate-active' : ''"
-           :style="{color: index >= item ? activeColor : color, paddingRight: padding}"
+           :style="{color: index >= item ? activeColor : color}"
            @click="!readonly && choose(item)"
         >
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 47.94 47.94" width="16px" height="16px">

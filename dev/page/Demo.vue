@@ -51,6 +51,23 @@ export default {
 
  .demo-area{
    position: relative;
-   padding: 10px;
+   background-color: #f0f0f0;
+   & > div {
+     padding: 8px 0;
+
+      .paragraph{
+        padding: 10px;
+        border: 1px #f0f0f0 solid;
+        border-radius: 4px;
+        background-color: #fff;
+        margin: 0.1rem 0;
+
+        h3{
+          border-bottom: 1px #f0f0f0 solid;
+          padding-bottom: 10px;
+          margin-bottom: 10px;
+        }
+      }
+   }
  }
 </style>

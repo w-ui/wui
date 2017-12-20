@@ -1,7 +1,11 @@
 <template>
-	<div v-sortable="{onUpdate: onUpdate, preventOnFilter: false}" class="sort-list">
-		<div v-for="(v,i) in list" :key="v" class="sort-item">
-			{{v}}
+	<div>
+    <div class="paragraph">
+			<div v-sortable="{onUpdate: onUpdate, preventOnFilter: false}" class="sort-list">
+				<div v-for="(v,i) in list" :key="v" class="sort-item">
+					{{v}}
+				</div>
+			</div>
 		</div>
 	</div>
 </template>

@@ -1,22 +1,23 @@
 <template>
   <div>
-    <w-step :current="cur">
-        <w-step-item>
-            <span slot="top">步骤一</span>
-        </w-step-item>
-        <w-step-item>
-            <span slot="top">步骤二</span>
-        </w-step-item>
-        <w-step-item>
-            <span slot="top">步骤三</span>
-        </w-step-item>
-        <w-step-item>
-            <span slot="top">步骤四</span>
-        </w-step-item>
-    </w-step>
+    <div class="paragraph">
+      <w-step :current="cur">
+          <w-step-item>
+              <span slot="top">步骤一</span>
+          </w-step-item>
+          <w-step-item>
+              <span slot="top">步骤二</span>
+          </w-step-item>
+          <w-step-item>
+              <span slot="top">步骤三</span>
+          </w-step-item>
+          <w-step-item>
+              <span slot="top">步骤四</span>
+          </w-step-item>
+      </w-step>
 
       <w-button size="large" @click.native="next">下一步</w-button>
-    
+    </div>
 
   </div>
 </template>
