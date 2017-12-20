@@ -5,7 +5,7 @@
 
 
 <template>
-  <w-qrcode url="https://w-ui.github.io/#/demo/index" :size="256"></w-qrcode>
+  <w-qrcode :text="url" :size="256" image="/img/wui.png"></w-qrcode>
 </template>
 
 <script>
@@ -13,6 +13,11 @@
   export default {
     components: {
       'w-qrcode': Qrcode
+    },
+    data () {
+      return {
+        url: location.href
+      }
     }
   }
 </script>

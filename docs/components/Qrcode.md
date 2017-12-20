@@ -36,8 +36,6 @@
 
 | 参数        | 说明        | 类型        | 可选值      |   默认值   |
 |------------|-------------|------------|------------|-----------|
-| type       | 类型         |  String    |  default／mix |  default    |
-| url        | 地址         |  String    |            |      |
-| image      | 融合图片地址  | String     |            |      |
-| filter     | 图片处理器    | String／Function  |  threshold    |   threshold   |
-| size       | 二维码尺寸    | String     |      |  128    |
+| text       | 文本         |  String    |            |           |
+| image      | 中间logo地址（注意不要跨域）  | String     |            |           |
+| size       | 二维码尺寸    | String     |            |  64       |

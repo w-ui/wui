@@ -1,1 +1,1 @@
-export { default } from './src/vue-qart.vue'
+export { default } from './src/qrcode.vue'

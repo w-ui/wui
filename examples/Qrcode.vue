@@ -1,15 +1,15 @@
 <template>
   <div>
     <div class="paragraph">
-      url: 'https://github.com/w-ui'
+      url: 'https://w-ui.github.io'
     </div>
     <div class="paragraph">
       <h3>默认</h3>
-      <w-qrcode url="https://github.com/w-ui" :size="128"></w-qrcode>
+      <w-qrcode text="https://w-ui.github.io" :size="128"></w-qrcode>
     </div>
     <div class="paragraph">
-      <h3>混合模式</h3>
-      <w-qrcode url="https://github.com/w-ui" :size="256" type="mix"></w-qrcode>
+      <h3>带logo</h3>
+      <w-qrcode text="https://github.com/w-ui" :size="200" image="/img/wui.png"></w-qrcode>
     </div>
   </div>
 </template>

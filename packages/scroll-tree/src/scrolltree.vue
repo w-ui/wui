@@ -270,8 +270,6 @@ import { hasClass, removeClass, addClass } from 'src/utils'
         window.addEventListener('mouseup', this.touchend, false);
       },
       destroyed() {
-        this.$refs.box.removeEventListener('touchmove', this.touchmove, false)
-        this.$refs.box.removeEventListener('touchend', this.touchend, false)
         window.removeEventListener('mousemove', this.touchmove, false);
         window.removeEventListener('mouseup', this.touchend, false);
       }

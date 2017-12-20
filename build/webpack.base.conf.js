@@ -65,7 +65,13 @@ module.exports = {
         loader: 'url-loader',
         options: {
           limit: 10000,
-          name: utils.assetsPath('img/[name].[hash:7].[ext]')
+          name (file) {
+            if (file.indexOf('wui.png') !== -1) {
+              return utils.assetsPath('img/wui.png')
+            } else {
+              return utils.assetsPath('img/[name].[hash:7].[ext]')
+            }
+          }
         }
       },
       {

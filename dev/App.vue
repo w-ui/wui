@@ -9,9 +9,9 @@
 <script>
 import Vue from 'vue'
 
-export default Vue.component('App', {
+export default {
   name: 'app'
-})
+}
 </script>
 
 <style lang="less-loader">
@@ -84,6 +84,21 @@ export default Vue.component('App', {
         color: #fff;
         cursor: pointer;
       }
+    }
+  }
+
+  #error {
+    position: absolute;
+    width: 100%;
+    max-height: 80%;
+    left: 0;
+    bottom: 0;
+    overflow-y: auto;
+    display: none;
+    
+    p{
+      padding: 10px;
+      font-size: 12px;
     }
   }
 
