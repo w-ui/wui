@@ -35,7 +35,7 @@
       <w-grid-item link="/demo/Carousel">Carousel <br>轮播</w-grid-item>
       <w-grid-item link="/demo/ScrollCard">ScrollCard <br>滑动卡片</w-grid-item>
       <w-grid-item link="/demo/ScrollTree">ScrollTree <br>滑动树</w-grid-item>
-      <w-grid-item link="/demo/ScrollTree">ScrollTab <br>滑动Tab</w-grid-item>
+      <w-grid-item link="/demo/ScrollTab">ScrollTab <br>滑动Tab</w-grid-item>
       <w-grid-item link="/demo/InfiniteScroll">InfiniteList <br>无限滑动列表</w-grid-item>
       <w-grid-item link="/demo/InfiniteScroll">InfiniteScroll <br>无限滑动卡片</w-grid-item>
       <w-grid-item link="/demo/Sticky">Sticky <br>吸顶</w-grid-item>
@@ -67,7 +67,7 @@
       <w-grid-item link="/demo/Waterfall">Waterfall   <br>瀑布流</w-grid-item>
       <w-grid-item link="/demo/Qrcode">Qrcode   <br>二维码</w-grid-item>
     </w-grid>
-    
+
   </div>
 </template>
 

@@ -2,7 +2,7 @@
   <div class="scroll-tab">
     <div class="tab-body">
       <div class="tab-list">
-        <w-scroll-tree ref="srolltree" @change="itemChange" :data="header" :centerActivedItem="false">
+        <w-scroll-tree ref="srolltree" @change="itemChange" :data="header">
         </w-scroll-tree>
       </div>
 
@@ -294,9 +294,9 @@ export default {
   },
   mounted () {
     this.$refs.srolltree.setCurrent(0)
-    document.addEventListener('touchstart', this.touchstart, false)
-    document.addEventListener('touchmove', this.touchmove, false)
-    window.addEventListener('touchend', this.touchend, false)
+    // document.addEventListener('touchstart', this.touchstart, false)
+    // document.addEventListener('touchmove', this.touchmove, false)
+    // window.addEventListener('touchend', this.touchend, false)
   }
 }
 </script>
