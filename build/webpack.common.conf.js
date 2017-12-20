@@ -17,6 +17,9 @@ var webpackConfig = {
     filename: 'wui.common.js',
     publicPath: ''
   },
+  externals: {
+    'vue': 'vue'
+  },
   resolve: {
     extensions: ['.js'],
     alias: {
@@ -73,7 +76,8 @@ var webpackConfig = {
     new ExtractTextPlugin({
       filename: '[name].[contenthash:5].css'
     })
-  ]
+  ],
+  profile: true
 }
 
 module.exports = webpackConfig

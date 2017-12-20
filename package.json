@@ -1,6 +1,6 @@
 {
   "name": "w-ui",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A Vue.js 2.0 UI Toolkit for mobile",
   "files": [
     "lib",
@@ -18,14 +18,13 @@
     "kit": "cross-env NODE_ENV=\"kit\" node build/build.js",
     "lint": "eslint --ext .js,.vue src",
     "test": "",
-    "publish": "npm publish --registry http://registry.npmjs.org"
+    "publish": "npm publish --registry http://registry.npmjs.org",
+    "analyse": "webpack-bundle-analyzer stats.json"
   },
   "dependencies": {
     "vue": "^2.2.6"
   },
   "devDependencies": {
-    "vue-router": "^2.3.1",
-    "standard": "^10.0.3",
     "autoprefixer": "^6.7.2",
     "babel-core": "^6.22.1",
     "babel-eslint": "^7.1.1",
@@ -68,15 +67,17 @@
     "sass-loader": "^6.0.3",
     "semver": "^5.3.0",
     "shelljs": "^0.7.6",
+    "standard": "^10.0.3",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.1",
     "uppercamelcase": "^1.1.0",
     "url-loader": "^0.5.8",
     "vue-loader": "^11.3.4",
     "vue-markdown-loader": "^0.6.2",
+    "vue-router": "^2.3.1",
     "vue-style-loader": "^2.0.5",
     "vue-template-compiler": "^2.2.6",
-    "webpack": "^2.3.3",
+    "webpack": "^3.10.0",
     "webpack-bundle-analyzer": "^2.2.1",
     "webpack-dev-middleware": "^1.10.0",
     "webpack-hot-middleware": "^2.18.0",

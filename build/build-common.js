@@ -5,6 +5,7 @@ var path = require('path')
 var chalk = require('chalk')
 var webpack = require('webpack')
 var webpackConfig = require('./webpack.common.conf')
+var fs = require('fs')
 
 var spinner = ora('building for production...')
 spinner.start()
@@ -21,7 +22,12 @@ rm(path.join(__dirname, '../lib'), err => {
       chunks: false,
       chunkModules: false
     }) + '\n\n')
-
+    fs.writeFile(path.join(__dirname, '../stats.json'), JSON.stringify(stats.toJson({
+      assets: true,
+      chunks: true,
+      chunkModules: true,
+      modules: true
+    })))
     console.log(chalk.cyan('  Build complete.\n'))
   })
 })
