@@ -96,6 +96,8 @@ export default {
     overflow-y: auto;
     display: none;
     background-color: #fff;
+    box-shadow: 0 0 20px #2f2e2e;
+    opacity: 0.9;
     
     p{
       padding: 10px;

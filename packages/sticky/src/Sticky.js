@@ -84,9 +84,12 @@ export default {
         this.stickyHeight = parseFloat(computedStyle.height, 10)
         this.$el.style.position = 'static'
         this.$el.style.height = computedStyle.height
-        window.addEventListener('scroll', this.scrollHandler, true)
+        window.addEventListener('scroll', this.scrollHandler, false)
         this.scrollHandler()
       }
     })
+  },
+  destroyed () {
+    window.removeEventListener('scroll', this.scrollHandler, false)
   }
 }

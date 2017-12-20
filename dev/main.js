@@ -8,7 +8,7 @@ Vue.config.errorHandler = function (err, vm, info) {
 }
 
 window.addEventListener('error', (message, source, lineno, colno, error) => {
-  showError(message, `source: ${source}, lineno: ${lineno}, colno: ${colno}`, error)
+  showError(JSON.stringify(message), `source: ${source}, lineno: ${lineno}, colno: ${colno}`, error)
 })
 
 function showError () {
@@ -18,7 +18,7 @@ function showError () {
     logs.push(`<p>${arguments[i]}</p>`)
   }
   logs.push('---------------------------')
-  dom.innerHTML += logs.join() + 
+  dom.innerHTML += logs.join('<br>')
   dom.style.display = 'block'
 }
 
