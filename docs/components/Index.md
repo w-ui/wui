@@ -16,7 +16,7 @@
     },
     data () {
       return {
-        url: location.href
+        url: location.origin + '/?t=' + Date.now() + '#/demo/Index'
       }
     }
   }
