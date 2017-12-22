@@ -1,12 +1,11 @@
 # Sticky 吸顶
 
-### 概述
+`Sticky`组件对不支持css sticky属性的浏览器做了兼容，完全模拟原生Sticky效果
 
-sticky组件
-
+### 使用
 ```html
 <w-sticky>
-  <div style="height: 50px; background-color: dodgerblue">sticky</div>
+  <div>sticky everything</div>
 </w-sticky>
 ```
 
@@ -33,23 +32,22 @@ sticky组件
 
 ```
 
-### 使用示例
-```
-    <sticky>
-        <div class="stickyed">sticky</div>
-    </sticky>
-    <script>
-        import Sticky from 'vue-sticky-position'
-        export default {
-            components: {
-                Sticky
-            }
-        }
-    </script>
-```
 
-### 属性介绍 Attributes:
-name            |           type     |  default   |                        description
---------------- | -------------:     | :--------: | :--------------------------------------------------------:
-top             |   [Number, String] | 0     |                 定位时距离顶部的距离，默认保持跟firefox的实现一致
-z-ndex          |         Number     |  10        |                 css中的z-index值
+### Sticky 属性介绍 Props:
+| name          |      type        |  default |  description       |
+|---------------|------------------|----------|--------------------|
+| top           | [Number, String] |  0       | 定位时距离顶部的距离  |
+| z-ndex        |  Number          |  10      | css中的z-index值    |
+
+
+### Tips
+> sticky属性支持检测
+
+```javascript
+function checkSupport () {
+    let el = document.createElement('a')
+    let mStyle = el.style
+    mStyle.cssText = 'position:sticky; position:-webkit-sticky;'
+    return mStyle.position.indexOf('sticky') !== -1
+}
+```

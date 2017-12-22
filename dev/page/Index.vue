@@ -9,6 +9,7 @@
         <li><router-link to="/visual">可视化</router-link></li>
         <li><router-link to="/about">关于</router-link></li>
       </ul>
+      <a href="https://github.com/w-ui/wui"><img src="https://img.shields.io/github/stars/w-ui/wui.svg?style=social&amp;label=Star"></a>
     </div>
 
     <div class="middle-page">
@@ -55,6 +56,7 @@ export default {
       height: 600px;
       background-color: #0c1f51;
       font-size: 18px;
+      overflow: hidden;
 
       .side-menu{
         position: absolute;
@@ -120,13 +122,6 @@ export default {
         }
       }
       
-    }
-
-    footer{
-      padding: 30px;
-      background-color: #f0f0f0;
-      border-top: 2px solid dodgerblue;
-      text-align: center;
     }
   }
   

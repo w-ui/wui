@@ -1,4 +1,6 @@
-require('./sticky.less')
+
+import {getScrollview} from 'src/utils'
+import './sticky.less'
 
 export default {
   name: 'w-sticky',
@@ -87,7 +89,8 @@ export default {
         this.stickyHeight = parseFloat(height, 10)
         this.$el.style.position = 'static'
         this.$el.style.height = height + 'px'
-        window.addEventListener('scroll', this.scrollHandler, false)
+        let sv = getScrollview(this.$el)
+        sv.addEventListener('scroll', this.scrollHandler, false)
         this.scrollHandler()
       }
     })

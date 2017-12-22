@@ -252,6 +252,12 @@
         "component": "Progressbar"
       },
       {
+        "path": "/doc/Tree",
+        "title": "Tree 树",
+        "name": "Tree",
+        "component": "Tree"
+      },
+      {
         "path": "/doc/Loading",
         "title": "Loading 加载",
         "name": "Loading",

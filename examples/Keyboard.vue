@@ -1,7 +1,9 @@
 <template>
   <div>
+    <div class="paragraph">
     <w-button size="large" @click.native="show = !show">支付</w-button>
     <w-keyboard v-model="show"></w-keyboard>
+    </div>
   </div>
 </template>
 

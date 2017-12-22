@@ -2,6 +2,7 @@ var path = require('path')
 var utils = require('./utils')
 var config = require('../config')
 var vueLoaderConfig = require('./vue-loader.conf')
+var hljs = require('highlight.js')
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -9,7 +10,18 @@ function resolve (dir) {
 
 var markdown = require('markdown-it')({
   html: true,
-  breaks: true
+  breaks: true,
+  linkify: true,
+  typographer: true,
+  highlight: function (str, lang) {
+    if (lang && hljs.getLanguage(lang)) {
+      try {
+        return '<pre class="hljs"><code>' + hljs.highlight(lang, str, true).value + '</code></pre>'
+      } catch (__) {
+      }
+    }
+    return '' // use external default escaping
+  }
 })
 
 module.exports = {

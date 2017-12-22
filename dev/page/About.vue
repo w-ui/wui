@@ -8,6 +8,7 @@
         <li><router-link to="/visual">可视化</router-link></li>
         <li><router-link to="/about">关于</router-link></li>
       </ul>
+      <a href="https://github.com/w-ui/wui"><img src="https://img.shields.io/github/stars/w-ui/wui.svg?style=social&amp;label=Star"></a>
     </div>
 
     <section class="page-body">

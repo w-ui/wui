@@ -51,6 +51,8 @@ export default {
     position: relative;
     width: 100vw;
     border-bottom: 2px solid dodgerblue;
+    display: flex;
+    align-items: center;
 
     a{
       color: #333;
@@ -60,6 +62,7 @@ export default {
       color: #fff;
       font-size: 30px;
       padding: 10px;
+      flex: 0 1 300px;
       img{
         width: 64px;
         vertical-align: middle;
@@ -69,16 +72,13 @@ export default {
     }
 
     .top-menu{
-      position: absolute;
-      left: 25vw;
-      top: 25px;
-      z-index: 10;
       display: flex;
       color: #ccc;
       text-align: center;
       font-size: 18px;
+      flex: 0 1 300px;
       li{
-        width: 6vw;
+        padding: 10px 15px;
       }
       li:hover{
         color: #fff;
@@ -103,6 +103,13 @@ export default {
       padding: 10px;
       font-size: 12px;
     }
+  }
+
+  footer{
+    padding: 30px;
+    background-color: #f0f0f0;
+    border-top: 2px solid dodgerblue;
+    text-align: center;
   }
 
 </style>

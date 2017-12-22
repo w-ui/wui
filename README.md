@@ -8,6 +8,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/wmfe/wui/badge.svg?branch=master)](https://coveralls.io/github/wmfe/wui?branch=master)
 [![npm package](https://img.shields.io/npm/v/w-ui.svg)](https://www.npmjs.org/package/w-ui)
 [![NPM downloads](http://img.shields.io/npm/dm/w-ui.svg)](https://npmjs.org/package/w-ui)
+[![NPM licence](https://img.shields.io/npm/l/w-ui.svg)](https://npmjs.org/package/w-ui)
 
 
 ` A Vue.js 2.0 UI Toolkit for mobile `
