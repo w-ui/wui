@@ -83,13 +83,10 @@ export default {
     this.category.push(data.shift())
   },
   updated () {
-    console.log('updated..')
   },
   methods: {
     pageChange (currentPage, lastPage) {
-      console.log(currentPage, lastPage)
       if(currentPage > lastPage){
-        
         this.category.push(data[Math.floor(Math.random()* data.length)]);
       }
     }

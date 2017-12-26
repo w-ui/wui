@@ -74,7 +74,7 @@ export default {
     // 保证 this.$el 已经插入文档
     this.$nextTick(() => {
       let child = this.$el.firstElementChild
-      if (this.checkSupport() && child) {
+      if (!this.checkSupport() && child) {
         this.child = child
         let height = this.$el.offsetHeight
         
