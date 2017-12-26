@@ -30,7 +30,7 @@
               <template v-if="item">
                 <w-scroll-tab :showSide="false">
                   <w-scroll-tab-panel :name="item.name">
-                    <w-sticky slot="header">
+                    <w-sticky :name="'sticky-' + index" slot="header">
                       <div class="panel-head-bar">{{item.name}}</div>
                     </w-sticky>
                     <div class="product-item" v-for="pro of item.products" :key=" 'body-item-' + pro">
@@ -245,6 +245,7 @@ export default {
       let d = data[currentPage]
       this.$set(this.category, currentPage, d)
       this.$refs.srolltree.setCurrent(currentPage)
+      this.removeSticky(this.$refs.infinitescroll, currentPage);
     },
     itemChange (currentIndex, subIndex) {
       console.log('tree change', currentIndex, subIndex)

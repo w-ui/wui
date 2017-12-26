@@ -25,7 +25,7 @@ export default {
     scrollHandler () {
       let offset = this.$el.getBoundingClientRect()
       let poffset = this.scroller.getBoundingClientRect()
-      if (offset.top - poffset.top <= this.parsedTop) {
+      if (offset.top - poffset.top < this.parsedTop) {
         this.appendToBoby(offset, poffset)
       } else {
         this.removeFromBody()
@@ -86,7 +86,7 @@ export default {
         this.$el.style.height = height + 'px'
         this.scroller = getScrollview(this.$el)
         this.scroller.addEventListener('scroll', this.scrollHandler, false)
-        window.addEventListener('touchmove', this.scrollHandler, false)
+        this.scroller.addEventListener('touchmove', this.scrollHandler, false)
       }
     })
   },
