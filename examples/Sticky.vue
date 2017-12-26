@@ -4,9 +4,21 @@
         是否支持原生sticky属性：{{this.support}}
     </div>
     <w-sticky>
-        <div style="height: 50px; width: 100%; background-color: dodgerblue">sticky</div>
+        <div style="height: 50px; width: 100%; background-color: dodgerblue">sticky1</div>
     </w-sticky>
-    <div style="height: 800px; background-color: lightgreen"></div>
+    <div style="height: 180px; background-color: lightgreen"></div>
+    <w-sticky>
+        <div style="height: 50px; width: 100%; background-color: dodgerblue">sticky2</div>
+    </w-sticky>
+    <div style="height: 300px; background-color: lightgreen"></div>
+    <w-sticky>
+        <div style="height: 50px; width: 100%; background-color: dodgerblue">sticky3</div>
+    </w-sticky>
+    <div style="height: 430px; background-color: lightgreen"></div>
+    <w-sticky>
+        <div style="height: 50px; width: 100%; background-color: dodgerblue">sticky4</div>
+    </w-sticky>
+    <div style="height: 600px; background-color: lightgreen"></div>
   </div>
 </template>
 

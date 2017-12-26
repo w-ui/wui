@@ -237,7 +237,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
 .address {
   color: #9caebf;
   height: 100%;

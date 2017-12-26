@@ -17,6 +17,7 @@
     export default {
         name: 'w-scroll-tab',
         props: {
+            name: String,
             showSide: {
                 type: Boolean,
                 default: true
@@ -118,6 +119,7 @@
                 e.preventDefault()
             },
             setCurrent (index) {
+                console.log('scrolltab setCurrent >>', index);
                 this.moveHandler(index);
             },
             scrollToBottom () {

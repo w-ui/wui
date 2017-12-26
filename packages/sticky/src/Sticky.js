@@ -1,5 +1,5 @@
 
-import {getScrollview} from 'src/utils'
+import {getScrollview, getZIndex} from 'src/utils'
 import './sticky.less'
 
 export default {
@@ -9,52 +9,39 @@ export default {
       type: [String],
       default: '0'
     },
-    zIndex: {
-      type: Number,
-      default: 10
-    }
+    name: String
   },
   data () {
     return {
       child: null,
       stickyHeight: 0,
       parsedTop: parseFloat(this.top, 10),
-      position: 'static'
-    }
-  },
-  watch: {
-    position (cur) {
-      this.child.style.position = cur
-      switch (cur) {
-        case 'sticky':
-          this.child.style.position = 'fixed'
-          this.child.style.top = this.top
-          break
-        case 'absolute':
-          this.child.style.position = 'absolute'
-          this.child.style.top = 'auto'
-          this.child.style.bottom = '0'
-          break
-        case 'static':
-        default:
-          this.child.style.position = 'static'
-      }
+      position: 'static',
+      zIndex: getZIndex(),
+      appendFlag: false
     }
   },
   methods: {
     scrollHandler () {
       let offset = this.$el.getBoundingClientRect()
-      let poffset = this.$el.parentElement.getBoundingClientRect()
-      // 元素原本的位置在 sticky 位置下面
-      let isStatic = offset.top > this.parsedTop
-      // 父元素位置在 viewport 位置上面
-      let isAbsolute = poffset.bottom < this.parsedTop + this.stickyHeight
-      if (isStatic) {
-        this.position = 'static'
-      } else if (isAbsolute) {
-        this.position = 'absolute'
+      let poffset = this.scroller.getBoundingClientRect()
+      if (offset.top - poffset.top <= this.parsedTop) {
+        this.appendToBoby(offset, poffset)
       } else {
-        this.position = 'sticky'
+        this.removeFromBody()
+      }
+    },
+    appendToBoby (rect, rectp) {
+      if (!this.appendFlag) {
+        this.body.style.cssText = `display: block; position: fixed; left: ${rect.left}px; top: ${rectp.top}px; width: ${rect.width}px; height: ${rect.height}px`;
+        this.body.appendChild(this.child)
+        this.appendFlag = true
+      }
+    },
+    removeFromBody () {
+      if (this.appendFlag) {
+        this.$el.appendChild(this.child)
+        this.appendFlag = false
       }
     },
     checkSupport () {
@@ -62,6 +49,12 @@ export default {
       let mStyle = el.style
       mStyle.cssText = 'position:sticky; position:-webkit-sticky;'
       return mStyle.position.indexOf('sticky') !== -1
+    },
+    removeSticky () {
+      if (this.appendFlag) {
+        this.$el.appendChild(this.child)
+        this.appendFlag = false
+      }
     }
   },
   render (h) {
@@ -74,7 +67,6 @@ export default {
         }}
       >
         {this.$slots.default}
-        <div style={{ clear: 'both', height: '1px' }} />
       </div>
     )
   },
@@ -82,20 +74,25 @@ export default {
     // 保证 this.$el 已经插入文档
     this.$nextTick(() => {
       let child = this.$el.firstElementChild
-      if (!this.checkSupport() && child) {
-        let height = this.$el.offsetHeight
+      if (this.checkSupport() && child) {
         this.child = child
-        child.style.zIndex = this.zIndex
-        this.stickyHeight = parseFloat(height, 10)
-        this.$el.style.position = 'static'
+        let height = this.$el.offsetHeight
+        
+        let div = document.createElement('div')
+        div.className = "wui-sticky-4Ho3qRy8-wrapper"
+        document.body.appendChild(div);
+        this.body = div
+
         this.$el.style.height = height + 'px'
-        let sv = getScrollview(this.$el)
-        sv.addEventListener('scroll', this.scrollHandler, false)
-        this.scrollHandler()
+        this.scroller = getScrollview(this.$el)
+        this.scroller.addEventListener('scroll', this.scrollHandler, false)
+        window.addEventListener('touchmove', this.scrollHandler, false)
       }
     })
   },
   destroyed () {
+    this.body.remove()
     window.removeEventListener('scroll', this.scrollHandler, false)
+    window.addEventListener('touchmove', this.scrollHandler, false)
   }
 }

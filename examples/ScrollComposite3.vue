@@ -2,7 +2,7 @@
   <div class="scroll-tab">
     <div class="tab-body">
       <div class="tab-list">
-        <w-scroll-tree ref="srolltree" @change="itemChange" :data="header">
+        <w-scroll-tree ref="srolltree" @change="itemChange" :data="header" :centerActivedItem="false">
         </w-scroll-tree>
       </div>
 
@@ -10,15 +10,15 @@
         <w-infinite-scroll ref="infinitescroll" @change="pageChange" :pageCount="pageCount" direction="v" :scroll="scroll">
           <div class="body-item" v-for="(item, index) of category" :key=" 'head-' + index">
             <template v-if='item && item.children && item.children.length > 0'>
-              <w-scroll-tab ref="scrolltab" :showSide="false" @change="subItemChange">
+              <w-scroll-tab :showSide="false" :name="'st-' + index" @change="subItemChange">
                 <w-scroll-tab-panel v-for="(child, idx) in item.children" :key="'s-t-p-' + idx" :name="child.name">
-                  <w-sticky slot="header">
+                  <w-sticky :name="'sticky-' + index" slot="header">
                     <div class="panel-head-bar">{{child.name}}</div>
                   </w-sticky>
                   <div class="product-item" v-for="pro of child.products" :key=" 'body-item-' + pro">
                     <div class="img"></div>
                     <div class="info">
-                      <div class="title">{{pro}}</div>
+                      <div class="title">{{child.name + pro}}</div>
                       <div class="tag"></div>
                       <div class="price"></div>
                     </div>
@@ -36,7 +36,7 @@
                     <div class="product-item" v-for="pro of item.products" :key=" 'body-item-' + pro">
                       <div class="img"></div>
                       <div class="info">
-                        <div class="title">{{pro}}</div>
+                        <div class="title">{{item.name + pro}}</div>
                         <div class="tag"></div>
                         <div class="price"></div>
                       </div>
@@ -247,14 +247,18 @@ export default {
       this.$refs.srolltree.setCurrent(currentPage)
     },
     itemChange (currentIndex, subIndex) {
+      console.log('tree change', currentIndex, subIndex)
       if (this.treeIndex !== currentIndex) {
         this.treeIndex = currentIndex
         this.$set(this.category, currentIndex, data[currentIndex])
         this.$refs.infinitescroll.setCurrent(currentIndex)
+        this.removeSticky(this.$refs.infinitescroll, currentIndex);
       } else if (subIndex !== undefined) {
-        if (this.$refs.scrolltab && this.$refs.scrolltab.length > 0) {
-          this.$refs.scrolltab[0].setCurrent(subIndex)
-        }
+        let n = 'st-' + currentIndex
+        let child = this.$refs.infinitescroll.$children.filter(child => {
+          return child.name === n
+        })
+        child[0].setCurrent(subIndex)
       }
     },
     subItemChange (index) {
@@ -290,6 +294,23 @@ export default {
     },
     touchend (e) {
       this.drag = false
+    },
+    removeSticky (vm, index) {
+      let n = 'sticky-' + index
+      console.log('removeSticky')
+      let traversal = (nvm) => {
+        let cvm = nvm.$children
+        if (cvm && cvm.length > 0) {
+          cvm.forEach(item => traversal(item))
+        } else if (nvm) {
+          console.log('nvm>:', nvm, nvm.name)
+          if (nvm.name && nvm.name.indexOf('sticky-') !== -1 && nvm.name !== n) {
+            console.log('real remove:', nvm.name)
+            nvm.removeSticky()
+          }
+        }
+      }
+      traversal(vm)
     }
   },
   mounted () {
@@ -302,6 +323,12 @@ export default {
 </script>
 
 <style lang="less">
+  .panel-head-bar{
+    background-color: #fff;
+    padding: 10px;
+    width: 100%;
+  }
+
   .scroll-tab{
     width: 100%;
     height: 100%;
@@ -323,12 +350,6 @@ export default {
         padding: 10px;
         color: #444;
         font-weight: bold;
-      }
-
-      .panel-head-bar{
-        background-color: #fff;
-        padding: 10px;
-        width: 100%;
       }
 
       .product-item{

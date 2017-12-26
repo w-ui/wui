@@ -17,19 +17,19 @@ import { hasClass, removeClass, addClass } from 'src/utils'
         'w-tree-node': TreeNode
       },
       data() {
-          return {
-            drag: false,
-            startY: 0,
-            startTime: 0,
-            currentY: 0,
-            currentIndex: 0,
-            currentSubIndex: 0,
-            offsetH: 0,
-            lastTime: 0,
-            timer: null,
-            total: 0,
-            ww: 0
-          }
+        return {
+          drag: false,
+          startY: 0,
+          startTime: 0,
+          currentY: 0,
+          currentIndex: 0,
+          currentSubIndex: 0,
+          offsetH: 0,
+          lastTime: 0,
+          timer: null,
+          total: 0,
+          ww: 0
+        }
       },
       props: {
         data: {
@@ -215,12 +215,10 @@ import { hasClass, removeClass, addClass } from 'src/utils'
 
           if (!this.centerActivedItem) {
             if (!stopEmit) {
-              console.log('emit(change')
               this.$emit('change', this.currentIndex, this.currentSubIndex)
             }
             return;
           }
-          console.log('centerActivedItem')
           let rectParent = this.$el.getBoundingClientRect()
           let rect = node.getBoundingClientRect()
           let top = rect.top - rectParent.top
@@ -237,7 +235,7 @@ import { hasClass, removeClass, addClass } from 'src/utils'
           }
           this.translateTo(0, offset, 600)
           if (!stopEmit) {
-            this.$emit('change', this.currentIndex)
+            this.$emit('change', this.currentIndex, this.currentSubIndex)
           }
         },
         translateTo (x, y, t, immediately) {

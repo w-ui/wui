@@ -6,6 +6,7 @@ const isServer = Vue.prototype.$isServer
 const SPECIAL_CHARS_REGEXP = /([\:\-\_]+(.))/g
 const MOZ_HACK_REGEXP = /^moz([A-Z])/
 const ieVersion = isServer ? 0 : Number(document.documentMode)
+let zindex = 10000;
 
 /* istanbul ignore next */
 const trim = function (string) {
@@ -295,3 +296,7 @@ export const isDate = val =>
 export const isArray = Array.isArray
 
 export const isObject = val => typeof val === 'object'
+
+export function getZIndex () {
+  return ++zindex
+}

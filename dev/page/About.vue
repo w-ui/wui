@@ -15,6 +15,44 @@
       <div class="title">更新日志</div>
       <w-timeline>
         <w-timeline-item>
+          <p class="time">2017-12-21 18:27:47</p>
+          <p class="item">markdown文档样式优化 </p>
+          <p class="item">代码块高亮添加 </p>
+          <p class="item">Sticky组件bug修复  </p>
+        </w-timeline-item>
+
+        <w-timeline-item>
+          <p class="time">2017-12-19 18:47:40</p>
+          <p class="item">组合示例3 bug修复 </p>
+          <p class="item">换了新的全面屏的手机界面，开发更带劲了 </p>
+          <p class="item">所有demo界面优化，更好看了  </p>
+          <p class="item">Qrcode组件优化，精简代码，修复模糊的问题，添加带logo的二维码功能  </p>
+          <p class="item">优化文档打包编译，logo图片不加hash  </p>
+          <p class="item">滑动一系列组件边缘阻尼效果添加  </p>
+          <p class="item">错误信息显示  </p>
+          <p class="item">打包bug修复，之前包含了bundle中包含了vue，已经去除  </p>
+          <p class="item">webpack-bundle-analyzer添加，可以通过npm run analyse 查看bundle文件  </p>
+          <p class="item" style="color: dodgerblue">发布1.0.2  </p>
+        </w-timeline-item>
+
+        <w-timeline-item>
+          <p class="time">2017-12-19 18:47:40</p>
+          <p class="item">新增range组件及文档 </p>
+          <p class="item">scroll-tab组件优化及bug修复 </p>
+          <p class="item">InfiniteScroll组件优化及bug修复  </p>
+          <p class="item">组合示例3 bug修复  </p>
+        </w-timeline-item>
+
+        <w-timeline-item>
+          <p class="time">2017-12-18 18:47:40</p>
+          <p class="item">新增scroll-tab组件及文档 </p>
+          <p class="item">button-group组件优化 </p>
+          <p class="item">新增组件组合示例3  </p>
+          <p class="item">新增calendar组件及文档  </p>
+          <p class="item">Button组件样式提取  </p>
+        </w-timeline-item>
+
+        <w-timeline-item>
           <p class="time">2017-12-15 18:47:40</p>
           <p class="item">修复ScrollCard子元素少时，滑动问题 </p>
           <p class="item">InfiniteScroll 内部滚动bug修复 </p>
