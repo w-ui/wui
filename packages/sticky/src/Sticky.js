@@ -51,7 +51,7 @@ export default {
       return mStyle.position.indexOf('sticky') !== -1
     },
     removeSticky () {
-      if (this.appendFlag) {
+      if (this.appendFlag && !this.checkSupport()) {
         this.$el.appendChild(this.child)
         this.appendFlag = false
       }
@@ -74,6 +74,8 @@ export default {
     // 保证 this.$el 已经插入文档
     this.$nextTick(() => {
       let child = this.$el.firstElementChild
+      this.scroller = getScrollview(this.$el)
+
       if (!this.checkSupport() && child) {
         this.child = child
         let height = this.$el.offsetHeight
@@ -82,16 +84,15 @@ export default {
         div.className = "wui-sticky-4Ho3qRy8-wrapper"
         document.body.appendChild(div);
         this.body = div
-
         this.$el.style.height = height + 'px'
-        this.scroller = getScrollview(this.$el)
+
         this.scroller.addEventListener('scroll', this.scrollHandler, false)
         this.scroller.addEventListener('touchmove', this.scrollHandler, false)
       }
     })
   },
   destroyed () {
-    this.body.remove()
+    this.body && (this.body.remove())
     window.removeEventListener('scroll', this.scrollHandler, false)
     window.addEventListener('touchmove', this.scrollHandler, false)
   }

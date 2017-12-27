@@ -317,10 +317,11 @@ export default {
             }
           }
 
-          let item = tar.children[0]
-          let ins = item.componentInstance
-          if (ins && ins.$options.name === 'w-scroll-tab') {
-            return !ins.canScroll(dir)
+          let item = tar.children.filter(item => {
+            return item.componentInstance.$options.name === 'w-scroll-tab'
+          })
+          if (item && item.length > 0) {
+            return !item[0].componentInstance.canScroll(dir)
           }
         }
         return true

@@ -248,7 +248,6 @@ export default {
       this.removeSticky(this.$refs.infinitescroll, currentPage);
     },
     itemChange (currentIndex, subIndex) {
-      console.log('tree change', currentIndex, subIndex)
       if (this.treeIndex !== currentIndex) {
         this.treeIndex = currentIndex
         this.$set(this.category, currentIndex, data[currentIndex])
@@ -298,15 +297,12 @@ export default {
     },
     removeSticky (vm, index) {
       let n = 'sticky-' + index
-      console.log('removeSticky')
       let traversal = (nvm) => {
         let cvm = nvm.$children
         if (cvm && cvm.length > 0) {
           cvm.forEach(item => traversal(item))
         } else if (nvm) {
-          console.log('nvm>:', nvm, nvm.name)
           if (nvm.name && nvm.name.indexOf('sticky-') !== -1 && nvm.name !== n) {
-            console.log('real remove:', nvm.name)
             nvm.removeSticky()
           }
         }
