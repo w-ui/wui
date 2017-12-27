@@ -116,6 +116,7 @@
               } else {
                 let cury = this.getCurrentY()
                 if(cury > this.maxsh){
+                  console.log(`touchend: ${this.maxsh}`)
                   this.bounceBack(0, this.maxsh)
                 } else if(cury < this.minsh){
                   this.bounceBack(0, this.minsh)
@@ -140,6 +141,7 @@
                 this.offsetH = offsetY;
                 let lasty = this.currentY + offsetY;
                 lasty = this.getDamping(lasty)
+                console.log(`move: ${lasty}`)
                 this.translateTo(0, lasty, 0, true)
               }
             }
@@ -318,12 +320,15 @@
             let time = t || 300
             t < 300 && (t = 300);
             t > 1200 && (t = 1200);
-            
+           
             if (immediately) {
+              this.$refs.box.style.webkitTransition = 'none'
               this.$refs.box.style.transition = 'none'
             } else {
+              this.$refs.box.style.webkitTransition = `${time}ms all cubic-bezier(0.1, 0.57, 0.1, 1)`
               this.$refs.box.style.transition = `${time}ms all cubic-bezier(0.1, 0.57, 0.1, 1)`
             }
+            this.$refs.box.style.webkitTransform = `-webkit-translate(${x}px, ${y}px)`
             this.$refs.box.style.transform = `translate3d(${x}px, ${y}px, 0)`
           },
           setCurrent (index) {

@@ -9,7 +9,7 @@
 </template>
 
 <script type="text/babel">
-import { hasClass, removeClass, addClass } from 'src/utils'
+import { hasClass, removeClass, addClass} from 'src/utils'
   import TreeNode from './treenode.vue'
   export default {
       name: 'w-scroll-tree',
@@ -54,6 +54,9 @@ import { hasClass, removeClass, addClass } from 'src/utils'
           this.hh = this.$el.offsetHeight;
           this.maxsh = 0; //max scroll width
           this.minsh = this.hh - height;   //max scroll width
+          if (this.minsh > 0) {
+            this.minsh = 0
+          }
           e.preventDefault();
           e.stopPropagation();
         },
@@ -83,7 +86,7 @@ import { hasClass, removeClass, addClass } from 'src/utils'
           if(this.drag){
             this.drag = false
             let cury = this.getCurrentY()
-
+            
             if(cury > this.maxsh){
               this.bounceBack(0, this.maxsh)
             } else if(cury < this.minsh){
@@ -166,7 +169,7 @@ import { hasClass, removeClass, addClass } from 'src/utils'
           }
           return Number.isNaN(cy) ? 0 : parseInt(cy)
         },
-        slotClick(e){
+        slotClick(e) {
           let cur = e.target;
           let pnode = cur;
           if(!pnode) return;
@@ -183,6 +186,9 @@ import { hasClass, removeClass, addClass } from 'src/utils'
           this.hh = this.$el.offsetHeight;
           this.maxsh = 0; //max scroll width
           this.minsh = this.hh - height;   //max scroll width
+          if (this.minsh > 0) {
+            this.minsh = 0
+          }
 
           let cury = this.getCurrentY()
           if(cury > this.maxsh){
@@ -192,14 +198,16 @@ import { hasClass, removeClass, addClass } from 'src/utils'
           }
         },
         centerItem(node, stopEmit){
-          this.$el.querySelectorAll('.w-tree-item').forEach(item => {
+          let nodeList = this.$el.querySelectorAll('.w-tree-item')
+          for (let i = 0; i < nodeList.length; i++) {
+            let item = nodeList[i]
             if (item === node) {
               addClass(item, 'active');
               if (item.getAttribute('data-type') === 'root') {
                 this.currentIndex = parseInt(item.getAttribute('data-index'))
               } else if (item.getAttribute('data-type') === 'sub') {
                 let pn = node
-                while(pn && pn !== this.$el){
+                while (pn && pn !== this.$el) {
                   pn = pn.parentNode;
                   if (hasClass(pn, 'w-tree-item')) {
                     addClass(pn, 'active')
@@ -211,7 +219,7 @@ import { hasClass, removeClass, addClass } from 'src/utils'
             } else {
               removeClass(item, 'active')
             }
-          })
+          }
 
           if (!this.centerActivedItem) {
             if (!stopEmit) {
@@ -276,6 +284,9 @@ import { hasClass, removeClass, addClass } from 'src/utils'
         this.hh = this.$el.offsetHeight;
         this.maxsh = 0; //max scroll width
         this.minsh = this.hh - height;   //max scroll width
+        if (this.minsh > 0) {
+          this.minsh = 0
+        }
 
         this.$refs.box.addEventListener('touchmove', this.touchmove, false);
         this.$refs.box.addEventListener('touchend', this.touchend, false);

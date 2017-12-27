@@ -1,10 +1,10 @@
 # 滚动组件组合 scroll tab 纵向滑动
 
-本案例组合了 [ScrollTree](/#/doc/ScrollCard) 和 [InfiniteScroll](/#/doc/InfiniteScroll), 实现了一个纵向滑动切换的tab, 左侧支持多级数据
+本案例组合了` [ScrollTree](/#/doc/ScrollCard) `和 `[InfiniteScroll](/#/doc/InfiniteScroll)`, 实现了一个纵向滑动切换的tab, 左侧支持多级数据
 
-+ ScrollTree change事件，设置 InfiniteScroll 当前选中项
-+ InfiniteScroll change事件，设置 ScrollTree 当前选中项
-+ InfiniteScroll 最多保持3屏内容，根据相当的索引项实时渲染
++ `ScrollTree` change事件，设置 `InfiniteScroll` 当前选中项
++ `InfiniteScroll` change事件，设置 `ScrollTree` 当前选中项
++ `InfiniteScroll` 最多保持3屏内容，根据相当的索引项实时渲染
 
 
 ```html
@@ -23,12 +23,12 @@
               <w-scroll-tab :showSide="false" :name="'st-' + index" @change="subItemChange">
                 <w-scroll-tab-panel v-for="(child, idx) in item.children" :key="'s-t-p-' + idx" :name="child.name">
                   <w-sticky :name="'sticky-' + index" slot="header">
-                    <div class="panel-head-bar">{{child.name}}</div>
+                    <div class="panel-head-bar" v-text="child.name"></div>
                   </w-sticky>
                   <div class="product-item" v-for="pro of child.products" :key=" 'body-item-' + pro">
                     <div class="img"></div>
                     <div class="info">
-                      <div class="title">{{child.name + pro}}</div>
+                      <div class="title" v-text="child.name + pro"></div>
                       <div class="tag"></div>
                       <div class="price"></div>
                     </div>
@@ -40,13 +40,13 @@
               <template v-if="item">
                 <w-scroll-tab :showSide="false">
                   <w-scroll-tab-panel :name="item.name">
-                    <w-sticky slot="header">
-                      <div class="panel-head-bar">{{item.name}}</div>
+                    <w-sticky :name="'sticky-' + index" slot="header">
+                      <div class="panel-head-bar" v-text="item.name"></div>
                     </w-sticky>
                     <div class="product-item" v-for="pro of item.products" :key=" 'body-item-' + pro">
                       <div class="img"></div>
                       <div class="info">
-                        <div class="title">{{item.name + pro}}</div>
+                        <div class="title" v-text="item.name + pro"></div>
                         <div class="tag"></div>
                         <div class="price"></div>
                       </div>
@@ -255,6 +255,7 @@ export default {
       let d = data[currentPage]
       this.$set(this.category, currentPage, d)
       this.$refs.srolltree.setCurrent(currentPage)
+      this.removeSticky(this.$refs.infinitescroll, currentPage);
     },
     itemChange (currentIndex, subIndex) {
       console.log('tree change', currentIndex, subIndex)
