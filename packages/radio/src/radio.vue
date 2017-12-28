@@ -20,6 +20,15 @@
             disabled: {
                 type: Boolean,
                 default: false
+            },
+            color: {
+                default: '#4CD864'
+            },
+            size: {
+                validator(val) {
+                    return /^([1-9]\d*)$/.test(val);
+                },
+                default: 20
             }
         },
         methods: {
@@ -27,13 +36,17 @@
                 if (this.disabled) return;
 
                 this.checked = event.target.checked;
+                if (this.$parent && typeof(this.$parent.change) == 'function') {
+                    this.$parent.change(this.val)
+                }
 
-                this.$parent.change(this.val);
+                this.$emit('change', this.val);
             },
             styles(size) {
+                let ps = this.$parent ? this.$parent.size : this.size
                 return {
-                    width: this.$parent.size / size + 'px',
-                    height: this.$parent.size / size + 'px'
+                    width: ps / size + 'px',
+                    height: ps / size + 'px'
                 };
             }
         }

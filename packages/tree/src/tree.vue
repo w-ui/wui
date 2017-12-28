@@ -1,26 +1,25 @@
 <template>
-  <ul class="halo-tree">
-      <li v-for="(item, index) in data"@drop="drop(item, $event)" @dragover="dragover($event)" :key="item.title" :class="{leaf: isLeaf(item), 'first-node': !parent && index === 0, 'only-node': !parent && data.length === 1}"  v-show="item.hasOwnProperty('visible') ? item.visible : true">
-          <div class="tree-node-el" :draggable="draggable" @dragstart="drag(item, $event)">
+  <ul class="wui-tree">
+      <li v-for="(item, index) in data" @drop="drop(item, $event)" @dragover="dragover($event)" :key="item.title" :class="{leaf: isLeaf(item), 'first-node': !parent && index === 0, 'only-node': !parent && data.length === 1}"  v-show="item.hasOwnProperty('visible') ? item.visible : true">
+          <div :class="['tree-node-el', item.disabled ? 'chkDisabled' : '']" :draggable="draggable" @dragstart="drag(item, $event)">
               <span @click="expandNode(item)" v-if="item.children && item.children.length > 0" :class="item.expanded ? 'tree-open' : 'tree-close'">
               </span>
-              <div v-if='multiple && !item.nocheck' :class="[item.checked ? (item.halfcheck ? 'box-halfchecked' : 'box-checked') : 'box-unchecked', 'inputCheck']">
-                  <input :disabled="item.chkDisabled" :class="['check', item.chkDisabled ? 'chkDisabled' : '']" v-if='multiple' type="checkbox" @change="changeNodeCheckStatus(item, $event)" v-model="item.checked"/>
+              <span @click="nodeSelected(item, $event)" class="tree-node-title">{{item.title}}</span>
+              <div v-if='multiple && !item.nocheck' :class="[item.checked ? (item.halfcheck ? 'box-halfchecked' : 'box-checked') : 'box-unchecked', 'inputCheck', item.disabled ? 'chkDisabled' : '']">
+                  <input :disabled="item.disabled" :class="['check', item.disabled ? 'chkDisabled' : '']" v-if='multiple' type="checkbox" @change="changeNodeCheckStatus(item, $event)" v-model="item.checked"/>
               </div>
-              <Render :node="item" :tpl ='tpl'/>
-              {{item.level}}
           </div>
           <transition name="bounce">
-            <tree v-if="!isLeaf(item)" @node-click='nodeClick' @drag-node-end='dragNodeEnd' :dragAfterExpanded="dragAfterExpanded" :draggable="draggable" v-show="item.expanded"  :tpl ="tpl" :data="item.children" :halfcheck='halfcheck' :scoped='scoped' :parent ='item' :multiple="multiple"></tree>
+            <w-tree v-if="!isLeaf(item)" @node-click='nodeClick' @drag-node-end='dragNodeEnd' :dragAfterExpanded="dragAfterExpanded" :draggable="draggable" v-show="item.expanded" :data="item.children" :halfcheck='halfcheck' :scoped='scoped' :parent ='item' :multiple="multiple"></w-tree>
           </transition>
       </li>
   </ul>
 </template>
 <script>
 import Render from './render'
+
 export default {
-  name: 'Tree',
-  mixins: [mixins],
+  name: 'w-tree',
   props: {
     data: {
       type: Array,
@@ -49,10 +48,11 @@ export default {
     scoped: {
       type: Boolean,
       default: false
-    },
-    tpl: Function
+    }
   },
-  components: { Render },
+  components: { 
+    Render
+  },
   watch: {
     data () {
       this.initHandle()
@@ -63,8 +63,9 @@ export default {
      * @event monitor the children nodes seleted event
      */
     this.$on('childChecked', (node, checked) => {
-      if (node.children && node.children.length) {
+      if (node.children && node.children.length ) {
         for (let child of node.children) {
+          if (child.disabled) return
           this.$set(child, 'checked', checked)
           this.$emit('nodeChecked', child, checked)
         }
@@ -259,6 +260,9 @@ export default {
      *@param node current node
      */
     nodeSelected (node) {
+      if (node.nocheck) return;
+      if (node.disabled) return;
+
       const getRoot = (el) => {
         if (el.$parent.$el.nodeName === 'UL') {
           el = el.$parent
@@ -272,6 +276,7 @@ export default {
       }
       if (this.multiple) this.$set(node, 'checked', !node.selected)
       this.$set(node, 'selected', !node.selected)
+      this.$emit('nodeChecked', node, node.selected)
       this.$emit('node-click', node)
     },
 
@@ -362,57 +367,50 @@ export default {
 }
 </script>
 <style>
-    .halo-tree .bounce-enter-active {
+    .wui-tree .bounce-enter-active {
         animation:bounce-in .5s;
     }
-    .halo-tree .bounce-leave-active {
+    .wui-tree .bounce-leave-active {
         animation:bounce-in .5s reverse;
     }
     @keyframes bounce-in {
         0% {
-            transform:scale(0);
-        }
-        50% {
-            transform:scale(1.5);
+            opacity: 0;
         }
         100% {
-            transform:scale(1);
+            opacity: 1;
         }
     }
-    .halo-tree .expand-enter-active {
+    .wui-tree .expand-enter-active {
         transition:all 3s ease;
         height:50px;
         overflow:hidden;
     }
-    .halo-tree .expand-leave-active {
+    .wui-tree .expand-leave-active {
         transition:all 3s ease;
         height:0px;
         overflow:hidden;
     }
-    .halo-tree .expand-enter, .halo-tree .expand-leave {
+    .wui-tree .expand-enter, .wui-tree .expand-leave {
         height:0;
         opacity:0;
     }
-    .halo-tree {
-        font-size:14px;
+    .wui-tree {
+        font-size: 0.36rem;
     }
-    .halo-tree ul,.halo-tree li {
+    .wui-tree ul,.wui-tree li {
         list-style-type:none;
         text-align:left;
     }
-    .halo-tree .inputCheck {
-        display:inline-block;
-        position:relative;
-        width:14px;
-        height:14px;
-        border:1px solid #888888;
-        border-radius:2px;
-        top:4px;
-        text-align:center;
-        font-size:14px;
-        line-height:14px;
+    .wui-tree .inputCheck {
+        flex: 0 0 0.44rem;
+        margin-right: 0.2rem;
+        position: relative;
+        height: 0.44rem;
+        border: 1px solid #ccc;
+        border-radius: 100%;
     }
-    .halo-tree .inputCheck.notAllNodes:before {
+    .wui-tree .inputCheck.notAllNodes:before {
         content:"\2713";
         display:block;
         position:absolute;
@@ -422,146 +420,159 @@ export default {
         z-index:1;
         color:#ffffff;
     }
-    .halo-tree .inputCheck.box-checked:after {
-        content:"\2713";
+    .wui-tree .inputCheck.box-checked:after {
+        content: " ";
+        background-color: dodgerblue;
         display:block;
         position:absolute;
         z-index:1;
-        width:100%;
+        width: 60%;
+        height: 60%;
+        margin: 20%;
+        border-radius: 100%;
         text-align:center;
     }
-    .halo-tree .box-halfchecked {
-        background-color: #888888;
+    .wui-tree .box-halfchecked {
     }
-    .halo-tree .box-halfchecked:after {
-        content:"\2713";
-        display:block;
-        position:absolute;
+    .wui-tree .box-halfchecked:after {
+        content: " ";
+        display: block;
+        position: absolute;
         z-index:1;
-        width:100%;
+        width: 60%;
+        height: 60%;
+        border-radius: 100%;
+        margin: 20%;
+        background-color: #999;
         text-align:center;
         color: #FFFFFF;
     }
-    .halo-tree .check{
+    .wui-tree .check{
         display:block;
-        position:absolute;
-        font-size:14px;
-        width:16px;
-        height:16px;
-        left:-5px;
-        top:-4px;
-        border:1px solid #000000;
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        border-radius: 100%;
+        left: 0px;
+        top: 0px;
+        border: 1px solid #CCC;
         opacity:0;
-        cursor:pointer;
+        cursor: pointer;
         -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
         filter:alpha(opacity=0);
         z-index:2;
     }
 
-    .halo-tree .chkDisabled {
-      background-color: #F5F5F5;
-      opacity: 1;
+    .wui-tree .chkDisabled {
+      background-color: #ccc;
       cursor: not-allowed;
     }
-
-    .halo-tree li {
+    .wui-tree li {
         margin: 0;
-        padding: 5px 5px 5px 0;
+        padding: 0.1rem 0px 0.1rem 0;
         position: relative;
         list-style: none;
     }
-    .halo-tree li:after,
-    .halo-tree li:before {
+    .wui-tree li:after,
+    .wui-tree li:before {
         content: '';
         left: -8px;
         position: absolute;
-        right: auto;
         border-width: 1px
     }
-    .halo-tree li:before {
+
+    .wui-tree li:before {
         border-left: 1px dashed #999;
-        bottom: 50px;
+        top: 0;
+        bottom: 0.5rem;
         height: 100%;
-        top: -8px;
-        width: 1px;
+        width: 0;
     }
 
-    .halo-tree li:after {
+    .wui-tree li:after {
         border-top: 1px dashed #999;
-        height: 20px;
-        top: 17px;
-        width: 12px
+        height: 0px;
+        top: 0.5rem;
+        width: 0.28rem;
     }
-    .halo-tree li:last-child::before {
-        height: 26px
+    .wui-tree li:last-child::before {
+        height: 0.5rem;
     }
-    .halo-tree>li.first-node:before {
+    .wui-tree>li.first-node:before {
         border-left: none;
     }
-    .halo-tree>li.only-node:after {
+    .wui-tree>li.only-node:after {
         border-top: none;
     }
-    .halo-tree > ul {
+    .wui-tree > ul {
         padding-left: 0
     }
 
-    .halo-tree ul {
-        padding-left: 17px;
-        padding-top: 10px;
+    .wui-tree ul {
+        padding-left: 0.34rem;
+        padding-top: 5px;
     }
-    .halo-tree .tree-open,
-    .halo-tree .tree-close {
+    .wui-tree .tree-open,
+    .wui-tree .tree-close {
         display: inline-block;
-        width:14px;
-        height:14px;
+        width: 0.4rem;
+        height: 0.36rem;
         text-align: center;
-        line-height: 13px;
+        line-height: 0.35rem;
         border: 1px solid #888888;
         border-radius: 2px;
         background: #FFFFFF;
     }
-    .halo-tree .tree-open {
-        line-height: 13px;
+    .wui-tree .tree-open {
+        line-height: 0.35rem;
     }
-    .halo-tree .tree-close:after {
-        content: "+";
+    .wui-tree .tree-close:after {
+        content: "﹢";
         font-style: normal;
     }
-    .halo-tree .tree-open:after {
-        content: "\2013";
+    .wui-tree .tree-open:after {
+        content: "﹣";
         font-style: normal;
     }
-    .halo-tree .tree-node-el {
+    .wui-tree .tree-node-el {
         background-color: #FFFFFF;
-        padding-left: 2px;
+        padding: 0px 0px 0px 0.2rem;
+        height: 0.8rem;
+        line-height: 0.8rem;
         position: relative;
         z-index: 3;
+        display: flex;
+        align-items: center;
     }
-    .halo-tree li.leaf {
+    .wui-tree .tree-node-el .tree-node-title{
+      flex: 1 1 100%;
+      padding-left: 10px;
+    }
+    .wui-tree .tree-node-el.chkDisabled {
+        background-color: #ddd;
+    }
+    .wui-tree li.leaf {
         padding-left: 19px;
     }
 
-    .halo-tree li.leaf:after {
+    .wui-tree li.leaf:after {
         content: '';
-        left: -7px;
         position: absolute;
-        right: auto;
-        border-width: 1px;
         border-top: 1px dashed #999;
-        height: 20px;
-        top: 17px;
-        width: 25px;
+        height: 0px;
+        top: 0.5rem;
+        width: 0.5rem;
     }
 
     /*Dynamic style part*/
-    .halo-tree-search-box {
+    .wui-tree-search-box {
         height: 18px;
         line-height: 18px;
         outline: none;
         border: 1px solid #888888;
         border-radius: 3px;
     }
-    .halo-tree-search-box:focus {
+    .wui-tree-search-box:focus {
         border: 1px solid rgb(16, 142, 233);
         -webkit-box-shadow: 0 2px 2px rgba(16, 142, 233, .2);
         box-shadow: 0 2px 2px rgba(16, 142, 233,.2);
@@ -569,18 +580,16 @@ export default {
         -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
         transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
     }
-    .halo-tree .node-title {
+    .wui-tree .node-title {
         padding: 3px 3px;
-        border: 1px solid #FFFFFF;
         border-radius: 3px;
-        cursor: pointer;
         margin: 0 2px;
     }
-    .halo-tree .node-selected {
+    .wui-tree .node-selected {
         border: 1px solid #DDDDDD;
         background-color: #DDDDDD;
     }
-    .halo-tree .node-title.node-searched {
+    .wui-tree .node-title.node-searched {
         border: 1px solid #FF8247;
     }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-tree ref='tree' @node-click='nodeClick' :data='treeData' :draggable='true' :multiple='true' :halfcheck='true'/>
+    <w-tree ref='tree' @node-click='nodeClick' :data='treeData' :multiple='true' :halfcheck='true'></w-tree>
   </div>
 </template>
 
@@ -30,7 +30,8 @@ export default {
                   children: [
                     {
                       title: '中国药科大学',
-                      value: 'B000001'
+                      value: 'B000001',
+                      checked: true
                     },
                     {
                       title: '河海大学',
@@ -48,8 +49,9 @@ export default {
                 }, 
                 {
                   title: '南航后街',
-                  value: 'A000002',
-                  chkDisabled: true
+                  value: 'A000003',
+                  checked: true,
+                  disabled: true
                 }
               ]
             }, 
@@ -87,12 +89,13 @@ export default {
                 }, 
                 {
                   title: '江北商圈',
-                  value: 'A000002'
+                  value: 'D000002'
                 }
               ]
             }, 
             {
               title: '柳州市',
+              value: 'D000003',
               children: [
                 {
                   title: '鱼峰区',
@@ -111,6 +114,11 @@ export default {
           ]
         }
       ]
+    }
+  },
+  methods: {
+    nodeClick (node) {
+      console.log(node.title + ' : ' + node.value)
     }
   }
 }
