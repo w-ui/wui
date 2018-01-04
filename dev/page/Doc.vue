@@ -50,7 +50,7 @@
     </div>
 
     <footer>
-      ©️All rights reserved, 2017
+      ©️All rights reserved, 百度外卖 2018
     </footer>
   </div>
 </template>
@@ -297,6 +297,9 @@ export default {
 
     ul, ol {
       padding-left: 30px;
+      li {
+        list-style: disc;
+      }
     }
 
     ul :first-child, ol :first-child {

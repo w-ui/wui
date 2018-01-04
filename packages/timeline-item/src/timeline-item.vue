@@ -1,6 +1,11 @@
 <template>
     <li>
-        <em></em>
+        <div class="wui-timeline-content-icon">
+        <slot name="icon">
+            <em></em>
+        </slot>
+        </div>
+
         <slot></slot>
     </li>
 </template>

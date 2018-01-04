@@ -405,6 +405,15 @@ export default {
         }
       })
       this.toBottom = false
+    } else  {
+      let child = this.$slots.default[this.currentPage]
+      child.children.forEach(item => {
+        let ins = item.componentInstance
+        if (ins && ins.$options.name === 'w-scroll-tab') {
+          ins.scrollToTop()
+          return false
+        }
+      })
     }
   },
   mounted () {

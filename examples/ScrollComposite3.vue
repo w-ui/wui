@@ -244,6 +244,7 @@ export default {
       this.treeIndex = currentPage
       let d = data[currentPage]
       this.$set(this.category, currentPage, d)
+      console.log('srolltree.setCurrent2:', currentPage)
       this.$refs.srolltree.setCurrent(currentPage)
       this.removeSticky(this.$refs.infinitescroll, currentPage);
     },
@@ -266,6 +267,7 @@ export default {
         clearTimeout(this.timer)
       }
       this.timer = setTimeout(() => {
+        console.log('srolltree.setCurrent3:', this.treeIndex, index)
         this.$refs.srolltree.setCurrent(this.treeIndex, index)
       }, 100)
     },
@@ -311,6 +313,7 @@ export default {
     }
   },
   mounted () {
+    console.log('srolltree.setCurrent1:', 0)
     this.$refs.srolltree.setCurrent(0)
     // document.addEventListener('touchstart', this.touchstart, false)
     // document.addEventListener('touchmove', this.touchmove, false)

@@ -58,7 +58,6 @@ import { hasClass, removeClass, addClass} from 'src/utils'
             this.minsh = 0
           }
           e.preventDefault();
-          e.stopPropagation();
         },
         touchmove(e){
           if(this.drag){
@@ -79,14 +78,12 @@ import { hasClass, removeClass, addClass} from 'src/utils'
             // }
             this.move(e);
             e.preventDefault();
-            e.stopPropagation();
           }
         },
         touchend(e){
           if(this.drag){
             this.drag = false
             let cury = this.getCurrentY()
-            
             if(cury > this.maxsh){
               this.bounceBack(0, this.maxsh)
             } else if(cury < this.minsh){
@@ -250,13 +247,15 @@ import { hasClass, removeClass, addClass} from 'src/utils'
           let time = t || 300
           t < 300 && (t = 300);
           t > 1200 && (t = 1200);
-          
+
           if (immediately) {
             this.$refs.box.style.transition = 'none'
           } else {
             this.$refs.box.style.transition = `${time}ms all cubic-bezier(0.1, 0.57, 0.1, 1)`
+            this.$refs.box.style.webkitTransition = `${time}ms all cubic-bezier(0.1, 0.57, 0.1, 1)`
           }
           this.$refs.box.style.transform = `translate3d(${x}px, ${y}px, 0)`
+          this.$refs.box.style.webkitTransform = `translate3d(${x}px, ${y}px, 0)`
         },
         setCurrent (index, subIndex) {
           console.log('setCurrent', index, subIndex)
@@ -289,13 +288,13 @@ import { hasClass, removeClass, addClass} from 'src/utils'
         }
 
         this.$refs.box.addEventListener('touchmove', this.touchmove, false);
+        this.$refs.box.addEventListener('mousemove', this.touchmove, false);
+        this.$refs.box.addEventListener('mouseup', this.touchend, false);
         this.$refs.box.addEventListener('touchend', this.touchend, false);
-        window.addEventListener('mousemove', this.touchmove, false);
-        window.addEventListener('mouseup', this.touchend, false);
       },
       destroyed() {
-        window.removeEventListener('mousemove', this.touchmove, false);
-        window.removeEventListener('mouseup', this.touchend, false);
+        // window.removeEventListener('touchend', this.touchend, false);
+        // window.removeEventListener('mouseup', this.touchend, false);
       }
   }
 </script>

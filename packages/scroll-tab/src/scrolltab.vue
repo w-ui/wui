@@ -125,6 +125,13 @@
             scrollToBottom () {
                 this.$nextTick(() => {
                     this.$refs.scrollView.scrollTop = 9999
+                    this.$emit('change', this.getPanels().length - 1)
+                })
+            },
+            scrollToTop () {
+                this.$nextTick(() => {
+                    this.$refs.scrollView.scrollTop = 0
+                    this.$emit('change', 0)
                 })
             },
             canScroll (direction) {

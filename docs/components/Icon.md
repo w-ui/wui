@@ -14,8 +14,7 @@
 </template>
 ```
 
-
-###  Icon 属性介绍 attribute
+###  Icon 属性介绍 props
 
 | 参数           | 说明         | 类型       | 可选值        | 默认值     |
 |---------------|--------------|-----------|--------------|-----------|
@@ -1105,19 +1104,12 @@
   </div>
 </template>
 
-<script>
-import Icon from 'packages/icon'
-
-export default {
-  components: {
-    'w-icon': Icon
-  }
-}
-</script>
 
 <style lang="less">
-.icon-container{
-    display: inline-block;
-    width: 220px;
-}
+	@import '../../packages/icon/src/icons.css';
+
+	.icon-container{
+		display: inline-block;
+		width: 220px;
+	}
 </style>
