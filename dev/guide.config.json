@@ -58,5 +58,15 @@
         "name": "wui-performance"
       }
     ]
+  },
+  {
+    "groupName": "加入我们",
+    "group": [
+      {
+        "path": "/guide/contribution",
+        "title": "组件贡献方法",
+        "name": "contribution"
+      }
+    ]
   }
 ]

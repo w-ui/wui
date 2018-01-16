@@ -324,12 +324,6 @@
         "component": "Qrcode"
       },
       {
-        "path": "/doc/IndexPicker",
-        "title": "IndexPicker 索引选择",
-        "name": "IndexPicker",
-        "component": "IndexPicker"
-      },
-      {
         "path": "/doc/Audio",
         "title": "Audio 音频播放器",
         "name": "Audio",

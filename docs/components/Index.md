@@ -5,7 +5,7 @@
 
 
 [![GitHub issues](https://img.shields.io/github/issues/w-ui/wui.svg)](https://github.com/w-ui/wui/issues) [![GitHub closed issues](https://img.shields.io/github/issues-closed/w-ui/wui.svg)](https://github.com/w-ui/wui/issues) [![Gitter](https://img.shields.io/gitter/room/w-ui/wui.svg)](https://github.com/w-ui/wui)
-# 41组件
+# 51组件
 
 
 ### 手机扫码查看示例

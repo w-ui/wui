@@ -52,9 +52,22 @@
           justify-content: center;
           
           em {
+            background-color: #ccc;
+            width: 0.4rem;
+            height: 0.4rem;
+            position: relative;
+          }
+          em::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 50%;
             background-color: @primary-color;
             width: 0.24rem;
             height: 0.24rem;
+            transform: translate(-50%, -50%);
+            border-radius: 100%;
+            z-index: 0;
           }
         }
       }

@@ -135,9 +135,10 @@ export default {
     width: 100%;
     min-height: 100vh;
     padding: 20px;
+    padding-right: 345px;
     word-break: break-all;
     word-wrap: break-word;
-    border-left: 1px solid #eee;
+    line-height: 2;
     background-color: #fff;
     border-radius: 4px;
 
@@ -281,6 +282,9 @@ export default {
 
     ul, ol {
       padding-left: 30px;
+      li {
+        list-style: disc;
+      }
     }
 
     ul :first-child, ol :first-child {

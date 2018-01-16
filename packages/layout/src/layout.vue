@@ -25,9 +25,6 @@
                 console.log('layout>>>:', 'th:', th, 'bh:', bh)
                 this.$refs.body.style.height = (wh - th - bh) + 'px'
             })
-        },
-        updated () {
-            console.log('update')
         }
     }
 </script>

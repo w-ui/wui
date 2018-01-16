@@ -1,6 +1,6 @@
 <template>
   <w-layout>
-    <w-titlebar slot="top" v-if="name != 'Index'" home="/#/demo/Index">
+    <w-titlebar slot="top" home="/#/demo/Index">
       {{name}}
     </w-titlebar>
     
@@ -9,13 +9,13 @@
     </div>
 
     <w-menubar slot="bottom">
-      <w-menubar-item title="首页" link="/demo/feature">
+      <w-menubar-item title="首页" link="/demo/Feature">
         <w-icon slot="icon" name="home"></w-icon>
       </w-menubar-item>
       <w-menubar-item title="示例" link="/demo/Index">
         <w-icon slot="icon" name="light-bulb"></w-icon>
       </w-menubar-item>
-      <w-menubar-item title="日志" :dot="true" link="/demo/log">
+      <w-menubar-item title="日志" :dot="true" link="/demo/Log">
         <w-icon slot="icon" name="receipt"></w-icon>
       </w-menubar-item>
     </w-menubar>
