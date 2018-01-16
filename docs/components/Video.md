@@ -1,7 +1,10 @@
 # Video 视频播放器 
 
++ H5原生播放器简单封装
++ 支持mp4,webm,ogv等格式
 
-### demo
+
+### DEMO
 
 ```html
 

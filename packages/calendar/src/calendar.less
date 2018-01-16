@@ -1,3 +1,5 @@
+@import '../../../src/styles/variables.less';
+
 .calendar {
   margin:auto;
   width: 100%;
@@ -11,7 +13,7 @@
   height:40px;
   font-size: 20px;
   line-height: 40px;
-  color:#5e7a88;
+  color: ;
 }
 .calendar-tools span{
   cursor: pointer;
@@ -32,7 +34,7 @@
   height:20px;
   width:100px;
   text-align: center;
-  color:#5e7a88;
+  color: @primary-color;
   overflow: hidden;
   position: relative;
 }
@@ -113,10 +115,10 @@
 }
 
 .calendar td:not(.disabled) span.red{
-  color:#ea6151;
+  color: @primary-color;
 }
 .calendar td.selected span{
-  background-color: #5e7a88;
+  background-color: @primary-color;
   color: #fff;
 }
 .calendar td .text{
@@ -133,14 +135,14 @@
 }
 .calendar td .isGregorianFestival,
 .calendar td .isLunarFestival{
-  color:#ea6151;
+  color:@primary-color;
 }
 .calendar td.selected span.red{
-  background-color: #ea6151;
+  background-color: @primary-color;
   color: #fff;
 }
 .calendar td.selected span.red:hover{
-  background-color: #ea6151;
+  background-color: @primary-color;
   color: #fff;
 }
 .calendar thead td {
@@ -157,7 +159,7 @@ vertical-align: middle;
   min-height: 1em;
   min-width: 5em;
   vertical-align: baseline;
-  background:#5e7a88;
+  background: @primary-color;
   color:#fff;
   margin: 0 .25em 0 0;
   padding: .6em 2em;
@@ -203,7 +205,7 @@ vertical-align: middle;
   color:#999;
 }
 .calendar-years>span.active{
-  border:1px solid #5e7a88;
-  background-color: #5e7a88;
+  border:1px solid @primary-color;
+  background-color: @primary-color;
   color:#fff; 
 }

@@ -1,10 +1,10 @@
 <template>
   <div>
     <w-audio autoplay mutex theme="#42b983" preload="metadata" mode="circulation" :music="{
-            title: 'Preparation',
+            title: '下雨了',
             author: 'Hans Zimmer/Richard Harvey',
-            url: 'http://devtest.qiniudn.com/Preparation.mp3',
-            pic: 'http://devtest.qiniudn.com/Preparation.jpg'
+            url: 'http://ip.h5.rf03.sycdn.kuwo.cn/745a5a3e726cf3723084ea14d46f0870/5a5d7393/resource/a2/2/92/49421008.aac',
+            pic: 'http://qukufile2.qianqian.com/data2/pic/49e6161afb13e3eda9d1cb4e304561a2/267709272/267709272.jpg@s_1,w_300,h_300'
         }"></w-audio>
   </div>
 </template>

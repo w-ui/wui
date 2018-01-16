@@ -74,6 +74,7 @@ export default {
   computed: {
     compo(){
       let upName = this.name.replace(/^\w/, (s0) => s0.toUpperCase())
+      console.log('doc>:', upName)
       return () => import(`../../docs/components/${upName}.md`)
     },
     demoSrc(){

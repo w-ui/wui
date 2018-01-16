@@ -3,8 +3,18 @@
   <div>
     <div class="paragraph">
       <div class="demo-scroll">
-          <w-scroll :scrollToEle="scrollToEle" :moreShadow="moreShadow" :afterRelease="afterRelease" :beforeRelease="beforeRelease">
-              <a v-for="item in category" :key="item.id" @click="cardClick(item, $event)" class="scroll-item">
+          <w-scroll :scrollBounce="false">
+              <a v-for="(item, index) in category" :key="'ws-h-' + index" class="scroll-item">
+                  <div>
+                  </div>
+                  <div>{{item.name}}</div>
+              </a>
+          </w-scroll>
+      </div>
+
+      <div class="demo-scroll2">
+          <w-scroll direction="v" :scrollBounce="true">
+              <a v-for="(item, index) in category" :key="'ws-v-' + index" class="scroll-item">
                   <div>
                   </div>
                   <div>{{item.name}}</div>
@@ -22,9 +32,6 @@
     export default {
         data() {
         return {
-            scrollToEle: undefined,
-            moreShadow: true, //滚动至尾部是否展示阴影效果（仅对水平滑动有效）
-            scrollDirection: 'horizontal', // (horizontal/vertical, 默认horizontal)
             category: [
             {
               name: '特价专区',
@@ -144,23 +151,6 @@
         'w-icon': Icon
     },
     methods: {
-        scrollToActivedElement() {
-            // 确保激活的分类在可视区域
-            Vue.nextTick(() => {
-                this.scrollToEle = this.$el.querySelector('.active');
-            });
-        },
-        afterRelease() {
-            console.log('afterRelease');
-            // TODO: afterRelease
-        },
-        beforeRelease() {
-            console.log('beforeRelease');
-            // TODO: beforeRelease
-        },
-        cardClick(item, e){
-
-        }
     }
 }
 
@@ -178,6 +168,29 @@
       color: #567;
       background-color: #f0f0f0;
       margin-right: 10px;
+      div{
+        height: 50%;
+      }
+      i{
+        font-size: 40px;
+      }
+    }
+  }
+
+  .demo-scroll2{
+    margin-top: 20px;
+    width: 100%;
+    height: 300px;
+    
+    .scroll-item {
+      display: inline-block;
+      width: 100%;
+      height: 100px;
+      padding: 10px;
+      text-align: center;
+      color: #567;
+      background-color: #f0f0f0;
+      border-bottom: 1px #ccc solid;
       div{
         height: 50%;
       }

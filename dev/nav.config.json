@@ -228,6 +228,18 @@
         "component": "Icon"
       },
       {
+        "path": "/doc/Table",
+        "title": "Table 表格",
+        "name": "Table",
+        "component": "Table"
+      },
+      {
+        "path": "/doc/Noticebar",
+        "title": "Noticebar 公告条",
+        "name": "Noticebar",
+        "component": "Noticebar"
+      },
+      {
         "path": "/doc/Rate",
         "title": "Rate 评分",
         "name": "Rate",
@@ -270,6 +282,12 @@
         "component": "Countup"
       },
       {
+        "path": "/doc/Countdown",
+        "title": "Countdown 倒计时",
+        "name": "Countdown",
+        "component": "Countdown"
+      },
+      {
         "path": "/doc/Sortable",
         "title": "Sortable 拖拽排序",
         "name": "Sortable",
@@ -306,10 +324,10 @@
         "component": "Qrcode"
       },
       {
-        "path": "/doc/CitySelect",
-        "title": "CitySelect 选择城市",
-        "name": "CitySelect",
-        "component": "CitySelect"
+        "path": "/doc/IndexPicker",
+        "title": "IndexPicker 索引选择",
+        "name": "IndexPicker",
+        "component": "IndexPicker"
       },
       {
         "path": "/doc/Audio",

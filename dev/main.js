@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import router from './routers'
-import App from './app'
+import App from './App.vue'
 Vue.component('App', App)
 
 Vue.config.errorHandler = function (err, vm, info) {

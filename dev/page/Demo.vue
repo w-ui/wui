@@ -1,12 +1,24 @@
 <template>
   <w-layout>
-    <w-titlebar v-if="name != 'Index'" home="/#/demo/Index">
+    <w-titlebar slot="top" v-if="name != 'Index'" home="/#/demo/Index">
       {{name}}
     </w-titlebar>
     
     <div class="demo-area">
       <component :is="compo"></component>
     </div>
+
+    <w-menubar slot="bottom">
+      <w-menubar-item title="首页" link="/demo/feature">
+        <w-icon slot="icon" name="home"></w-icon>
+      </w-menubar-item>
+      <w-menubar-item title="示例" link="/demo/Index">
+        <w-icon slot="icon" name="light-bulb"></w-icon>
+      </w-menubar-item>
+      <w-menubar-item title="日志" :dot="true" link="/demo/log">
+        <w-icon slot="icon" name="receipt"></w-icon>
+      </w-menubar-item>
+    </w-menubar>
 
   </w-layout>
 </template>
@@ -15,6 +27,9 @@
 
 import Layout from 'packages/layout'
 import Titlebar from 'packages/titlebar'
+import Menubar from 'packages/menubar'
+import MenubarItem from 'packages/menubar-item'
+import Icon from 'packages/icon'
 
 export default {
   name: 'demo',
@@ -26,7 +41,10 @@ export default {
   },
   components: {
     'w-layout': Layout,
-    'w-titlebar': Titlebar
+    'w-titlebar': Titlebar,
+    'w-menubar': Menubar,
+    'w-menubar-item': MenubarItem,
+    'w-icon': Icon
   },
   data () {
     let upName = this.name.replace(/^\w/, (s0) => s0.toUpperCase())

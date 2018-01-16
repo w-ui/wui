@@ -6,6 +6,7 @@
     width: 100%;
     height: 100%;
     display: flex;
+
     .scroll-tab-nav {
       height: 100%;
       background-color: #F5F5F5;
@@ -17,7 +18,6 @@
         .right-line(#DFDFDF);
       }
     }
-
 
     .scroll-tab-item {
       padding: 0 .3rem;
@@ -72,8 +72,7 @@
     .scroll-tab-content {
       height: 100%;
       background-color: #FFF;
-      overflow-y: auto;
-      -webkit-overflow-scrolling: touch;
+      overflow: hidden;
       flex: 1;
       padding: 0 .24rem .24rem .24rem;
       position: relative;

@@ -15,25 +15,19 @@
 <script type="text/babel">
     export default {
         name: 'wui-layout',
-        props: {
-            transparentTop: {
-                type: Boolean,
-                default: false
-            }
-        },
         mounted () {
             this.$nextTick(() => {
+                let wh = window.innerHeight
+                let th = this.$refs.top.offsetHeight
+                let bh = this.$refs.bottom.offsetHeight
                 this.$el.style.width = window.innerWidth + 'px'
-                this.$el.style.height = window.innerHeight + 'px'
-                if (this.transparentTop) {
-                    this.$refs.body.style.height = window.innerHeight - this.$refs.bottom.offsetHeight + 'px'
-                } else {
-                    let th = this.$refs.top.offsetHeight
-                    this.$refs.body.style.marginTop = th + 'px'
-                    this.$refs.body.style.opacity = 1
-                    this.$refs.body.style.height = window.innerHeight - th - this.$refs.bottom.offsetHeight + 'px'
-                }
+                this.$el.style.height = wh + 'px'
+                console.log('layout>>>:', 'th:', th, 'bh:', bh)
+                this.$refs.body.style.height = (wh - th - bh) + 'px'
             })
+        },
+        updated () {
+            console.log('update')
         }
     }
 </script>

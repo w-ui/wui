@@ -108,6 +108,6 @@
     }
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
     @import "./aplayer.less";
 </style>

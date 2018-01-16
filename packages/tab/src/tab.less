@@ -1,24 +1,6 @@
 
-.bottom-line(@color, @zindex: 0) {
-  content: '';
-  position: absolute;
-  z-index: @zindex;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  border-bottom: 1px solid @color;
-  -webkit-transform: scaleY(.5);
-  transform: scaleY(.5);
-  -webkit-transform-origin: 0 0;
-  transform-origin: 0 0;
-}
-
-.tap-color(@color, @opacity: .9) {
-  background-color: @color;
-  &:active {
-    background-color: @color * @opacity;
-  }
-}
+@import '../../../src/styles/variables.less';
+@import '../../../src/styles/mixins.less';
 
 .wui {
   &-tab {

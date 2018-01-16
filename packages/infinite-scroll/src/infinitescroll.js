@@ -33,6 +33,9 @@ export default {
       type: Number,
       default: Infinity,
       required: true
+    },
+    canScroll: {
+      type: Function
     }
   },
   methods: {
@@ -48,13 +51,6 @@ export default {
       this.offsetH = 0
       this.currentX = this.getCurrentX()
       this.currentY = this.getCurrentY()
-
-      this.ww = this.$el.offsetWidth
-      this.hh = this.$el.offsetHeight
-      this.maxsw = 0
-      this.maxsh = 0
-      this.minsw = (1 - this.pageCount) * this.ww
-      this.minsh = (1 - this.pageCount) * this.hh
     },
     touchmove (e) {
       if (this.drag) {
@@ -63,39 +59,49 @@ export default {
         
         if (this.direction === 'h') {
           let offsetX = tar.pageX - this.startX
-          this.offsetW = offsetX
-          let lastx = this.currentX + offsetX
-          lastx = this.getDamping(lastx)
-          this.translateTo(lastx, 0, true)
-        } else {
           let offsetY = tar.pageY - this.startY
-          this.offsetH = offsetY
-          let lasty = this.currentY + offsetY
-          if (!this.checkScroll()) {
-            let back = -this.currentPage * this.hh
-            this.translateTo(0, back)
-            return
+
+          if (Math.abs(offsetX) > Math.abs(offsetY)) {
+            this.offsetW = offsetX
+            let lastx = this.currentX + offsetX
+
+            if (lastx > 0 || lastx < this.minsw) {
+            } else {
+              this.translateTo(lastx, 0,  0, true)
+              e.preventDefault()
+              e.stopPropagation()
+            }
           }
-          lasty = this.getDamping(lasty)
-          this.translateTo(0, lasty, true)
-          e.preventDefault()
+        } else {
+          if (this.canScroll && !this.canScroll()) {
+            return;
+          }
+          let offsetX = tar.pageX - this.startX
+          let offsetY = tar.pageY - this.startY
+
+          if (Math.abs(offsetY) > Math.abs(offsetX)) {
+            this.offsetH = offsetY
+            let lasty = this.currentY + offsetY
+            if (lasty > 0 || lasty < this.minsh ) {
+            } else {
+                this.translateTo(0, lasty, 0, true)
+                e.preventDefault()
+                e.stopPropagation()
+            }
+          }
         }
       }
     },
     touchend (e) {
       if (this.drag) {
         this.drag = false
-        if (!this.checkScroll()) {
-          let back = -this.currentPage * this.hh
-          this.translateTo(0, back)
-          return
-        }
+        
         if (this.direction === 'h') {
           let curx = this.getCurrentX()
           if (curx > this.maxsw) {
-            this.bounceBack(this.maxsw, 0)
+            this.bounceBack(this.maxsw, 0, 600)
           } else if (curx < this.minsw) {
-            this.bounceBack(this.minsw, 0)
+            this.bounceBack(this.minsw, 0, 600)
           } else {
             this.momentumMove(e)
           }
@@ -112,7 +118,7 @@ export default {
       }
     },
     bounceBack (x, y, t) {
-      let ti = t || 500
+      let ti = t || 300
       this.translateTo(x, y, ti)
     },
     getDamping (s) {
@@ -153,54 +159,18 @@ export default {
     },
     momentumMove (e) {
       let difft = Date.now() - this.startTime
-
       if (this.direction === 'h') {
         let curx = this.getCurrentX()
-        if (difft > 500 || Math.abs(this.offsetW) < 10) {
-          this.stepOneItem(curx, 300)
-        } else {
-          let v = Math.abs(this.offsetW) / difft
-          const a = 0.0004
-          let s = v * v / (2 * a) * (this.offsetW < 0 ? -1 : 1)
-          let t = Math.round(s / v)
-
-          this.stepOneItem(curx, 0, 300)
-          setTimeout(() => {
-            curx = this.getCurrentX()
-            if (curx > this.maxsw) {
-              this.bounceBack(this.maxsw, 0)
-            } else if (curx < this.minsw) {
-              this.bounceBack(this.minsw, 0)
-            }
-          }, t)
-        }
+        this.stepOneItem(curx, 0, 300)
       } else {
         let cury = this.getCurrentY()
-        if (difft > 500 || Math.abs(this.offsetH) < 10) {
-          this.stepOneItem(0, cury, 300)
-        } else {
-          let v = Math.abs(this.offsetH) / difft
-          const a = 0.0004
-          let s = v * v / (2 * a) * (this.offsetH < 0 ? -1 : 1)
-          let t = Math.round(s / v)
-
-          this.stepOneItem(0, cury, 300)
-          setTimeout(() => {
-            cury = this.getCurrentY()
-            if (cury > this.maxsh) {
-              this.bounceBack(0, this.maxsh)
-            } else if (cury < this.minsh) {
-              this.bounceBack(0, this.minsh)
-            }
-          }, t)
-        }
+        this.stepOneItem(0, cury, 300)
       }
     },
     stepOneItem (curx, cury, t) {
       let lastP = this.currentPage
-
       if (this.direction === 'h') {
-        if (Math.abs(this.offsetW) >= this.ww / 4) {
+        if (Math.abs(this.offsetW) >= this.ww / 6) {
           let last
           if (this.offsetW < 0) {
             if (this.updatePageIndex('forward')) {
@@ -224,7 +194,7 @@ export default {
           this.translateTo(back, 0, t)
         }
       } else {
-        if (Math.abs(this.offsetH) >= this.hh / 4) {
+        if (Math.abs(this.offsetH) >= this.hh / 6) {
           let last
           if (this.offsetH < 0) {
             if (this.updatePageIndex('forward')) {
@@ -274,68 +244,55 @@ export default {
           this.currentPage = index
           if (this.direction === 'h') {
             let last = -index * this.ww
-            this.translateTo(last, 0, 600)
+            this.translateTo(last, 0, 300)
           } else {
             let last = -index * this.hh
-            this.translateTo(0, last, 600)
+            this.translateTo(0, last, 300)
           }
         }
       })
     },
     translateTo (x, y, t, immediately) {
       let time = t || 300
+      time < 300 && (time = 300);
+      time > 600 && (time = 600);
+ 
       if (immediately) {
-        this.$refs.box.style.transition = 'none'
+          this.$refs.box.style.webkitTransition = 'none'
+          this.$refs.box.style.transition = 'none'
       } else {
-        this.$refs.box.style.transition = `${time}ms all cubic-bezier(0.1, 0.57, 0.1, 1)`
+          // this.$refs.box.style.webkitTransition = `${time}ms all cubic-bezier(0.1, 0.57, 0.1, 1)`
+          // this.$refs.box.style.transition = `${time}ms all cubic-bezier(0.1, 0.57, 0.1, 1)`
+          this.$refs.box.style.webkitTransition = `${time}ms all linear`
+          this.$refs.box.style.transition = `${time}ms all linear`
+          // this.$refs.box.style.webkitTransition = `${time}ms all cubic-bezier(0.7, 0, 1, 1)`
+          // this.$refs.box.style.transition = `${time}ms all cubic-bezier(0.7, 0, 1, 1)`
+          // this.$refs.box.style.webkitTransition = `${time}ms all cubic-bezier(0, 0, 0, 0.7)`
+          // this.$refs.box.style.transition = `${time}ms all cubic-bezier(0, 0, 0, 0.7)`
       }
+      this.$refs.box.style.webkitTransform = `translate(${x}px, ${y}px)`
       this.$refs.box.style.transform = `translate3d(${x}px, ${y}px, 0)`
     },
     scrollToBottom () {
       this.toBottom = true
-      // this.$nextTick(() => {
-      //   let child = this.$slots.default[this.currentPage]
-      //   child.parentNode.scrollTop = 99999
-      // })
     },
-    checkScroll (e) {
-      let tar = this.$slots.default[this.currentPage]
-      if (tar) {
-        let oh = tar.elm.offsetHeight
-        let st = tar.elm.parentNode.scrollTop
-        if (this.direction === 'v') {
-          let dir = ''
-          if (this.offsetH < 0) {
-            dir = 'up'
-            if (oh > this.hh && st < oh - this.hh) {
-              return false
-            }
-          } else {
-            dir = 'down'
-            if (st > 0) {
-              return false
-            }
-          }
-
-          let item = tar.children.filter(item => {
-            return item.componentInstance.$options.name === 'w-scroll-tab'
-          })
-          if (item && item.length > 0) {
-            return !item[0].componentInstance.canScroll(dir)
-          }
+    checkScroll () {
+      if (this.offsetH > 0) {
+        // down
+        if (this.currentPage === 0) {
+          return false
         }
-        return true
-      }
-    },
-    canScroll (direction) {
-      if (direction === 'down' && this.currentPage === 0) {
-        return false
-      }
-      if (direction === 'down' && this.currentPage >= this.pageCount) {
-        return true
-      }
-      if (this.currentPage < this.pageCount) {
-        return true
+        if (this.currentPage < this.pageCount) {
+          return true
+        }
+      }  else {
+        // up
+        if (this.currentPage >= this.pageCount) {
+          return false
+        }
+        if (this.currentPage > 0) {
+          return true
+        }
       }
       return false
     }
@@ -405,38 +362,32 @@ export default {
         }
       })
       this.toBottom = false
-    } else  {
-      let child = this.$slots.default[this.currentPage]
-      child.children.forEach(item => {
-        let ins = item.componentInstance
-        if (ins && ins.$options.name === 'w-scroll-tab') {
-          ins.scrollToTop()
-          return false
-        }
-      })
     }
   },
   mounted () {
-    this.ww = this.$el.offsetWidth
-    this.hh = this.$el.offsetHeight
+    this.$nextTick(() => {
 
-    this.$refs.box.addEventListener('touchstart', this.touchstart, false)
-    this.$refs.box.addEventListener('mousedown', this.touchstart, false)
-    this.$refs.box.addEventListener('touchmove', this.touchmove, false)
-    this.$refs.box.addEventListener('mousemove', this.touchmove, false)
-    window.addEventListener('touchend', this.touchend, false)
-    window.addEventListener('mouseup', this.touchend, false)
+      this.ww = this.$el.offsetWidth
+      this.hh = this.$el.offsetHeight
+      this.maxsw = 0
+      this.maxsh = 0
+      this.minsw = (1 - this.pageCount) * this.ww
+      this.minsh = (1 - this.pageCount) * this.hh
 
-    // window.addEventListener('touchmove', this.touchmove, true)
-    // window.addEventListener('touchend', this.touchend, true)
-    // window.addEventListener('mousemove', this.touchmove, true)
-    // window.addEventListener('mouseup', this.touchend, true)
-    this.$forceUpdate()
+      this.$el.addEventListener('touchstart', this.touchstart, {passive: true})
+      this.$el.addEventListener('mousedown', this.touchstart, {passive: true})
+
+      this.$el.addEventListener('touchmove', this.touchmove, false)
+      this.$el.addEventListener('mousemove', this.touchmove, false)
+
+      this.$el.addEventListener('touchend', this.touchend, {passive: true})
+      this.$el.addEventListener('mouseup', this.touchend, {passive: true})
+
+    })
   },
   destroyed () {
-    // window.removeEventListener('touchmove', this.touchmove, true)
-    // window.removeEventListener('touchend', this.touchend, true)
-    window.removeEventListener('mousemove', this.touchmove, false)
-    window.removeEventListener('mouseup', this.touchend, false)
+    // window.removeEventListener('touchend', this.touchmove, false)
+    // window.removeEventListener('mouseup', this.touchend, false)
   }
 }
+

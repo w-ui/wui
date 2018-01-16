@@ -1,0 +1,74 @@
+@import '../../../src/styles/variables.less';
+@import '../../../src/styles/mixins.less';
+
+.wui {
+    &-table {
+        display: flex;
+        
+        &-fixed {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            &:after {
+                .bottom-line(@line-color);
+            }
+        }
+
+        &-scroll {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow-x: auto;
+            position: relative;
+            &:after {
+                .bottom-line(@line-color);
+            }
+        }
+
+        &-header {
+            display: flex;
+            flex-wrap: nowrap;
+            align-items: center;
+
+            &-th {
+                position: relative;
+                text-align: center;
+                padding: 10px 0;
+                background-color: rgb(229, 231, 233);
+                &:after {
+                    .right-line(@line-color);
+                }
+            }
+        }
+
+        &-body {
+            display: flex;
+            flex-direction: column;
+            font-size: 0;
+
+            &-tr {
+                display: flex;
+                flex-wrap: nowrap;
+                position: relative;
+                font-size: 12px;
+                &:after {
+                    .bottom-line(@line-color);
+                }
+            }
+
+            &-td {
+                flex: 1;
+                position: relative;
+                &:after {
+                   .right-line(@line-color);
+                }
+                padding: 10px;
+            }
+            &-td:first-child {
+                &:before {
+                    .left-line(@line-color);
+                }
+            }
+        }
+    }
+}

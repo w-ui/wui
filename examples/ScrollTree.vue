@@ -57,31 +57,6 @@ export default {
             children: []
           },
           {
-            name: '特价专区',
-            id: 1003001,
-            icon: 'shield',
-            children: [
-              {
-                name: '饮料/水',
-                id: 1003001,
-                icon: 'package',
-                children: []
-              },
-              {
-                name: '酒类饮品',
-                id: 1003001,
-                icon: 'world',
-                children: []
-              },
-              {
-                name: '牛奶乳类',
-                id: 1003001,
-                icon: 'brush-alt',
-                children: []
-              }
-            ]
-          },
-          {
             name: '休闲零食',
             id: 1003001,
             icon: 'palette',
@@ -144,7 +119,7 @@ export default {
             ]
           },
           {
-            name: '网红新品',
+            name: '网红新品网红新品网红新品网红新品网红新品网红新品网红新品网红新品网红新品网红新品网红新品网红新品网红新品网红新品网红新品网红新品网红新品网红新品',
             id: 1003001,
             icon: 'pin2',
             children: []

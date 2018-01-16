@@ -1,18 +1,17 @@
 <template>
-    <div class="vm-noticebar">
-        <div class="vm-icon" v-if="typeClass" :class="typeClass"></div>
-        <div class="vm-noticebar-wrap" ref="noticeBarWrap">
-            <div class="vm-noticebar-content"
+    <div class="wui-noticebar">
+        <div class="icon" v-if="typeClass" :class="typeClass"></div>
+        <div class="wui-noticebar-wrap" ref="noticeBarWrap">
+            <div class="wui-noticebar-content"
                  :style="styleObj"
                  :class="{'animate':shouldAnimate}"
                  ref="noticeBarContent">
                 <slot></slot>
             </div>
         </div>
-        <div class="vm-action" v-if="actionClass" @click="close" :class="actionClass"></div>
+        <div class="wui-action" v-if="actionClass" @click="close" :class="actionClass"></div>
     </div>
 </template>
-<style lang="scss" src="./style.scss"></style>
 <script type="text/javascript">
   /**
    * @component NoticeBar
@@ -128,10 +127,10 @@
     created () {
       switch (this.type) {
         case 'notice':
-          this.typeClass = 'vm-icon-notice'
+          this.typeClass = 'icon-notice'
           break
         case 'warn':
-          this.typeClass = 'vm-icon-warn'
+          this.typeClass = 'icon-warn'
           break
         case 'hide':
           this.typeClass = ''
@@ -142,10 +141,10 @@
 
       switch (this.action) {
         case 'close':
-          this.actionClass = 'vm-icon-close'
+          this.actionClass = 'icon-close'
           break
         case 'right':
-          this.actionClass = 'vm-icon-right'
+          this.actionClass = 'icon-right'
           break
         case 'hide':
           this.actionClass = ''
@@ -167,3 +166,6 @@
     components: {}
   }
 </script>
+<style lang="less">
+@import "./style.less";
+</style>

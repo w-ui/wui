@@ -77,9 +77,11 @@
             },
             nums(val) {
                 if (val.length >= 6) {
-                    this.inputDone && this.inputDone(val);
-                    this.callback && this.callback(val);
-                    this.$emit('input', false);
+                    setTimeout(() => {
+                        this.inputDone && this.inputDone(val);
+                        this.callback && this.callback(val);
+                        this.$emit('input', false);
+                    }, 800)
                 }
             }
         },

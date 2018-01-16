@@ -1,14 +1,14 @@
 <template>
-  <div v-if= "direction === 'h'" class="wui-scroll-card-h">
-    <div class="wui-scroll-nav" ref="nav">
-      <div class="wui-scroll-container" ref="box" @touchstart="touchstart" @mousedown="touchstart">
+  <div v-if= "direction === 'h'" class="wui-scroll-h">
+    <div class="wui-scroll-h-nav" ref="nav">
+      <div class="wui-scroll-h-container" ref="box" @touchstart="touchstart" @mousedown="touchstart">
         <slot></slot>
       </div>
     </div>
   </div>
-  <div v-else class="wui-scroll-card-v">
-    <div class="wui-scroll-nav" ref="nav">
-      <div class="wui-scroll-container" ref="box" @touchstart="touchstart" @mousedown="touchstart">
+  <div v-else class="wui-scroll-v">
+    <div class="wui-scroll-v-nav" ref="nav">
+      <div class="wui-scroll-v-container" ref="box" @touchstart="touchstart" @mousedown="touchstart">
         <slot></slot>
       </div>
     </div>
@@ -17,7 +17,7 @@
 
 <script type="text/babel">
     export default {
-        name: 'w-scroll-card',
+        name: 'w-scroll',
         data() {
             return {
               drag: false,
@@ -40,14 +40,13 @@
             type: String,
             default: 'h'
           },
-          change: Function,
-          centerActivedItem: {
+          scrollBounce: {
             type: Boolean,
             default: true
           }
         },
         methods: {
-          touchstart(e){
+          touchstart(e) {
             this.drag = true
             let tar = e.targetTouches || [e];
             tar = tar[0]
@@ -56,46 +55,11 @@
             this.startTime = Date.now()
             this.offsetW = 0
             this.offsetH = 0
-
-            if (this.direction == 'h') {
-              this.currentX = this.getCurrentX()
-              let width = this.$refs.box.offsetWidth;
-              this.ww = this.$el.offsetWidth;
-              this.maxsw = 0; //max scroll width
-              this.minsw = this.ww - width;   //max scroll width
-              if (this.minsw > 0) {
-                this.minsw = 0
-              }
-            } else if(this.direction == 'v') {
-              this.currentY = this.getCurrentY()
-              let height = this.$refs.box.offsetHeight;
-              this.hh = this.$el.offsetHeight;
-              this.maxsh = 0; //max scroll width
-              this.minsh = this.hh - height;   //max scroll width
-              if (this.minsh > 0) {
-                this.minsh = 0
-              }
-            }
-            e.preventDefault();
-            e.stopPropagation();
+            this.currentX = this.getCurrentX()
+            this.currentY = this.getCurrentY()
           },
-          touchmove(e){
-            if(this.drag){
-              // let now = Date.now();
-              // if(this.lastTime){
-              //   let remaining = 50 - now + this.lastTime;
-              //   if(remaining <= 0){
-              //     this.lastTime = now;
-              //     clearInterval(this.timer);
-              //     this.move(e);
-              //   } else {
-              //     clearInterval(this.timer);
-              //     this.timer = setTimeout(this.move.bind(this, e), remaining);
-              //   }
-              // } else {
-              //   this.lastTime = now;
-              //   this.move(e);
-              // }
+          touchmove(e) {
+            if (this.drag) {
               this.move(e);
               e.preventDefault();
               e.stopPropagation();
@@ -116,7 +80,6 @@
               } else {
                 let cury = this.getCurrentY()
                 if(cury > this.maxsh){
-                  console.log(`touchend: ${this.maxsh}`)
                   this.bounceBack(0, this.maxsh)
                 } else if(cury < this.minsh){
                   this.bounceBack(0, this.minsh)
@@ -134,20 +97,45 @@
                 let offsetX = tar.pageX - this.startX;
                 this.offsetW = offsetX;
                 let lastx = this.currentX + offsetX;
+                if (lastx > 0) {
+                    if (!this.scrollBounce) {
+                        e.stopPropagation()
+                        return;
+                    }
+                }  else if (lastx < this.minsw) {
+                    if (!this.scrollBounce) {
+                        e.stopPropagation()
+                        return;
+                    }
+                }
                 lastx = this.getDamping(lastx)
                 this.translateTo(lastx, 0, 0, true)
+                e.preventDefault()
+                e.stopPropagation()
               } else {
                 let offsetY = tar.pageY - this.startY;
                 this.offsetH = offsetY;
                 let lasty = this.currentY + offsetY;
+                if (lasty > 0) {
+                    if (!this.scrollBounce) {
+                        e.stopPropagation()
+                        return;
+                    }
+                }  else if (lasty < this.minsh) {
+                    if (!this.scrollBounce) {
+                        e.stopPropagation()
+                        return;
+                    }
+                }
                 lasty = this.getDamping(lasty)
-                console.log(`move: ${lasty}`)
                 this.translateTo(0, lasty, 0, true)
+                e.preventDefault()
+                e.stopPropagation()
               }
             }
           },
           bounceBack(x, y, t) {
-            let ti = t || 500
+            let ti = t || 600
             this.translateTo(x, y, ti)
           },
           getDamping (s) {
@@ -157,9 +145,9 @@
               min = this.minsh
             }
             if (s > max) {
-              return Math.round(s/4)
+              return Math.round(s/3)
             } else if (s < min) {
-              return Math.round(min - (min - s ) / 4)
+              return Math.round(min - (min - s ) / 3)
             } else {
               return s
             }
@@ -169,7 +157,6 @@
             if (this.direction == 'h') {
               let curx = this.getCurrentX()
               if(difft > 500 || Math.abs(this.offsetW) < 10){
-                this.slotClick(e);
                 return;
               } else {
                 let v = Math.abs(this.offsetW) / difft
@@ -179,14 +166,21 @@
                 let t = Math.round(s / v)
 
                 if (last < this.minsw) {
-                  last = Math.round(this.minsw - this.ww / (v * 6))
+                    if (this.scrollBounce) {
+                        last = Math.round(this.minsw - this.ww / (6 * v))
+                    } else {
+                        last = this.minsw
+                    }
                 } else if (last > 0) {
-                  // 向右
-                  last = Math.round(this.ww / (v * 6))
+                    // 向右
+                    if (this.scrollBounce) {
+                        last = Math.round(this.ww / (6 * v))
+                    } else {
+                        last = 0
+                    }
                 }
                 t < 300 && (t = 300);
                 t > 600 && (t = 600);
-
                 this.translateTo(last, 0, t)
 
                 setTimeout(() => {
@@ -201,7 +195,6 @@
             } else {
               let cury = this.getCurrentY()
               if(difft > 500 || Math.abs(this.offsetH) < 10){
-                this.slotClick(e);
                 return;
               } else {
                 let v = Math.abs(this.offsetH) / difft
@@ -211,10 +204,18 @@
                 let t = Math.round(s / v)
 
                 if (last < this.minsh) {
-                  last = Math.round(this.minsh - this.hh / (v * 6))
+                    if (this.scrollBounce) {
+                        last = Math.round(this.minsh - this.hh / (6 * v))
+                    } else {
+                        last = this.minsh
+                    }
                 } else if (last > 0) {
                   // 向右
-                  last = Math.round(this.hh / (v * 6))
+                    if (this.scrollBounce) {
+                        last = Math.round(this.hh / (6 * v))
+                    } else {
+                        last = 0
+                    }
                 }
                 t < 300 && (t = 300);
                 t > 600 && (t = 600);
@@ -253,75 +254,10 @@
             }
             return Number.isNaN(cy) ? 0 : parseInt(cy)
           },
-          slotClick(e){
-            let cur = e.target;
-            let pnode = cur;
-            if(!pnode) return;
-            if(cur == this.$refs.box) {
-              return;
-            } else if(cur.parentNode == this.$refs.box) {
-              pnode = cur;
-            } else {
-              while(pnode && pnode.parentNode != this.$refs.box){
-                pnode = pnode.parentNode;
-              }
-            }
-            if(pnode){
-              this.centerItem(pnode);
-            }
-          },
-          centerItem(node){
-            this.$slots.default.map((child, index) => {
-              if (child.elm === node) {
-                node.classList.add('active');
-                this.currentIndex = index;
-              } else {
-                if (child.elm && child.elm.classList) {
-                  child.elm.classList.remove('active')
-                }
-              }
-            })
-            if (!this.centerActivedItem) {
-              return;
-            }
-            let rectParent = this.$el.getBoundingClientRect()
-            let rect = node.getBoundingClientRect()
-            if (this.direction == 'h') {
-              let left = rect.left - rectParent.left
-              let curx = this.getCurrentX()
-              let offset = 0
-              if(left > this.ww/2){
-                offset = curx - (left - this.ww/2 + rect.width/2)
-                offset < this.minsw && (offset = this.minsw);
-                offset > this.maxsw && (offset = this.maxsw);
-              } else {
-                offset = curx + (this.ww/2 - left -rect.width/2)
-                offset > this.maxsw && (offset = this.maxsw);
-                offset < this.minsw && (offset = this.minsw);
-              }
-              this.translateTo(offset, 0, 600)
-              this.$emit('change', this.currentIndex)
-            } else {
-              let top = rect.top - rectParent.top
-              let cury = this.getCurrentY()
-              let offset = 0
-              if(top > this.hh/2){
-                offset = cury - (top - this.hh/2 + rect.height/2)
-                offset < this.minsh && (offset = this.minsh);
-                offset > this.maxsh && (offset = this.maxsh);
-              } else {
-                offset = cury + (this.hh/2 - top -rect.height/2)
-                offset > this.maxsh && (offset = this.maxsh);
-                offset < this.minsh && (offset = this.minsh);
-              }
-              this.translateTo(0, offset, 600)
-              this.$emit('change', this.currentIndex)
-            }
-          },
           translateTo (x, y, t, immediately) {
             let time = t || 300
-            t < 300 && (t = 300);
-            t > 1200 && (t = 1200);
+            time < 300 && (time = 300)
+            time > 600 && (time = 600)
            
             if (immediately) {
               this.$refs.box.style.webkitTransition = 'none'
@@ -332,40 +268,35 @@
             }
             this.$refs.box.style.webkitTransform = `translate(${x}px, ${y}px)`
             this.$refs.box.style.transform = `translate3d(${x}px, ${y}px, 0)`
-          },
-          setCurrent (index) {
-            if (index >= 0 && index < this.total) {
-              this.currentX = index
-              this.centerItem(this.$slots.default[index].elm);
-            }
           }
         },
         
         mounted() {
-          this.total = this.$slots.default.length;
-          if (this.direction == 'h') {
-            let width = this.$refs.box.offsetWidth;
-            this.ww = this.$el.offsetWidth;
-            this.maxsw = 0; //max scroll width
-            this.minsw = this.ww - width;   //max scroll width
-            if (this.minsw > 0) {
-              this.minsw = 0
-            }
-          } else {
-            let height = this.$refs.box.offsetHeight;
-            this.hh = this.$el.offsetHeight;
-            this.maxsh = 0; //max scroll width
-            this.minsh = this.hh - height;   //max scroll width
-            if (this.minsh > 0) {
-              this.minsh = 0
-            }
-          }
+            this.$nextTick(() => {
+                this.total = this.$slots.default.length;
+                if (this.direction == 'h') {
+                    let width = this.$refs.box.offsetWidth;
+                    this.ww = this.$el.offsetWidth;
+                    this.maxsw = 0; //max scroll width
+                    this.minsw = this.ww - width;   //max scroll width
+                    if (this.minsw > 0) {
+                        this.minsw = 0
+                    }
+                } else {
+                    let height = this.$refs.box.offsetHeight;
+                    this.hh = this.$el.offsetHeight;
+                    this.maxsh = 0; //max scroll width
+                    this.minsh = this.hh - height;   //max scroll width
+                    if (this.minsh > 0) {
+                        this.minsh = 0
+                    }
+                }
+                this.$el.addEventListener('touchmove', this.touchmove, {passive: true});
+                this.$el.addEventListener('touchend', this.touchend, {passive: true});
 
-          this.$el.addEventListener('touchmove', this.touchmove, {passive: true});
-          this.$el.addEventListener('touchend', this.touchend, {passive: true});
-
-          window.addEventListener('mousemove', this.touchmove, false);
-          window.addEventListener('mouseup', this.touchend, false);
+                window.addEventListener('mousemove', this.touchmove, false);
+                window.addEventListener('mouseup', this.touchend, false);
+            })
         },
         destroyed() {
           window.removeEventListener('mousemove', this.touchmove, false);
@@ -375,5 +306,5 @@
 </script>
 
 <style lang="less">
-    @import "./scrollcard.less";
+    @import "./scroll.less";
 </style>
