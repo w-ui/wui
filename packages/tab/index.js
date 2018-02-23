@@ -1,1 +1,2 @@
-export { default } from './src/tab.vue'
+import Tab from './src/tab.vue'
+export { Tab } 

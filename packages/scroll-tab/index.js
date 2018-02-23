@@ -1,1 +1,2 @@
-export { default } from './src/scrolltab.vue'
+import Scrolltab from './src/scrolltab.vue'
+export { Scrolltab }

@@ -1,1 +1,2 @@
-export {default} from './src/Sticky'
+import Sticky from './src/Sticky'
+export {Sticky} 

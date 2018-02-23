@@ -1,1 +1,2 @@
-export { default } from './src/noticebar.vue'
+import Noticebar from './src/noticebar.vue'
+export { Noticebar } 

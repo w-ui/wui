@@ -1,1 +1,2 @@
-export { default } from './src/ImageClip.vue'
+import ImageClip from './src/ImageClip.vue'
+export { ImageClip } 

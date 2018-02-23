@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" width="256" height="256" viewBox="0, 0, 256, 256">
+  <g id="图层_1">
+    <g>
+      <path d="M28.605,79 L228.395,79 C233.7,79 238,83.029 238,88 L238,169 C238,173.971 233.7,178 228.395,178 L28.605,178 C23.3,178 19,173.971 19,169 L19,88 C19,83.029 23.3,79 28.605,79 z" fill="#FFFFFF"/>
+      <path d="M28.605,79 L228.395,79 C233.7,79 238,83.029 238,88 L238,169 C238,173.971 233.7,178 228.395,178 L28.605,178 C23.3,178 19,173.971 19,169 L19,88 C19,83.029 23.3,79 28.605,79 z" fill-opacity="0" stroke="#0791F4" stroke-width="10"/>
+    </g>
+    <g>
+      <path d="M52.612,99.554 L52.612,159.554" fill-opacity="0" stroke="#0791F4" stroke-width="10"/>
+      <path d="M61.452,94.896 L52.638,106.06 L43.825,94.896 z" fill="#0791F4"/>
+      <path d="M43.825,161.104 L52.638,149.94 L61.452,161.104 z" fill="#0791F4"/>
+    </g>
+  </g>
+</svg>

@@ -1,1 +1,2 @@
-export { default } from './src/radio.vue';
+import Radio  from './src/radio.vue';
+export { Radio } 

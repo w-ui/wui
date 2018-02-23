@@ -1,10 +1,10 @@
 const SortableClass = require('./src/sortable.js')
 
-const CSortable = {
+const Sortable = {
   name: 'w-sortable'
 }
 
-CSortable.install = function (Vue) {
+Sortable.install = function (Vue) {
   Vue.directive('sortable', {
     inserted: function (el, binding) {
       var sortable = new SortableClass(el, binding.value || {})
@@ -12,4 +12,4 @@ CSortable.install = function (Vue) {
   })
 }
 
-export default CSortable
+export {Sortable}

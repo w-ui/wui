@@ -1,6 +1,6 @@
 {
   "name": "w-ui",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A Vue.js 2.0 UI Toolkit for mobile",
   "files": [
     "lib",
@@ -13,17 +13,16 @@
   "scripts": {
     "dev": "node build/dev-server.js",
     "doc": "rimraf ./dist/* && webpack --config ./build/webpack.doc.conf.js --optimize-minimize && rimraf ../w-ui.github.io/*.js && cp -r ./dist/* ../w-ui.github.io",
+    "build": "npm run build:common && npm run build:package",
     "build:common": "node build/build-common.js",
-    "pkg": "npm run kit && cross-env NODE_ENV=\"pkg\" node build/build.js",
-    "kit": "cross-env NODE_ENV=\"kit\" node build/build.js",
-    "lint": "eslint --ext .js,.vue src",
+    "build:package": "node build/build-package.js",
     "test": "",
-    "republish": "npm publish --registry http://registry.npmjs.org",
+    "release": "npm publish --registry http://registry.npmjs.org",
     "analyse": "webpack-bundle-analyzer stats.json"
   },
   "dependencies": {},
   "devDependencies": {
-    "autoprefixer": "^7.2.3",
+    "autoprefixer": "^7.2.5",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.1.1",
     "babel-helper-vue-jsx-merge-props": "^2.0.3",

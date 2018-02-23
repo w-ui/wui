@@ -1,1 +1,2 @@
-export {default} from './src/index.vue'
+import Picker from './src/index.vue'
+export { Picker } 

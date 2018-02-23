@@ -1,1 +1,2 @@
-export { default } from './src/AccordionItem.vue'
+import AccordionItem from './src/AccordionItem.vue'
+export { AccordionItem }

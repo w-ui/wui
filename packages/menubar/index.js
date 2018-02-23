@@ -1,1 +1,2 @@
-export { default } from './src/menubar.vue'
+import Menubar from './src/menubar.vue'
+export { Menubar } 

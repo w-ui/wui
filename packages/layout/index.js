@@ -1,1 +1,2 @@
-export { default } from './src/layout.vue'
+import Layout from './src/layout.vue'
+export { Layout } 

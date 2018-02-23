@@ -1,1 +1,2 @@
-export { default } from './src/infinitelist.js'
+import Infinitelist from './src/infinitelist.js'
+export { Infinitelist } 

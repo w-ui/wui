@@ -1,1 +1,2 @@
-export {default} from './src/video.vue'
+import video from './src/video.vue'
+export {video} 

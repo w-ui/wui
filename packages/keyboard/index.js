@@ -1,1 +1,2 @@
-export { default } from './src/keyboard.vue'
+import Keyboard from './src/keyboard.vue'
+export { Keyboard } 

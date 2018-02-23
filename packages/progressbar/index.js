@@ -1,1 +1,2 @@
-export { default } from './src/progressbar.vue'
+import Progressbar from './src/progressbar.vue'
+export { Progressbar } 

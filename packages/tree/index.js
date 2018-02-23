@@ -1,1 +1,2 @@
-export {default} from './src/tree.vue'
+import Tree  from './src/tree.vue'
+export {Tree} 

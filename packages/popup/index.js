@@ -1,1 +1,2 @@
-export { default } from './src/popup.vue'
+import Popup from './src/popup.vue'
+export { Popup } 

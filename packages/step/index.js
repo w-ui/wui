@@ -1,1 +1,2 @@
-export { default } from './src/step.vue'
+import Step from './src/step.vue'
+export { Step } 

@@ -10,7 +10,11 @@
 import Vue from 'vue'
 
 export default {
-  name: 'app'
+  name: 'app',
+  mounted(){
+    let w = Math.max(window.innerWidth, 800)
+    document.documentElement.style.fontSize = w * 100 / 750 + 'px'
+  }
 }
 </script>
 
@@ -49,7 +53,7 @@ export default {
   .top-header{
     background-color: #fff;
     position: relative;
-    width: 100vw;
+    width: 100%;
     border-bottom: 2px solid dodgerblue;
     display: flex;
     align-items: center;
@@ -62,7 +66,8 @@ export default {
       color: #fff;
       font-size: 30px;
       padding: 10px;
-      flex: 0 1 300px;
+      flex: 0 1 250px;
+
       img{
         width: 64px;
         vertical-align: middle;
@@ -75,15 +80,20 @@ export default {
       display: flex;
       color: #ccc;
       text-align: center;
-      font-size: 18px;
-      flex: 0 1 300px;
+      font-size: 20px;
       li{
         padding: 10px 15px;
       }
       li:hover{
-        color: #fff;
+        a{
+          color: dodgerblue;
+        }
         cursor: pointer;
       }
+    }
+    .github{
+      padding-left: 1rem;
+      display: flex;
     }
   }
 
@@ -109,6 +119,7 @@ export default {
     padding: 30px;
     background-color: #f0f0f0;
     border-top: 2px solid dodgerblue;
+    font-size: 18px;
     text-align: center;
   }
 

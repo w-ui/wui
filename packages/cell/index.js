@@ -1,1 +1,2 @@
-export { default } from './src/Cell.vue'
+import Cell from './src/Cell.vue'
+export { Cell } 

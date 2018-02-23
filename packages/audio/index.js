@@ -1,1 +1,2 @@
-export { default } from './src/audio.vue'
+import Audio from './src/audio.vue'
+export { Audio }

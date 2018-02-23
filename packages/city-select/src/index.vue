@@ -8,7 +8,7 @@
 
 <script>
 import Popup from 'packages/popup'
-import CitySelect from './CitySelect'
+import CitySelect from './CitySelect.vue'
 
 export default {
   name: 'w-city-select',

@@ -1,1 +1,2 @@
-export { default } from './src/tab-panel.vue'
+import TabPanel from './src/tab-panel.vue'
+export { TabPanel } 

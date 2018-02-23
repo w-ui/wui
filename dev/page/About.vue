@@ -8,7 +8,7 @@
         <li><router-link to="/visual">可视化</router-link></li>
         <li><router-link to="/about">关于</router-link></li>
       </ul>
-      <a href="https://github.com/w-ui/wui"><img src="https://img.shields.io/github/stars/w-ui/wui.svg?style=social&amp;label=Star"></a>
+      <a class="github" href="https://github.com/w-ui/wui"><img src="https://img.shields.io/github/stars/w-ui/wui.svg?style=social&amp;label=Star"></a>
     </div>
 
     <section class="page-body">
@@ -166,6 +166,7 @@ export default {
 
 <style lang="less-loader">
   .about-page{
+    font-size: 18px;
     background-color: #0c1f51;
     color: rgba(0, 0, 0, 0.65);
     header{

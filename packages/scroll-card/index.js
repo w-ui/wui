@@ -1,1 +1,2 @@
-export { default } from './src/scrollcard.vue'
+import ScrollCard from './src/scrollcard.vue'
+export { ScrollCard } 

@@ -1,1 +1,2 @@
-export { default } from './src/backtop.vue'
+import Backtop from './src/backtop.vue'
+export { Backtop }

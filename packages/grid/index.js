@@ -1,1 +1,2 @@
-export { default } from './src/grid.vue'
+import Grid from './src/grid.vue'
+export { Grid } 

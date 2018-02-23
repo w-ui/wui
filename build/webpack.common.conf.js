@@ -10,11 +10,11 @@ function resolve (dir) {
 
 var webpackConfig = {
   entry: {
-    app: resolve('../src/index.js')
+    'wui.common': resolve('../src/index.js')
   },
   output: {
     path: path.join(__dirname, '../lib'),
-    filename: 'wui.common.js',
+    filename: '[name].js',
     publicPath: ''
   },
   externals: {

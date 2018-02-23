@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" width="256" height="256" viewBox="0, 0, 256, 256">
+  <g id="图层_1">
+    <path d="M42.5,83.5 L213.5,83.5" fill-opacity="0" stroke="#0791F4" stroke-width="10"/>
+    <path d="M42.5,173.5 L213.5,173.5" fill-opacity="0" stroke="#0791F4" stroke-width="10"/>
+    <path d="M42,87.815 L213,87.815 L213,168.185 L42,168.185 L42,87.815 z" fill="#FFFFFF"/>
+    <path d="M174.102,155.561 L202.517,125.854" fill-opacity="0" stroke="#0791F4" stroke-width="10"/>
+    <path d="M203.163,129.854 L173.456,101.439" fill-opacity="0" stroke="#0791F4" stroke-width="10"/>
+  </g>
+</svg>

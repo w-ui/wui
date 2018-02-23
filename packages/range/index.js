@@ -1,1 +1,2 @@
-export { default } from './src/range.vue'
+import Range from './src/range.vue'
+export { Range } 

@@ -1,1 +1,2 @@
-export { default } from './src/button-group.vue'
+import ButtonGroup from './src/button-group.vue'
+export { ButtonGroup } 

@@ -1,1 +1,2 @@
-export { default } from './src/qrcode.vue'
+import Qrcode from './src/qrcode.vue'
+export { Qrcode } 

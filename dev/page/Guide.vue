@@ -5,10 +5,11 @@
       <ul class="top-menu">
         <li><router-link to="/guide">指南</router-link></li>
         <li><router-link to="/doc">组件</router-link></li>
+        <li><router-link to="/project">案例</router-link></li>
         <li><router-link to="/visual">可视化</router-link></li>
         <li><router-link to="/about">关于</router-link></li>
       </ul>
-      <a href="https://github.com/w-ui/wui"><img src="https://img.shields.io/github/stars/w-ui/wui.svg?style=social&amp;label=Star"></a>
+      <a class="github"  href="https://github.com/w-ui/wui"><img src="https://img.shields.io/github/stars/w-ui/wui.svg?style=social&amp;label=Star"></a>
     </div>
     
     <div id="sidebar">
@@ -118,6 +119,7 @@ export default {
 .guide-page{
   display: relative;
   background-color: #f0f0f0;
+  font-size: 18px;
 
   &::after {
     content: '';

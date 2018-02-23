@@ -1,1 +1,2 @@
-export { default } from './src/datetime.vue'
+import Datetime from './src/datetime.vue'
+export { Datetime } 

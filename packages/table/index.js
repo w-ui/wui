@@ -1,1 +1,2 @@
-export { default } from './src/table.js'
+import Table from './src/table.js'
+export { Table } 

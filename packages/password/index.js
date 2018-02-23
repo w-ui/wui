@@ -1,1 +1,3 @@
-export { default } from './src/password.vue'
+
+import Password from './src/password.vue'
+export { Password } 
