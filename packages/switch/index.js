@@ -1,1 +1,2 @@
-export { default } from './src/switch.vue';
+import Swtich from './src/switch.vue';
+export { Swtich }
