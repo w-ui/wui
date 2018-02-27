@@ -92,133 +92,128 @@
     </div>
 
     <footer>
-      ©️All rights reserved, 百度外卖, 2018
     </footer>
 
   </div>
 </template>
 
-<script> 
+<script>
 export default {
-  name: 'index'
-}
+  name: "index"
+};
 </script>
 
 <style lang="less-loader">
+.index-page {
+  position: relative;
 
-  .index-page {
+  .middle-page {
     position: relative;
+    width: 100vw;
+    height: 600px;
+    background-color: #eef;
+    font-size: 18px;
+    overflow: hidden;
 
-    .middle-page{
+    .banner {
       position: relative;
-      width: 100vw;
-      height: 600px;
-      background-color: #eef;
-      font-size: 18px;
-      overflow: hidden;
-
-      .banner{
+      img {
         position: relative;
-        img{
-          position: relative;
-          width: 1000px;
-          top: -50px;
-        }
-        .slogan{
-          position: absolute;
-          left: 9%;
-          top: 35%;
-          color: #fff;
-          font-size: 44px;
-          p{
-            padding: 30px 0;
-            display: flex;
-            a{
-              border: 1px #ccc solid;
-              border-radius: 50px;
-              padding: 10px 50px;
-              color: #fff;
-              text-decoration: none;
-              font-size: 16px;
-              margin: 10px;
-            }
-            a:hover{
-              background-color: #fff;
-              color: #1b45a7;
-            }
+        width: 1000px;
+        top: -50px;
+      }
+      .slogan {
+        position: absolute;
+        left: 9%;
+        top: 35%;
+        color: #fff;
+        font-size: 44px;
+        p {
+          padding: 30px 0;
+          display: flex;
+          a {
+            border: 1px #ccc solid;
+            border-radius: 50px;
+            padding: 10px 50px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            margin: 10px;
+          }
+          a:hover {
+            background-color: #fff;
+            color: #1b45a7;
           }
         }
       }
-      
-    }
-
-    .navigate{
-      width: 100%;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-
-      .navigate-item{
-        flex: 0 0 25%;
-        padding: 40px;
-        font-size: 40px;
-        text-align: center;
-        border-right: 1px #f0f0f0 solid;
-        cursor: pointer;
-        img{
-          width: 50%;
-        }
-        .title{
-          color: dodgerblue;
-          font-size: 0.24rem;
-        }
-        .slogan{
-          color: #bbb;
-          font-size: 0.18rem;
-        }
-      }
-      .navigate-item:hover{
-        background-color: #f5f5f5;
-      }
-    }
-
-
-    .feature-head{
-      font-size: 0.2rem;
-      color: #999;
-      padding: 20px;
-      background-color: #f5f5f5;
-    }
-    .features{
-      width: 100%;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-
-      .feature-item{
-        flex: 0 0 33.33%;
-        padding: 100px 40px;
-        font-size: 40px;
-        text-align: center;
-        border-right: 1px #f0f0f0 solid;
-        border-bottom: 1px #f0f0f0 solid;
-        img{
-          width: 50%;
-        }
-        .title{
-          color: dodgerblue;
-          font-size: 0.24rem;
-        }
-        .slogan{
-          color: #bbb;
-          font-size: 0.18rem;
-        }
-      }
-
-      .feature-item:hover{
-        background-color: #f5f5f5;
-      }
     }
   }
-  
+
+  .navigate {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    .navigate-item {
+      flex: 0 0 25%;
+      padding: 40px;
+      font-size: 40px;
+      text-align: center;
+      border-right: 1px #f0f0f0 solid;
+      cursor: pointer;
+      img {
+        width: 50%;
+      }
+      .title {
+        color: dodgerblue;
+        font-size: 0.24rem;
+      }
+      .slogan {
+        color: #bbb;
+        font-size: 0.18rem;
+      }
+    }
+    .navigate-item:hover {
+      background-color: #f5f5f5;
+    }
+  }
+
+  .feature-head {
+    font-size: 0.2rem;
+    color: #999;
+    padding: 20px;
+    background-color: #f5f5f5;
+  }
+  .features {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    .feature-item {
+      flex: 0 0 33.33%;
+      padding: 100px 40px;
+      font-size: 40px;
+      text-align: center;
+      border-right: 1px #f0f0f0 solid;
+      border-bottom: 1px #f0f0f0 solid;
+      img {
+        width: 50%;
+      }
+      .title {
+        color: dodgerblue;
+        font-size: 0.24rem;
+      }
+      .slogan {
+        color: #bbb;
+        font-size: 0.18rem;
+      }
+    }
+
+    .feature-item:hover {
+      background-color: #f5f5f5;
+    }
+  }
+}
 </style>
