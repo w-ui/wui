@@ -34,239 +34,302 @@
 </template>
 
 <script>
-import ScrollCard from 'packages/scroll-card'
-import InfiniteScroll from 'packages/infinite-scroll'
+import { ScrollCard } from "packages/scroll-card";
+import { InfiniteScroll } from "packages/infinite-scroll";
 
 let data = [
   {
-    name: '特价专区',
+    name: "特价专区",
     id: 1003001,
-    icon: 'chart',
+    icon: "chart"
   },
   {
-    name: '满69减30',
+    name: "满69减30",
     id: 1003001,
-    icon: 'price-tag'
+    icon: "price-tag"
   },
   {
-    name: '优惠',
+    name: "优惠",
     id: 1003001,
-    icon: 'ticket'
+    icon: "ticket"
   },
   {
-    name: '热销',
+    name: "热销",
     id: 1003001,
-    icon: 'cart'
+    icon: "cart"
   },
   {
-    name: '新鲜水果',
+    name: "新鲜水果",
     id: 1003001,
-    icon: 'appleinc'
+    icon: "appleinc"
   },
   {
-    name: '冰淇淋',
+    name: "冰淇淋",
     id: 1003001,
-    icon: 'cutlery'
+    icon: "cutlery"
   },
   {
-    name: '特价专区',
+    name: "特价专区",
     id: 1003001,
-    icon: 'bell2'
+    icon: "bell2"
   },
   {
-    name: '饮料/水',
+    name: "饮料/水",
     id: 1003001,
-    icon: 'coffee'
+    icon: "coffee"
   },
   {
-    name: '酒类饮品',
+    name: "酒类饮品",
     id: 1003001,
-    icon: 'beer'
+    icon: "beer"
   },
   {
-    name: '牛奶乳类',
+    name: "牛奶乳类",
     id: 1003001,
-    icon: 'spotify'
+    icon: "spotify"
   },
   {
-    name: '休闲零食',
+    name: "休闲零食",
     id: 1003001,
-    icon: 'bullseye'
+    icon: "bullseye"
   },
   {
-    name: '卤味鲜食',
+    name: "卤味鲜食",
     id: 1003001,
-    icon: 'envira'
+    icon: "envira"
   },
   {
-    name: '糖巧饼干',
+    name: "糖巧饼干",
     id: 1003001,
-    icon: 'modx'
+    icon: "modx"
   },
   {
-    name: '方便速食',
+    name: "方便速食",
     id: 1003001,
-    icon: 'wpbeginner'
+    icon: "wpbeginner"
   },
   {
-    name: '营养冲调',
+    name: "营养冲调",
     id: 1003001,
-    icon: 'heart'
+    icon: "heart"
   },
   {
-    name: '计生用品',
+    name: "计生用品",
     id: 1003001,
-    icon: 'man-woman'
+    icon: "man-woman"
   },
   {
-    name: '个人护理',
+    name: "个人护理",
     id: 1003001,
-    icon: 'bandcamp'
+    icon: "bandcamp"
   },
   {
-    name: '日用百货',
+    name: "日用百货",
     id: 1003001,
-    icon: ''
+    icon: ""
   },
   {
-    name: '进口食品',
+    name: "进口食品",
     id: 1003001,
-    icon: ''
+    icon: ""
   },
   {
-    name: '百草味',
+    name: "百草味",
     id: 1003001,
-    icon: ''
+    icon: ""
   },
   {
-    name: '网红新品',
+    name: "网红新品",
     id: 1003001,
-    icon: ''
+    icon: ""
   },
   {
-    name: '休闲食品',
+    name: "休闲食品",
     id: 1003001,
-    icon: ''
+    icon: ""
   }
 ];
 
 export default {
   components: {
-    'w-infinite-scroll': InfiniteScroll,
-    'w-scroll-card': ScrollCard
+    "w-infinite-scroll": InfiniteScroll,
+    "w-scroll-card": ScrollCard
   },
-  data () {
+  data() {
     return {
-      category: [{
-        name: data[0].name,
-        products: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
-      }],
+      category: [
+        {
+          name: data[0].name,
+          products: [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20
+          ]
+        }
+      ],
       header: data,
       pageCount: data.length
-    }
+    };
   },
   methods: {
-    pageChange (currentPage, lastPage) {
-      let d = data[currentPage]
+    pageChange(currentPage, lastPage) {
+      let d = data[currentPage];
       this.category[currentPage] = {
         name: d.name,
-        products: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
+        products: [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20
+        ]
       };
-      this.$refs.srollcard.setCurrent(currentPage)
+      this.$refs.srollcard.setCurrent(currentPage);
     },
-    itemChange (currentIndex) {
-      let d = data[currentIndex]
+    itemChange(currentIndex) {
+      let d = data[currentIndex];
       let content = {
         name: d.name,
-        products: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
+        products: [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20
+        ]
       };
-      this.$set(this.category, currentIndex, content)
-      this.$refs.infinitescroll.setCurrent(currentIndex)
+      this.$set(this.category, currentIndex, content);
+      this.$refs.infinitescroll.setCurrent(currentIndex);
     },
-    scroll () {
-      return true
+    scroll() {
+      return true;
     }
   },
-  mounted () {
-    this.$refs.srollcard.setCurrent(0)
+  mounted() {
+    this.$refs.srollcard.setCurrent(0);
   }
-}
+};
 </script>
 
 <style lang="less">
-  .scroll-tab{
-    width: 100%;
-    height: 100%;
+.scroll-tab {
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+
+  .head-item {
+    padding: 10px 0px 10px 10px;
+    background-color: #f5f5f5;
+  }
+  .head-item.active {
     background-color: #fff;
+  }
 
-    .head-item{
-      padding: 10px 0px 10px 10px;
-      background-color: #f5f5f5;
-    }
-    .head-item.active{
-      background-color: #fff;
-    }
-
-    .body-item{
+  .body-item {
+    padding: 10px;
+    .name {
       padding: 10px;
-      .name{
-        padding: 10px;
-        color: #444;
-        font-weight: bold;
-      }
+      color: #444;
+      font-weight: bold;
+    }
 
-      .product-item{
-        width: 100%;
-        display: flex;
-        margin-bottom: 20px;
-        .img{
-          flex: 0 0 80px;
-          height: 90px;
+    .product-item {
+      width: 100%;
+      display: flex;
+      margin-bottom: 20px;
+      .img {
+        flex: 0 0 80px;
+        height: 90px;
+        background-color: #eee;
+      }
+      .info {
+        flex: 1 1 100%;
+        padding: 0 10px;
+        .title {
+          width: 100%;
+          height: 30px;
+          line-height: 30px;
+          padding: 0 10px;
+          background-color: #eee;
+          margin-bottom: 5px;
+        }
+        .tag {
+          width: 40%;
+          height: 20px;
+          background-color: #eee;
+          margin-bottom: 5px;
+        }
+        .price {
+          width: 60%;
+          height: 30px;
           background-color: #eee;
         }
-        .info{
-          flex: 1 1 100%;
-          padding: 0 10px;
-          .title{
-            width: 100%;
-            height: 30px;
-            line-height: 30px;
-            padding: 0 10px;
-            background-color: #eee;
-            margin-bottom: 5px;
-          }
-          .tag{
-            width: 40%;
-            height: 20px;
-            background-color: #eee;
-            margin-bottom: 5px;
-          }
-          .price{
-            width: 60%;
-            height: 30px;
-            background-color: #eee;
-          }
-        }
       }
-    }
-
-    .tab-body{
-      display: flex;
-      height: 480px;
-      overflow: hidden;
-
-      .tab-list{
-        height: 100%;
-        flex: 0 0 90px;
-      }
-
-      .tab-list-body{
-        flex: 1 1 100%;
-        padding-left: 10px;
-        overflow: hidden;
-      }
-
     }
   }
-  
+
+  .tab-body {
+    display: flex;
+    height: 480px;
+    overflow: hidden;
+
+    .tab-list {
+      height: 100%;
+      flex: 0 0 90px;
+    }
+
+    .tab-list-body {
+      flex: 1 1 100%;
+      padding-left: 10px;
+      overflow: hidden;
+    }
+  }
+}
 </style>

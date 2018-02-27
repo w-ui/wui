@@ -10,19 +10,19 @@
   </div>
 </template>
 
-<script> 
+<script>
 export default {
-  name: 'tree'
-}
+  name: "tree"
+};
 </script>
 
 <style lang="less-loader">
-  .compo-tree{
-    color: rgba(0, 0, 0, 0.65);
-    ul{
-      li{
-        padding: 10px;
-      }
+.compo-tree {
+  color: rgba(0, 0, 0, 0.65);
+  ul {
+    li {
+      padding: 10px;
     }
   }
+}
 </style>

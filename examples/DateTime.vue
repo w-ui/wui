@@ -24,24 +24,24 @@
 </template>
 
 <script>
-import DateTime from 'packages/datetime'
+import { DateTime } from "packages/datetime";
 export default {
   components: {
-    'w-datetime': DateTime
+    "w-datetime": DateTime
   },
   data() {
     return {
-      datetime0: '',
-      datetime1: '',
-      datetime2: '',
-      datetime3: '',
-      datetime4: '',
-      yearFormat: '<span>{value}<i>年</i></span>',
-      monthFormat: '<span>{value}<i>月</i></span>',
-      dayFormat: '<span>{value}<i>日</i></span>',
-    }
+      datetime0: "",
+      datetime1: "",
+      datetime2: "",
+      datetime3: "",
+      datetime4: "",
+      yearFormat: "<span>{value}<i>年</i></span>",
+      monthFormat: "<span>{value}<i>月</i></span>",
+      dayFormat: "<span>{value}<i>日</i></span>"
+    };
   }
-}
+};
 </script>
 
 

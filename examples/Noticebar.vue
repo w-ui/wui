@@ -8,11 +8,11 @@
 
 
 <script>
-import Noticebar from 'packages/noticebar'
+import { Noticebar } from "packages/noticebar";
 
 export default {
   components: {
-    'w-noticebar': Noticebar
+    "w-noticebar": Noticebar
   }
-}
+};
 </script>

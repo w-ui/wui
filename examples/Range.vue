@@ -31,40 +31,40 @@
 
 
 <script>
-import Range from 'packages/range'
-import Icon from 'packages/icon'
+import { Range } from "packages/range";
+import { Icon } from "packages/icon";
 
 export default {
   components: {
-    'w-range': Range,
-    'w-icon': Icon
+    "w-range": Range,
+    "w-icon": Icon
   },
-  data () {
+  data() {
     return {
       brightness: 50,
       volumn: 2,
-      range: {min: 10, max: 80},
-    }
+      range: { min: 10, max: 80 }
+    };
   }
-}
+};
 </script>
 
 <style lang="less">
-  .paragraph{
-    padding: 10px;
-    border: 1px #f0f0f0 solid;
-    border-radius: 4px;
-    margin-bottom: 0.2rem;
+.paragraph {
+  padding: 10px;
+  border: 1px #f0f0f0 solid;
+  border-radius: 4px;
+  margin-bottom: 0.2rem;
 
-    h3{
-      border-bottom: 1px #f0f0f0 solid;
-      padding-bottom: 10px;
-      margin-bottom: 10px;
-    }
-
-    .range-wrapper{
-      display: flex;
-      align-items: center;
-    }
+  h3 {
+    border-bottom: 1px #f0f0f0 solid;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
   }
+
+  .range-wrapper {
+    display: flex;
+    align-items: center;
+  }
+}
 </style>

@@ -72,118 +72,115 @@
 </template>
 
 <script>
-import Grid from 'packages/grid'
-import GridItem from 'packages/grid-item'
+import { Grid } from "packages/grid";
+import { GridItem } from "packages/grid-item";
 
 export default {
-  name: 'Index',
+  name: "Index",
   components: {
-    'w-grid': Grid,
-    'w-grid-item': GridItem
+    "w-grid": Grid,
+    "w-grid-item": GridItem
   }
-}
+};
 </script>
 
 <style lang="less-loader">
-  .home-page{
+.home-page {
+  text-align: center;
+  width: 100%;
+  height: 100%;
+
+  .header {
+    background-color: #fff;
     text-align: center;
-    width: 100%;
-    height: 100%;
-
-    .header{
-      background-color: #fff;
-      text-align: center;
-      padding: 20px 10px 10px 10px;
-      img{
-        width: 64px;
-        display: inline;
-        animation: animationFrames linear 1.2s;
-        animation-iteration-count: infinite;
-      }
-      .title{
-        padding-top: 10px;
-        font-size: 18px;
-      }
+    padding: 20px 10px 10px 10px;
+    img {
+      width: 64px;
+      display: inline;
+      animation: animationFrames linear 1.2s;
+      animation-iteration-count: infinite;
     }
-
-    .grid-title{
-      text-align: left;
-      padding: 10px;
+    .title {
+      padding-top: 10px;
+      font-size: 18px;
     }
-    
   }
 
-@keyframes animationFrames{
+  .grid-title {
+    text-align: left;
+    padding: 10px;
+  }
+}
+
+@keyframes animationFrames {
   0% {
-    transform:  rotate(0deg) scaleX(1.00) scaleY(1.00) ;
+    transform: rotate(0deg) scaleX(1) scaleY(1);
   }
   10% {
-    transform:  rotate(-3deg) scaleX(0.80) scaleY(0.80) ;
+    transform: rotate(-3deg) scaleX(0.8) scaleY(0.8);
   }
   20% {
-    transform:  rotate(-3deg) scaleX(0.80) scaleY(0.80) ;
+    transform: rotate(-3deg) scaleX(0.8) scaleY(0.8);
   }
   30% {
-    transform:  rotate(3deg) scaleX(1.20) scaleY(1.20) ;
+    transform: rotate(3deg) scaleX(1.2) scaleY(1.2);
   }
   40% {
-    transform:  rotate(-3deg) scaleX(1.20) scaleY(1.20) ;
+    transform: rotate(-3deg) scaleX(1.2) scaleY(1.2);
   }
   50% {
-    transform:  rotate(3deg) scaleX(1.20) scaleY(1.20) ;
+    transform: rotate(3deg) scaleX(1.2) scaleY(1.2);
   }
   60% {
-    transform:  rotate(-3deg) scaleX(1.20) scaleY(1.20) ;
+    transform: rotate(-3deg) scaleX(1.2) scaleY(1.2);
   }
   70% {
-    transform:  rotate(3deg) scaleX(1.20) scaleY(1.20) ;
+    transform: rotate(3deg) scaleX(1.2) scaleY(1.2);
   }
   80% {
-    transform:  rotate(-3deg) scaleX(1.20) scaleY(1.20) ;
+    transform: rotate(-3deg) scaleX(1.2) scaleY(1.2);
   }
   90% {
-    transform:  rotate(3deg) scaleX(1.20) scaleY(1.20) ;
+    transform: rotate(3deg) scaleX(1.2) scaleY(1.2);
   }
   100% {
-    transform:  rotate(0deg) scaleX(1.20) scaleY(1.20) ;
+    transform: rotate(0deg) scaleX(1.2) scaleY(1.2);
   }
 }
 
 @-webkit-keyframes animationFrames {
   0% {
-    -webkit-transform:  rotate(0deg) scaleX(1.00) scaleY(1.00) ;
+    -webkit-transform: rotate(0deg) scaleX(1) scaleY(1);
   }
   10% {
-    -webkit-transform:  rotate(-3deg) scaleX(0.80) scaleY(0.80) ;
+    -webkit-transform: rotate(-3deg) scaleX(0.8) scaleY(0.8);
   }
   20% {
-    -webkit-transform:  rotate(-3deg) scaleX(0.80) scaleY(0.80) ;
+    -webkit-transform: rotate(-3deg) scaleX(0.8) scaleY(0.8);
   }
   30% {
-    -webkit-transform:  rotate(3deg) scaleX(1.20) scaleY(1.20) ;
+    -webkit-transform: rotate(3deg) scaleX(1.2) scaleY(1.2);
   }
   40% {
-    -webkit-transform:  rotate(-3deg) scaleX(1.20) scaleY(1.20) ;
+    -webkit-transform: rotate(-3deg) scaleX(1.2) scaleY(1.2);
   }
   50% {
-    -webkit-transform:  rotate(3deg) scaleX(1.20) scaleY(1.20) ;
+    -webkit-transform: rotate(3deg) scaleX(1.2) scaleY(1.2);
   }
   60% {
-    -webkit-transform:  rotate(-3deg) scaleX(1.20) scaleY(1.20) ;
+    -webkit-transform: rotate(-3deg) scaleX(1.2) scaleY(1.2);
   }
   70% {
-    -webkit-transform:  rotate(3deg) scaleX(1.20) scaleY(1.20) ;
+    -webkit-transform: rotate(3deg) scaleX(1.2) scaleY(1.2);
   }
   80% {
-    -webkit-transform:  rotate(-3deg) scaleX(1.20) scaleY(1.20) ;
+    -webkit-transform: rotate(-3deg) scaleX(1.2) scaleY(1.2);
   }
   90% {
-    -webkit-transform:  rotate(3deg) scaleX(1.20) scaleY(1.20) ;
+    -webkit-transform: rotate(3deg) scaleX(1.2) scaleY(1.2);
   }
   100% {
-    -webkit-transform:  rotate(0deg) scaleX(1.20) scaleY(1.20) ;
+    -webkit-transform: rotate(0deg) scaleX(1.2) scaleY(1.2);
   }
 }
-
-
 </style>

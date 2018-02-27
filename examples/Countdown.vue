@@ -31,19 +31,19 @@
 
 
 <script>
-import {Countdown} from 'packages/countdown'
+import { Countdown } from "packages/countdown";
 
 export default {
   components: {
-    'w-countdown': Countdown
+    "w-countdown": Countdown
   },
   data() {
-      return {
-          time1: Date.now() + 3*24*60*60*1000,
-          time2: new Date(2018, 6, 14).getTime()
-      }
+    return {
+      time1: Date.now() + 3 * 24 * 60 * 60 * 1000,
+      time2: new Date(2018, 6, 14).getTime()
+    };
   }
-}
+};
 </script>
 
 <<style lang="less">

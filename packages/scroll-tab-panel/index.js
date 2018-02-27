@@ -1,1 +1,2 @@
-export {default} from './src/scrolltab-panel.vue'
+import ScrollTabPanel from './src/scrolltab-panel.vue'
+export { ScrollTabPanel }

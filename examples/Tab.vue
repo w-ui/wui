@@ -65,13 +65,13 @@
 </template>
 
 <script>
-    import Tab from 'packages/tab'
-    import TabPanel from 'packages/tab-panel'
+import { Tab } from "packages/tab";
+import { TabPanel } from "packages/tab-panel";
 
-    export default {
-      components: {
-        'w-tab': Tab,
-        'w-tab-panel': TabPanel
-      }
-    }
+export default {
+  components: {
+    "w-tab": Tab,
+    "w-tab-panel": TabPanel
+  }
+};
 </script>

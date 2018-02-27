@@ -1,11 +1,11 @@
 
-import Column from 'packages/table-column'
+import {TableColumn} from 'packages/table-column'
 import './table.less'
 
 export default {
   name: 'w-table',
   components: {
-    'w-column': Column
+    'w-column': TableColumn
   },
   props: {
     headerColor: {
@@ -27,11 +27,6 @@ export default {
       fixedWidth: 0
     }
   },
-
-  components: {
-    'w-column': Column
-  },
-
   render () {
     let cols = this.$slots.default.filter( col => col.tag)
 

@@ -24,16 +24,16 @@
 </template>
 
 <script>
-  import Timeline from 'packages/timeline'
-  import TimelineItem from 'packages/timeline-item'
-  import Icon from 'packages/icon'
-    export default {
-      components: {
-        'w-icon': Icon,
-        'w-timeline': Timeline,
-        'w-timeline-item': TimelineItem
-      }
-    }
+import { Timeline } from "packages/timeline";
+import { TimelineItem } from "packages/timeline-item";
+import { Icon } from "packages/icon";
+export default {
+  components: {
+    "w-icon": Icon,
+    "w-timeline": Timeline,
+    "w-timeline-item": TimelineItem
+  }
+};
 </script>
 
 <<style lang="less">

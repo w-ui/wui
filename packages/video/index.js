@@ -1,2 +1,2 @@
-import video from './src/video.vue'
-export {video} 
+import Video from './src/video.vue'
+export {Video} 

@@ -2,6 +2,7 @@ import './waterfall.less'
 import { addClass, removeClass } from 'src/utils'
 
 export default {
+  name: 'w-waterfall',
   props: {
     items: {
       type: Array

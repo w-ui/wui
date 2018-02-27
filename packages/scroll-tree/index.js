@@ -1,1 +1,2 @@
-export {default} from './src/scrolltree.vue'
+import ScrollTree from './src/scrolltree.vue'
+export {ScrollTree} 

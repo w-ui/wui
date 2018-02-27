@@ -12,11 +12,11 @@
 
 
 <script>
-import Badge from 'packages/badge'
+import { Badge } from "packages/badge";
 
 export default {
   components: {
-    'w-badge': Badge
+    "w-badge": Badge
   }
-}
+};
 </script>

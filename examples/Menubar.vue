@@ -16,15 +16,15 @@
 </template>
 
 <script>
-    import Menubar from 'packages/menubar'
-    import MenubarItem from 'packages/menubar-item'
-    import Icon from 'packages/icon'
+import { Menubar } from "packages/menubar";
+import { MenubarItem } from "packages/menubar-item";
+import { Icon } from "packages/icon";
 
-    export default {
-      components: {
-        'w-menubar': Menubar,
-        'w-menubar-item': MenubarItem,
-        'w-icon': Icon
-      }
-    }
+export default {
+  components: {
+    "w-menubar": Menubar,
+    "w-menubar-item": MenubarItem,
+    "w-icon": Icon
+  }
+};
 </script>

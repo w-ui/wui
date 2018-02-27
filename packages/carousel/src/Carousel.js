@@ -2,7 +2,7 @@ require('./carousel.less')
 
 let defaultDuration = 300
 export default {
-  name: 'wm-carousel',
+  name: 'w-carousel',
   props: {
     loop: {
       type: Boolean,
@@ -41,7 +41,7 @@ export default {
       default: 0
     }
   },
-  data () {
+  data() {
     return {
       touch: false,
       timer: 0,
@@ -55,22 +55,22 @@ export default {
     }
   },
   computed: {
-    computedAuto () {
+    computedAuto() {
       return this.auto && this.$slots.default.length > 1
     },
-    computedLoop () {
+    computedLoop() {
       return this.$slots.default.length > 1 ? this.loop : false
     }
   },
   methods: {
-    setHelperDOM () {
+    setHelperDOM() {
       let len = this.$slots.default.length
       if (len > 1 && this.loop) {
         this.addonBefore = this.list[len - 1].$el.outerHTML
         this.addonAfter = this.list[0].$el.outerHTML
       }
     },
-    slid (index, delta) {
+    slid(index, delta) {
       let {
         computedLoop,
         width,
@@ -104,11 +104,11 @@ export default {
         this.onSlidEnd(this.activeIndex)
       }
     },
-    correctIndex () {
+    correctIndex() {
       this.transitionDuration = 0
       this.slid(this.activeIndex, 0)
     },
-    calculatePos (e) {
+    calculatePos(e) {
       let x = e.changedTouches[0].clientX
       let y = e.changedTouches[0].clientY
       let xd = this.x - x
@@ -122,7 +122,7 @@ export default {
         absY: ayd
       }
     },
-    setTimer () {
+    setTimer() {
       let {
         auto,
         $slots
@@ -137,18 +137,18 @@ export default {
         )
       }
     },
-    clearTimer () {
+    clearTimer() {
       if (this.timer) {
         clearInterval(this.timer)
       }
     },
-    transitionTo (index, duration) {
+    transitionTo(index, duration) {
       this.clearTimer()
       this.transitionDuration = duration || defaultDuration
       this.slid(index, 0)
       this.setTimer()
     },
-    onTouchstart (e) {
+    onTouchstart(e) {
       if (e.touches.length > 1) {
         return
       }
@@ -163,7 +163,7 @@ export default {
       this.y = e.touches[0].clientY
       this.clearTimer()
     },
-    onTouchmove (e) {
+    onTouchmove(e) {
       if (this.preventDefault) {
         e.preventDefault()
       }
@@ -176,7 +176,7 @@ export default {
         this.slid(this.activeIndex, pos.deltaX)
       }
     },
-    onTouchend (e) {
+    onTouchend(e) {
       if (!this.touch) {
         return
       }
@@ -203,19 +203,19 @@ export default {
       this.transitionTo(newIndex)
       this.cleanTouch()
     },
-    onTouchcancel (e) {
+    onTouchcancel(e) {
       if (!this.touch) {
         return
       }
       this.transitionTo(this.activeIndex)
       this.cleanTouch()
     },
-    cleanTouch () {
+    cleanTouch() {
       this.touch = false
     },
-    resize () {
+    resize() {
       this.$nextTick(
-        function afterResize () {
+        function afterResize() {
           this.width = this.$el.clientWidth
           this.slid(this.activeIndex, 0)
         },
@@ -224,31 +224,30 @@ export default {
     }
   },
   watch: {
-    auto () {
+    auto() {
       this.setTimer()
     }
   },
-  render (h) {
-    let { computedLoop, $slots } = this
+  render(h) {
+    let {
+      computedLoop,
+      $slots
+    } = this
     let len = $slots.default.length - 1
 
     let indicators = this.indicators &&
-    <div class='carousel-indicators'>
-      {this.$slots.default.map((v, i) => {
-        let classname = {
-          'carousel-dot': true,
-          active: i === this.activeIndex
-        }
-        return (
-          <div
-            class={classname}
-            on-click={this.transitionTo.bind(this, i, defaultDuration)}
-            >
-            {i}
-          </div>
-        )
-      })}
-    </div>
+      <div class = 'carousel-indicators'> {
+        this.$slots.default.map((v, i) => {
+          let classname = {
+            'carousel-dot': true,
+            active: i === this.activeIndex
+          }
+          return ( <div class = {classname}  on-click = {
+              this.transitionTo.bind(this, i, defaultDuration)
+            } > {i} </div>
+          )
+        })
+      } </div>
 
     let style = {}
     if (this.responsive !== 0) {
@@ -258,35 +257,35 @@ export default {
     let itemStyle = {
       width: this.width + (typeof this.width === 'number' ? 'px' : '')
     }
-    return (
-      <div class='carousel' style={style}>
-        <div
-          class='carousel-track'
-          style={this.trackStyle}
-          on-touchstart={this.onTouchstart}
-          on-touchmove={this.onTouchmove}
-          on-touchend={this.onTouchend}
-          on-touchcancel={this.onTouchcancel}
-        >
-          {computedLoop
-            ? <div class='carousel-item' style={itemStyle}>
-              {this.$slots.default[len]}
-            </div>
-            : null}
-          {this.$slots.default.map(v => (
-            <div class='carousel-item' style={itemStyle}>{v}</div>
-          ))}
-          {computedLoop
-            ? <div class='carousel-item' style={itemStyle}>
-              {this.$slots.default[0]}
-            </div>
-            : null}
+    return ( <div class = 'carousel' style = { style } >
+        <div class = 'carousel-track' style = {this.trackStyle}
+        on-touchstart = {this.onTouchstart}
+        on-touchmove = {this.onTouchmove}
+        on-touchend = {this.onTouchend}
+        on-touchcancel = {this.onTouchcancel}> 
+        {
+          computedLoop ?
+          <div class = 'carousel-item' style = {itemStyle}>
+          {this.$slots.default[len]} 
+          </div> :
+          null
+        } {
+          this.$slots.default.map(v => ( <div class = 'carousel-item' style = {itemStyle}>
+          {v} 
+          </div>
+          ))
+        } {
+          computedLoop
+            ?
+            <div class = 'carousel-item' style = {itemStyle}> 
+            {this.$slots.default[0]} 
+            </div>: null
+        } </div> 
+        {indicators} 
         </div>
-        {indicators}
-      </div>
-    )
-  },
-  mounted () {
+  )
+},
+mounted() {
     // 保证 this.$el 已经插入文档
     this.$nextTick(() => {
       this.resize()
@@ -298,7 +297,7 @@ export default {
       timer()
     })
   },
-  beforeDestroy () {
+  beforeDestroy() {
     window.removeEventListener('resize', this.resize)
     this.clearTimer()
   }

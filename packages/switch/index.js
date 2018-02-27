@@ -1,2 +1,4 @@
-import Swtich from './src/switch.vue';
-export { Swtich }
+import Switch from './src/switch.vue';
+export {
+  Switch
+}

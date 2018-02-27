@@ -12,39 +12,38 @@
 </template>
 
 <script>
-  import Waterfall from 'packages/waterfall'
-  import LazyImage from 'packages/lazy-image'
-  import ImageData from './data.js'
+import { Waterfall } from "packages/waterfall";
+import { LazyImage } from "packages/lazy-image";
+import ImageData from "./data.js";
 
-    export default {
-      components: {
-        'w-waterfall': Waterfall,
-        'w-lazy-image': LazyImage
-      },
-      data() {
-        return {
-          items: ImageData.images
-        }
-      }
-    }
+export default {
+  components: {
+    "w-waterfall": Waterfall,
+    "w-lazy-image": LazyImage
+  },
+  data() {
+    return {
+      items: ImageData.images
+    };
+  }
+};
 </script>
 
 <style lang="less-loader">
-  .item-enter-before {
-    opacity: 0;
-  }
-  .item-enter-after {
-    opacity: 1;
-    transition: all 1s cubic-bezier(.55,0,.1,1);
-  }
+.item-enter-before {
+  opacity: 0;
+}
+.item-enter-after {
+  opacity: 1;
+  transition: all 1s cubic-bezier(0.55, 0, 0.1, 1);
+}
 
-  .image-item{
-    padding: 2px;
-    img{
-      width: 100%;
-    }
-    &-title{
-
-    }
+.image-item {
+  padding: 2px;
+  img {
+    width: 100%;
   }
+  &-title {
+  }
+}
 </style>

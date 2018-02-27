@@ -151,50 +151,50 @@
   </div>
 </template>
 
-<script> 
-import Timeline from 'packages/timeline'
-import TimelineItem from 'packages/timeline-item'
+<script>
+import { Timeline } from "packages/timeline";
+import { TimelineItem } from "packages/timeline-item";
 
 export default {
-  name: 'about',
+  name: "about",
   components: {
-    'w-timeline': Timeline,
-    'w-timeline-item': TimelineItem
+    "w-timeline": Timeline,
+    "w-timeline-item": TimelineItem
   }
-}
+};
 </script>
 
 <style lang="less-loader">
-  .about-page{
-    font-size: 18px;
-    background-color: #0c1f51;
-    color: rgba(0, 0, 0, 0.65);
-    header{
-      height: 6.5vw;
+.about-page {
+  font-size: 18px;
+  background-color: #0c1f51;
+  color: rgba(0, 0, 0, 0.65);
+  header {
+    height: 6.5vw;
+  }
+
+  .page-body {
+    width: 100vw;
+    min-height: 100vh;
+    background-color: #ececec;
+    padding: 20px 40px;
+
+    .title {
+      font-size: 28px;
+      padding: 10px;
     }
-    
-    .page-body{
-      width: 100vw;
-      min-height: 100vh;
-      background-color: #ececec;
-      padding: 20px 40px;
 
-      .title{
-        font-size: 28px;
-        padding: 10px;
-      }
-
-      .time{
-        background-color: #e0e0e0;
-        border-radius: 4px;
-        width: 200px;
-        padding: 5px 10px;
-        color: #666;
-        margin-bottom: 10px;
-      }
-      .item{
-        color: #666;
-      }
+    .time {
+      background-color: #e0e0e0;
+      border-radius: 4px;
+      width: 200px;
+      padding: 5px 10px;
+      color: #666;
+      margin-bottom: 10px;
+    }
+    .item {
+      color: #666;
     }
   }
+}
 </style>

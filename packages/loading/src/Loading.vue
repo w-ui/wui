@@ -6,7 +6,7 @@
 
 <script>
   export default {
-    name: 'wm-loading'
+    name: 'w-loading'
   }
 </script>
 

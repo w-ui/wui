@@ -24,15 +24,14 @@
 </template>
 
 <script>
-
-import Layout from 'packages/layout'
-import Titlebar from 'packages/titlebar'
-import Menubar from 'packages/menubar'
-import MenubarItem from 'packages/menubar-item'
-import Icon from 'packages/icon'
+import { Layout } from "packages/layout";
+import { Titlebar } from "packages/titlebar";
+import { Menubar } from "packages/menubar";
+import { MenubarItem } from "packages/menubar-item";
+import { Icon } from "packages/icon";
 
 export default {
-  name: 'demo',
+  name: "demo",
   props: {
     name: {
       type: String,
@@ -40,52 +39,53 @@ export default {
     }
   },
   components: {
-    'w-layout': Layout,
-    'w-titlebar': Titlebar,
-    'w-menubar': Menubar,
-    'w-menubar-item': MenubarItem,
-    'w-icon': Icon
+    "w-layout": Layout,
+    "w-titlebar": Titlebar,
+    "w-menubar": Menubar,
+    "w-menubar-item": MenubarItem,
+    "w-icon": Icon
   },
-  data () {
-    let upName = this.name.replace(/^\w/, (s0) => s0.toUpperCase())
+  data() {
+    let upName = this.name.replace(/^\w/, s0 => s0.toUpperCase());
     return {
       compo: () => import(`../../examples/${upName}.vue`)
-    }
+    };
   },
   watch: {
-    name(val, oldVval){
-      let upName = val.replace(/^\w/, (s0) => s0.toUpperCase())
-      this.compo = () => import(`../../examples/${upName}.vue`)
+    name(val, oldVval) {
+      let upName = val.replace(/^\w/, s0 => s0.toUpperCase());
+      this.compo = () => import(`../../examples/${upName}.vue`);
     }
   },
-  mounted(){
-    document.documentElement.style.fontSize = window.innerWidth * 100 / 750 + 'px'
+  mounted() {
+    document.documentElement.style.fontSize =
+      window.innerWidth * 100 / 750 + "px";
   }
-}
+};
 </script>
 
 <style lang="less-loader">
- @import url("../../src/styles/common.less");
+@import url("../../src/styles/common.less");
 
- .demo-area{
-   position: relative;
-   background-color: #f0f0f0;
-   & > div {
-     padding: 8px 0;
+.demo-area {
+  position: relative;
+  background-color: #f0f0f0;
+  & > div {
+    padding: 8px 0;
 
-      .paragraph{
-        padding: 10px;
-        border: 1px #f0f0f0 solid;
-        border-radius: 4px;
-        background-color: #fff;
-        margin: 0.1rem 0;
+    .paragraph {
+      padding: 10px;
+      border: 1px #f0f0f0 solid;
+      border-radius: 4px;
+      background-color: #fff;
+      margin: 0.1rem 0;
 
-        h3{
-          border-bottom: 1px #f0f0f0 solid;
-          padding-bottom: 10px;
-          margin-bottom: 10px;
-        }
+      h3 {
+        border-bottom: 1px #f0f0f0 solid;
+        padding-bottom: 10px;
+        margin-bottom: 10px;
       }
-   }
- }
+    }
+  }
+}
 </style>

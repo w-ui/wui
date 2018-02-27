@@ -18,27 +18,27 @@
 </template>
   
 <script>
-import Input from 'packages/input'
-import Icon from 'packages/icon'
+import { Input } from "packages/input";
+import { Icon } from "packages/icon";
 
 export default {
   components: {
-    'w-input': Input,
-    'w-icon': Icon
+    "w-input": Input,
+    "w-icon": Icon
   },
   data() {
     return {
       switch1: true,
-      name: '',
-      password: '',
+      name: "",
+      password: "",
       num: 10,
-      tel: '',
-      email: 'robin@baidu.com',
-      varycode: '',
-      reg: ''
-    }
+      tel: "",
+      email: "robin@baidu.com",
+      varycode: "",
+      reg: ""
+    };
   }
-}
+};
 </script>
 
 

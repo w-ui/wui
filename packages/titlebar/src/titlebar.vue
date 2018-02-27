@@ -22,33 +22,33 @@
 </template>
 
 <script type="text/babel">
-    export default {
-        name: 'wui-title-bar',
-        props: {
-            home: String,
-            bgColor: String
-        },
-        data () {
-            let s = {}
-            if (this.bgColor) {
-                s.backgroundColor = this.bgColor
-            }
-            return {
-                style: s
-            }
-        },
-        methods: {
-            doBack () {
-                if (history.length == 0) {
-                    location.href = home
-                } else {
-                    history.back()
-                }
-            }
-        }
+export default {
+  name: "w-titlebar",
+  props: {
+    home: String,
+    bgColor: String
+  },
+  data() {
+    let s = {};
+    if (this.bgColor) {
+      s.backgroundColor = this.bgColor;
     }
+    return {
+      style: s
+    };
+  },
+  methods: {
+    doBack() {
+      if (history.length == 0) {
+        location.href = home;
+      } else {
+        history.back();
+      }
+    }
+  }
+};
 </script>
 
 <style lang="less">
-    @import "./titlebar.less";
+@import "./titlebar.less";
 </style>

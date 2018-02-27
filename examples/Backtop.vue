@@ -7,13 +7,13 @@
 
 
 <script>
-import Backtop from 'packages/backtop'
+import { Backtop } from "packages/backtop";
 
 export default {
   components: {
-    'w-backtop': Backtop
+    "w-backtop": Backtop
   }
-}
+};
 </script>
 
 

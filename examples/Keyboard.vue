@@ -9,18 +9,18 @@
 
 
 <script>
-import Keyboard from 'packages/keyboard'
-import Button from 'packages/button'
+import { Keyboard } from "packages/keyboard";
+import { Button } from "packages/button";
 
 export default {
   components: {
-    'w-keyboard': Keyboard,
-    'w-button': Button
+    "w-keyboard": Keyboard,
+    "w-button": Button
   },
   data() {
     return {
       show: false
-    }
+    };
   }
-}
+};
 </script>

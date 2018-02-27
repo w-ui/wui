@@ -1,2 +1,2 @@
-import Infinitelist from './src/infinitescroll.js'
-export { Infinitelist } 
+import InfiniteScroll from './src/infinitescroll.js'
+export { InfiniteScroll } 

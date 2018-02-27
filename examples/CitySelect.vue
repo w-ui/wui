@@ -7,26 +7,25 @@
 </template>
 
 <script>
-import CitySelect from 'packages/city-select'
-import Button from 'packages/button'
-
+import { CitySelect } from "packages/city-select";
+import { Button } from "packages/button";
 
 export default {
   components: {
-    'w-city-select': CitySelect,
-    'w-button': Button
+    "w-city-select": CitySelect,
+    "w-button": Button
   },
   data() {
     return {
       show: false
-    }
+    };
   },
   methods: {
-    showCity(){
-      this.show = !this.show
+    showCity() {
+      this.show = !this.show;
     }
   }
-}
+};
 </script>
 
 

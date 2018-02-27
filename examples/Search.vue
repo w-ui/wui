@@ -6,38 +6,43 @@
 </template>
 
 <script>
-import search from 'packages/search/src/Search'
+import { search } from "packages/search/src/Search";
 
 export default {
   components: {
     search
   },
-  data () {
+  data() {
     return {
       array: []
-    }
+    };
   },
   methods: {
-    search (keywords) {
-      console.log(keywords)
+    search(keywords) {
+      console.log(keywords);
     },
-    onChange (keywords) {
-      console.log('change')
-      console.log(keywords)
-      this.array = [{
-        caption: 'aaa',
-        key: 'aaakey'
-      }, {
-        caption: 'bbb',
-        key: 'bbbkey'
-      }, {
-        caption: 'ccc',
-        key: 'ccckey'
-      }, {
-        caption: 'ddd',
-        key: 'ddddkey'
-      }]
+    onChange(keywords) {
+      console.log("change");
+      console.log(keywords);
+      this.array = [
+        {
+          caption: "aaa",
+          key: "aaakey"
+        },
+        {
+          caption: "bbb",
+          key: "bbbkey"
+        },
+        {
+          caption: "ccc",
+          key: "ccckey"
+        },
+        {
+          caption: "ddd",
+          key: "ddddkey"
+        }
+      ];
     }
   }
-}
+};
 </script>

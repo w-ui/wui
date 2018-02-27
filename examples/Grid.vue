@@ -25,33 +25,33 @@
 </template>
 
 <script>
-import Grid from 'packages/grid'
-import GridItem from 'packages/grid-item'
-import Icon from 'packages/icon'
+import { Grid } from "packages/grid";
+import { GridItem } from "packages/grid-item";
+import { Icon } from "packages/icon";
 
 export default {
   components: {
-    'w-grid': Grid,
-    'w-grid-item': GridItem,
-    'w-icon': Icon
+    "w-grid": Grid,
+    "w-grid-item": GridItem,
+    "w-icon": Icon
   }
-}
+};
 </script>
 
 
 <style lang="less">
-  .paragraph{
-    padding: 10px;
-    border: 1px #f0f0f0 solid;
-    border-radius: 4px;
-    margin-bottom: 0.2rem;
-    margin-top: 20px;
+.paragraph {
+  padding: 10px;
+  border: 1px #f0f0f0 solid;
+  border-radius: 4px;
+  margin-bottom: 0.2rem;
+  margin-top: 20px;
 
-    h3{
-      border-bottom: 1px #f0f0f0 solid;
-      padding-bottom: 10px;
-      margin-bottom: 10px;
-    }
+  h3 {
+    border-bottom: 1px #f0f0f0 solid;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
   }
+}
 </style>
 

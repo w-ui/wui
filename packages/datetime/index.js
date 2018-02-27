@@ -1,2 +1,2 @@
-import Datetime from './src/datetime.vue'
-export { Datetime } 
+import DateTime from './src/datetime.vue'
+export { DateTime } 

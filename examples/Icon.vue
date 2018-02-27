@@ -9,11 +9,11 @@
 </template>
 
 <script>
-import Icon from 'packages/icon'
+import { Icon } from "packages/icon";
 
 export default {
   components: {
-    'w-icon': Icon
+    "w-icon": Icon
   }
-}
+};
 </script>

@@ -20,26 +20,26 @@
 </template>
 
 <script>
-    import Countup from 'packages/countup'
-    import Button from 'packages/button'
+import { Countup } from "packages/countup";
+import { Button } from "packages/button";
 
-    export default {
-      components: {
-        'w-countup': Countup,
-        'w-button': Button
-      },
-      data(){
-        return {
-          start1: false
-        }
-      }
-    }
+export default {
+  components: {
+    "w-countup": Countup,
+    "w-button": Button
+  },
+  data() {
+    return {
+      start1: false
+    };
+  }
+};
 </script>
 
 
 <style lang="less">
-  .money{
-    font-size: 0.9rem;
-    color: dodgerblue;
-  }
+.money {
+  font-size: 0.9rem;
+  color: dodgerblue;
+}
 </style>

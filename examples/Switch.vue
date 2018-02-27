@@ -8,24 +8,24 @@
 </template>
 
 <script>
-import Switch from 'packages/switch'
+import { Switch } from "packages/switch";
 
 export default {
   components: {
-    'w-switch': Switch
+    "w-switch": Switch
   },
-  data(){
+  data() {
     return {
       switch1: false
-    }
+    };
   }
-}
+};
 </script>
 
 
 <style>
-  p{
-    padding: 0.2rem 0;
-  }
+p {
+  padding: 0.2rem 0;
+}
 </style>
 

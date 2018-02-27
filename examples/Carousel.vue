@@ -1,6 +1,6 @@
 <template>
   <div :style="{width: '300px', height: '120px'}">
-    <carousel :auto="3000" :responsive="40" :indicators="true">
+    <Carousel :auto="3000" :responsive="40" :indicators="true">
       <div :style="{backgroundColor: 'red', width: '300px', height: '120px'}" >
         1
       </div><div :style="{backgroundColor: 'yellow', width: '300px', height: '120px'}">
@@ -10,18 +10,18 @@
       </div><div :style="{backgroundColor: 'blue', width: '300px', height: '120px'}">
         4
       </div>
-    </carousel>
+    </Carousel>
   </div>
 </template>
 
 <script>
-import carousel from 'packages/carousel/src/Carousel.js'
+import { Carousel } from "packages/carousel";
 
 export default {
   components: {
-    carousel
+    Carousel
   }
-}
+};
 </script>
 
 

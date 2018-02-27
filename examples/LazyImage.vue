@@ -4,17 +4,17 @@
 </template>
 
 <script>
-import LazyImage from 'packages/lazy-image'
+import { LazyImage } from "packages/lazy-image";
 
 export default {
   components: {
     LazyImage
   }
-}
+};
 </script>
 
 <style>
- .lazy-image {
-   height: 200px;
- }
+.lazy-image {
+  height: 200px;
+}
 </style>

@@ -16,58 +16,58 @@
 <template>
 
   <div>
-    <w-title-bar>
+    <w-titlebar>
       WUI
       <w-icon slot="icon2" size="16px" color="#ccc" name="heart" @click.native="doLike"></w-icon>
       <w-icon slot="icon1" size="16px" color="#ccc" name="share" @click.native="doShare"></w-icon>
-    </w-title-bar>
+    </w-titlebar>
 
 
-    <w-title-bar bgColor="dodgerblue">
+    <w-titlebar bgColor="dodgerblue">
       <p slot="back"></p>
       <p style="color: #444">
         <w-icon slot="icon2" size="16px" color="#ccc" name="heart"></w-icon>WUI
       </p>
       <w-icon slot="icon1" size="16px" color="#ccc" name="share" @click.native="doShare"></w-icon>
-    </w-title-bar>
+    </w-titlebar>
 
 
-    <w-title-bar home="/#/demo/Index" bgColor="transparent">
+    <w-titlebar home="/#/demo/Index" bgColor="transparent">
       <p slot="back">
-        <w-icon size="22px" color="#666" name="arrow-circle-left" @click.native="doBack"></w-icon>
+        <w-icon slot="icon2" size="22px" color="#666" name="arrow-circle-left" @click.native="doBack"></w-icon>
       </p>
       <p style="color: #444">WUI</p>
       <w-icon slot="icon2" size="16px" color="#666" name="heart" @click.native="doLike"></w-icon>
       <w-icon slot="icon1" size="16px" color="#666" name="share" @click.native="doShare"></w-icon>
-    </w-title-bar>
+    </w-titlebar>
 
   </div>
     
 </template>
 
-<script type="text/babel">
-  import Ttitlebar from 'packages/titlebar'
-  import Icon from 'packages/icon'
-  import {Alert} from 'packages/dialog'
+<script>
+import { Titlebar } from "packages/titlebar";
+import { Icon } from "packages/icon";
+import { Alert } from "packages/dialog";
 
-  export default {
-    name: 'wui-title-bar-demo',
-    components: {
-      'w-title-bar': Ttitlebar,
-      'w-icon': Icon
+export default {
+  name: "wui-title-bar-demo",
+  components: {
+    "w-titlebar": Ttitlebar,
+    "w-icon": Icon
+  },
+  methods: {
+    doLike() {
+      Alert("Like");
     },
-    methods: {
-      doLike () {
-        Alert('Like')
-      },
-      doShare () {
-        Alert('Share')
-      },
-      doBack () {
-        Alert('Back')
-      }
+    doShare() {
+      Alert("Share");
+    },
+    doBack() {
+      Alert("Back");
     }
   }
+};
 </script>
 
 ```

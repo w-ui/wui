@@ -114,9 +114,9 @@
 </template>
   
 <script>
-import Cell from 'packages/cell'
-import Icon from 'packages/icon'
-import Switch from 'packages/switch'
+import {Cell} from 'packages/cell'
+import {Icon} from 'packages/icon'
+import {Switch} from 'packages/switch'
 
 export default {
   components: {

@@ -1,2 +1,2 @@
-import Progressbar from './src/progressbar.vue'
-export { Progressbar } 
+import ProgressBar from './src/progressbar.vue'
+export { ProgressBar } 

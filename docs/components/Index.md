@@ -16,7 +16,7 @@
 </template>
 
 <script>
-  import Qrcode from 'packages/qrcode'
+  import {Qrcode} from 'packages/qrcode'
   export default {
     components: {
       'w-qrcode': Qrcode

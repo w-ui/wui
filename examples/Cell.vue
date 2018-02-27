@@ -23,29 +23,29 @@
 </template>
   
 <script>
-import Cell from 'packages/cell'
-import Icon from 'packages/icon'
-import Switch from 'packages/switch'
+import { Cell } from "packages/cell";
+import { Icon } from "packages/icon";
+import { Switch } from "packages/switch";
 
 export default {
   components: {
-    'w-cell': Cell,
-    'w-icon': Icon,
-    'w-switch': Switch
+    "w-cell": Cell,
+    "w-icon": Icon,
+    "w-switch": Switch
   },
   data() {
     return {
       switch1: true,
-      name: '',
-      password: '',
+      name: "",
+      password: "",
       num: 10,
-      tel: '',
-      email: '',
-      varycode: '',
-      reg: ''
-    }
+      tel: "",
+      email: "",
+      varycode: "",
+      reg: ""
+    };
   }
-}
+};
 </script>
 
 

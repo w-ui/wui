@@ -30,8 +30,8 @@
 </template>
 
 <<script>
-import Table from 'packages/table'
-import TableColumn from 'packages/table-column'
+import {Table} from 'packages/table'
+import {TableColumn} from 'packages/table-column'
 
 export default {
     components: {

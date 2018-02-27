@@ -19,132 +19,150 @@
 </template>
 
 <script>
-import InfiniteScroll from 'packages/infinite-scroll'
+import { InfiniteScroll } from "packages/infinite-scroll";
 
 let data = [
   {
-    name: '新鲜水果',
+    name: "新鲜水果",
     id: 1003001,
-    icon: 'appleinc'
+    icon: "appleinc"
   },
   {
-    name: '酒类饮品',
+    name: "酒类饮品",
     id: 1003001,
-    icon: 'beer'
+    icon: "beer"
   },
   {
-    name: '牛奶乳类',
+    name: "牛奶乳类",
     id: 1003001,
-    icon: 'spotify'
+    icon: "spotify"
   },
   {
-    name: '休闲零食',
+    name: "休闲零食",
     id: 1003001,
-    icon: 'bullseye'
+    icon: "bullseye"
   },
   {
-    name: '卤味鲜食',
+    name: "卤味鲜食",
     id: 1003001,
-    icon: 'envira'
+    icon: "envira"
   },
   {
-    name: '糖巧饼干',
+    name: "糖巧饼干",
     id: 1003001,
-    icon: 'modx'
+    icon: "modx"
   },
   {
-    name: '方便速食',
+    name: "方便速食",
     id: 1003001,
-    icon: 'wpbeginner'
+    icon: "wpbeginner"
   },
   {
-    name: '营养冲调',
+    name: "营养冲调",
     id: 1003001,
-    icon: 'heart'
+    icon: "heart"
   },
   {
-    name: '计生用品',
+    name: "计生用品",
     id: 1003001,
-    icon: 'man-woman'
+    icon: "man-woman"
   }
 ];
 
 export default {
   components: {
-    'w-infinite-scroll': InfiniteScroll
+    "w-infinite-scroll": InfiniteScroll
   },
-  data () {
+  data() {
     return {
       category: [],
-      products: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
-    }
+      products: [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ]
+    };
   },
-  created () {
-    this.category.push(data.shift())
+  created() {
+    this.category.push(data.shift());
   },
-  updated () {
-  },
+  updated() {},
   methods: {
-    pageChange (currentPage, lastPage) {
-      if(currentPage > lastPage){
-        this.category.push(data[Math.floor(Math.random()* data.length)]);
+    pageChange(currentPage, lastPage) {
+      if (currentPage > lastPage) {
+        this.category.push(data[Math.floor(Math.random() * data.length)]);
+      }
+    }
+  }
+};
+</script>
+
+<style lang="less">
+.tab-area {
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  padding: 0 10px;
+
+  .scroll-item {
+    .item-name {
+      padding: 10px;
+      text-align: center;
+      color: #666;
+      font-weight: bold;
+    }
+
+    .product-item {
+      width: 100%;
+      display: flex;
+      margin-bottom: 20px;
+
+      .img {
+        flex: 0 0 130px;
+        height: 90px;
+        background-color: #eee;
+      }
+      .info {
+        flex: 1 1 100%;
+        padding: 0 10px;
+        .title {
+          width: 100%;
+          height: 30px;
+          line-height: 30px;
+          padding: 0 10px;
+          background-color: #eee;
+          margin-bottom: 5px;
+        }
+        .tag {
+          width: 40%;
+          height: 20px;
+          background-color: #eee;
+          margin-bottom: 5px;
+        }
+        .price {
+          width: 60%;
+          height: 30px;
+          background-color: #eee;
+        }
       }
     }
   }
 }
-</script>
-
-<style lang="less">
-  .tab-area{
-    width: 100%;
-    height: 100%;
-    background-color: #fff;
-    padding: 0 10px;
-
-    .scroll-item{
-
-      .item-name{
-        padding: 10px;
-        text-align: center;
-        color: #666;
-        font-weight: bold;
-      }
-
-      .product-item{
-          width: 100%;
-          display: flex;
-          margin-bottom: 20px;
-
-          .img{
-            flex: 0 0 130px;
-            height: 90px;
-            background-color: #eee;
-          }
-          .info{
-            flex: 1 1 100%;
-            padding: 0 10px;
-            .title{
-              width: 100%;
-              height: 30px;
-              line-height: 30px;
-              padding: 0 10px;
-              background-color: #eee;
-              margin-bottom: 5px;
-            }
-            .tag{
-              width: 40%;
-              height: 20px;
-              background-color: #eee;
-              margin-bottom: 5px;
-            }
-            .price{
-              width: 60%;
-              height: 30px;
-              background-color: #eee;
-            }
-          }
-      }
-    }
-  }
-  
 </style>

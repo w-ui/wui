@@ -1,2 +1,2 @@
-import Tablecolumn from './src/tablecolumn.vue'
-export { Tablecolumn } 
+import TableColumn from './src/tablecolumn.vue'
+export { TableColumn } 
