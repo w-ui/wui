@@ -1,2 +1,2 @@
-import Scroll from './src/Scroll'
+import Scroll from './src/Scroll.vue'
 export {Scroll}
