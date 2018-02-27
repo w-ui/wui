@@ -4,7 +4,7 @@
             <input type="checkbox" v-model="model" :value="val" @change="changeHandler" :disabled="disabled" />
         </template>
         <template v-else>
-            <input type="checkbox" v-model="checked" :disabled="disabled" />
+            <input type="checkbox" v-model="checked" :disabled="disabled" @change="changeHandler"/>
         </template>
 
         <span class="wui-checkbox-icon" :style="iconStyles()"><i :style="checkIconStyles()"></i></span>
