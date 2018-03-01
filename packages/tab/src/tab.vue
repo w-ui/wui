@@ -24,10 +24,6 @@
                 tmpIndex: 0
             }
         },
-        props: {
-            change: Function,
-            callback: Function,
-        },
         methods: {
             init(update) {
                 const tabPanels = this.$children.filter(item => item.$options.name === 'wui-tab-panel');
@@ -61,8 +57,7 @@
             },
             emitChange(title, tabkey) {
                 // TODO 参数更名，即将删除
-                this.change && this.change(title, tabkey);
-                this.callback && this.callback(title, tabkey);
+                this.$emit('change', title, tabkey)
             },
             changeHandler(uid, title, tabkey) {
                 if (this.tmpIndex != uid) {

@@ -54,6 +54,11 @@
 | change      | 事件         | Boolean   |            |  false    |
 
 
+| 名称          | 说明             | 参数              |
+|--------------|------------------|------------------|
+| change       | Tab改变事件       | title tab名称， tabkey    |
+
+
 ###  Tab-Panel 属性介绍 Attributes
 
 | 参数           | 说明            | 类型       | 可选值      |   默认值   |
