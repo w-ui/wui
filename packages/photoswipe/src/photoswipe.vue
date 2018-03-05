@@ -11,13 +11,13 @@
         <div class='pswp__top-bar'>
           <div class='pswp__counter'/>
           <button class='pswp__button pswp__button--close'
-            title='Close (Esc)'/>
+            title='关闭 (Esc)'/>
           <button class='pswp__button pswp__button--share'
-            title='Share'/>
+            title='分享'/>
           <button class='pswp__button pswp__button--fs'
-            title='Toggle fullscreen'/>
+            title='全屏切换'/>
           <button class='pswp__button pswp__button--zoom'
-            title='Zoom in/out'/>
+            title='放大/缩小'/>
           <div class='pswp__preloader'>
             <div class='pswp__preloader__icn'>
               <div class='pswp__preloader__cut'>
@@ -31,9 +31,9 @@
           <div class='pswp__share-tooltip'/>
         </div>
         <button class='pswp__button pswp__button--arrow--left'
-          title='Previous (arrow left)'/>
+          title='上一张 (arrow left)'/>
         <button class='pswp__button pswp__button--arrow--right'
-          title='Next (arrow right)'/>
+          title='下一张 (arrow right)'/>
         <div class='pswp__caption'>
           <div class='pswp__caption__center'/>
         </div>
