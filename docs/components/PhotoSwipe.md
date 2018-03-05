@@ -89,7 +89,7 @@ export default {
 
 ###  PhotoSwipe 事件介绍 Event
 
-| 参数           | 说明            | 类型       | 可选值      |   默认值   |
+| 事件           | 说明            | 类型       | 可选值      |   默认值   |
 |---------------|-----------------|-----------|------------|-----------|
 | beforeChange  |                 | Function  |            |           |
 | afterChange   |                 | Function  |            |           |
@@ -108,7 +108,7 @@ export default {
 | updateScrollOffset  |                 | Function  |            |           |
 | preventDragEvent  |                 | Function  |            |           |
 | shareLinkClick|                 | Function  |            |           |
-详细文档参见[API](http://photoswipe.com/documentation/api.html)
+详细文档参见[API](http://photoswipe.com/documentation/api.html)，所有事件回调函数接收参数在PhotoSwipe原有参数前插入组件实例对象
 
 ###  PhotoSwipeGallery 属性介绍 props
 

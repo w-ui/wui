@@ -67,6 +67,7 @@ export default {
   mounted () {
     events.forEach(e => {
       this.$refs.pswp.$on(e, (...args) => {
+        args.unshift(this)
         this.$emit(e, [...args])
       })
     })
