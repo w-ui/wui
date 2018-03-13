@@ -9,9 +9,6 @@
     </div>
 
     <w-menubar slot="bottom">
-      <w-menubar-item title="首页" link="/demo/Feature">
-        <w-icon slot="icon" name="home"></w-icon>
-      </w-menubar-item>
       <w-menubar-item title="示例" link="/demo/Index">
         <w-icon slot="icon" name="light-bulb"></w-icon>
       </w-menubar-item>
@@ -24,14 +21,14 @@
 </template>
 
 <script>
-import { Layout } from "packages/layout";
-import { Titlebar } from "packages/titlebar";
-import { Menubar } from "packages/menubar";
-import { MenubarItem } from "packages/menubar-item";
-import { Icon } from "packages/icon";
+import { Layout } from 'packages/layout'
+import { Titlebar } from 'packages/titlebar'
+import { Menubar } from 'packages/menubar'
+import { MenubarItem } from 'packages/menubar-item'
+import { Icon } from 'packages/icon'
 
 export default {
-  name: "demo",
+  name: 'demo',
   props: {
     name: {
       type: String,
@@ -39,33 +36,33 @@ export default {
     }
   },
   components: {
-    "w-layout": Layout,
-    "w-titlebar": Titlebar,
-    "w-menubar": Menubar,
-    "w-menubar-item": MenubarItem,
-    "w-icon": Icon
+    'w-layout': Layout,
+    'w-titlebar': Titlebar,
+    'w-menubar': Menubar,
+    'w-menubar-item': MenubarItem,
+    'w-icon': Icon
   },
   data() {
-    let upName = this.name.replace(/^\w/, s0 => s0.toUpperCase());
+    let upName = this.name.replace(/^\w/, s0 => s0.toUpperCase())
     return {
       compo: () => import(`../../examples/${upName}.vue`)
-    };
+    }
   },
   watch: {
     name(val, oldVval) {
-      let upName = val.replace(/^\w/, s0 => s0.toUpperCase());
-      this.compo = () => import(`../../examples/${upName}.vue`);
+      let upName = val.replace(/^\w/, s0 => s0.toUpperCase())
+      this.compo = () => import(`../../examples/${upName}.vue`)
     }
   },
   mounted() {
     document.documentElement.style.fontSize =
-      window.innerWidth * 100 / 750 + "px";
+      window.innerWidth * 100 / 750 + 'px'
   }
-};
+}
 </script>
 
 <style lang="less-loader">
-@import url("../../src/styles/common.less");
+@import url('../../src/styles/common.less');
 
 .demo-area {
   position: relative;

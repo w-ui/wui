@@ -19,62 +19,62 @@
 </template>
 
 <script type="text/babel">
-    export default {
-        name: 'w-rate',
-        data() {
-            return {
-                index: 0,
-                str: ''
-            }
-        },
-        watch: {
-            value(val) {
-                this.choose(val);
-            }
-        },
-        props: {
-            count: {
-                validator(val) {
-                    return /^(([1-9]\d*)|0)$/.test(val);
-                },
-                default: 5
-            },
-            color: {
-                default: '#CCC'
-            },
-            activeColor: {
-                default: '#FF5D50'
-            },
-            value: {
-                validator(val) {
-                    return /^(([1-9]\d*)|0)$/.test(val);
-                }
-            },
-            showText: {
-                type: Array
-            },
-            readonly: {
-                type: Boolean,
-                default: false
-            }
-        },
-        methods: {
-            choose(index) {
-                this.index = index;
-                this.$emit('input', index);
-                if (!!this.showText) {
-                    this.str = (this.showText[index - 1] || '').replace('$', index);
-                }
-            }
-        },
-        mounted() {
-            this.$nextTick(() => {
-                this.choose(this.value);
-            });
-        }
+export default {
+  name: 'w-rate',
+  data() {
+    return {
+      index: 0,
+      str: ''
     }
+  },
+  watch: {
+    value(val) {
+      this.choose(val)
+    }
+  },
+  props: {
+    count: {
+      validator(val) {
+        return /^(([1-9]\d*)|0)$/.test(val)
+      },
+      default: 5
+    },
+    color: {
+      default: '#CCC'
+    },
+    activeColor: {
+      default: '#FF5D50'
+    },
+    value: {
+      validator(val) {
+        return /^(([1-9]\d*)|0)$/.test(val)
+      }
+    },
+    showText: {
+      type: Array
+    },
+    readonly: {
+      type: Boolean,
+      default: false
+    }
+  },
+  methods: {
+    choose(index) {
+      this.index = index
+      this.$emit('input', index)
+      if (!!this.showText) {
+        this.str = (this.showText[index - 1] || '').replace('$', index)
+      }
+    }
+  },
+  mounted() {
+    this.$nextTick(() => {
+      this.choose(this.value)
+    })
+  }
+}
 </script>
 
 <style lang="less">
-    @import "./rate.less";
+@import './rate.less';
 </style>

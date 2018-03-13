@@ -9,35 +9,35 @@
 
 
 <script>
-import { ImageClip } from "packages/image-clip";
-import { Button } from "packages/button";
+import { ImageClip } from 'packages/image-clip'
+import { Button } from 'packages/button'
 
 export default {
   components: {
-    "w-image-clip": ImageClip,
-    "w-button": Button
+    'w-image-clip': ImageClip,
+    'w-button': Button
   },
   methods: {
     getImage() {
       this.$refs.imgclip.getImageData().then(blob => {
-        console.log(blob);
-        let formData = new FormData();
-        formData.append("img", blob);
+        console.log(blob)
+        let formData = new FormData()
+        formData.append('img', blob)
 
-        $.ajax("/path/to/upload", {
-          method: "POST",
+        $.ajax('/path/to/upload', {
+          method: 'POST',
           data: formData,
           processData: false,
           contentType: false,
           success: function() {
-            console.log("Upload success");
+            console.log('Upload success')
           },
           error: function() {
-            console.log("Upload error");
+            console.log('Upload error')
           }
-        });
-      });
+        })
+      })
     }
   }
-};
+}
 </script>

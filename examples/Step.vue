@@ -23,25 +23,25 @@
 </template>
 
 <script>
-import { Step } from "packages/step";
-import { StepItem } from "packages/step-item";
-import { Button } from "packages/button";
+import { Step } from 'packages/step'
+import { StepItem } from 'packages/step-item'
+import { Button } from 'packages/button'
 
 export default {
   components: {
-    "w-step": Step,
-    "w-step-item": StepItem,
-    "w-button": Button
+    'w-step': Step,
+    'w-step-item': StepItem,
+    'w-button': Button
   },
   data() {
     return {
       cur: 1
-    };
+    }
   },
   methods: {
     next() {
-      ++this.cur;
+      ++this.cur
     }
   }
-};
+}
 </script>

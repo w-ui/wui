@@ -20,9 +20,6 @@
     "release": "npm publish --registry http://registry.npmjs.org",
     "analyse": "webpack-bundle-analyzer stats.json"
   },
-  "dependencies": {
-    "photoswipe": "^4.1.2"
-  },
   "devDependencies": {
     "autoprefixer": "^7.2.5",
     "babel-core": "^6.26.0",
@@ -47,6 +44,7 @@
     "eslint-friendly-formatter": "^2.0.7",
     "eslint-loader": "^1.7.1",
     "eslint-plugin-html": "^2.0.0",
+    "eslint-plugin-prettier": "^2.6.0",
     "eslint-plugin-promise": "^3.4.0",
     "eslint-plugin-standard": "^2.0.1",
     "eventsource-polyfill": "^0.9.6",
@@ -101,5 +99,20 @@
     "components"
   ],
   "unpkg": "lib/wui.umd.js",
-  "license": "MIT"
+  "license": "MIT",
+  "eslintConfig": {
+    "extends": [
+      "prettier"
+    ],
+    "plugins": [
+      "prettier"
+    ],
+    "rules": {
+      "prettier/prettier": "error"
+    }
+  },
+  "prettier": {
+    "singleQuote": true,
+    "semi": false
+  }
 }

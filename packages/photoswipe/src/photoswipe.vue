@@ -67,7 +67,7 @@ export default {
   },
   watch: {
     items: {
-      handler: function (val, oldVal) {
+      handler: function(val, oldVal) {
         if (this.pswp && this.isOpen) {
           /* this.pswp.items.length = 0
           val.forEach((item) => {
@@ -81,7 +81,7 @@ export default {
       },
       deep: true
     },
-    isOpen (val, oldVal) {
+    isOpen(val, oldVal) {
       if (val) {
         this.openPhotoSwipe(this.items, this.options)
       } else {
@@ -90,9 +90,14 @@ export default {
     }
   },
   methods: {
-    openPhotoSwipe (items, options) {
+    openPhotoSwipe(items, options) {
       let pswpElement = this.$el
-      this.pswp = new PhotoSwipeFn(pswpElement, PhotoSwipeUIDefault, items, options)
+      this.pswp = new PhotoSwipeFn(
+        pswpElement,
+        PhotoSwipeUIDefault,
+        items,
+        options
+      )
       events.forEach(e => {
         this.pswp.listen(e, (...args) => {
           args.unshift(this)
@@ -101,18 +106,18 @@ export default {
       })
       this.pswp.init()
     },
-    close () {
+    close() {
       if (this.pswp) {
         this.pswp.close()
       }
     }
   },
-  mounted () {
+  mounted() {
     if (this.isOpen) {
       this.openPhotoSwipe(this.items, this.options)
     }
   },
-  beforeDestroy () {
+  beforeDestroy() {
     this.close()
   }
 }

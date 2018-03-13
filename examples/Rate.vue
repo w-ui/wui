@@ -19,16 +19,16 @@
 
 
 <script>
-import { Rate } from "packages/rate";
+import { Rate } from 'packages/rate'
 
 export default {
   components: {
-    "w-rate": Rate
+    'w-rate': Rate
   },
   data() {
     return {
       score: 3
-    };
+    }
   }
-};
+}
 </script>

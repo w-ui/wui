@@ -18,7 +18,6 @@
   </div>
 </template>
 <script>
-
 export default {
   name: 'wm-search',
   props: {
@@ -30,7 +29,7 @@ export default {
     onChangeCb: Function,
     onChangeCallInterval: Number
   },
-  data () {
+  data() {
     return {
       active: false,
       keyword: this.value || '',
@@ -39,23 +38,26 @@ export default {
     }
   },
   computed: {
-    showClear () {
+    showClear() {
       return this.keyword
     }
   },
   methods: {
-    clear () {
+    clear() {
       this.keyword = ''
       this.$refs.input.focus()
     },
-    submit (key) {
+    submit(key) {
       if (this.timeout) {
         clearTimeout(this.timeout)
         this.timeout = null
       }
       this.active = true
       this.$refs.input.blur()
-      if (this.searchCb && Object.prototype.toString.call(this.searchCb) === '[object Function]') {
+      if (
+        this.searchCb &&
+        Object.prototype.toString.call(this.searchCb) === '[object Function]'
+      ) {
         if (key && Object.prototype.toString.call(key) === '[object String]') {
           this.searchCb(key)
           this.keyword = key
@@ -68,23 +70,29 @@ export default {
         }
       }
     },
-    focus () {
+    focus() {
       this.active = false
     },
-    onChange () {
+    onChange() {
       if (this.timeout) {
         clearTimeout(this.timeout)
         this.timeout = null
       }
       var func = () => {}
-      if (this.onChangeCb && Object.prototype.toString.call(this.onChangeCb) === '[object Function]') {
+      if (
+        this.onChangeCb &&
+        Object.prototype.toString.call(this.onChangeCb) === '[object Function]'
+      ) {
         func = this.onChangeCb
         this.showRef = true
       }
-      this.timeout = setTimeout(func.bind(this, this.keyword), this.onChangeCallInterval || 500)
+      this.timeout = setTimeout(
+        func.bind(this, this.keyword),
+        this.onChangeCallInterval || 500
+      )
     }
   },
-  mounted () {
+  mounted() {
     this.$nextTick(() => {
       this.$refs.input.focus()
     })
@@ -92,22 +100,22 @@ export default {
 }
 </script>
 <style lang="less">
-  // 边框颜色
-  @bdr-color: #f5f5f5;
-  //背景色
-  @bg-default: #f5f5f5;
-  @red-default: #ff2d4b;
+// 边框颜色
+@bdr-color: #f5f5f5;
+//背景色
+@bg-default: #f5f5f5;
+@red-default: #ff2d4b;
 
-  .ref-item {
-    background-color: #fff;
-    font-size: .6rem;
-    font-weight: normal;
-    color: #808080;
-    height: 2rem;
-    line-height: 2rem;
-    padding-left: 0.6rem;
-    border-bottom: 1px solid @bdr-color;
-  }
+.ref-item {
+  background-color: #fff;
+  font-size: 0.6rem;
+  font-weight: normal;
+  color: #808080;
+  height: 2rem;
+  line-height: 2rem;
+  padding-left: 0.6rem;
+  border-bottom: 1px solid @bdr-color;
+}
 
 .search-form {
   height: 0.4rem;
@@ -151,7 +159,7 @@ export default {
     background-repeat: no-repeat;
     background-position: 50% 50%;
     width: 0.4rem;
-    height: 0,4rem;
+    height: 0, 4rem;
     background-color: @bg-default;
   }
   &-clear {

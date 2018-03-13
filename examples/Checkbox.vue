@@ -32,20 +32,20 @@
 </template>
 
 <script>
-import { Checkbox } from "packages/checkbox";
-import { CheckboxGroup } from "packages/checkbox-group";
+import { Checkbox } from 'packages/checkbox'
+import { CheckboxGroup } from 'packages/checkbox-group'
 
 export default {
   components: {
-    "w-checkbox": Checkbox,
-    "w-checkbox-group": CheckboxGroup
+    'w-checkbox': Checkbox,
+    'w-checkbox-group': CheckboxGroup
   },
   data() {
     return {
-      radio1: ["奔驰"],
-      radio2: ["bmw"],
-      radio3: ["奥迪"]
-    };
+      radio1: ['奔驰'],
+      radio2: ['bmw'],
+      radio3: ['奥迪']
+    }
   }
-};
+}
 </script>

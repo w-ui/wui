@@ -10,8 +10,7 @@
 </template>
 
 <script>
-
-const concurrency = 4      // 最多同时加载的图片数量
+const concurrency = 4 // 最多同时加载的图片数量
 
 let loaded = {}
 const pendingQueue = []
@@ -32,7 +31,7 @@ setTimeout(() => {
 
   // 计算可见区域内未加载的图片
   let shouldLoadQueue = []
-  function calcShouldLoad () {
+  function calcShouldLoad() {
     const winHeight = window.innerHeight
     const minY = 0
     const maxY = winHeight * 2
@@ -86,7 +85,7 @@ export default {
       default: false
     }
   },
-  data () {
+  data() {
     return {
       styleVal: {},
       classVal: '',
@@ -94,7 +93,7 @@ export default {
     }
   },
   watch: {
-    src (newVal, oldVal) {
+    src(newVal, oldVal) {
       if (newVal !== oldVal) {
         this.styleVal = {}
         this.classVal = ''
@@ -108,11 +107,11 @@ export default {
     }
   },
   methods: {
-    rect () {
+    rect() {
       return this.$refs.el.getBoundingClientRect()
     },
     // 加载图片，并在加载成功后渐变展示，回调通知
-    load (done) {
+    load(done) {
       this.loaded = true
       const pos = pendingQueue.indexOf(this)
       pos > -1 && pendingQueue.splice(pos, 1)
@@ -137,21 +136,21 @@ export default {
       }
       loader.src = this.src
     },
-    loadImmediate () {
+    loadImmediate() {
       this.styleVal = {
         backgroundImage: `url(${this.src})`
       }
       this.classVal = ['lazy-image-fade-in']
     }
   },
-  mounted () {
+  mounted() {
     if (loaded[this.src]) {
       this.loadImmediate()
     } else {
       pendingQueue.push(this)
     }
   },
-  destroyed () {
+  destroyed() {
     if (!this.loaded) {
       const pos = pendingQueue.indexOf(this)
       pos > -1 && pendingQueue.splice(pos, 1)
@@ -167,14 +166,15 @@ export default {
   height: 100%;
   position: relative;
   box-sizing: border-box;
-  &-placeholder, &-content {
+  &-placeholder,
+  &-content {
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background-size: cover;
     position: absolute;
-    svg{
+    svg {
       width: 30%;
     }
   }
@@ -191,18 +191,18 @@ export default {
       position: absolute;
       top: 0px;
       left: 0px;
-      border: 1px solid #D8D4D4;
+      border: 1px solid #d8d4d4;
       box-sizing: border-box;
       width: 100%;
       height: 100%;
-      [data-dpr="1"] & {
-        border-color: #D8D4D4 * 0.4 + #FFFFFF * 0.6;
+      [data-dpr='1'] & {
+        border-color: #d8d4d4 * 0.4 + #ffffff * 0.6;
       }
-      [data-dpr="2"] & {
-        border-color: #D8D4D4 * 0.6 + #FFFFFF * 0.4;
+      [data-dpr='2'] & {
+        border-color: #d8d4d4 * 0.6 + #ffffff * 0.4;
       }
-      [data-dpr="3"] & {
-        border-color: #D8D4D4 * 0.8 + #FFFFFF * 0.2;
+      [data-dpr='3'] & {
+        border-color: #d8d4d4 * 0.8 + #ffffff * 0.2;
       }
     }
   }

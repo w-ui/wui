@@ -12,21 +12,21 @@
 </template>
 
 <script type="text/babel">
-    export default {
-        name: 'w-menubar-item',
-        props: {
-            link: String,
-            title: String,
-            active: Boolean,
-            dot: Boolean
-        },
-        computed: {
-            classes() {
-                return this.active ? 'menubar-active' : '';
-            },
-            styles() {
-                return {color: this.active ? this.activeColor : '#979797'};
-            }
-        }
+export default {
+  name: 'w-menubar-item',
+  props: {
+    link: String,
+    title: String,
+    active: Boolean,
+    dot: Boolean
+  },
+  computed: {
+    classes() {
+      return this.active ? 'menubar-active' : ''
+    },
+    styles() {
+      return { color: this.active ? this.activeColor : '#979797' }
     }
+  }
+}
 </script>

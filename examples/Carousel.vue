@@ -15,13 +15,13 @@
 </template>
 
 <script>
-import { Carousel } from "packages/carousel";
+import { Carousel } from 'packages/carousel'
 
 export default {
   components: {
     Carousel
   }
-};
+}
 </script>
 
 

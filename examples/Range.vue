@@ -31,22 +31,22 @@
 
 
 <script>
-import { Range } from "packages/range";
-import { Icon } from "packages/icon";
+import { Range } from 'packages/range'
+import { Icon } from 'packages/icon'
 
 export default {
   components: {
-    "w-range": Range,
-    "w-icon": Icon
+    'w-range': Range,
+    'w-icon': Icon
   },
   data() {
     return {
       brightness: 50,
       volumn: 2,
       range: { min: 10, max: 80 }
-    };
+    }
   }
-};
+}
 </script>
 
 <style lang="less">

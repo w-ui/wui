@@ -31,26 +31,26 @@
 </template>
 
 <script>
-import { Titlebar } from "packages/titlebar";
-import { Icon } from "packages/icon";
-import { Alert } from "packages/dialog";
+import { Titlebar } from 'packages/titlebar'
+import { Icon } from 'packages/icon'
+import { Alert } from 'packages/dialog'
 
 export default {
-  name: "wui-title-bar-demo",
+  name: 'wui-title-bar-demo',
   components: {
-    "w-titlebar": Titlebar,
-    "w-icon": Icon
+    'w-titlebar': Titlebar,
+    'w-icon': Icon
   },
   methods: {
     doLike() {
-      Alert("Like");
+      Alert('Like')
     },
     doShare() {
-      Alert("Share");
+      Alert('Share')
     },
     doBack() {
-      Alert("Back");
+      Alert('Back')
     }
   }
-};
+}
 </script>

@@ -23,32 +23,32 @@
 
 <script type="text/babel">
 export default {
-  name: "w-titlebar",
+  name: 'w-titlebar',
   props: {
     home: String,
     bgColor: String
   },
   data() {
-    let s = {};
+    let s = {}
     if (this.bgColor) {
-      s.backgroundColor = this.bgColor;
+      s.backgroundColor = this.bgColor
     }
     return {
       style: s
-    };
+    }
   },
   methods: {
     doBack() {
       if (history.length == 0) {
-        location.href = home;
+        location.href = home
       } else {
-        history.back();
+        history.back()
       }
     }
   }
-};
+}
 </script>
 
 <style lang="less">
-@import "./titlebar.less";
+@import './titlebar.less';
 </style>

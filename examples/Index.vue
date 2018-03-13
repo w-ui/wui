@@ -72,16 +72,16 @@
 </template>
 
 <script>
-import { Grid } from "packages/grid";
-import { GridItem } from "packages/grid-item";
+import { Grid } from 'packages/grid'
+import { GridItem } from 'packages/grid-item'
 
 export default {
-  name: "Index",
+  name: 'Index',
   components: {
-    "w-grid": Grid,
-    "w-grid-item": GridItem
+    'w-grid': Grid,
+    'w-grid-item': GridItem
   }
-};
+}
 </script>
 
 <style lang="less-loader">

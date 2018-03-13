@@ -39,32 +39,32 @@ export default {
       default: false
     }
   },
-  data () {
+  data() {
     return {
       opened: this.isOpen,
       opts: {}
     }
   },
   watch: {
-    isOpen (val, oldVal) {
+    isOpen(val, oldVal) {
       if (val !== this.opened) {
         this.opened = val
       }
     }
   },
   methods: {
-    showPhotoSwipe (e, index) {
+    showPhotoSwipe(e, index) {
       e.preventDefault()
       this.opts = Object.assign(this.options, {
         index
       })
       this.opened = true
     },
-    handleClose () {
+    handleClose() {
       this.opened = false
     }
   },
-  mounted () {
+  mounted() {
     events.forEach(e => {
       this.$refs.pswp.$on(e, (...args) => {
         args.unshift(this)
@@ -76,10 +76,10 @@ export default {
 </script>
 
 <style lang="less">
-  .pswp-thumbnails {
-    .pswp-thumbnail {
-      font-size: 0;
-      cursor: pointer;
-    }
+.pswp-thumbnails {
+  .pswp-thumbnail {
+    font-size: 0;
+    cursor: pointer;
   }
+}
 </style>

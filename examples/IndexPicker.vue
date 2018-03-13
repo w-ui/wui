@@ -9,12 +9,12 @@
 </template>
 
 <script>
-import { IndexPicker } from "packages/index-picker";
+import { IndexPicker } from 'packages/index-picker'
 export default {
   components: {
-    "w-indexpicker": IndexPicker
+    'w-indexpicker': IndexPicker
   }
-};
+}
 </script>
 
 <<style lang="less">

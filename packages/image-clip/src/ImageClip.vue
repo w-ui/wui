@@ -35,46 +35,46 @@
 </template>
 
 <script>
-  import Cropper from './cropper.js'
+import Cropper from './cropper.js'
 
-  export default {
-    components: {
-      Cropper
+export default {
+  components: {
+    Cropper
+  },
+  data() {
+    return {
+      img: null,
+      $input: null
+    }
+  },
+  mounted() {
+    this.$input = this.$el.querySelectorAll('#file_input')[0]
+  },
+  methods: {
+    selectChange() {
+      const rec = this.$refs.box.rec
     },
-    data () {
-      return {
-        img: null,
-        $input: null
+    fileChange() {
+      const me = this
+      const fd = new FileReader()
+      fd.onloadend = function() {
+        me.img = fd.result
+      }
+      if (this.$input.files && this.$input.files[0]) {
+        fd.readAsDataURL(this.$input.files[0])
       }
     },
-    mounted () {
-      this.$input = this.$el.querySelectorAll('#file_input')[0]
-    },
-    methods: {
-      selectChange () {
-        const rec = this.$refs.box.rec
-      },
-      fileChange () {
-        const me = this
-        const fd = new FileReader()
-        fd.onloadend = function () {
-          me.img = fd.result
-        };
-        if (this.$input.files && this.$input.files[0]) {
-          fd.readAsDataURL(this.$input.files[0])
-        }
-      },
-      getImageData () {
-        return new Promise((resolve, reject) => {
-          return this.$refs.box.getCroppedCanvas().toBlob(function (blob) {
-            resolve(blob)
-          })
+    getImageData() {
+      return new Promise((resolve, reject) => {
+        return this.$refs.box.getCroppedCanvas().toBlob(function(blob) {
+          resolve(blob)
         })
-      }
+      })
     }
   }
+}
 </script>
 
 <style lang="less" scoped>
-  @import './imageclip.less';
+@import './imageclip.less';
 </style>

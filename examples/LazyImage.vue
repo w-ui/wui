@@ -4,13 +4,13 @@
 </template>
 
 <script>
-import { LazyImage } from "packages/lazy-image";
+import { LazyImage } from 'packages/lazy-image'
 
 export default {
   components: {
     LazyImage
   }
-};
+}
 </script>
 
 <style>

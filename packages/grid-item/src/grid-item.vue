@@ -11,18 +11,18 @@
 </template>
 
 <script type="text/babel">
-    export default {
-        name: 'w-grid-item',
-        props: {
-            link: [String, Object]
-        },
-        computed: {
-            checkIcon() {
-                return !!this.$slots.icon;
-            },
-            checkText() {
-                return !!this.$slots.text;
-            }
-        }
+export default {
+  name: 'w-grid-item',
+  props: {
+    link: [String, Object]
+  },
+  computed: {
+    checkIcon() {
+      return !!this.$slots.icon
+    },
+    checkText() {
+      return !!this.$slots.text
     }
+  }
+}
 </script>

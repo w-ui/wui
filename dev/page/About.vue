@@ -5,15 +5,113 @@
       <ul class="top-menu">
         <li><router-link to="/guide">指南</router-link></li>
         <li><router-link to="/doc">组件</router-link></li>
+        <li><router-link to="/project">案例</router-link></li>
         <li><router-link to="/visual">可视化</router-link></li>
         <li><router-link to="/about">关于</router-link></li>
+        <li><a href="https://github.com/w-ui/wui">github</a></router-link></li>
+        <li><a href="https://github.com/w-ui/wui"><img src="https://img.shields.io/github/stars/w-ui/wui.svg?style=social&amp;label=Star"></a></li>
       </ul>
-      <a class="github" href="https://github.com/w-ui/wui"><img src="https://img.shields.io/github/stars/w-ui/wui.svg?style=social&amp;label=Star"></a>
     </div>
 
     <section class="page-body">
       <div class="title">更新日志</div>
       <w-timeline>
+        <w-timeline-item>
+          <p class="time">2018-03-01</p>
+          <p class="item">修复checkbox的props value的类型</p>
+          <p class="item">修复tab组件change事件和文档</p>
+          <p class="item" style="color: dodgerblue">发布1.0.8</p>
+        </w-timeline-item>
+
+        <w-timeline-item>
+          <p class="time">2018-02-28</p>
+          <p class="item">官网更新</p>
+          <p class="item">修复checkbox的change事件</p>
+          <p class="item">修改所有组件导出</p>
+          <p class="item" style="color: dodgerblue">发布1.0.7</p>
+        </w-timeline-item>
+
+        <w-timeline-item>
+          <p class="time">2018-01-15</p>
+          <p class="item">video组件优化于bug修复</p>
+          <p class="item">新增添加数字加减组件</p>
+          <p class="item">新增countdown组件及文档</p>
+        </w-timeline-item>
+
+        <w-timeline-item>
+          <p class="time">2018-01-12</p>
+          <p class="item">video组件优化于bug修复</p>
+          <p class="item">新增添加数字加减组件</p>
+          <p class="item">新增countdown组件及文档</p>
+        </w-timeline-item>
+
+        <w-timeline-item>
+          <p class="time">2018-01-12</p>
+          <p class="item">新增table组件及文档</p>
+        </w-timeline-item>
+
+        <w-timeline-item>
+          <p class="time">2018-01-09</p>
+          <p class="item">添加InfiniteScroll 上拉下拉提示功能</p>
+        </w-timeline-item>
+
+        <w-timeline-item>
+          <p class="time">2018-01-08</p>
+          <p class="item">整体组件导出修改，兼容babel-plugin-import-fix</p>
+        </w-timeline-item>
+
+        <w-timeline-item>
+          <p class="time">2018-01-07</p>
+          <p class="item">新增noticebar组件及文档</p>
+        </w-timeline-item>
+
+        <w-timeline-item>
+          <p class="time">2018-01-05</p>
+          <p class="item">scrolltab组件优化对头部分类sticky的支持</p>
+        </w-timeline-item>
+
+        <w-timeline-item>
+          <p class="time">2018-01-04</p>
+          <p class="item">InfiniteScroll，scrolltab鼠标滑动方向锁定与优化</p>
+        </w-timeline-item>
+
+        <w-timeline-item>
+          <p class="time">2018-01-02</p>
+          <p class="item">scrolltab从鼠标滚动事件改为touchmove+transform</p>
+        </w-timeline-item>
+
+        <w-timeline-item>
+          <p class="time">2018-01-01</p>
+          <p class="item">InfiniteScroll性能优化</p>
+        </w-timeline-item>
+
+        <w-timeline-item>
+          <p class="time">2017-12-28 18:27:47</p>
+          <p class="item">新增tree组件及文档</p>
+        </w-timeline-item>
+
+        <w-timeline-item>
+          <p class="time">2017-12-27 18:27:47</p>
+          <p class="item">scrollTree，浏览器兼容性bug修复</p>
+        </w-timeline-item>
+
+        <w-timeline-item>
+          <p class="time">2017-12-26 18:27:47</p>
+          <p class="item">Sticky组件bug修复，父组件有transition时，position：fixed无效</p>
+          <p class="item">组合示例3 bug修复</p>
+          <p class="item">InfiniteScroll组件bug修复, checkScroll不严谨</p>
+        </w-timeline-item>
+
+        <w-timeline-item>
+          <p class="time">2017-12-25 18:27:47</p>
+          <p class="item">Time-line 支持自定义图标 </p>
+        </w-timeline-item>
+
+        <w-timeline-item>
+          <p class="time">2017-12-22 18:27:47</p>
+          <p class="item">ScrollTree组件bug修复 </p>
+        </w-timeline-item>
+        
         <w-timeline-item>
           <p class="time">2017-12-21 18:27:47</p>
           <p class="item">markdown文档样式优化 </p>
@@ -153,16 +251,16 @@
 </template>
 
 <script>
-import { Timeline } from "packages/timeline";
-import { TimelineItem } from "packages/timeline-item";
+import { Timeline } from 'packages/timeline'
+import { TimelineItem } from 'packages/timeline-item'
 
 export default {
-  name: "about",
+  name: 'about',
   components: {
-    "w-timeline": Timeline,
-    "w-timeline-item": TimelineItem
+    'w-timeline': Timeline,
+    'w-timeline-item': TimelineItem
   }
-};
+}
 </script>
 
 <style lang="less-loader">

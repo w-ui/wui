@@ -9,11 +9,14 @@
         <li><router-link to="/project">案例</router-link></li>
         <li><router-link to="/visual">可视化</router-link></li>
         <li><router-link to="/about">关于</router-link></li>
+        <li><a href="https://github.com/w-ui/wui">github</a></router-link></li>
+        <li><a href="https://github.com/w-ui/wui"><img src="https://img.shields.io/github/stars/w-ui/wui.svg?style=social&amp;label=Star"></a></li>
       </ul>
-      <a class="github" href="https://github.com/w-ui/wui"><img src="https://img.shields.io/github/stars/w-ui/wui.svg?style=social&amp;label=Star"></a>
+      
     </div>
 
     <div class="middle-page">
+      <div class="bg"></div>
     </div>
 
     <div class="navigate">
@@ -72,22 +75,7 @@
       <div class="feature-item">
         <img src="../static/images/performance.svg"/>
         <p class="title">高性能</p>
-        <p class="slogan">百万级数据检验</p>
-      </div>
-      <div class="feature-item">
-        <img src="../static/images/quality.svg"/>
-        <p class="title">实践检验</p>
-        <p class="slogan">千万级业务支撑</p>
-      </div>
-      <div class="feature-item">
-        <img src="../static/images/document.svg"/>
-        <p class="title">丰富文档和社区</p>
-        <p class="slogan">同时提供离线文档</p>
-      </div>
-      <div class="feature-item">
-        <img src="../static/images/team.svg"/>
-        <p class="title">专业团队维护</p>
-        <p class="slogan">反馈快速响应</p>
+        <p class="slogan">大量级数据检验</p>
       </div>
     </div>
 
@@ -99,53 +87,32 @@
 
 <script>
 export default {
-  name: "index"
-};
+  name: 'index'
+}
 </script>
 
 <style lang="less-loader">
 .index-page {
   position: relative;
 
+  .top-header {
+    border-bottom: none;
+  }
+
   .middle-page {
     position: relative;
     width: 100vw;
-    height: 600px;
+    height: 420px;
     background-color: #eef;
     font-size: 18px;
     overflow: hidden;
 
-    .banner {
-      position: relative;
-      img {
-        position: relative;
-        width: 1000px;
-        top: -50px;
-      }
-      .slogan {
-        position: absolute;
-        left: 9%;
-        top: 35%;
-        color: #fff;
-        font-size: 44px;
-        p {
-          padding: 30px 0;
-          display: flex;
-          a {
-            border: 1px #ccc solid;
-            border-radius: 50px;
-            padding: 10px 50px;
-            color: #fff;
-            text-decoration: none;
-            font-size: 16px;
-            margin: 10px;
-          }
-          a:hover {
-            background-color: #fff;
-            color: #1b45a7;
-          }
-        }
-      }
+    .bg {
+      width: 100%;
+      height: 100%;
+      background-origin: center center;
+      background-size: 100% 100%;
+      background-image: url('../static/images/bg.jpg');
     }
   }
 

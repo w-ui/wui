@@ -29,14 +29,14 @@
 </template>
 
 <script>
-import { Accordion } from "packages/accordion";
-import { AccordionItem } from "packages/accordion-item";
+import { Accordion } from 'packages/accordion'
+import { AccordionItem } from 'packages/accordion-item'
 export default {
   components: {
-    "w-accordion": Accordion,
-    "w-accordion-item": AccordionItem
+    'w-accordion': Accordion,
+    'w-accordion-item': AccordionItem
   }
-};
+}
 </script>
 
 

@@ -55,8 +55,6 @@
 </template>
 
 <script>
-
-
 export default {
   name: 'w-input',
   props: {
@@ -91,23 +89,23 @@ export default {
       default: false
     },
     type: {
-      validator (value) {
-        if(value){
-          return ['input', 'password', 'number', 'varycode'].indexOf(value) > -1;
+      validator(value) {
+        if (value) {
+          return ['input', 'password', 'number', 'varycode'].indexOf(value) > -1
         }
         return true
       },
       default: 'input'
     },
     max: {
-        validator(val) {
-            return /^\d*$/.test(val);
-        }
+      validator(val) {
+        return /^\d*$/.test(val)
+      }
     },
     min: {
-        validator(val) {
-            return /^\d*$/.test(val);
-        }
+      validator(val) {
+        return /^\d*$/.test(val)
+      }
     },
     wait: {
       type: Number,
@@ -116,113 +114,129 @@ export default {
   },
   data() {
     return {
-        currentValue: this.value,
-        isempty: !this.value,
-        iserror: false,
-        showPwd: false,
-        showClear: false,
-        showWarn: true,
-        initError: false,
-        valid: true,
-        errorMsg: '',
-        errorCode: '',
-        regexObj: {
-            email: '^\\w+((-\\w+)|(\\.\\w+))*\\@[A-Za-z0-9]+((\\.|-)[A-Za-z0-9]+)*\\.[A-Za-z0-9]+$',
-            mobile: '^(86)?1[3,4,5,7,8]\\d{9}$',
-            bankcard: '^\\d{15,19}$'
-        },
-        start: false,
-        remain: this.wait
+      currentValue: this.value,
+      isempty: !this.value,
+      iserror: false,
+      showPwd: false,
+      showClear: false,
+      showWarn: true,
+      initError: false,
+      valid: true,
+      errorMsg: '',
+      errorCode: '',
+      regexObj: {
+        email:
+          '^\\w+((-\\w+)|(\\.\\w+))*\\@[A-Za-z0-9]+((\\.|-)[A-Za-z0-9]+)*\\.[A-Za-z0-9]+$',
+        mobile: '^(86)?1[3,4,5,7,8]\\d{9}$',
+        bankcard: '^\\d{15,19}$'
+      },
+      start: false,
+      remain: this.wait
     }
   },
   computed: {
     isShowError() {
-      return (!!this.regex || !!this.min || !!this.max || this.required) && this.iserror && this.initError
+      return (
+        (!!this.regex || !!this.min || !!this.max || this.required) &&
+        this.iserror &&
+        this.initError
+      )
     },
     isShowSuccess() {
-      return (!!this.regex || !!this.min || !!this.max || this.required) && !this.iserror && (this.currentValue != '')
+      return (
+        (!!this.regex || !!this.min || !!this.max || this.required) &&
+        !this.iserror &&
+        this.currentValue != ''
+      )
     }
   },
 
   methods: {
     validatorInput(val, showError) {
-      this.initError = showError;
+      this.initError = showError
 
-      if(showError) this.showWarn = false;
+      if (showError) this.showWarn = false
 
-      if(this.required && val === '') {
-          this.setError('不能为空', 'NOT_NULL');
-          this.iserror = true;
-          return;
+      if (this.required && val === '') {
+        this.setError('不能为空', 'NOT_NULL')
+        this.iserror = true
+        return
       }
 
-      if (this.type == "number" && this.min && parseInt(val) < this.min) {
-          this.setError(`输入不能小于${this.min}`, 'NOT_MIN_SIZE');
-          this.iserror = true;
-          return;
+      if (this.type == 'number' && this.min && parseInt(val) < this.min) {
+        this.setError(`输入不能小于${this.min}`, 'NOT_MIN_SIZE')
+        this.iserror = true
+        return
       }
 
-      if (this.type == "number" && this.max && parseInt(val) > this.max) {
-          this.setError(`输入不能小于${this.min}，不能大于${this.max}`, 'NOT_MAX_SIZE');
-          this.iserror = true;
-          return;
+      if (this.type == 'number' && this.max && parseInt(val) > this.max) {
+        this.setError(
+          `输入不能小于${this.min}，不能大于${this.max}`,
+          'NOT_MAX_SIZE'
+        )
+        this.iserror = true
+        return
       }
 
-      const v = val;
-      const reg = this.trim(this.regex, '/');
+      const v = val
+      const reg = this.trim(this.regex, '/')
       if (!!v && this.regex && !new RegExp(reg).test(v)) {
-          this.setError('输入字符不符合规则', 'NOT_REGEX_RULE');
-          this.iserror = true;
-          return;
+        this.setError('输入字符不符合规则', 'NOT_REGEX_RULE')
+        this.iserror = true
+        return
       }
 
-      if(this.regex){
+      if (this.regex) {
         if (!new RegExp(this.regex).test(val)) {
-          this.setError('输入字符不符合规则', 'NOT_REGEX_RULE');
-          this.iserror = true;
-          return;
+          this.setError('输入字符不符合规则', 'NOT_REGEX_RULE')
+          this.iserror = true
+          return
         }
       }
 
-      this.iserror = false;
-      this.valid = true;
-      this.errorMsg = '';
-      this.errorCode = '';
-
+      this.iserror = false
+      this.valid = true
+      this.errorMsg = ''
+      this.errorCode = ''
     },
     blurHandler() {
-      this.validatorInput(this.currentValue, true);
+      this.validatorInput(this.currentValue, true)
 
       setTimeout(() => {
-          this.showClear = false;
-      }, 200);
+        this.showClear = false
+      }, 200)
     },
     clearInput() {
-      this.currentValue = '';
-      this.emitInput();
+      this.currentValue = ''
+      this.emitInput()
     },
     emitInput() {
       if (this.regex === 'bankcard') {
-          if (/\S{5}/.test(this.currentValue)) {
-              this.currentValue = this.currentValue.replace(/\s/g, '').replace(/(\d{4})(?=\d)/g, "$1 ");
-          }
-          this.$emit('input', this.currentValue.replace(/\s/g, ''));
-          return;
+        if (/\S{5}/.test(this.currentValue)) {
+          this.currentValue = this.currentValue
+            .replace(/\s/g, '')
+            .replace(/(\d{4})(?=\d)/g, '$1 ')
+        }
+        this.$emit('input', this.currentValue.replace(/\s/g, ''))
+        return
       }
-      this.$emit('input', this.currentValue);
+      this.$emit('input', this.currentValue)
     },
     setError(error, code) {
-      this.errorMsg = error;
-      this.errorCode = code;
-      this.valid = false;
+      this.errorMsg = error
+      this.errorCode = code
+      this.valid = false
     },
     trim(str, char) {
       if (!!str) {
-          return str.replace(new RegExp('^\\' + char + '+|\\' + char + '+$', 'g'), '');
+        return str.replace(
+          new RegExp('^\\' + char + '+|\\' + char + '+$', 'g'),
+          ''
+        )
       }
-      return str;
+      return str
     },
-    countdown () {
+    countdown() {
       if (!/^\d{11}$/.test(this.currentValue)) {
         this.$el.style.animation = 'shakeBorder linear 1s'
         setTimeout(() => {
@@ -230,12 +244,12 @@ export default {
         }, 1000)
         return
       }
-      this.start = true;
-      let i = 0;
+      this.start = true
+      let i = 0
       let cd = () => {
-        ++i;
+        ++i
         this.remain = this.wait - i
-        if(this.remain > 0) {
+        if (this.remain > 0) {
           setTimeout(cd, 1000)
         } else {
           this.start = false
@@ -248,29 +262,28 @@ export default {
 
   watch: {
     value(val) {
-        this.currentValue = val;
-        this.emitInput();
+      this.currentValue = val
+      this.emitInput()
     },
     currentValue(val) {
-        this.isempty = !val;
-        this.validatorInput(val, true);
-        this.emitInput();
+      this.isempty = !val
+      this.validatorInput(val, true)
+      this.emitInput()
     },
     required(val) {
-        this.required = val;
-        this.validatorInput(this.currentValue, false);
+      this.required = val
+      this.validatorInput(this.currentValue, false)
     }
   },
 
   mounted() {
-    if(this.type != 'text'){
-      this.validatorInput(this.currentValue, false);
+    if (this.type != 'text') {
+      this.validatorInput(this.currentValue, false)
     }
   }
-
-};
+}
 </script>
 
 <style lang="less">
-  @import './input.less';
+@import './input.less';
 </style>

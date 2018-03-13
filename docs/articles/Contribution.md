@@ -3,27 +3,32 @@
 
 ### wui项目目录介绍：
 
-+[build]     //构建脚本
-+[config]    //配置文件
--[dev]       //官网文档开发目录
---+[page]                //官网页面
---+[static]              //静态资源
----App.vue               //跟页面
----guide.config.json     //指南文档路由配置
----main.js               //启动文件
----nav.config.json       //组件文档路由配置
----routers.js            //官网路由
----template.html         //html模板
-+[dist]          //编译后产物
--[docs]          //官网文档md文档目录
---+[articles]    //指南md文档
---+[components]  //组件md文档
-+[examples]      //组件示例代码
-+[lib]           //w-ui发布后的目录
-+[node_modules]
-+[packages]      //组件源代码存放目录
-+[src]           //公共源代码存放目录
-.babelrc         //babel配置文件
+```javascript
+
+wui
+├──[build]      //构建脚本
+├──[config]     //配置文件
+├──[dev]        //官网文档开发目录
+├──[page]               //官网页面
+├──[static]             //静态资源
+├─App.vue               //跟页面
+├─guide.config.json     //指南文档路由配置
+├─main.js               //启动文件
+├─nav.config.json       //组件文档路由配置
+├─routers.js            //官网路由
+├─template.html         //html模板
+├──[dist]          //编译后产物
+├──[docs]          //官网文档md文档目录
+├────[articles]    //指南md文档
+├────[components]  //组件md文档
+├──[examples]      //组件示例代码
+├──[lib]           //w-ui发布后的目录
+├──[node_modules]
+├──[packages]      //组件源代码存放目录
+├──[src]           //公共源代码存放目录
+├─.babelrc           //babel配置文件
+
+```
 
 ## 组件贡献指南
 
@@ -82,3 +87,13 @@
 + 运行 npm run dev, 可启动编辑调试
 
 + 运行 npm run doc, 可编译成静态文件，然后push到 w-ui.github.io
+
+
+## 代码规范
+
+本项目遵循standard规范
+
+### vscode 配置
+
+安装Eslint，eslint-plugin-prettier，已包含在package.json中，eslint和prettier配置也包含在package.json中
+

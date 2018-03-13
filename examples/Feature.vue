@@ -8,16 +8,16 @@
 </template>
 
 <script>
-import { Timeline } from "packages/timeline";
-import { TimelineItem } from "packages/timeline-item";
+import { Timeline } from 'packages/timeline'
+import { TimelineItem } from 'packages/timeline-item'
 
 export default {
-  name: "w-log",
+  name: 'w-log',
   components: {
-    "w-timeline": Timeline,
-    "w-timeline-item": TimelineItem
+    'w-timeline': Timeline,
+    'w-timeline-item': TimelineItem
   }
-};
+}
 </script>
 
 <<style lang="less">

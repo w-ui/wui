@@ -9,22 +9,22 @@
 </template>
 
 <script>
-import { Password } from "packages/password";
-import { Alert } from "packages/dialog";
+import { Password } from 'packages/password'
+import { Alert } from 'packages/dialog'
 
 export default {
   components: {
-    "w-password": Password
+    'w-password': Password
   },
   data() {
     return {
-      password: ""
-    };
+      password: ''
+    }
   },
   methods: {
     onFinish(val) {
-      Alert({ content: val });
+      Alert({ content: val })
     }
   }
-};
+}
 </script>

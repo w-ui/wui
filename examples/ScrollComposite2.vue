@@ -34,126 +34,126 @@
 </template>
 
 <script>
-import { ScrollCard } from "packages/scroll-card";
-import { InfiniteScroll } from "packages/infinite-scroll";
+import { ScrollCard } from 'packages/scroll-card'
+import { InfiniteScroll } from 'packages/infinite-scroll'
 
 let data = [
   {
-    name: "特价专区",
+    name: '特价专区',
     id: 1003001,
-    icon: "chart"
+    icon: 'chart'
   },
   {
-    name: "满69减30",
+    name: '满69减30',
     id: 1003001,
-    icon: "price-tag"
+    icon: 'price-tag'
   },
   {
-    name: "优惠",
+    name: '优惠',
     id: 1003001,
-    icon: "ticket"
+    icon: 'ticket'
   },
   {
-    name: "热销",
+    name: '热销',
     id: 1003001,
-    icon: "cart"
+    icon: 'cart'
   },
   {
-    name: "新鲜水果",
+    name: '新鲜水果',
     id: 1003001,
-    icon: "appleinc"
+    icon: 'appleinc'
   },
   {
-    name: "冰淇淋",
+    name: '冰淇淋',
     id: 1003001,
-    icon: "cutlery"
+    icon: 'cutlery'
   },
   {
-    name: "特价专区",
+    name: '特价专区',
     id: 1003001,
-    icon: "bell2"
+    icon: 'bell2'
   },
   {
-    name: "饮料/水",
+    name: '饮料/水',
     id: 1003001,
-    icon: "coffee"
+    icon: 'coffee'
   },
   {
-    name: "酒类饮品",
+    name: '酒类饮品',
     id: 1003001,
-    icon: "beer"
+    icon: 'beer'
   },
   {
-    name: "牛奶乳类",
+    name: '牛奶乳类',
     id: 1003001,
-    icon: "spotify"
+    icon: 'spotify'
   },
   {
-    name: "休闲零食",
+    name: '休闲零食',
     id: 1003001,
-    icon: "bullseye"
+    icon: 'bullseye'
   },
   {
-    name: "卤味鲜食",
+    name: '卤味鲜食',
     id: 1003001,
-    icon: "envira"
+    icon: 'envira'
   },
   {
-    name: "糖巧饼干",
+    name: '糖巧饼干',
     id: 1003001,
-    icon: "modx"
+    icon: 'modx'
   },
   {
-    name: "方便速食",
+    name: '方便速食',
     id: 1003001,
-    icon: "wpbeginner"
+    icon: 'wpbeginner'
   },
   {
-    name: "营养冲调",
+    name: '营养冲调',
     id: 1003001,
-    icon: "heart"
+    icon: 'heart'
   },
   {
-    name: "计生用品",
+    name: '计生用品',
     id: 1003001,
-    icon: "man-woman"
+    icon: 'man-woman'
   },
   {
-    name: "个人护理",
+    name: '个人护理',
     id: 1003001,
-    icon: "bandcamp"
+    icon: 'bandcamp'
   },
   {
-    name: "日用百货",
+    name: '日用百货',
     id: 1003001,
-    icon: ""
+    icon: ''
   },
   {
-    name: "进口食品",
+    name: '进口食品',
     id: 1003001,
-    icon: ""
+    icon: ''
   },
   {
-    name: "百草味",
+    name: '百草味',
     id: 1003001,
-    icon: ""
+    icon: ''
   },
   {
-    name: "网红新品",
+    name: '网红新品',
     id: 1003001,
-    icon: ""
+    icon: ''
   },
   {
-    name: "休闲食品",
+    name: '休闲食品',
     id: 1003001,
-    icon: ""
+    icon: ''
   }
-];
+]
 
 export default {
   components: {
-    "w-infinite-scroll": InfiniteScroll,
-    "w-scroll-card": ScrollCard
+    'w-infinite-scroll': InfiniteScroll,
+    'w-scroll-card': ScrollCard
   },
   data() {
     return {
@@ -186,11 +186,11 @@ export default {
       ],
       header: data,
       pageCount: data.length
-    };
+    }
   },
   methods: {
     pageChange(currentPage, lastPage) {
-      let d = data[currentPage];
+      let d = data[currentPage]
       this.category[currentPage] = {
         name: d.name,
         products: [
@@ -215,11 +215,11 @@ export default {
           19,
           20
         ]
-      };
-      this.$refs.srollcard.setCurrent(currentPage);
+      }
+      this.$refs.srollcard.setCurrent(currentPage)
     },
     itemChange(currentIndex) {
-      let d = data[currentIndex];
+      let d = data[currentIndex]
       let content = {
         name: d.name,
         products: [
@@ -244,18 +244,18 @@ export default {
           19,
           20
         ]
-      };
-      this.$set(this.category, currentIndex, content);
-      this.$refs.infinitescroll.setCurrent(currentIndex);
+      }
+      this.$set(this.category, currentIndex, content)
+      this.$refs.infinitescroll.setCurrent(currentIndex)
     },
     scroll() {
-      return true;
+      return true
     }
   },
   mounted() {
-    this.$refs.srollcard.setCurrent(0);
+    this.$refs.srollcard.setCurrent(0)
   }
-};
+}
 </script>
 
 <style lang="less">

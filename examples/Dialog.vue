@@ -10,31 +10,31 @@
 </template>
 
 <script>
-import { Confirm, Alert, Notify, Toast } from "packages/dialog";
-import { Button } from "packages/button";
+import { Confirm, Alert, Notify, Toast } from 'packages/dialog'
+import { Button } from 'packages/button'
 
 export default {
   components: {
-    "w-button": Button
+    'w-button': Button
   },
   methods: {
     doConfirm() {
-      Confirm("您确认要删除吗？", {
-        title: "确认",
+      Confirm('您确认要删除吗？', {
+        title: '确认',
         callback(val) {
-          alert(val);
+          alert(val)
         }
-      });
+      })
     },
     doAlert() {
-      Alert("您确认要删除吗？");
+      Alert('您确认要删除吗？')
     },
     doNotify() {
-      Notify("您确认要删除吗？");
+      Notify('您确认要删除吗？')
     },
     doToast() {
-      Toast("您确认要删除吗？");
+      Toast('您确认要删除吗？')
     }
   }
-};
+}
 </script>

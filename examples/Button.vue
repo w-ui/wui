@@ -58,64 +58,64 @@
 </template>
 
 <script>
-import Vue from "vue";
-import { Button } from "packages/button";
-import { ButtonGroup } from "packages/button-group";
+import Vue from 'vue'
+import { Button } from 'packages/button'
+import { ButtonGroup } from 'packages/button-group'
 
 export default {
   components: {
-    "w-button": Button,
-    "w-button-group": ButtonGroup
+    'w-button': Button,
+    'w-button-group': ButtonGroup
   },
   data() {
     return {
       btnGroup1: [
         {
-          name: "商品",
-          value: "product"
+          name: '商品',
+          value: 'product'
         },
         {
-          name: "详情",
-          value: "detail"
+          name: '详情',
+          value: 'detail'
         },
         {
-          name: "评价",
-          value: "rate"
+          name: '评价',
+          value: 'rate'
         }
       ],
-      btnGroup1Value: "product",
+      btnGroup1Value: 'product',
       btnGroup2: [
         {
-          name: "左",
-          value: "left"
+          name: '左',
+          value: 'left'
         },
         {
-          name: "中",
-          value: "center"
+          name: '中',
+          value: 'center'
         },
         {
-          name: "右",
-          value: "right",
+          name: '右',
+          value: 'right',
           disable: true
         }
       ],
-      btnGroup2Value: "center",
+      btnGroup2Value: 'center',
       btnGroup3: [
         {
-          name: "左",
-          value: "left"
+          name: '左',
+          value: 'left'
         },
         {
-          name: "中",
-          value: "center"
+          name: '中',
+          value: 'center'
         },
         {
-          name: "右",
-          value: "right"
+          name: '右',
+          value: 'right'
         }
       ],
-      btnGroup3Value: "right"
-    };
+      btnGroup3Value: 'right'
+    }
   }
-};
+}
 </script>

@@ -12,8 +12,8 @@
 
 <script>
 export default {
-  name: "tree"
-};
+  name: 'tree'
+}
 </script>
 
 <style lang="less-loader">

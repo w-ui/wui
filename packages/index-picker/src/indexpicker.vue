@@ -7,26 +7,27 @@
 <script>
 export default {
   name: 'body-scroll',
-  data () {
+  data() {
     return {
       startY: 0,
       startX: 0,
       bodyHeight: 0,
       maxScrollTop: 0,
-      scrollTop: 0,
+      scrollTop: 0
     }
   },
-  methods: { 
-    onTouchstart (e) {
+  methods: {
+    onTouchstart(e) {
       let point = e.touches ? e.touches[0] : e
       this.startY = point.clientY
       this.startX = point.clientX
-      this.scrollTop = document.documentElement.scrollTop || document.body.scrollTop
+      this.scrollTop =
+        document.documentElement.scrollTop || document.body.scrollTop
       this.maxScrollTop = this.bodyHeight - window.innerHeight - this.barHight
       console.log('>>>[maxScrollTop]', this.maxScrollTop)
       e.preventDefault()
     },
-    onTouchmove (e) {
+    onTouchmove(e) {
       let point = e.touches ? e.touches[0] : e
       let m_sX = point.clientX - this.startX
       let m_sY = point.clientY - this.startY
@@ -34,7 +35,7 @@ export default {
         e.preventDefault()
         e.stopPropagation()
 
-        let st =  this.scrollTop - m_sY
+        let st = this.scrollTop - m_sY
         if (st > this.maxScrollTop) {
           st = this.maxScrollTop
         }
@@ -49,7 +50,7 @@ export default {
         }
       }
     },
-    onTouchend (e) {
+    onTouchend(e) {
       this.logDom.innerHTML += '<p>touchEnd:' + Date.now() + '</p>'
       this.logDom.scrollTop = 999999999
 
@@ -62,14 +63,14 @@ export default {
       document.documentElement.scrollTop = st
       document.body.scrollTop = st
 
-      if(this.maxScrollTop - st <= 3) {
+      if (this.maxScrollTop - st <= 3) {
         this.$emit('stickyChange', true)
       } else {
         this.$emit('stickyChange', false)
       }
     }
   },
-  mounted () {
+  mounted() {
     this.barHight = 0
     this.logDom = document.querySelector('.log')
     this.$nextTick(() => {
@@ -80,7 +81,7 @@ export default {
     })
   },
 
-  destroyed () {
+  destroyed() {
     window.removeEventListener('touchend', this.onTouchend, false)
     window.removeEventListener('mouseup', this.onTouchend, false)
   }

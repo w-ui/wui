@@ -8,18 +8,18 @@
 </template>
 
 <script>
-import { Switch } from "packages/switch";
+import { Switch } from 'packages/switch'
 
 export default {
   components: {
-    "w-switch": Switch
+    'w-switch': Switch
   },
   data() {
     return {
       switch1: false
-    };
+    }
   }
-};
+}
 </script>
 
 

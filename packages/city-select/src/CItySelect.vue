@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import DISTRICTS from './districts';
+import DISTRICTS from './districts'
 
 const DEFAULT_CODE = 100000
 
@@ -46,13 +46,13 @@ export default {
         return {
           province: '省',
           city: '市',
-          area: '区',
+          area: '区'
         }
       }
     },
     wrapper: { type: String, default: 'address' },
     addressHeader: { type: String, default: 'address-header' },
-    addressContainer: { type: String, default: 'address-container' },
+    addressContainer: { type: String, default: 'address-container' }
   },
   data() {
     return {
@@ -62,9 +62,10 @@ export default {
       provinces: [],
       cities: [],
       areas: [],
-      currentProvince: this.determineType(this.province) || this.placeholders.province,
+      currentProvince:
+        this.determineType(this.province) || this.placeholders.province,
       currentCity: this.determineType(this.city) || this.placeholders.city,
-      currentArea: this.determineType(this.area) || this.placeholders.area,
+      currentArea: this.determineType(this.area) || this.placeholders.area
     }
   },
   created() {
@@ -72,11 +73,15 @@ export default {
       this.tab = 3
       this.showCityTab = true
       this.showAreaTab = true
-      this.areas = this.getDistricts(this.getAreaCode(this.determineType(this.city)))
+      this.areas = this.getDistricts(
+        this.getAreaCode(this.determineType(this.city))
+      )
     } else if (this.city && this.hideArea && !this.onlyProvince) {
       this.tab = 2
       this.showCityTab = true
-      this.cities = this.getDistricts(this.getAreaCode(this.determineType(this.province)))
+      this.cities = this.getDistricts(
+        this.getAreaCode(this.determineType(this.province))
+      )
     } else {
       this.provinces = this.getDistricts()
     }
@@ -88,7 +93,8 @@ export default {
     },
     currentCity(value) {
       this.$emit('city', this.setData(value, this.currentProvince))
-      if (value != this.placeholders.city && this.hideArea) this.emit('selected')
+      if (value != this.placeholders.city && this.hideArea)
+        this.emit('selected')
     },
     currentArea(value) {
       this.$emit('area', this.setData(value, this.currentCity))
@@ -96,21 +102,28 @@ export default {
     },
     province(value) {
       this.currentProvince = this.province || this.placeholders.province
-      this.cities = this.determineValue(this.currentProvince, this.placeholders.province)
+      this.cities = this.determineValue(
+        this.currentProvince,
+        this.placeholders.province
+      )
     },
     city(value) {
       this.currentCity = this.city || this.placeholders.city
-      this.areas = this.determineValue(this.currentCity, this.placeholders.city, this.currentProvince)
+      this.areas = this.determineValue(
+        this.currentCity,
+        this.placeholders.city,
+        this.currentProvince
+      )
     },
     area(value) {
       this.currentArea = this.area || this.placeholders.area
-    },
+    }
   },
   methods: {
     setData(value, check = '') {
       return {
         code: this.getAreaCode(value, check),
-        value: value,
+        value: value
       }
     },
     emit(name) {
@@ -131,7 +144,10 @@ export default {
     getCities() {
       this.currentCity = this.placeholders.city
       this.currentArea = this.placeholders.area
-      this.cities = this.determineValue(this.currentProvince, this.placeholders.province)
+      this.cities = this.determineValue(
+        this.currentProvince,
+        this.placeholders.province
+      )
       this.cleanList('areas')
       if (this.cities == null) {
         this.emit('selected')
@@ -141,7 +157,11 @@ export default {
     },
     getAreas() {
       this.currentArea = this.placeholders.area
-      this.areas = this.determineValue(this.currentCity, this.placeholders.city, this.currentProvince)
+      this.areas = this.determineValue(
+        this.currentCity,
+        this.placeholders.city,
+        this.currentProvince
+      )
       if (this.areas == null) {
         this.emit('selected')
         this.tab = 2
@@ -182,9 +202,9 @@ export default {
       this.currentArea = name
     },
     getAreaCode(name, check = '') {
-      for(var x in DISTRICTS) {
-        for(var y in DISTRICTS[x]) {
-          if(name == DISTRICTS[x][y]) {
+      for (var x in DISTRICTS) {
+        for (var y in DISTRICTS[x]) {
+          if (name == DISTRICTS[x][y]) {
             if (check.length > 0) {
               if (y.slice(0, 2) !== this.getAreaCode(check).slice(0, 2)) {
                 continue
@@ -199,9 +219,9 @@ export default {
       }
     },
     getCodeValue(code) {
-      for(var x in DISTRICTS) {
-        for(var y in DISTRICTS[x]) {
-          if(code == y) {
+      for (var x in DISTRICTS) {
+        for (var y in DISTRICTS[x]) {
+          if (code == y) {
             return DISTRICTS[x][y]
           }
         }
@@ -211,14 +231,14 @@ export default {
       return DISTRICTS[code] || null
     },
     determineValue(currentValue, placeholderValue, check = '') {
-      if(currentValue == placeholderValue) {
+      if (currentValue == placeholderValue) {
         return []
       } else {
         return this.getDistricts(this.getAreaCode(currentValue, check))
       }
     },
     determineType(value) {
-      if(typeof value === 'number') {
+      if (typeof value === 'number') {
         return this.getCodeValue(value)
       }
 
@@ -228,10 +248,11 @@ export default {
       this[name] = []
     },
     setMaxScrollHeight() {
-      this.$refs.addressContainer.style.maxHeight = (window.innerHeight * 0.6 - 43) + 'px'
-    },
+      this.$refs.addressContainer.style.maxHeight =
+        window.innerHeight * 0.6 - 43 + 'px'
+    }
   },
-  mounted(){
+  mounted() {
     this.setMaxScrollHeight()
   }
 }
@@ -244,7 +265,7 @@ export default {
   overflow: auto;
 }
 select {
-  padding: .5rem .75rem;
+  padding: 0.5rem 0.75rem;
   height: 40px;
   font-size: 1rem;
   line-height: 1.25;
@@ -253,13 +274,16 @@ select {
   background-image: none;
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
-  border: 1px solid rgba(0,0,0,.15);
-  border-radius: .25rem;
-  -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
-  transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
-  -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 0.25rem;
+  -webkit-transition: border-color ease-in-out 0.15s,
+    -webkit-box-shadow ease-in-out 0.15s;
+  transition: border-color ease-in-out 0.15s,
+    -webkit-box-shadow ease-in-out 0.15s;
+  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s,
+    -webkit-box-shadow ease-in-out 0.15s;
 
   option {
     font-weight: normal;

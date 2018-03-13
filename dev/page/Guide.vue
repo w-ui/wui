@@ -8,8 +8,9 @@
         <li><router-link to="/project">案例</router-link></li>
         <li><router-link to="/visual">可视化</router-link></li>
         <li><router-link to="/about">关于</router-link></li>
+        <li><a href="https://github.com/w-ui/wui">github</a></router-link></li>
+        <li><a href="https://github.com/w-ui/wui"><img src="https://img.shields.io/github/stars/w-ui/wui.svg?style=social&amp;label=Star"></a></li>
       </ul>
-      <a class="github"  href="https://github.com/w-ui/wui"><img src="https://img.shields.io/github/stars/w-ui/wui.svg?style=social&amp;label=Star"></a>
     </div>
     
     <div id="sidebar">
@@ -51,20 +52,20 @@ export default {
       required: true
     }
   },
-  data(){
+  data() {
     return {
       routerData: navData
     }
   },
   computed: {
-    compo(){
-      console.log(this.name);
-      let upName = this.name.replace(/^\w/, (s0) => s0.toUpperCase())
-      console.log(upName);
+    compo() {
+      console.log(this.name)
+      let upName = this.name.replace(/^\w/, s0 => s0.toUpperCase())
+      console.log(upName)
       return () => import(`../../docs/articles/${upName}.md`)
     },
-    demoSrc(){
-      let upName = this.name.replace(/^\w/, (s0) => s0.toUpperCase())
+    demoSrc() {
+      let upName = this.name.replace(/^\w/, s0 => s0.toUpperCase())
       let time = Date.now()
       return `/?t=${time}#/demo/${upName}`
     }
@@ -73,7 +74,6 @@ export default {
 </script>
 
 <style lang="less">
-
 #sidebar {
   width: 240px;
   height: 100vh;
@@ -86,29 +86,30 @@ export default {
     border-radius: 4px;
   }
 
-  .group-title{
+  .group-title {
     height: 50px;
     line-height: 50px;
     padding: 0 12px;
     font-size: 20px;
   }
 }
-.bar-item, .bar-list {
-    display: block;
-    height: 40px;
-    line-height: 40px;
-    font-size: 13px;
-    padding: 0 24px;
-    cursor: pointer;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    background-color: #fff;
+.bar-item,
+.bar-list {
+  display: block;
+  height: 40px;
+  line-height: 40px;
+  font-size: 13px;
+  padding: 0 24px;
+  cursor: pointer;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  background-color: #fff;
 }
-.router-link-exact-active.bar-item-active .bar-item{
-    background-color: #f0f0f0;
-    color: dodgerblue;
-    border-left: 2px dodgerblue solid;
+.router-link-exact-active.bar-item-active .bar-item {
+  background-color: #f0f0f0;
+  color: dodgerblue;
+  border-left: 2px dodgerblue solid;
 }
 
 .bar-list {
@@ -116,7 +117,7 @@ export default {
   font-weight: bold;
 }
 
-.guide-page{
+.guide-page {
   display: relative;
   background-color: #f0f0f0;
   font-size: 18px;
@@ -127,13 +128,13 @@ export default {
     display: block;
   }
 
-  .body-area{
+  .body-area {
     width: 100%;
     padding-left: 240px;
     padding-top: 10px;
   }
 
-  .doc-area{
+  .doc-area {
     width: 100%;
     min-height: 100vh;
     padding: 20px;
@@ -145,7 +146,7 @@ export default {
     border-radius: 4px;
 
     a {
-      color: #4183C4;
+      color: #4183c4;
       text-decoration: none;
     }
 
@@ -164,7 +165,12 @@ export default {
       bottom: 0;
     }
 
-    h1, h2, h3, h4, h5, h6 {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
       margin: 20px 0 10px;
       padding: 0;
       font-weight: bold;
@@ -173,36 +179,53 @@ export default {
       position: relative;
     }
 
-    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+    h2:first-child,
+    h1:first-child,
+    h1:first-child + h2,
+    h3:first-child,
+    h4:first-child,
+    h5:first-child,
+    h6:first-child {
       margin-top: 0;
       padding-top: 0;
     }
 
-    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+    h1:hover a.anchor,
+    h2:hover a.anchor,
+    h3:hover a.anchor,
+    h4:hover a.anchor,
+    h5:hover a.anchor,
+    h6:hover a.anchor {
       text-decoration: none;
     }
 
-    h1 tt, h1 code {
+    h1 tt,
+    h1 code {
       font-size: inherit;
     }
 
-    h2 tt, h2 code {
+    h2 tt,
+    h2 code {
       font-size: inherit;
     }
 
-    h3 tt, h3 code {
+    h3 tt,
+    h3 code {
       font-size: inherit;
     }
 
-    h4 tt, h4 code {
+    h4 tt,
+    h4 code {
       font-size: inherit;
     }
 
-    h5 tt, h5 code {
+    h5 tt,
+    h5 code {
       font-size: inherit;
     }
 
-    h6 tt, h6 code {
+    h6 tt,
+    h6 code {
       font-size: inherit;
     }
 
@@ -221,12 +244,12 @@ export default {
       font-size: 18px;
       padding-bottom: 5px;
       border-bottom: 1px dashed #ddd;
-      color: #222
+      color: #222;
     }
 
     h4 {
       font-size: 16px;
-      color: #444
+      color: #444;
     }
 
     h5 {
@@ -238,7 +261,14 @@ export default {
       font-size: 14px;
     }
 
-    p, blockquote, ul, ol, dl, li, table, pre {
+    p,
+    blockquote,
+    ul,
+    ol,
+    dl,
+    li,
+    table,
+    pre {
       margin: 15px 0;
     }
 
@@ -264,17 +294,30 @@ export default {
       padding-top: 0;
     }
 
-    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+    body > h3:first-child,
+    body > h4:first-child,
+    body > h5:first-child,
+    body > h6:first-child {
       margin-top: 0;
       padding-top: 0;
     }
 
-    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+    a:first-child h1,
+    a:first-child h2,
+    a:first-child h3,
+    a:first-child h4,
+    a:first-child h5,
+    a:first-child h6 {
       margin-top: 0;
       padding-top: 0;
     }
 
-    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+    h1 p,
+    h2 p,
+    h3 p,
+    h4 p,
+    h5 p,
+    h6 p {
       margin-top: 0;
     }
 
@@ -282,18 +325,21 @@ export default {
       display: inline-block;
     }
 
-    ul, ol {
+    ul,
+    ol {
       padding-left: 30px;
       li {
         list-style: disc;
       }
     }
 
-    ul :first-child, ol :first-child {
+    ul :first-child,
+    ol :first-child {
       margin-top: 0;
     }
 
-    ul :last-child, ol :last-child {
+    ul :last-child,
+    ol :last-child {
       margin-bottom: 0;
     }
 
@@ -364,7 +410,7 @@ export default {
       margin: 0;
       padding: 0;
     }
-    table th{
+    table th {
       background-color: #e5e5e5;
       color: #000;
       text-align: left;
@@ -393,11 +439,13 @@ export default {
       padding: 6px 13px;
     }
 
-    table tr th :first-child, table tr td :first-child {
+    table tr th :first-child,
+    table tr td :first-child {
       margin-top: 0;
     }
 
-    table tr th :last-child, table tr td :last-child {
+    table tr th :last-child,
+    table tr td :last-child {
       margin-bottom: 0;
     }
 
@@ -493,7 +541,8 @@ export default {
       text-align: right;
     }
 
-    code, tt {
+    code,
+    tt {
       margin: 0 2px;
       padding: 5px;
       white-space: nowrap;
@@ -532,13 +581,14 @@ export default {
       border-radius: 3px;
     }
 
-    pre code, pre tt {
+    pre code,
+    pre tt {
       background-color: transparent;
       border: none;
     }
   }
 
-  .demo-area{
+  .demo-area {
     position: fixed;
     top: 80px;
     right: 10px;
@@ -546,7 +596,7 @@ export default {
     height: 600px;
     padding: 10px;
 
-    .demo-phone{
+    .demo-phone {
       height: 600px;
       width: 310px;
       padding: 40px 5px;
@@ -555,20 +605,84 @@ export default {
       border: 1px #ccc solid;
       background-color: #e7e8e9;
     }
-    .demo-phone>div{
-      border: 1px #ccc solid; 
+    .demo-phone > div {
+      border: 1px #ccc solid;
       border-radius: 4px;
       width: 100%;
       height: 100%;
       background-color: #f5f5f5;
     }
 
-    .page-qrcode{
+    .page-qrcode {
       text-align: center;
       padding-top: 10px;
     }
   }
-  
-  .hljs{display:block;overflow-x:auto;padding:0.5em;color:#383a42;background:#fafafa}.hljs-comment,.hljs-quote{color:#a0a1a7;font-style:italic}.hljs-doctag,.hljs-keyword,.hljs-formula{color:#a626a4}.hljs-section,.hljs-name,.hljs-selector-tag,.hljs-deletion,.hljs-subst{color:#e45649}.hljs-literal{color:#0184bb}.hljs-string,.hljs-regexp,.hljs-addition,.hljs-attribute,.hljs-meta-string{color:#50a14f}.hljs-built_in,.hljs-class .hljs-title{color:#c18401}.hljs-attr,.hljs-variable,.hljs-template-variable,.hljs-type,.hljs-selector-class,.hljs-selector-attr,.hljs-selector-pseudo,.hljs-number{color:#986801}.hljs-symbol,.hljs-bullet,.hljs-link,.hljs-meta,.hljs-selector-id,.hljs-title{color:#4078f2}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:bold}.hljs-link{text-decoration:underline}
+
+  .hljs {
+    display: block;
+    overflow-x: auto;
+    padding: 0.5em;
+    color: #383a42;
+    background: #fafafa;
+  }
+  .hljs-comment,
+  .hljs-quote {
+    color: #a0a1a7;
+    font-style: italic;
+  }
+  .hljs-doctag,
+  .hljs-keyword,
+  .hljs-formula {
+    color: #a626a4;
+  }
+  .hljs-section,
+  .hljs-name,
+  .hljs-selector-tag,
+  .hljs-deletion,
+  .hljs-subst {
+    color: #e45649;
+  }
+  .hljs-literal {
+    color: #0184bb;
+  }
+  .hljs-string,
+  .hljs-regexp,
+  .hljs-addition,
+  .hljs-attribute,
+  .hljs-meta-string {
+    color: #50a14f;
+  }
+  .hljs-built_in,
+  .hljs-class .hljs-title {
+    color: #c18401;
+  }
+  .hljs-attr,
+  .hljs-variable,
+  .hljs-template-variable,
+  .hljs-type,
+  .hljs-selector-class,
+  .hljs-selector-attr,
+  .hljs-selector-pseudo,
+  .hljs-number {
+    color: #986801;
+  }
+  .hljs-symbol,
+  .hljs-bullet,
+  .hljs-link,
+  .hljs-meta,
+  .hljs-selector-id,
+  .hljs-title {
+    color: #4078f2;
+  }
+  .hljs-emphasis {
+    font-style: italic;
+  }
+  .hljs-strong {
+    font-weight: bold;
+  }
+  .hljs-link {
+    text-decoration: underline;
+  }
 }
 </style>

@@ -8,12 +8,12 @@
 </template>
 
 <script type="text/babel">
-    export default {
-        name: 'w-scroll-tab-panel',
-        props: {
-            name: String,
-            icon: String,
-            active: Boolean
-        }
-    }
+export default {
+  name: 'w-scroll-tab-panel',
+  props: {
+    name: String,
+    icon: String,
+    active: Boolean
+  }
+}
 </script>

@@ -24,40 +24,40 @@
 </template>
 
 <script>
-import { Timeline } from "packages/timeline";
-import { TimelineItem } from "packages/timeline-item";
-import { Icon } from "packages/icon";
+import { Timeline } from 'packages/timeline'
+import { TimelineItem } from 'packages/timeline-item'
+import { Icon } from 'packages/icon'
 export default {
   components: {
-    "w-icon": Icon,
-    "w-timeline": Timeline,
-    "w-timeline-item": TimelineItem
+    'w-icon': Icon,
+    'w-timeline': Timeline,
+    'w-timeline-item': TimelineItem
   }
-};
+}
 </script>
 
-<<style lang="less">
-  .self-icon{
-    height: 0.6rem;
-    background-color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+<style lang="less">
+.self-icon {
+  height: 0.6rem;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-  .self-icon2{
-    width: 0.4rem;
-    height: 0.4rem;
+.self-icon2 {
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 100%;
+  background-color: #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  span {
+    width: 0.2rem;
+    height: 0.2rem;
     border-radius: 100%;
-    background-color: #ccc;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    span{
-      width: 0.2rem;
-      height: 0.2rem;
-      border-radius: 100%;
-      background-color: dodgerblue;
-    }
+    background-color: dodgerblue;
   }
+}
 </style>

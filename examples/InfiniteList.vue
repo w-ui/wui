@@ -16,39 +16,39 @@
 </template>
 
 <script>
-import { InfiniteList } from "packages/infinite-list";
+import { InfiniteList } from 'packages/infinite-list'
 
 export default {
   components: {
-    "w-infinite-list": InfiniteList
+    'w-infinite-list': InfiniteList
   },
   data() {
     return {
       products: [],
       pageCount: Infinity
-    };
+    }
   },
   methods: {
     pageChange(currentPage, lastPage) {
       if (currentPage > lastPage) {
-        let min = currentPage * 20;
-        let max = (currentPage + 1) * 20;
+        let min = currentPage * 20
+        let max = (currentPage + 1) * 20
         for (let i = min; i < max; i++) {
-          this.products.push(i);
+          this.products.push(i)
         }
       }
     },
     scroll() {
-      return true;
+      return true
     }
   },
   mounted() {
     for (let i = 0; i < 20; i++) {
-      this.products.push(i);
+      this.products.push(i)
     }
     // this.$forceUpdate()
   }
-};
+}
 </script>
 
 <style lang="less">

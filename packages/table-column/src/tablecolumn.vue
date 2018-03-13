@@ -10,22 +10,21 @@
 export default {
   name: 'w-column',
   props: {
-      name: String,
-      prop: String,
-      width: {
-          type: String,
-          default: ''
-      },
-      fixed: {
-          type: Boolean,
-          default: false
-      },
-      item: {
-          type: Object
-      }
+    name: String,
+    prop: String,
+    width: {
+      type: String,
+      default: ''
+    },
+    fixed: {
+      type: Boolean,
+      default: false
+    },
+    item: {
+      type: Object
+    }
   },
-  mounted () {
-  }
+  mounted() {}
 }
 </script>
 

@@ -10,35 +10,35 @@
 </template>
 
 <script>
-import Vue from "vue";
-import { Audio } from "packages/audio";
-import { Toast } from "packages/dialog";
+import Vue from 'vue'
+import { Audio } from 'packages/audio'
+import { Toast } from 'packages/dialog'
 
 export default {
   components: {
-    "w-audio": Audio
+    'w-audio': Audio
   },
   methods: {
     play() {
-      Toast({ content: "play" });
+      Toast({ content: 'play' })
     },
     pause() {
-      Toast({ content: "pause" });
+      Toast({ content: 'pause' })
     },
     canplay() {
-      Toast({ content: "canplay" });
+      Toast({ content: 'canplay' })
     },
     playiing() {
-      Toast({ content: "playiing" });
+      Toast({ content: 'playiing' })
     },
     ended() {
-      Toast({ content: "ended" });
+      Toast({ content: 'ended' })
     },
     error() {
-      Toast({ content: "error" });
+      Toast({ content: 'error' })
     }
   }
-};
+}
 </script>
 
 

@@ -4,12 +4,14 @@
       <div class="top-header">
         <div class="logo"><router-link to="/"><img src="../static/images/wui.png"/>WUI</router-link></div>
         <ul class="top-menu">
-          <li><router-link to="/guide">指南</router-link></li>
-          <li><router-link to="/doc">组件</router-link></li>
-          <li><router-link to="/visual">可视化</router-link></li>
-          <li><router-link to="/about">关于</router-link></li>
-        </ul>
-        <a class="github" href="https://github.com/w-ui/wui"><img src="https://img.shields.io/github/stars/w-ui/wui.svg?style=social&amp;label=Star"></a>
+        <li><router-link to="/guide">指南</router-link></li>
+        <li><router-link to="/doc">组件</router-link></li>
+        <li><router-link to="/project">案例</router-link></li>
+        <li><router-link to="/visual">可视化</router-link></li>
+        <li><router-link to="/about">关于</router-link></li>
+        <li><a href="https://github.com/w-ui/wui">github</a></router-link></li>
+        <li><a href="https://github.com/w-ui/wui"><img src="https://img.shields.io/github/stars/w-ui/wui.svg?style=social&amp;label=Star"></a></li>
+      </ul>
       </div>
       
       <div id="sidebar">
@@ -55,10 +57,10 @@
 </template>
 
 <script>
-import navData from "../nav.config.json";
+import navData from '../nav.config.json'
 
 export default {
-  name: "doc",
+  name: 'doc',
   props: {
     name: {
       type: String,
@@ -68,21 +70,21 @@ export default {
   data() {
     return {
       routerData: navData
-    };
+    }
   },
   computed: {
     compo() {
-      let upName = this.name.replace(/^\w/, s0 => s0.toUpperCase());
-      console.log("doc>:", upName);
-      return () => import(`../../docs/components/${upName}.md`);
+      let upName = this.name.replace(/^\w/, s0 => s0.toUpperCase())
+      console.log('doc>:', upName)
+      return () => import(`../../docs/components/${upName}.md`)
     },
     demoSrc() {
-      let upName = this.name.replace(/^\w/, s0 => s0.toUpperCase());
-      let time = Date.now();
-      return `/?t=${time}#/demo/${upName}`;
+      let upName = this.name.replace(/^\w/, s0 => s0.toUpperCase())
+      let time = Date.now()
+      return `/?t=${time}#/demo/${upName}`
     }
   }
-};
+}
 </script>
 
 <style lang="less">
@@ -135,7 +137,7 @@ export default {
   font-size: 18px;
 
   &::after {
-    content: "";
+    content: '';
     clear: both;
     display: block;
   }

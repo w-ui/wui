@@ -6,16 +6,16 @@
 </template>
 
 <script>
-import { Textarea } from "packages/textarea";
+import { Textarea } from 'packages/textarea'
 
 export default {
   components: {
-    "w-textarea": Textarea
+    'w-textarea': Textarea
   },
   data() {
     return {
-      str: "hi,wui"
-    };
+      str: 'hi,wui'
+    }
   }
-};
+}
 </script>

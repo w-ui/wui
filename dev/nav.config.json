@@ -334,12 +334,6 @@
         "title": "Video 视频播放器",
         "name": "Video",
         "component": "Video"
-      },
-      {
-        "path": "/doc/PhotoSwipe",
-        "title": "PhotoSwipe 图片查看器",
-        "name": "PhotoSwipe",
-        "component": "PhotoSwipe"
       }
     ]
   }

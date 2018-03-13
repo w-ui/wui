@@ -7,11 +7,11 @@
 </template>
 
 <script type="text/babel">
-    export default {
-        name: 'w-timeline',
-    }
+export default {
+  name: 'w-timeline'
+}
 </script>
 
 <style lang="less">
-    @import './timeline.less';
+@import './timeline.less';
 </style>

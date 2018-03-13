@@ -25,17 +25,17 @@
 </template>
 
 <script>
-import { Grid } from "packages/grid";
-import { GridItem } from "packages/grid-item";
-import { Icon } from "packages/icon";
+import { Grid } from 'packages/grid'
+import { GridItem } from 'packages/grid-item'
+import { Icon } from 'packages/icon'
 
 export default {
   components: {
-    "w-grid": Grid,
-    "w-grid-item": GridItem,
-    "w-icon": Icon
+    'w-grid': Grid,
+    'w-grid-item': GridItem,
+    'w-icon': Icon
   }
-};
+}
 </script>
 
 

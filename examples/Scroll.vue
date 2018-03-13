@@ -26,132 +26,132 @@
 </template>
 
 <script>
-import { Scroll } from "packages/scroll";
-import { Icon } from "packages/icon";
+import { Scroll } from 'packages/scroll'
+import { Icon } from 'packages/icon'
 
 export default {
   data() {
     return {
       category: [
         {
-          name: "特价专区",
+          name: '特价专区',
           id: 1003001,
-          icon: ""
+          icon: ''
         },
         {
-          name: "满69减30",
+          name: '满69减30',
           id: 1003001,
-          icon: ""
+          icon: ''
         },
         {
-          name: "优惠",
+          name: '优惠',
           id: 1003001,
-          icon: ""
+          icon: ''
         },
         {
-          name: "热销",
+          name: '热销',
           id: 1003001,
-          icon: ""
+          icon: ''
         },
         {
-          name: "新鲜水果",
+          name: '新鲜水果',
           id: 1003001,
-          icon: ""
+          icon: ''
         },
         {
-          name: "冰淇淋",
+          name: '冰淇淋',
           id: 1003001,
-          icon: ""
+          icon: ''
         },
         {
-          name: "特价专区",
+          name: '特价专区',
           id: 1003001,
-          icon: ""
+          icon: ''
         },
         {
-          name: "饮料/水",
+          name: '饮料/水',
           id: 1003001,
-          icon: ""
+          icon: ''
         },
         {
-          name: "酒类饮品",
+          name: '酒类饮品',
           id: 1003001,
-          icon: ""
+          icon: ''
         },
         {
-          name: "牛奶乳类",
+          name: '牛奶乳类',
           id: 1003001,
-          icon: ""
+          icon: ''
         },
         {
-          name: "休闲零食",
+          name: '休闲零食',
           id: 1003001,
-          icon: ""
+          icon: ''
         },
         {
-          name: "卤味鲜食",
+          name: '卤味鲜食',
           id: 1003001,
-          icon: ""
+          icon: ''
         },
         {
-          name: "糖巧饼干",
+          name: '糖巧饼干',
           id: 1003001,
-          icon: ""
+          icon: ''
         },
         {
-          name: "方便速食",
+          name: '方便速食',
           id: 1003001,
-          icon: ""
+          icon: ''
         },
         {
-          name: "营养冲调",
+          name: '营养冲调',
           id: 1003001,
-          icon: ""
+          icon: ''
         },
         {
-          name: "计生用品",
+          name: '计生用品',
           id: 1003001,
-          icon: ""
+          icon: ''
         },
         {
-          name: "个人护理",
+          name: '个人护理',
           id: 1003001,
-          icon: ""
+          icon: ''
         },
         {
-          name: "日用百货",
+          name: '日用百货',
           id: 1003001,
-          icon: ""
+          icon: ''
         },
         {
-          name: "进口食品",
+          name: '进口食品',
           id: 1003001,
-          icon: ""
+          icon: ''
         },
         {
-          name: "百草味",
+          name: '百草味',
           id: 1003001,
-          icon: ""
+          icon: ''
         },
         {
-          name: "网红新品",
+          name: '网红新品',
           id: 1003001,
-          icon: ""
+          icon: ''
         },
         {
-          name: "休闲食品",
+          name: '休闲食品',
           id: 1003001,
-          icon: ""
+          icon: ''
         }
       ]
-    };
+    }
   },
   components: {
-    "w-scroll": Scroll,
-    "w-icon": Icon
+    'w-scroll': Scroll,
+    'w-icon': Icon
   },
   methods: {}
-};
+}
 </script>
 
 <style lang="less">

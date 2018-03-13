@@ -32,20 +32,20 @@
 </template>
 
 <script>
-import { Radio } from "packages/radio";
-import { RadioGroup } from "packages/radio-group";
+import { Radio } from 'packages/radio'
+import { RadioGroup } from 'packages/radio-group'
 
 export default {
   components: {
-    "w-radio": Radio,
-    "w-radio-group": RadioGroup
+    'w-radio': Radio,
+    'w-radio-group': RadioGroup
   },
   data() {
     return {
-      radio1: "奔驰",
-      radio2: "bmw",
-      radio3: "奥迪"
-    };
+      radio1: '奔驰',
+      radio2: 'bmw',
+      radio3: '奥迪'
+    }
   }
-};
+}
 </script>

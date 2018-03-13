@@ -20,20 +20,20 @@
 </template>
 
 <script>
-import { Countup } from "packages/countup";
-import { Button } from "packages/button";
+import { Countup } from 'packages/countup'
+import { Button } from 'packages/button'
 
 export default {
   components: {
-    "w-countup": Countup,
-    "w-button": Button
+    'w-countup': Countup,
+    'w-button': Button
   },
   data() {
     return {
       start1: false
-    };
+    }
   }
-};
+}
 </script>
 
 

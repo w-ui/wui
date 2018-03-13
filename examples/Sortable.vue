@@ -11,22 +11,22 @@
 </template>
 
 <script>
-import Vue from "vue";
-import { Sortable } from "packages/sortable";
-Vue.use(Sortable);
+import Vue from 'vue'
+import { Sortable } from 'packages/sortable'
+Vue.use(Sortable)
 
 export default {
   data() {
     return {
-      list: ["A", "B", "C", "D", "E", "F", "G", "H"]
-    };
+      list: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
+    }
   },
   methods: {
     onUpdate: function(data) {
-      this.list.splice(data.newIndex, 0, this.list.splice(data.oldIndex, 1)[0]);
+      this.list.splice(data.newIndex, 0, this.list.splice(data.oldIndex, 1)[0])
     }
   }
-};
+}
 </script>
 
 <style>

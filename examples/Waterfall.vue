@@ -12,21 +12,21 @@
 </template>
 
 <script>
-import { Waterfall } from "packages/waterfall";
-import { LazyImage } from "packages/lazy-image";
-import ImageData from "./data.js";
+import { Waterfall } from 'packages/waterfall'
+import { LazyImage } from 'packages/lazy-image'
+import ImageData from './data.js'
 
 export default {
   components: {
-    "w-waterfall": Waterfall,
-    "w-lazy-image": LazyImage
+    'w-waterfall': Waterfall,
+    'w-lazy-image': LazyImage
   },
   data() {
     return {
       items: ImageData.images
-    };
+    }
   }
-};
+}
 </script>
 
 <style lang="less-loader">

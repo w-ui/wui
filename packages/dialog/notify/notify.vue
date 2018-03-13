@@ -3,20 +3,20 @@
 </template>
 
 <script type="text/babel">
-    export default {
-        data() {
-            return {
-                classes: ''
-            }
-        },
-        props: {
-            content: String,
-            timeout: Number,
-            callback: Function
-        }
+export default {
+  data() {
+    return {
+      classes: ''
     }
+  },
+  props: {
+    content: String,
+    timeout: Number,
+    callback: Function
+  }
+}
 </script>
 
 <style lang="less">
-    @import "./notify.less";
+@import './notify.less';
 </style>

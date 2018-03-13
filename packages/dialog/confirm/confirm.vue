@@ -12,15 +12,14 @@
 </template>
 
 <script type="text/babel">
-    export default {
-        props: {
-            title: String,
-            content: String,
-            opts: {
-                type: [Array, Function],
-                default: () => {
-                }
-            }
-        }
+export default {
+  props: {
+    title: String,
+    content: String,
+    opts: {
+      type: [Array, Function],
+      default: () => {}
     }
+  }
+}
 </script>

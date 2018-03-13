@@ -31,106 +31,114 @@
 </template>
 
 <script type="text/babel">
-    import {addClass, removeClass, getScrollview, pageScroll, isIOS} from 'src/utils';
+import {
+  addClass,
+  removeClass,
+  getScrollview,
+  pageScroll,
+  isIOS
+} from 'src/utils'
 
-    export default {
-        name: 'w-keyboard',
-        data() {
-            return {
-                nums: '',
-                show: this.value,
-                error: '',
-                numsArr: [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
-            }
-        },
-        props: {
-            s: {
-                type: Function
-            },
-            callback: {
-                type: Function
-            },
-            value: {
-                type: Boolean,
-                default: false
-            },
-            triggerClose: {
-                type: Boolean,
-                default: true
-            }
-        },
-        watch: {
-            value(val) {
-                if (isIOS) {
-                    if (val) {
-                        pageScroll.lock();
-                        addClass(this.scrollView, 'g-fix-ios-overflow-scrolling-bug');
-                    } else {
-                        pageScroll.unlock();
-                        removeClass(this.scrollView, 'g-fix-ios-overflow-scrolling-bug');
-                    }
-                }
-
-                this.nums = '';
-                this.error = '';
-                this.show = val;
-            },
-            nums(val) {
-                if (val.length >= 6) {
-                    setTimeout(() => {
-                        this.inputDone && this.inputDone(val);
-                        this.callback && this.callback(val);
-                        this.$emit('input', false);
-                    }, 800)
-                }
-            }
-        },
-        methods: {
-            init() {
-                this.scrollView = getScrollview(this.$el);
-
-                this.$on('wui.keyboard.error', (error) => {
-                    this.setError(error);
-                });
-
-                this.$on('wui.keyboard.close', this.close);
-            },
-            numclick(num) {
-                this.error = '';
-                if (this.nums.length >= 6)return;
-                this.nums += num;
-            },
-            backspace() {
-                const nums = this.nums;
-
-                if (nums) {
-                    this.nums = nums.substr(0, nums.length - 1);
-                }
-            },
-            close() {
-                isIOS && removeClass(this.scrollView, 'g-fix-ios-overflow-scrolling-bug');
-
-                this.$emit('input', false);
-            },
-            setError(error) {
-                this.error = error;
-                this.nums = '';
-            }
-        },
-        created() {
-            const ua = window.navigator && window.navigator.userAgent || '';
-
-            this.isMobile = !!ua.match(/AppleWebKit.*Mobile.*/) || 'ontouchstart' in document.documentElement;
-
-            this.$nextTick(this.init);
-        },
-        destroyed() {
-            this.close();
-            pageScroll.unlock();
-        }
+export default {
+  name: 'w-keyboard',
+  data() {
+    return {
+      nums: '',
+      show: this.value,
+      error: '',
+      numsArr: [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
     }
+  },
+  props: {
+    s: {
+      type: Function
+    },
+    callback: {
+      type: Function
+    },
+    value: {
+      type: Boolean,
+      default: false
+    },
+    triggerClose: {
+      type: Boolean,
+      default: true
+    }
+  },
+  watch: {
+    value(val) {
+      if (isIOS) {
+        if (val) {
+          pageScroll.lock()
+          addClass(this.scrollView, 'g-fix-ios-overflow-scrolling-bug')
+        } else {
+          pageScroll.unlock()
+          removeClass(this.scrollView, 'g-fix-ios-overflow-scrolling-bug')
+        }
+      }
+
+      this.nums = ''
+      this.error = ''
+      this.show = val
+    },
+    nums(val) {
+      if (val.length >= 6) {
+        setTimeout(() => {
+          this.inputDone && this.inputDone(val)
+          this.callback && this.callback(val)
+          this.$emit('input', false)
+        }, 800)
+      }
+    }
+  },
+  methods: {
+    init() {
+      this.scrollView = getScrollview(this.$el)
+
+      this.$on('wui.keyboard.error', error => {
+        this.setError(error)
+      })
+
+      this.$on('wui.keyboard.close', this.close)
+    },
+    numclick(num) {
+      this.error = ''
+      if (this.nums.length >= 6) return
+      this.nums += num
+    },
+    backspace() {
+      const nums = this.nums
+
+      if (nums) {
+        this.nums = nums.substr(0, nums.length - 1)
+      }
+    },
+    close() {
+      isIOS && removeClass(this.scrollView, 'g-fix-ios-overflow-scrolling-bug')
+
+      this.$emit('input', false)
+    },
+    setError(error) {
+      this.error = error
+      this.nums = ''
+    }
+  },
+  created() {
+    const ua = (window.navigator && window.navigator.userAgent) || ''
+
+    this.isMobile =
+      !!ua.match(/AppleWebKit.*Mobile.*/) ||
+      'ontouchstart' in document.documentElement
+
+    this.$nextTick(this.init)
+  },
+  destroyed() {
+    this.close()
+    pageScroll.unlock()
+  }
+}
 </script>
 
 <style lang="less">
-    @import "./keyboard.less";
+@import './keyboard.less';
 </style>

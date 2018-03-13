@@ -9,41 +9,41 @@
 </template>
 
 <script>
-import Vue from "vue";
-import { Actionsheet } from "packages/actionsheet";
-import { Button } from "packages/button";
-import { Toast } from "packages/dialog";
+import Vue from 'vue'
+import { Actionsheet } from 'packages/actionsheet'
+import { Button } from 'packages/button'
+import { Toast } from 'packages/dialog'
 
 export default {
   components: {
-    "w-actionsheet": Actionsheet,
-    "w-button": Button
+    'w-actionsheet': Actionsheet,
+    'w-button': Button
   },
   data() {
     return {
       show1: false,
       myItems1: [
         {
-          label: "拍照",
+          label: '拍照',
           method: () => {
-            Toast("咔擦，此人太帅！");
+            Toast('咔擦，此人太帅！')
           }
         },
         {
-          label: "从相册中偷取",
+          label: '从相册中偷取',
           method: () => {
-            Toast("看到了不该看到的东西！");
+            Toast('看到了不该看到的东西！')
           }
         }
       ]
-    };
+    }
   },
   methods: {
     showActionSheet() {
-      this.show1 = !this.show1;
+      this.show1 = !this.show1
     }
   }
-};
+}
 </script>
 
 

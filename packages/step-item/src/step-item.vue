@@ -16,29 +16,31 @@
 </template>
 
 <script type="text/babel">
-    export default {
-        name: 'w-step-item',
-        data() {
-            return {
-                stepNumber: '',
-                current: '',
-                theme: '',
-                currentClass: ''
-            }
-        },
-        methods: {
-            setCurrentClass() {
-                if (this.theme == 'down') {
-                    this.currentClass = this.stepNumber == this.current ? 'wui-step-item-current' : '';
-                    return;
-                }
-                this.currentClass = this.stepNumber <= this.current ? 'wui-step-item-current' : '';
-            }
-        },
-        mounted() {
-            this.$nextTick(() => {
-                this.$parent.updateChildStatus()
-            });
-        }
+export default {
+  name: 'w-step-item',
+  data() {
+    return {
+      stepNumber: '',
+      current: '',
+      theme: '',
+      currentClass: ''
     }
+  },
+  methods: {
+    setCurrentClass() {
+      if (this.theme == 'down') {
+        this.currentClass =
+          this.stepNumber == this.current ? 'wui-step-item-current' : ''
+        return
+      }
+      this.currentClass =
+        this.stepNumber <= this.current ? 'wui-step-item-current' : ''
+    }
+  },
+  mounted() {
+    this.$nextTick(() => {
+      this.$parent.updateChildStatus()
+    })
+  }
+}
 </script>

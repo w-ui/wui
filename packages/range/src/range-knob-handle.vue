@@ -8,39 +8,39 @@
     </div>
 </template>
 <script type="text/javascript">
-  export default {
-    name: 'RangeKnobHandle',
-    props: {
-      ratio: {
-        type: Number,
-        default: 0
-      },
-      val: {
-        type: Number,
-        default: 0
-      },
-      pin: [Boolean],
-      pressed: [Boolean],
-      min: {
-        type: Number,
-        default: 0
-      },
-      max: {
-        type: Number,
-        default: 100
-      },
-      disabled: [Boolean]
+export default {
+  name: 'RangeKnobHandle',
+  props: {
+    ratio: {
+      type: Number,
+      default: 0
     },
-    computed: {
-      left () {
-        return `${this.ratio * 100}%`
-      },
-      rangeKnobMin () {
-        return this.val === this.min || this.val === undefined
-      },
-      rangeKnobMax () {
-        return this.val === this.max
-      }
+    val: {
+      type: Number,
+      default: 0
+    },
+    pin: [Boolean],
+    pressed: [Boolean],
+    min: {
+      type: Number,
+      default: 0
+    },
+    max: {
+      type: Number,
+      default: 100
+    },
+    disabled: [Boolean]
+  },
+  computed: {
+    left() {
+      return `${this.ratio * 100}%`
+    },
+    rangeKnobMin() {
+      return this.val === this.min || this.val === undefined
+    },
+    rangeKnobMax() {
+      return this.val === this.max
     }
   }
+}
 </script>

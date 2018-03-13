@@ -9,26 +9,26 @@
 </template>
 
 <script>
-import { Loading } from "packages/loading";
-import { Button } from "packages/button";
+import { Loading } from 'packages/loading'
+import { Button } from 'packages/button'
 
 export default {
   data() {
     return {
       loading: false
-    };
+    }
   },
   components: {
-    "w-loading": Loading,
-    "w-button": Button
+    'w-loading': Loading,
+    'w-button': Button
   },
   methods: {
     toggleLoading() {
-      this.loading = !this.loading;
+      this.loading = !this.loading
       setTimeout(() => {
-        this.loading = !this.loading;
-      }, 1000);
+        this.loading = !this.loading
+      }, 1000)
     }
   }
-};
+}
 </script>

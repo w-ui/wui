@@ -5,9 +5,9 @@
 </template>
 
 <script>
-  export default {
-    name: 'w-loading'
-  }
+export default {
+  name: 'w-loading'
+}
 </script>
 
 <style>
@@ -29,11 +29,11 @@
   -webkit-align-items: center;
 }
 .wm-loading span {
-    background: url('./loading.svg') no-repeat center center;
-    background-size: 100%;
-    width: 50px;
-    height: 50px;
-    display: block;
-    margin: 0 auto;
-  }
+  background: url('./loading.svg') no-repeat center center;
+  background-size: 100%;
+  width: 50px;
+  height: 50px;
+  display: block;
+  margin: 0 auto;
+}
 </style>

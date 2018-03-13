@@ -10,14 +10,14 @@
 </template>
 
 <script type="text/babel">
-    export default {
-        props: {
-            content: String,
-            callback: Function
-        }
-    }
+export default {
+  props: {
+    content: String,
+    callback: Function
+  }
+}
 </script>
 
 <style lang="less">
-    @import "./alert.less";
+@import './alert.less';
 </style>

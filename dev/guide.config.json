@@ -1,6 +1,6 @@
 [
   {
-    "groupName": "上手",
+    "groupName": "指南",
     "group": [
       {
         "path": "/guide/5min-start",
@@ -8,45 +8,25 @@
         "name": "5min-start"
       },
       {
-        "path": "/guide/wui-you-should-know",
-        "title": "关于wui，你应该知道的",
-        "name": "wui-you-should-know"
-      },
-      {
-        "path": "/guide/wui-project",
-        "title": "wui工程",
-        "name": "wui-project"
-      },
-      {
-        "path": "/guide/online-edit",
-        "title": "在线编辑使用教程",
-        "name": "online-edit"
+        "path": "/guide/contribution",
+        "title": "组件贡献方法",
+        "name": "contribution"
       }
     ]
   },
   {
-    "groupName": "适配",
+    "groupName": "待完成",
     "group": [
       {
         "path": "/guide/screen-fit",
         "title": "移动端适配",
         "name": "screen-fit"
-      }
-    ]
-  },
-  {
-    "groupName": "样式",
-    "group": [
+      },
       {
         "path": "/guide/self-style",
         "title": "自定义样式 ",
         "name": "self-style"
-      }
-    ]
-  },
-  {
-    "groupName": "性能",
-    "group": [
+      },
       {
         "path": "/guide/import-wui",
         "title": "组件正确引用方式",
@@ -56,16 +36,11 @@
         "path": "/guide/wui-performance",
         "title": "性能优化",
         "name": "wui-performance"
-      }
-    ]
-  },
-  {
-    "groupName": "加入我们",
-    "group": [
+      },
       {
-        "path": "/guide/contribution",
-        "title": "组件贡献方法",
-        "name": "contribution"
+        "path": "/guide/online-edit",
+        "title": "在线编辑使用教程",
+        "name": "online-edit"
       }
     ]
   }

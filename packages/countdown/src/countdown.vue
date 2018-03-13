@@ -14,7 +14,7 @@ import Clocker from './clocker'
 
 export default {
   name: 'w-countdown',
-  mounted () {
+  mounted() {
     // let format = '%D 天 %H 小时 %M 分 %S 秒'
     // if (this.lang === 'en') { // eslint-disable-line
     //     format = '%D d %H h %M m %S s'
@@ -31,38 +31,38 @@ export default {
     })
   },
   methods: {
-    render () {
+    render() {
       if (!this.time) return
       this.clocker = new Clocker(this.time)
-      .on('tick', event => {
-        this.update(event)
-        this.$emit('on-tick', event)
-      })
-      .on('finish', () => {
-        this.timeString = '00:00:00'
-        this.$emit('finish')
-      })
-      .start()
+        .on('tick', event => {
+          this.update(event)
+          this.$emit('on-tick', event)
+        })
+        .on('finish', () => {
+          this.timeString = '00:00:00'
+          this.$emit('finish')
+        })
+        .start()
     },
-    update (event) {
+    update(event) {
       if (this.showTimeString) {
         this.timeString = event.strftime(this.format)
       } else {
         let str = event.strftime(this.slotString)
         if (str !== this.cacheSlotString) {
-            this.cacheSlotString = str
+          this.cacheSlotString = str
         }
       }
     }
   },
   props: {
     time: {
-        type: [String, Number],
-        required: true
+      type: [String, Number],
+      required: true
     },
     lang: {
-        type: String,
-        default: 'zh-CN'
+      type: String,
+      default: 'zh-CN'
     },
     format: {
       type: String,
@@ -70,12 +70,12 @@ export default {
     }
   },
   watch: {
-    time () {
+    time() {
       this.clocker.remove()
       this.render()
     }
   },
-  data () {
+  data() {
     return {
       showTimeString: true,
       timeString: '',
@@ -84,7 +84,7 @@ export default {
       html: ''
     }
   },
-  beforeDestroy () {
+  beforeDestroy() {
     if (this.clocker) {
       this.clocker.remove()
       this.clocker = null

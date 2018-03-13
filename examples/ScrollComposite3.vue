@@ -56,176 +56,176 @@
 </template>
 
 <script>
-import { ScrollTree } from "packages/scroll-tree";
-import { ScrollTab } from "packages/scroll-tab";
-import { ScrollTabPanel } from "packages/scroll-tab-panel";
-import { InfiniteScroll } from "packages/infinite-scroll";
-import { Sticky } from "packages/sticky";
+import { ScrollTree } from 'packages/scroll-tree'
+import { ScrollTab } from 'packages/scroll-tab'
+import { ScrollTabPanel } from 'packages/scroll-tab-panel'
+import { InfiniteScroll } from 'packages/infinite-scroll'
+import { Sticky } from 'packages/sticky'
 
 let data = [
   {
-    name: "特价专区",
+    name: '特价专区',
     id: 1003001,
-    icon: "medall",
+    icon: 'medall',
     children: [
       {
-        name: "满69减30",
+        name: '满69减30',
         id: 1003001,
-        icon: "camera",
+        icon: 'camera',
         children: [],
         products: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
       },
       {
-        name: "优惠",
+        name: '优惠',
         id: 1003001,
-        icon: "announcement",
+        icon: 'announcement',
         children: [],
         products: [1, 2, 3, 4, 5]
       },
       {
-        name: "热销",
+        name: '热销',
         id: 1003001,
-        icon: "magnet",
+        icon: 'magnet',
         children: [],
         products: [1, 2, 3]
       }
     ]
   },
   {
-    name: "新鲜水果",
+    name: '新鲜水果',
     id: 1003001,
-    icon: "apple",
+    icon: 'apple',
     children: [],
     products: [1, 2, 3, 4, 5, 6, 7]
   },
   {
-    name: "冰淇淋",
+    name: '冰淇淋',
     id: 1003001,
-    icon: "id-badge",
+    icon: 'id-badge',
     children: [],
     products: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   },
   {
-    name: "特价专区",
+    name: '特价专区',
     id: 1003001,
-    icon: "shield",
+    icon: 'shield',
     children: [
       {
-        name: "饮料/水",
+        name: '饮料/水',
         id: 1003001,
-        icon: "package",
+        icon: 'package',
         children: [],
         products: [1, 2, 3, 4, 5]
       },
       {
-        name: "酒类饮品",
+        name: '酒类饮品',
         id: 1003001,
-        icon: "world",
+        icon: 'world',
         children: [],
         products: [1, 2, 3]
       },
       {
-        name: "牛奶乳类",
+        name: '牛奶乳类',
         id: 1003001,
-        icon: "brush-alt",
+        icon: 'brush-alt',
         children: [],
         products: [1, 2, 3, 4, 5, 6, 7, 8]
       }
     ]
   },
   {
-    name: "休闲零食",
+    name: '休闲零食',
     id: 1003001,
-    icon: "palette",
+    icon: 'palette',
     children: [
       {
-        name: "卤味鲜食",
+        name: '卤味鲜食',
         id: 1003001,
-        icon: "envira",
+        icon: 'envira',
         children: [],
         products: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
       },
       {
-        name: "糖巧饼干",
+        name: '糖巧饼干',
         id: 1003001,
-        icon: "modx",
+        icon: 'modx',
         children: [],
         products: [1, 2, 3, 4, 5]
       },
       {
-        name: "方便速食",
+        name: '方便速食',
         id: 1003001,
-        icon: "mouse",
+        icon: 'mouse',
         children: [],
         products: [1]
       }
     ]
   },
   {
-    name: "营养冲调",
+    name: '营养冲调',
     id: 1003001,
-    icon: "shine",
+    icon: 'shine',
     children: [],
     products: [1, 2]
   },
   {
-    name: "计生用品",
+    name: '计生用品',
     id: 1003001,
-    icon: "ticket",
+    icon: 'ticket',
     children: [],
     products: [1, 2, 3, 4, 5, 6, 7, 8, 9]
   },
   {
-    name: "个人护理",
+    name: '个人护理',
     id: 1003001,
-    icon: "brush",
+    icon: 'brush',
     children: [],
     products: [1, 2, 3, 4]
   },
   {
-    name: "日用百货",
+    name: '日用百货',
     id: 1003001,
-    icon: "notepad",
+    icon: 'notepad',
     children: [],
     products: [1, 2, 3, 4, 5, 6, 7, 8]
   },
   {
-    name: "进口食品",
+    name: '进口食品',
     id: 1003001,
-    icon: "hummer",
+    icon: 'hummer',
     children: [
       {
-        name: "百草味",
+        name: '百草味',
         id: 1003001,
-        icon: "video-clapper",
+        icon: 'video-clapper',
         children: [],
         products: [1, 2, 3, 4, 5, 6, 7, 8, 9]
       }
     ]
   },
   {
-    name: "网红新品",
+    name: '网红新品',
     id: 1003001,
-    icon: "pin2",
+    icon: 'pin2',
     children: [],
     products: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
   },
   {
-    name: "休闲食品",
+    name: '休闲食品',
     id: 1003001,
-    icon: "gallery",
+    icon: 'gallery',
     children: [],
     products: [1, 2, 3, 4]
   }
-];
+]
 
 export default {
   components: {
-    "w-infinite-scroll": InfiniteScroll,
-    "w-scroll-tree": ScrollTree,
-    "w-scroll-tab": ScrollTab,
-    "w-scroll-tab-panel": ScrollTabPanel,
-    "w-sticky": Sticky
+    'w-infinite-scroll': InfiniteScroll,
+    'w-scroll-tree': ScrollTree,
+    'w-scroll-tab': ScrollTab,
+    'w-scroll-tab-panel': ScrollTabPanel,
+    'w-sticky': Sticky
   },
   data() {
     return {
@@ -236,94 +236,94 @@ export default {
       timer: null,
       drag: false,
       startY: 0
-    };
+    }
   },
   methods: {
     pageChange(currentPage, lastPage) {
-      this.currentPage = currentPage;
-      this.treeIndex = currentPage;
-      let d = data[currentPage];
-      this.$set(this.category, currentPage, d);
-      console.log("srolltree.setCurrent2:", currentPage);
-      this.$refs.srolltree.setCurrent(currentPage);
-      this.removeSticky(this.$refs.infinitescroll, currentPage);
+      this.currentPage = currentPage
+      this.treeIndex = currentPage
+      let d = data[currentPage]
+      this.$set(this.category, currentPage, d)
+      console.log('srolltree.setCurrent2:', currentPage)
+      this.$refs.srolltree.setCurrent(currentPage)
+      this.removeSticky(this.$refs.infinitescroll, currentPage)
     },
     itemChange(currentIndex, subIndex) {
       if (this.treeIndex !== currentIndex) {
-        this.treeIndex = currentIndex;
-        this.$set(this.category, currentIndex, data[currentIndex]);
-        this.$refs.infinitescroll.setCurrent(currentIndex);
-        this.removeSticky(this.$refs.infinitescroll, currentIndex);
+        this.treeIndex = currentIndex
+        this.$set(this.category, currentIndex, data[currentIndex])
+        this.$refs.infinitescroll.setCurrent(currentIndex)
+        this.removeSticky(this.$refs.infinitescroll, currentIndex)
       } else if (subIndex !== undefined) {
-        let n = "st-" + currentIndex;
+        let n = 'st-' + currentIndex
         let child = this.$refs.infinitescroll.$children.filter(child => {
-          return child.name === n;
-        });
-        child[0].setCurrent(subIndex);
+          return child.name === n
+        })
+        child[0].setCurrent(subIndex)
       }
     },
     subItemChange(index) {
       if (this.timer) {
-        clearTimeout(this.timer);
+        clearTimeout(this.timer)
       }
       this.timer = setTimeout(() => {
-        console.log("srolltree.setCurrent3:", this.treeIndex, index);
-        this.$refs.srolltree.setCurrent(this.treeIndex, index);
-      }, 100);
+        console.log('srolltree.setCurrent3:', this.treeIndex, index)
+        this.$refs.srolltree.setCurrent(this.treeIndex, index)
+      }, 100)
     },
     scroll() {
-      return true;
+      return true
     },
     touchstart(e) {
-      this.drag = true;
-      let tar = e.touches[0];
-      this.startY = tar.pageY;
+      this.drag = true
+      let tar = e.touches[0]
+      this.startY = tar.pageY
     },
     touchmove(e) {
       if (this.drag) {
-        let tar = e.changedTouches[0];
-        let offsetY = tar.pageY - this.startY;
+        let tar = e.changedTouches[0]
+        let offsetY = tar.pageY - this.startY
         if (offsetY < 0) {
-          if (this.$refs.infinitescroll.canScroll("up")) {
-            e.preventDefault();
+          if (this.$refs.infinitescroll.canScroll('up')) {
+            e.preventDefault()
           }
         } else {
-          if (this.$refs.infinitescroll.canScroll("down")) {
-            e.preventDefault();
+          if (this.$refs.infinitescroll.canScroll('down')) {
+            e.preventDefault()
           }
         }
       }
     },
     touchend(e) {
-      this.drag = false;
+      this.drag = false
     },
     removeSticky(vm, index) {
-      let n = "sticky-" + index;
+      let n = 'sticky-' + index
       let traversal = nvm => {
-        let cvm = nvm.$children;
+        let cvm = nvm.$children
         if (cvm && cvm.length > 0) {
-          cvm.forEach(item => traversal(item));
+          cvm.forEach(item => traversal(item))
         } else if (nvm) {
           if (
             nvm.name &&
-            nvm.name.indexOf("sticky-") !== -1 &&
+            nvm.name.indexOf('sticky-') !== -1 &&
             nvm.name !== n
           ) {
-            nvm.removeSticky();
+            nvm.removeSticky()
           }
         }
-      };
-      traversal(vm);
+      }
+      traversal(vm)
     }
   },
   mounted() {
-    console.log("srolltree.setCurrent1:", 0);
-    this.$refs.srolltree.setCurrent(0);
+    console.log('srolltree.setCurrent1:', 0)
+    this.$refs.srolltree.setCurrent(0)
     // document.addEventListener('touchstart', this.touchstart, false)
     // document.addEventListener('touchmove', this.touchmove, false)
     // window.addEventListener('touchend', this.touchend, false)
   }
-};
+}
 </script>
 
 <style lang="less">

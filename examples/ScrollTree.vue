@@ -8,139 +8,139 @@
 
 
 <script>
-import { ScrollTree } from "packages/scroll-tree";
-import { Icon } from "packages/icon";
+import { ScrollTree } from 'packages/scroll-tree'
+import { Icon } from 'packages/icon'
 
 export default {
   components: {
-    "w-scroll-tree": ScrollTree,
-    "w-icon": Icon
+    'w-scroll-tree': ScrollTree,
+    'w-icon': Icon
   },
   data() {
     return {
       category: [
         {
-          name: "特价专区",
+          name: '特价专区',
           id: 1003001,
-          icon: "medall",
+          icon: 'medall',
           children: [
             {
-              name: "满69减30",
+              name: '满69减30',
               id: 1003001,
-              icon: "camera",
+              icon: 'camera',
               children: []
             },
             {
-              name: "优惠",
+              name: '优惠',
               id: 1003001,
-              icon: "announcement",
+              icon: 'announcement',
               children: []
             },
             {
-              name: "热销",
+              name: '热销',
               id: 1003001,
-              icon: "magnet",
+              icon: 'magnet',
               children: []
             }
           ]
         },
         {
-          name: "新鲜水果",
+          name: '新鲜水果',
           id: 1003001,
-          icon: "apple",
+          icon: 'apple',
           children: []
         },
         {
-          name: "冰淇淋",
+          name: '冰淇淋',
           id: 1003001,
-          icon: "id-badge",
+          icon: 'id-badge',
           children: []
         },
         {
-          name: "休闲零食",
+          name: '休闲零食',
           id: 1003001,
-          icon: "palette",
+          icon: 'palette',
           children: [
             {
-              name: "卤味鲜食",
+              name: '卤味鲜食',
               id: 1003001,
-              icon: "envira",
+              icon: 'envira',
               children: []
             },
             {
-              name: "糖巧饼干",
+              name: '糖巧饼干',
               id: 1003001,
-              icon: "modx",
+              icon: 'modx',
               children: []
             },
             {
-              name: "方便速食",
+              name: '方便速食',
               id: 1003001,
-              icon: "mouse",
+              icon: 'mouse',
               children: []
             }
           ]
         },
         {
-          name: "营养冲调",
+          name: '营养冲调',
           id: 1003001,
-          icon: "shine",
+          icon: 'shine',
           children: []
         },
         {
-          name: "计生用品",
+          name: '计生用品',
           id: 1003001,
-          icon: "ticket",
+          icon: 'ticket',
           children: []
         },
         {
-          name: "个人护理",
+          name: '个人护理',
           id: 1003001,
-          icon: "brush",
+          icon: 'brush',
           children: []
         },
         {
-          name: "日用百货",
+          name: '日用百货',
           id: 1003001,
-          icon: "notepad",
+          icon: 'notepad',
           children: []
         },
         {
-          name: "进口食品",
+          name: '进口食品',
           id: 1003001,
-          icon: "hummer",
+          icon: 'hummer',
           children: [
             {
-              name: "百草味",
+              name: '百草味',
               id: 1003001,
-              icon: "video-clapper",
+              icon: 'video-clapper',
               children: []
             }
           ]
         },
         {
           name:
-            "网红新品网红新品网红新品网红新品网红新品网红新品网红新品网红新品网红新品网红新品网红新品网红新品网红新品网红新品网红新品网红新品网红新品网红新品",
+            '网红新品网红新品网红新品网红新品网红新品网红新品网红新品网红新品网红新品网红新品网红新品网红新品网红新品网红新品网红新品网红新品网红新品网红新品',
           id: 1003001,
-          icon: "pin2",
+          icon: 'pin2',
           children: []
         },
         {
-          name: "休闲食品",
+          name: '休闲食品',
           id: 1003001,
-          icon: "gallery",
+          icon: 'gallery',
           children: []
         }
       ]
-    };
+    }
   },
   methods: {
     cardClick(item, e) {}
   },
   mounted() {
-    this.$refs.scrolltree.setCurrent(0, 0);
+    this.$refs.scrolltree.setCurrent(0, 0)
   }
-};
+}
 </script>
 
 <style lang="less">

@@ -23,21 +23,21 @@
 </template>
 
 <script>
-import { Sticky } from "packages/sticky";
+import { Sticky } from 'packages/sticky'
 export default {
   components: {
-    "w-sticky": Sticky
+    'w-sticky': Sticky
   },
   data() {
     return {
       support: false
-    };
+    }
   },
   mounted() {
-    let el = document.createElement("a");
-    let mStyle = el.style;
-    mStyle.cssText = "position:sticky; position:-webkit-sticky;";
-    this.support = mStyle.position.indexOf("sticky") !== -1;
+    let el = document.createElement('a')
+    let mStyle = el.style
+    mStyle.cssText = 'position:sticky; position:-webkit-sticky;'
+    this.support = mStyle.position.indexOf('sticky') !== -1
   }
-};
+}
 </script>

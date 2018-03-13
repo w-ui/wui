@@ -13,21 +13,21 @@
 
 
 <script>
-import { Popup } from "packages/popup";
-import { Button } from "packages/button";
+import { Popup } from 'packages/popup'
+import { Button } from 'packages/button'
 
 export default {
-  name: "page-popup",
+  name: 'page-popup',
   components: {
-    "w-popup": Popup,
-    "w-button": Button
+    'w-popup': Popup,
+    'w-button': Button
   },
   data() {
     return {
       show: false
-    };
+    }
   }
-};
+}
 </script>
 
 <style lang="less">
