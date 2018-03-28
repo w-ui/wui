@@ -8,6 +8,11 @@
         "name": "5min-start"
       },
       {
+        "path": "/guide/screen-fit",
+        "title": "移动端适配",
+        "name": "screen-fit"
+      },
+      {
         "path": "/guide/contribution",
         "title": "组件贡献方法",
         "name": "contribution"
@@ -17,11 +22,6 @@
   {
     "groupName": "待完成",
     "group": [
-      {
-        "path": "/guide/screen-fit",
-        "title": "移动端适配",
-        "name": "screen-fit"
-      },
       {
         "path": "/guide/self-style",
         "title": "自定义样式 ",

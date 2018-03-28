@@ -4,16 +4,17 @@ var rm = require('rimraf')
 var path = require('path')
 var chalk = require('chalk')
 var webpack = require('webpack')
-const merge = require('webpack-merge');
+const merge = require('webpack-merge')
 var webpackConfig = require('./webpack.common.conf')
 var fs = require('fs')
 
+var ignore = ['photoswipe']
 var packages = {}
 var files = fs.readdirSync(path.join(__dirname, '../packages'))
-files.forEach(function(file){
-  var key = '../lib/' + file + '/index';
-  var stat = fs.lstatSync(path.join(__dirname, '../packages/', file));
-  if (stat.isDirectory()){
+files.forEach(function (file) {
+  var key = '../lib/' + file + '/index'
+  var stat = fs.lstatSync(path.join(__dirname, '../packages/', file))
+  if (stat.isDirectory() && ignore.indexOf(file) === -1) {
     packages[key] = path.join(__dirname, '../packages/', file, 'index.js')
   }
 })

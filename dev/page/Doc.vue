@@ -4,7 +4,7 @@
       <div class="top-header">
         <div class="logo"><router-link to="/"><img src="../static/images/wui.png"/>WUI</router-link></div>
         <ul class="top-menu">
-        <li><router-link to="/guide">指南</router-link></li>
+        <li><router-link to="/guide">文档</router-link></li>
         <li><router-link to="/doc">组件</router-link></li>
         <li><router-link to="/project">案例</router-link></li>
         <li><router-link to="/visual">可视化</router-link></li>
