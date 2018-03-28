@@ -2,7 +2,7 @@
   <img src="wui.png">
 </p>
 
-# wui
+# [wui](https://w-ui.github.io/#/) （beta）
 
 [![Build Status](https://travis-ci.org/wmfe/wui.svg?branch=master)](https://travis-ci.org/wmfe/wui)
 [![Coverage Status](https://coveralls.io/repos/github/wmfe/wui/badge.svg?branch=master)](https://coveralls.io/github/wmfe/wui?branch=master)
@@ -11,23 +11,7 @@
 [![NPM licence](https://img.shields.io/npm/l/w-ui.svg)](https://npmjs.org/package/w-ui)
 
 
-` A Vue.js 2.0 UI Toolkit for mobile `
-
-Links
----------
-
-Home Page
-Docs
-awesome-element
-Customize Theme
-Preview and generate theme online
-Wui for React
-Starter Kit
-Design resources
-Boilerplate for bug reports
-CodePen
-JSFiddle
-
+` A Vue.js UI Toolkit for mobile with 50+ components`
 
 Install
 ---------
@@ -39,37 +23,38 @@ npm install w-ui
 Quick Start
 ---------
 
-``` javascript
-import Vue from 'vue'
-import {
-  Select,
-  Button
-  // ...
-} from 'w-ui'
+``` html
+<template>
+  <Button type="primary" @click.native="doClick">点我</Button>
+</template>
 
-Vue.component(Select.name, Select)
-Vue.component(Button.name, Button)
+<script>
+import { Button, Alert } from 'w-ui'
+export default {
+  components: {
+    Button,
+    Alert
+  },
+  methods: {
+    doClick () {
+      Alert('hello, wui');
+    }
+  }
+}
+</script>
 ```
 
 For more information, please refer to Quick Start in our documentation.
 
-
-Browser Support
-----------------
-
-
-Development
------------
+[https://w-ui.github.io/#/doc](https://w-ui.github.io/#/doc)
 
 
 Change log
 -----------
-Detailed changes for each release are documented in the release notes.
+#1.1.1
 
-
-Contribution
--------------
-Please make sure to read the contributing guide (中文 | English) before making a pull request.
+- [x] 【功能】优化accordion组件样式
+- [x] 【bug】修复Confirm回调问题
 
 
  
