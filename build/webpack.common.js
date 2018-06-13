@@ -10,28 +10,43 @@ function resolve (dir) {
 
 var webpackConfig = {
   entry: {
-    'wui.common': resolve('../src/index.js')
+    'wui': resolve('../src/index.js')
   },
   output: {
     path: path.join(__dirname, '../lib'),
     filename: '[name].js',
     publicPath: '',
-    libraryTarget: 'umd',
+    libraryTarget: 'commonjs2',
     umdNamedDefine: true
   },
   externals: {
-    'vue': 'vue'
+    vue: {
+      root: 'Vue',
+      commonjs: 'vue',
+      commonjs2: 'vue',
+      amd: 'vue'
+    }
   },
   resolve: {
-    extensions: ['.js'],
+    extensions: ['.js', '.vue', '.json', '.md'],
     alias: {
-      'vue': 'vue/dist/vue.esm.js',
+      'vue$': 'vue/dist/vue.esm.js',
       'src': resolve('../src'),
-      'packages': resolve('../packages')
+      'packages': resolve('../packages'),
+      'example': resolve('../example')
     }
   },
   module: {
     rules: [
+      // {
+      //   test: /\.(js|vue)$/,
+      //   loader: 'eslint-loader',
+      //   enforce: 'pre',
+      //   include: [resolve('src'), resolve('test')],
+      //   options: {
+      //     formatter: require('eslint-friendly-formatter')
+      //   }
+      // },
       {
         test: /\.vue$/,
         loader: 'vue-loader',
@@ -39,15 +54,20 @@ var webpackConfig = {
       },
       {
         test: /\.js$/,
-        loader: 'babel-loader',
-        include: [resolve('../src'), resolve('../package')]
+        loader: 'babel-loader'
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url-loader',
         options: {
           limit: 10000,
-          name: utils.assetsPath('img/[name].[hash:7].[ext]')
+          name (file) {
+            if (file.indexOf('wui.png') !== -1) {
+              return utils.assetsPath('img/wui.png')
+            } else {
+              return utils.assetsPath('img/[name].[hash:7].[ext]')
+            }
+          }
         }
       },
       {

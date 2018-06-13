@@ -2,7 +2,7 @@
     <div v-if="value" class="wui-actionsheet">
         <div class="mask-actionsheet" @click.stop="close"></div>
         <div class="actionsheet">
-            <a v-for="item in items" @click.stop="itemClick(item)" class="actionsheet-item" >{{item.label}}</a>
+            <a v-for="(item,index) in items" :key="'__as__'+index" @click.stop="itemClick(item)" class="actionsheet-item" >{{item.label}}</a>
             <a v-if="cancel" @click.stop="close" class="actionsheet-action">{{cancel}}</a>
         </div>
     </div>

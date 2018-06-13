@@ -5,7 +5,7 @@ var path = require('path')
 var chalk = require('chalk')
 var webpack = require('webpack')
 const merge = require('webpack-merge')
-var webpackConfig = require('./webpack.common.conf')
+var webpackConfig = require('./webpack.common')
 var fs = require('fs')
 
 var ignore = ['photoswipe']

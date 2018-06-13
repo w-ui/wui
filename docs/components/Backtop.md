@@ -6,40 +6,39 @@
 //slot
 <template>
   <div>
-    <w-backtop>
+    <Backtop>
       <img src=""/>
-    </w-backtop>
+    </Backtop>
   </div>
 </template>
 
 //default
 <template>
   <div>
-    <w-backtop></w-backtop>
+    <Backtop></Backtop>
   </div>
 </template>
 ```
 
-### demo
-```javascript
+### Demo
+```html
 <template>
   <div>
     <div style="height: 4000px; background: linear-gradient(lightgreen, green)"></div>
-    <w-backtop></w-backtop>
+    <Backtop></Backtop>
   </div>
 </template>
 
 
 <script>
-import Backtop from 'packages/backtop'
+import { Backtop } from 'w-ui'
 
 export default {
   components: {
-    'w-backtop': Backtop
+    Backtop
   }
 }
 </script>
-
 ```
 
 ###  Backtop 插槽介绍 slot

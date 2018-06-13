@@ -1,25 +1,25 @@
 <template>
   <div>
-    <w-input type="input" @click.native="openByDrop($event)" v-model="calendar2.display" readonly>
-        <w-icon size="0.4rem" name="calendar" slot="icon"></w-icon>
-    </w-input>
-    <w-input type="input" @click.native="openByDialog($event)" v-model="calendar4.display" readonly>
-        <w-icon size="0.4rem" name="calendar" slot="icon"></w-icon>
-    </w-input>
-    <w-popup v-model="calendar2.show">
-      <w-calendar
+    <Input type="input" @click.native="openByDrop($event)" v-model="calendar2.display" readonly>
+        <Icon size="0.4rem" name="calendar" slot="icon"></Icon>
+    </Input>
+    <Input type="input" @click.native="openByDialog($event)" v-model="calendar4.display" readonly>
+        <Icon size="0.4rem" name="calendar" slot="icon"></Icon>
+    </Input>
+    <Popup v-model="calendar2.show">
+      <Calendar
         ref="calendar1"
         :lunar="calendar2.lunar" 
         :zero="calendar2.zero" 
         :value="calendar2.value" 
         @select="calendar2.select">
-      </w-calendar>
-    </w-popup>
+      </Calendar>
+    </Popup>
 
-    <transition name="fade">
-        <w-popup v-model="calendar4.show">
-        <w-calendar :range="calendar4.range" :zero="calendar4.zero" :lunar="calendar4.lunar" :value="calendar4.value"  @select="calendar4.select"></w-calendar>
-        </w-popup>
+    <transition name="fold">
+      <Popup v-model="calendar4.show">
+        <Calendar :range="calendar4.range" :zero="calendar4.zero" :lunar="calendar4.lunar" :value="calendar4.value"  @select="calendar4.select"></Calendar>
+      </Popup>
     </transition>
     
   </div>
@@ -34,10 +34,10 @@ import { Icon } from 'packages/icon'
 export default {
   name: 'demo-calendar',
   components: {
-    'w-calendar': Calendar,
-    'w-popup': Popup,
-    'w-input': Input,
-    'w-icon': Icon
+    Calendar,
+    Popup,
+    Input,
+    Icon
   },
   data() {
     return {
@@ -92,3 +92,30 @@ export default {
   }
 }
 </script>
+<style lang="less">
+.fold-enter-active {
+  animation-name: fold-in;
+  animation-duration: 0.5s;
+}
+.fold-leave-active {
+  animation-name: fold-out;
+  animation-duration: 0.5s;
+}
+@keyframes fold-in {
+  0% {
+    transform: translate3d(0, 100%, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+@keyframes fold-out {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, 100%, 0);
+  }
+}
+</style>
+

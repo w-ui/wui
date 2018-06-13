@@ -1,9 +1,9 @@
 <template>
 <div>
     <div class="paragraph">
-        <w-button size="large" @click.native="showActionSheet">拍照</w-button>
-        <w-actionsheet :items="myItems1" v-model="show1" cancel="取消">
-        </w-actionsheet>
+        <Button size="large" @click.native="showActionSheet">拍照</Button>
+        <Actionsheet :items="myItems1" v-model="show1" cancel="取消">
+        </Actionsheet>
     </div>
 </div>
 </template>
@@ -16,8 +16,8 @@ import { Toast } from 'packages/dialog'
 
 export default {
   components: {
-    'w-actionsheet': Actionsheet,
-    'w-button': Button
+    Actionsheet,
+    Button
   },
   data() {
     return {
@@ -26,13 +26,13 @@ export default {
         {
           label: '拍照',
           method: () => {
-            Toast('咔擦，此人太帅！')
+            Toast('拍照')
           }
         },
         {
-          label: '从相册中偷取',
+          label: '从相册中选取',
           method: () => {
-            Toast('看到了不该看到的东西！')
+            Toast('从相册中选取')
           }
         }
       ]

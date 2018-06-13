@@ -19,6 +19,7 @@ import {Grid} from '../packages/grid/index.js'
 import {GridItem} from '../packages/grid-item/index.js'
 import {Icon} from '../packages/icon/index.js'
 import {ImageClip} from '../packages/image-clip/index.js'
+import {Input} from '../packages/input/index.js'
 // import InfiniteScroll from '../packages/infinite-scroll/index.js'
 import {Keyboard} from '../packages/keyboard/index.js'
 // import Layout from '../packages/layout/index.js'
@@ -78,6 +79,7 @@ const components = [
   GridItem,
   Icon,
   ImageClip,
+  Input,
   // InfiniteScroll,
   Keyboard,
   // Layout,

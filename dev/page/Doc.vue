@@ -42,9 +42,8 @@
             <div class="camera"></div>
             <div class="speaker"></div>
             <div class="screen">
-              <iframe :src="demoSrc" frameborder="0" width="100%" height="100%"></iframe>
+              <iframe :src="demoSrc" frameborder="0" width="100%" height="100%" style="border-radius: 8px;"></iframe>
             </div>
-            <div class="home-btn"></div>
           </div>
 
         </div>
@@ -613,8 +612,8 @@ export default {
     .demo-phone {
       height: 600px;
       width: 310px;
-      padding: 20px 5px 30px 5px;
-      border-radius: 20px;
+      padding: 16px 5px 16px 5px;
+      border-radius: 15px;
       box-shadow: 0 0 15px #000;
       border: 1px #ccc solid;
       background-color: #c7c8c9;
@@ -642,7 +641,7 @@ export default {
         background-color: #c0c0c0;
         position: absolute;
         left: 50%;
-        top: 6px;
+        top: 4px;
         transform: translateX(-50%);
       }
       .camera {
@@ -653,7 +652,7 @@ export default {
         background-color: #c0c0c0;
         position: absolute;
         left: 90px;
-        top: 4px;
+        top: 2px;
       }
       .home-btn {
         width: 60px;

@@ -36,6 +36,14 @@ module.exports = {
       ? config.build.assetsPublicPath
       : (process.env.NODE_ENV === 'pkg' ? config.pkg.assetsPublicPath : config.dev.assetsPublicPath)
   },
+  externals: {
+    vue: {
+      root: 'Vue',
+      commonjs: 'vue',
+      commonjs2: 'vue',
+      amd: 'vue'
+    }
+  },
   resolve: {
     extensions: ['.js', '.vue', '.json', '.md'],
     alias: {
@@ -47,15 +55,6 @@ module.exports = {
   },
   module: {
     rules: [
-      // {
-      //   test: /\.(js|vue)$/,
-      //   loader: 'eslint-loader',
-      //   enforce: 'pre',
-      //   include: [resolve('src'), resolve('test')],
-      //   options: {
-      //     formatter: require('eslint-friendly-formatter')
-      //   }
-      // },
       {
         test: /\.vue$/,
         loader: 'vue-loader',
@@ -92,7 +91,8 @@ module.exports = {
           limit: 10000,
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
-      }
+      },
+      ...utils.styleLoaders({ sourceMap: false })
     ]
   }
 }

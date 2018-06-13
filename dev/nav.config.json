@@ -127,6 +127,12 @@
         "component": "ScrollCard"
       },
       {
+        "path": "/doc/ScrollPicker",
+        "title": "ScrollPicker 滑动选择",
+        "name": "ScrollPicker",
+        "component": "ScrollPicker"
+      },
+      {
         "path": "/doc/ScrollTree",
         "title": "ScrollTree 滑动树",
         "name": "ScrollTree",

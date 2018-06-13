@@ -7,41 +7,53 @@
 
 ```html
 <template>
-    <div>
-        <a @click="showActionSheet">拍照</a>
-    
-        <w-actionsheet :items="myItems1" v-model="show1" cancel="取消">
-        </w-actionsheet>
+<div>
+    <div class="paragraph">
+        <Button size="large" @click.native="showActionSheet">拍照</Button>
+        <Actionsheet :items="myItems1" v-model="show1" cancel="取消">
+        </Actionsheet>
     </div>
+</div>
 </template>
 
 <script>
-    export default {
-    data() {
-        return {
-            show1: false,
-            myItems1: [
-                {
-                    label: '拍照',
-                    method: () => {
-                        this.$toast('咔擦，此人太帅！');
-                    }
-                },
-                {
-                    label: '从相册中偷取',
-                    method: () => {
-                        this.$toast('看到了不该看到的东西！');
-                    }
-                }
-            ]
+import { Actionsheet, Button,  Toast} from 'w-ui'
+
+export default {
+  components: {
+    Actionsheet,
+    Button
+  },
+  data() {
+    return {
+      show1: false,
+      myItems1: [
+        {
+          label: '拍照',
+          method: () => {
+            Toast('拍照')
+          }
+        },
+        {
+          label: '从相册中选取',
+          method: () => {
+            Toast('从相册中选取')
+          }
         }
+      ]
     }
+  },
+  methods: {
+    showActionSheet() {
+      this.show1 = !this.show1
     }
+  }
+}
 </script>
 
 ```
 
-###  AccordionItem 属性介绍 Attributes
+###  AccordionItem 属性介绍 props
 
 | 参数           | 说明        | 类型       | 可选值        | 默认值     |
 |---------------|-------------|-----------|--------------|-----------|
