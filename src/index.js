@@ -45,6 +45,7 @@ import {Sticky} from '../packages/sticky/index.js'
 import {Switch} from '../packages/switch/index.js'
 import {Tab} from '../packages/tab/index.js'
 import {TabPanel} from '../packages/tab-panel/index.js'
+import {Tag} from '../packages/tag/index.js'
 import {Menubar} from '../packages/menubar/index.js'
 import {MenubarItem} from '../packages/menubar-item/index.js'
 import {Textarea} from '../packages/textarea/index.js'
@@ -105,6 +106,7 @@ const components = [
   Switch,
   Tab,
   TabPanel,
+  Tag,
   Menubar,
   MenubarItem,
   Textarea,
@@ -186,6 +188,7 @@ module.exports = {
   Switch,
   Tab,
   TabPanel,
+  Tag,
   Menubar,
   MenubarItem,
   Textarea,

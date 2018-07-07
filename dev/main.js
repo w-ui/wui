@@ -25,5 +25,7 @@ window.addEventListener('error', (message, source, lineno, colno, error) => {
 let app = new Vue({
   el: '#app',
   router,
-  template: '<App/>'
+  render (h) {
+    return h('App')
+  }
 })

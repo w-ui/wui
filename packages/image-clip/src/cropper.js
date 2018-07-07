@@ -1,5 +1,5 @@
 import Cropper from './cropper.common.js'
-import './cropper.css'
+import './cropper.less'
 
 export default {
   render (h) {

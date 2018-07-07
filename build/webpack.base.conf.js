@@ -36,14 +36,6 @@ module.exports = {
       ? config.build.assetsPublicPath
       : (process.env.NODE_ENV === 'pkg' ? config.pkg.assetsPublicPath : config.dev.assetsPublicPath)
   },
-  externals: {
-    vue: {
-      root: 'Vue',
-      commonjs: 'vue',
-      commonjs2: 'vue',
-      amd: 'vue'
-    }
-  },
   resolve: {
     extensions: ['.js', '.vue', '.json', '.md'],
     alias: {
@@ -67,8 +59,7 @@ module.exports = {
       },
       {
         test: /\.js$/,
-        loader: 'babel-loader',
-        include: [resolve('src'), resolve('dev'), resolve('test'), resolve('package')]
+        loader: 'babel-loader'
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
@@ -88,11 +79,35 @@ module.exports = {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
         loader: 'url-loader',
         options: {
-          limit: 10000,
+          limit: 10240,
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
       },
-      ...utils.styleLoaders({ sourceMap: false })
+      {
+        test: /\.css$/,
+        use: [
+          {
+            loader: 'style-loader'
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              minimize: false,
+              sourceMap: process.env.NODE_ENV !== 'production'
+            }
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              sourceMap: process.env.NODE_ENV !== 'production'
+            }
+          }
+        ]
+      },
+      {
+        test: /\.less$/,
+        use: ['style-loader', 'css-loader', 'postcss-loader', 'less-loader']
+      }
     ]
   }
 }

@@ -1104,10 +1104,11 @@
   </div>
 </template>
 
+<script>
+import '../../packages/icon/src/icons.less';
+</script>
 
 <style lang="less">
-	@import '../../packages/icon/src/icons.css';
-
 	.icon-container{
 		display: inline-block;
 		width: 220px;

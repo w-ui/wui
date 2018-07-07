@@ -318,6 +318,12 @@
         "component": "Backtop"
       },
       {
+        "path": "/doc/Tag",
+        "title": "Tag 标签",
+        "name": "Tag",
+        "component": "Tag"
+      },
+      {
         "path": "/doc/Waterfall",
         "title": "Waterfall 瀑布流",
         "name": "Waterfall",
