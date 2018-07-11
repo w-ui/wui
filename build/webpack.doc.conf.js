@@ -16,10 +16,6 @@ module.exports = merge(baseWebpackConfig, {
     chunkFilename: '[name].[chunkhash:5].js',
     publicPath: ''
   },
-  module: {
-    rules: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap })
-  },
-  // cheap-module-eval-source-map is faster for development
   devtool: '#cheap-module-eval-source-map',
   plugins: [
     new webpack.DefinePlugin({
