@@ -14,7 +14,7 @@ var webpackConfig = {
   },
   output: {
     path: path.join(__dirname, '../lib'),
-    filename: 'index.js',
+    filename: '[name].js',
     publicPath: '',
     libraryTarget: 'umd',
     umdNamedDefine: true
@@ -38,15 +38,6 @@ var webpackConfig = {
   },
   module: {
     rules: [
-      // {
-      //   test: /\.(js|vue)$/,
-      //   loader: 'eslint-loader',
-      //   enforce: 'pre',
-      //   include: [resolve('src'), resolve('test')],
-      //   options: {
-      //     formatter: require('eslint-friendly-formatter')
-      //   }
-      // },
       {
         test: /\.vue$/,
         loader: 'vue-loader',

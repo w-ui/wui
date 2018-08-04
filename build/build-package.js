@@ -5,7 +5,7 @@ var path = require('path')
 var chalk = require('chalk')
 var webpack = require('webpack')
 const merge = require('webpack-merge')
-var webpackConfig = require('./webpack.common')
+var webpackConfig = require('./webpack.config.js')
 var fs = require('fs')
 
 var ignore = ['photoswipe']
@@ -20,7 +20,14 @@ files.forEach(function (file) {
 })
 
 let packageConfig = merge(webpackConfig, {
-  entry: packages
+  entry: packages,
+  output: {
+    path: path.join(__dirname, '../lib'),
+    filename: '[name].js',
+    publicPath: '',
+    libraryTarget: 'commonjs2',
+    umdNamedDefine: true
+  }
 })
 
 var spinner = ora('building for production...')

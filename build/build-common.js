@@ -4,7 +4,7 @@ var rm = require('rimraf')
 var path = require('path')
 var chalk = require('chalk')
 var webpack = require('webpack')
-var webpackConfig = require('./webpack.common.js')
+var webpackConfig = require('./webpack.config.js')
 var fs = require('fs')
 
 var spinner = ora('building for production...')

@@ -1,6 +1,6 @@
 {
   "name": "w-ui",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "description": "A Vue.js 2.0 UI Toolkit for mobile",
   "files": [
     "lib",
@@ -8,15 +8,15 @@
     "packages"
   ],
   "author": "w-ui",
-  "main": "lib/index.js",
+  "main": "lib/wui.js",
   "module": "lib/wui.es.js",
   "scripts": {
     "dev": "node build/dev-server.js",
     "doc": "npm run clean && webpack --config ./build/webpack.doc.conf.js --optimize-minimize && rimraf ../w-ui.github.io/*.js && cp -r ./dist/* ../w-ui.github.io",
-    "dist": "webpack --config build/webpack.config.js",
-    "build": "npm run clean && npm run build:common && npm run build:package",
+    "build": "npm run clean && npm run build:common && npm run build:package && npm run build:es",
     "build:common": "node build/build-common.js",
     "build:package": "node build/build-package.js",
+    "build:es": "cp src/index.js lib/wui.es.js",
     "clean": "rimraf ./dist/* && rimraf ./lib/* ",
     "test": "",
     "pub": "npm publish --registry http://registry.npmjs.org",
@@ -104,23 +104,8 @@
     "vue",
     "components"
   ],
-  "unpkg": "lib/wui.umd.js",
+  "unpkg": "lib/wui.js",
   "license": "MIT",
-  "eslintConfig": {
-    "extends": [
-      "prettier"
-    ],
-    "plugins": [
-      "prettier"
-    ],
-    "rules": {
-      "prettier/prettier": "error"
-    }
-  },
-  "prettier": {
-    "singleQuote": true,
-    "semi": false
-  },
   "dependencies": {
     "vue": "^2.5.16"
   }
