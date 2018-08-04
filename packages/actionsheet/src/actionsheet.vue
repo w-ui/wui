@@ -9,7 +9,7 @@
 </template>
 
 <script type="text/babel">
-import { addClass, removeClass, getScrollview } from 'src/utils'
+import { addClass, removeClass, getScrollview } from '../../../src/utils'
 
 export default {
   name: 'w-actionsheet',

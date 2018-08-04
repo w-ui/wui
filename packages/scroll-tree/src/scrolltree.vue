@@ -9,7 +9,7 @@
 </template>
 
 <script type="text/babel">
-import { hasClass, removeClass, addClass } from 'src/utils'
+import { hasClass, removeClass, addClass } from '../../../src/utils'
 import TreeNode from './treenode.vue'
 export default {
   name: 'w-scroll-tree',

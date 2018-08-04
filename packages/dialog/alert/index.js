@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import { pageScroll } from 'src/utils'
+import { pageScroll } from '../../../src/utils'
 import Alert from './alert.vue'
 const AlertConstructor = Vue.extend(Alert)
 

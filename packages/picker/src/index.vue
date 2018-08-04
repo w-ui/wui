@@ -5,7 +5,7 @@
 <script type="text/babel">
 import Vue from 'vue'
 import SelectComponent from './select.vue'
-import { pageScroll } from 'src/utils'
+import { pageScroll } from '../../../src/utils'
 
 export default {
   name: 'w-select',

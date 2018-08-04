@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { addClass, removeClass, getScrollview } from 'src/utils'
+import { addClass, removeClass, getScrollview } from '../../../src/utils'
 
 export default {
   name: 'w-popup',

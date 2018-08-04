@@ -1,5 +1,5 @@
 
-import {getScrollview, getZIndex} from 'src/utils'
+import {getScrollview, getZIndex} from '../../../src/utils'
 import './sticky.less'
 
 export default {

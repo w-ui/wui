@@ -30,7 +30,7 @@ import {
   getScrollview,
   isIOS,
   pageScroll
-} from 'src/utils'
+} from '../../../src/utils'
 export default {
   data() {
     return {

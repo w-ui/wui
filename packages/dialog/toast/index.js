@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import {pageScroll} from 'src/utils'
+import {pageScroll} from '../../../src/utils'
 import Toast from './toast.vue'
 
 const ToastConstructor = Vue.extend(Toast)

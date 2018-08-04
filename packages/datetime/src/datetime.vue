@@ -6,7 +6,7 @@
 import Vue from 'vue'
 import Utils from './utils'
 import PickerComponent from './picker.vue'
-import { pageScroll } from 'src/utils'
+import { pageScroll } from '../../../src/utils'
 
 export default {
   name: 'w-datetime',

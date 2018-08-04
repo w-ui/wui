@@ -10,7 +10,7 @@
 </template>
 
 <script type="text/babel">
-import { scrollTop, getScrollview } from 'src/utils'
+import { scrollTop, getScrollview } from '../../../src/utils'
 
 export default {
   name: 'w-backtop',

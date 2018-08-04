@@ -31,7 +31,6 @@ var webpackConfig = {
     extensions: ['.js', '.vue', '.json', '.md'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
-      'src': resolve('../src'),
       'packages': resolve('../packages'),
       'example': resolve('../example')
     }

@@ -79,7 +79,7 @@
  *
  * */
 import RangeKnobHandle from './range-knob-handle.vue'
-import { addClass, isString, isObject, isNumber } from 'src/utils'
+import { addClass, isString, isObject, isNumber } from '../../../src/utils'
 
 export default {
   name: 'w-range',

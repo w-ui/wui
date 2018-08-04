@@ -19,7 +19,7 @@
 </template>
 
 <script type="text/babel">
-import { getScrollview, checkInview } from 'src/utils'
+import { getScrollview, checkInview } from '../../../src/utils'
 
 export default {
   name: 'w-progressbar',

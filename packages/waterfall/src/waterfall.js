@@ -1,5 +1,5 @@
 import './waterfall.less'
-import { addClass, removeClass } from 'src/utils'
+import { addClass, removeClass } from '../../../src/utils'
 
 export default {
   name: 'w-waterfall',

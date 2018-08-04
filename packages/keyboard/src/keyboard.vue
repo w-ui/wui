@@ -37,7 +37,7 @@ import {
   getScrollview,
   pageScroll,
   isIOS
-} from 'src/utils'
+} from '../../../src/utils'
 
 export default {
   name: 'w-keyboard',
