@@ -1,3 +1,3 @@
 
-import LazyImage from './src/LazyImage.vue'
+import LazyImage from './src/lazyImage.vue'
 export {LazyImage} 
