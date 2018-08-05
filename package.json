@@ -1,6 +1,6 @@
 {
   "name": "w-ui",
-  "version": "1.1.9",
+  "version": "1.1.10",
   "description": "A Vue.js 2.0 UI Toolkit for mobile",
   "files": [
     "lib",
@@ -16,7 +16,7 @@
     "build": "npm run clean && npm run build:common && npm run build:package && npm run build:es",
     "build:common": "node build/build-common.js",
     "build:package": "node build/build-package.js",
-    "build:es": "cp src/index.js lib/wui.es.js",
+    "build:es": "babel src/index.js -o ./lib/wui.es.js",
     "clean": "rimraf ./dist/* && rimraf ./lib/* ",
     "test": "",
     "pub": "npm publish --registry http://registry.npmjs.org",
@@ -24,6 +24,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^7.2.5",
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.1.1",
     "babel-helper-vue-jsx-merge-props": "^2.0.3",
