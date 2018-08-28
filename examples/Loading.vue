@@ -2,7 +2,6 @@
 <template>
   <div>
     <div class="paragraph">
-      <w-loading v-show="loading"></w-loading>
       <w-button size="large" @click.native="toggleLoading">点我查看加载效果</w-button>
     </div>
   </div>
@@ -13,21 +12,16 @@ import { Loading } from 'packages/loading'
 import { Button } from 'packages/button'
 
 export default {
-  data() {
-    return {
-      loading: false
-    }
-  },
   components: {
-    'w-loading': Loading,
     'w-button': Button
   },
   methods: {
     toggleLoading() {
-      this.loading = !this.loading
+      let ins = Loading();
+      console.log(ins);
       setTimeout(() => {
-        this.loading = !this.loading
-      }, 1000)
+        ins.hide()
+      }, 5000)
     }
   }
 }
