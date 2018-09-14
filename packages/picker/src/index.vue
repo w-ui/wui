@@ -1,17 +1,17 @@
 <template>
-    <div @click.stop="open" class="wui-select-input">{{displayValue}}</div>
+    <div @click.stop="open" class="wui-picker-input">{{displayValue}}</div>
 </template>
 
 <script type="text/babel">
 import Vue from 'vue'
-import SelectComponent from './select.vue'
+import PickerComponent from './picker.vue'
 import { pageScroll } from '../../../src/utils'
 
 export default {
-  name: 'w-select',
+  name: 'w-picker',
   data() {
     return {
-      select: null,
+      picker: null,
       currentValue: this.value,
       tmpNum: 0,
       displayValue: ''
@@ -40,14 +40,14 @@ export default {
   methods: {
     open() {
       if (this.readonly) return
-      this.select.open()
+      this.picker.open()
     },
     close() {
-      this.select.close()
+      this.picker.close()
     },
     removeElement() {
-      if (this.select && this.select.$el)
-        document.body.removeChild(this.select.$el)
+      if (this.picker && this.picker.$el)
+        document.body.removeChild(this.picker.$el)
     },
     setDisplayText(val) {
       let result = []
@@ -64,18 +64,18 @@ export default {
     render() {
       this.removeElement()
 
-      const Select = Vue.extend(SelectComponent)
+      const picker = Vue.extend(PickerComponent)
       const props = this._props
       props.parentEL = this.$el
 
-      this.select = new Select({
+      this.picker = new picker({
         el: document.createElement('div'),
         data: props
       })
 
-      document.body.appendChild(this.select.$el)
+      document.body.appendChild(this.picker.$el)
 
-      this.select.$on('confirm', value => {
+      this.picker.$on('confirm', value => {
         if (this.tmpNum > 0 || this.initEmit) {
           this.setDisplayText(value)
           this.currentValue = value
@@ -84,7 +84,7 @@ export default {
         this.tmpNum++
       })
 
-      this.select.$on('change', value => {
+      this.picker.$on('change', value => {
         this.$emit('change', value)
       })
     },
@@ -92,7 +92,7 @@ export default {
       let allData = this.items[column]
       if (allData && allData.length > 0) {
         this.$nextTick(() => {
-          this.select.scrolloToPosition(column, allData, value => {
+          this.picker.scrolloToPosition(column, allData, value => {
             this.$emit('change', {
               column,
               value
@@ -114,5 +114,5 @@ export default {
 </script>
 
 <style lang="less">
-@import './select.less';
+@import './picker.less';
 </style>

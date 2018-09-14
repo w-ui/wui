@@ -7,10 +7,10 @@
                 <a href="javascript:;" @click.stop="setValue">确定</a>
             </div>
             <div class="wui-datetime-content">
-                <div class="wui-datetime-item" v-for="column in columns">
+                <div class="wui-datetime-item" v-for="(column,i) in columns" :key="i">
                     <div class="wui-datetime-item-box" :ref="'Component_' + column">
                         <div class="wui-datetime-item-content" :ref="'Content_' + column">
-                            <span v-for="item in items[column]" :data-value="item.value" v-html="item.name"></span>
+                            <span v-for="(item,j) in items[column]" :data-value="item.value" v-html="item.name" :key="j"></span>
                         </div>
                     </div>
                 </div>

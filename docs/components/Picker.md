@@ -7,19 +7,19 @@
 ```html
 <template>
   <div>
-    <w-cell title="请选择书名：">
-      <w-select :columns="columns" :items="books" v-model="vals"></w-select>
-    </w-cell>
-    <w-cell title="请选择城市：">
-      <w-select ref="addr" :columns="columnsAddress" :items="address" v-model="pcd" @change="selectChange"></w-select>
-    </w-cell>
+    <Cell title="请选择书名：">
+      <Picker :columns="columns" :items="books" v-model="vals"></Picker>
+    </Cell>
+    <Cell title="请选择城市：">
+      <Picker ref="addr" :columns="columnsAddress" :items="address" v-model="pcd" @change="selectChange"></Picker>
+    </Cell>
   </div>
 </template>
 
 
 <script>
-import Select from 'packages/select'
-import Cell from 'packages/cell'
+import { Picker } from 'w-ui/lib/picker'
+import { Cell } from 'w-ui/lib/cell'
 
 const citys = {
   '1001': [
@@ -69,8 +69,8 @@ const districts = {
 
 export default {
   components: {
-    'w-select': Select,
-    'w-cell': Cell
+    Picker,
+    Cell
   },
   data(){
     return {

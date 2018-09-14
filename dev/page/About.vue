@@ -17,6 +17,19 @@
       <div class="title">更新日志</div>
       <w-timeline>
         <w-timeline-item>
+          <p class="time">2018-09-14</p>
+          <p class="item">修复dialog的样式bug</p>
+          <p class="item" style="color: dodgerblue">发布1.1.15</p>
+        </w-timeline-item>
+
+        <w-timeline-item>
+          <p class="time">2018-09-12</p>
+          <p class="item">优化picker</p>
+          <p class="item">修改picker和Datetime文档bug</p>
+          <p class="item" style="color: dodgerblue">发布1.1.14</p>
+        </w-timeline-item>
+
+        <w-timeline-item>
           <p class="time">2018-03-01</p>
           <p class="item">修复checkbox的props value的类型</p>
           <p class="item">修复tab组件change事件和文档</p>

@@ -1,4 +1,4 @@
-#  DateTime 时间选择控件
+#  Datetime 时间选择控件
 
 ### Demo
 
@@ -7,43 +7,47 @@
     <div>
       <p>
         <h3>日期时间选择</h3>
-        <w-datetime v-model="datetime0"></w-datetime>
+        <Datetime v-model="datetime0" />
       </p>
       <p>
         <h3>时间选择</h3>
-        <w-datetime type="time" v-model="datetime1"></w-datetime>
+        <Datetime type="time" v-model="datetime1" />
       </p>
       <p>
         <h3>日期选择</h3>
-        <w-datetime type="date" v-model="datetime2"></w-datetime>
+        <Datetime type="date" v-model="datetime2" />
       </p>
       <p>
         <h3>自定义模板</h3>
-        <w-datetime type="date" :yearFormat="yearFormat" :monthFormat="monthFormat" :dayFormat="dayFormat" v-model="datetime3"></w-datetime>
+        <Datetime type="date" :yearFormat="yearFormat" :monthFormat="monthFormat" :dayFormat="dayFormat" v-model="datetime3"/>
       </p>
       <p>
         <h3>限制时间范围</h3>
-        <w-datetime startDate="2012-03-16 15:13" endDate="2019-10-21 22:21"v-model="datetime4"></w-datetime>
+        <Datetime startDate="2012-03-16 15:13" endDate="2019-10-21 22:21"v-model="datetime4" />
       </p>
     </div>
 
 </template>
 
 <script>
-    export default {
-        data() {
-            return {
-                datetime0: '',
-                datetime1: '',
-                datetime2: '',
-                datetime3: '',
-                datetime4: '',
-                yearFormat: '<span>{value}<i>年</i></span>',
-                monthFormat: '<span>{value}<i>月</i></span>',
-                dayFormat: '<span>{value}<i>日</i></span>',
-            }
-        }
+import { Datetime } from 'w-ui/lib/datetime'
+export default {
+  components: {
+    Datetime
+  },
+  data() {
+    return {
+      datetime0: '',
+      datetime1: '',
+      datetime2: '',
+      datetime3: '',
+      datetime4: '',
+      yearFormat: '<span>{value}<i>年</i></span>',
+      monthFormat: '<span>{value}<i>月</i></span>',
+      dayFormat: '<span>{value}<i>日</i></span>'
     }
+  }
+}
 </script>
 
 ```

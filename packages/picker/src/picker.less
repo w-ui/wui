@@ -52,14 +52,14 @@
   align-items: center;
 }
 
-@select-item-height: 38px;
+@picker-item-height: 38px;
 
 .wui {
-  &-select-mask {
+  &-picker-mask {
     .mask(rgba(0, 0, 0, .4), 1500 + 2);
   }
 
-  &-select {
+  &-picker {
     position: fixed;
     bottom: 0;
     left: 0;
@@ -74,13 +74,13 @@
     }
   }
 
-  &-select-input {
+  &-picker-input {
     width: 100%;
     height: 0.6rem;
     line-height: 0.6rem;
   }
 
-  &-select-head {
+  &-picker-head {
     display: flex;
     justify-content: space-between;
     position: relative;
@@ -101,37 +101,37 @@
     }
   }
 
-  &-select-content {
+  &-picker-content {
     position: relative;
     width: 100%;
-    height: @select-item-height * 7;
+    height: @picker-item-height * 7;
     overflow: hidden;
     display: flex;
   }
 
-  &-select-item {
+  &-picker-item {
     font-size: 16px;
     height: 100%;
     position: relative;
     flex: 1;
   }
 
-  &-select-item-content {
+  &-picker-item-content {
     > span {
       width: 100%;
       display: block;
-      height: @select-item-height;
-      line-height: @select-item-height;
+      height: @picker-item-height;
+      line-height: @picker-item-height;
       text-align: center;
     }
   }
 
-  &-select-item-box {
+  &-picker-item-box {
     height: 100%;
   }
 
-  &-select-shade,
-  &-select-indicator {
+  &-picker-shade,
+  &-picker-indicator {
     pointer-events: none;
     position: absolute;
     left: 0;
@@ -140,16 +140,16 @@
     width: 100%;
   }
 
-  &-select-shade {
+  &-picker-shade {
     z-index: 3;
     transform: translateZ(0px);
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.6)), linear-gradient(to top, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.6));
     background-position: top, bottom;
-    background-size: 100% @select-item-height * 3;
+    background-size: 100% @picker-item-height * 3;
     background-repeat: no-repeat;
   }
 
-  &-select-indicator {
+  &-picker-indicator {
     z-index: 4;
     display: flex;
     justify-content: center;
@@ -157,7 +157,7 @@
     > span {
       display: block;
       width: 100%;
-      height: @select-item-height;
+      height: @picker-item-height;
       position: relative;
       &:after {
         .top-line(@line-color);

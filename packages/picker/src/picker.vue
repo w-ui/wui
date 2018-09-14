@@ -1,22 +1,22 @@
 
 <template>
     <div>
-        <div class="wui-select-mask" v-show="show" @click.stop="close"></div>
-        <div class="wui-select" :class="show ? 'wui-select-active' : ''">
-            <div class="wui-select-head">
+        <div class="wui-picker-mask" v-show="show" @click.stop="close"></div>
+        <div class="wui-picker" :class="show ? 'wui-picker-active' : ''">
+            <div class="wui-picker-head">
                 <a @click.stop="close">取消</a>
                 <a @click.stop="setValue">确定</a>
             </div>
-            <div class="wui-select-content">
-                <div class="wui-select-item" v-for="column in columns">
-                    <div class="wui-select-item-box" :ref="'Component_' + column">
-                        <div class="wui-select-item-content" :ref="'Content_' + column">
-                            <span v-for="item in items[column]" :data-value="item.value" v-html="item.name"></span>
+            <div class="wui-picker-content">
+                <div class="wui-picker-item" v-for="(column,i) in columns" :key="i">
+                    <div class="wui-picker-item-box" :ref="'Component_' + column">
+                        <div class="wui-picker-item-content" :ref="'Content_' + column">
+                            <span v-for="(item, j) in items[column]" :data-value="item.value" v-html="item.name" :key="j"></span>
                         </div>
                     </div>
                 </div>
-                <div class="wui-select-shade"></div>
-                <div class="wui-select-indicator"><span></span></div>
+                <div class="wui-picker-shade"></div>
+                <div class="wui-picker-indicator"><span></span></div>
             </div>
         </div>
     </div>
